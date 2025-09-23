@@ -1,12 +1,11 @@
 import React from "react";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Separator } from "@/components/ui/separator";
 import { Briefcase, GraduationCap, HeartHandshake } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 const AboutSection = () => {
   return (
-    <section id="about" className="py-20 bg-gray-50"> {/* Mengubah bg-white menjadi bg-gray-50 */}
+    <section id="about" className="py-20 bg-gray-50">
       <div className="container mx-auto px-4 text-center">
         <h2 className="text-4xl font-bold text-gray-900 mb-4">About Me</h2>
         <p className="text-lg text-gray-600 mb-12">
@@ -14,12 +13,13 @@ const AboutSection = () => {
         </p>
 
         <div className="flex flex-col lg:flex-row items-center lg:items-start gap-12 max-w-5xl mx-auto">
-          {/* Kolom Kiri: Avatar dan Info Pribadi - Konten dipusatkan */}
-          <div className="lg:w-1/3 flex flex-col items-center text-center"> {/* Menghapus lg:items-start dan lg:text-left untuk memusatkan konten */}
-            <Avatar className="h-48 w-48 mb-6 border-4 border-gray-200 shadow-lg">
-              <AvatarImage src="/1.jpeg" alt="Rifal Azhar Permana" /> {/* Path gambar diubah ke /1.jpeg */}
-              <AvatarFallback className="text-6xl font-bold bg-gray-200 text-gray-700">RP</AvatarFallback>
-            </Avatar>
+          {/* Kolom Kiri: Foto dan Info Pribadi - Konten dipusatkan */}
+          <div className="lg:w-1/3 flex flex-col items-center text-center">
+            <img
+              src="/1.jpeg" // Pastikan path ini benar ke gambar Anda di folder public
+              alt="Rifal Azhar Permana"
+              className="h-48 w-48 mb-6 rounded-full object-cover border-4 border-gray-200 shadow-lg"
+            />
             <h3 className="text-3xl font-bold text-gray-900 mb-2">Rifal Azhar Permana</h3>
             <p className="text-xl text-gray-700 mb-4">Full Stack Developer</p>
             <p className="text-md text-gray-600 max-w-xs">
