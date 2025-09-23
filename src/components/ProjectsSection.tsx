@@ -56,7 +56,7 @@ const allProjectsData = [
 ];
 
 const ProjectsSection = () => {
-  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: false, align: 'start' });
+  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true, align: 'start' }); // Changed loop to true
   // The state and callbacks for buttons are no longer needed as buttons are removed.
   // Keeping them for now, but they won't affect functionality.
   const [prevBtnDisabled, setPrevBtnDisabled] = useState(true);
