@@ -2,11 +2,11 @@ import React from "react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Separator } from "@/components/ui/separator";
 import { Briefcase, GraduationCap, HeartHandshake } from "lucide-react";
-import { Card, CardContent } from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 const AboutSection = () => {
   return (
-    <section id="about" className="py-20 bg-gray-50"> {/* Mengubah latar belakang menjadi abu-abu muda */}
+    <section id="about" className="py-20 bg-gray-50">
       <div className="container mx-auto px-4 text-center">
         <h2 className="text-4xl font-bold text-gray-900 mb-4">About Me</h2>
         <p className="text-lg text-gray-600 mb-12">
@@ -29,21 +29,25 @@ const AboutSection = () => {
 
           {/* Kolom Kanan: My Story dan Sorotan */}
           <div className="lg:w-2/3 text-left">
-            <h3 className="text-2xl font-bold text-gray-900 mb-4">My Story</h3>
-            <p className="text-gray-700 leading-relaxed mb-6">
-              Hello! I'm John Doe, a dedicated Full Stack Developer with a passion for building
-              dynamic and user-friendly web experiences. My journey into development began
-              several years ago, driven by a curiosity to understand how digital products work
-              and a desire to create impactful solutions.
-            </p>
-            <p className="text-gray-700 leading-relaxed mb-6">
-              I specialize in modern web technologies, with a strong focus on React and Node.js.
-              I thrive in environments where I can continuously learn and apply new skills to
-              solve complex problems. My goal is always to write clean, efficient, and
-              maintainable code that delivers exceptional performance and user satisfaction.
-            </p>
-
-            <Separator className="my-8" />
+            <Card className="p-8 shadow-lg mb-8"> {/* Membungkus 'My Story' dalam Card */}
+              <CardHeader className="p-0 mb-4">
+                <CardTitle className="text-2xl font-bold text-gray-900">My Story</CardTitle>
+              </CardHeader>
+              <CardContent className="p-0">
+                <p className="text-gray-700 leading-relaxed mb-4">
+                  Hello! I'm John Doe, a dedicated Full Stack Developer with a passion for building
+                  dynamic and user-friendly web experiences. My journey into development began
+                  several years ago, driven by a curiosity to understand how digital products work
+                  and a desire to create impactful solutions.
+                </p>
+                <p className="text-gray-700 leading-relaxed">
+                  I specialize in modern web technologies, with a strong focus on React and Node.js.
+                  I thrive in environments where I can continuously learn and apply new skills to
+                  solve complex problems. My goal is always to write clean, efficient, and
+                  maintainable code that delivers exceptional performance and user satisfaction.
+                </p>
+              </CardContent>
+            </Card>
 
             {/* Bagian Sorotan dengan Kartu */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
