@@ -1,6 +1,6 @@
 import React from "react";
 import { Button } from "@/components/ui/button";
-import { Download, Menu } from "lucide-react"; // Menghapus ikon Palette
+import { Download, Menu } from "lucide-react";
 import { useSmoothScroll } from "@/hooks/use-smooth-scroll";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
@@ -16,9 +16,6 @@ const Navbar = () => {
       </button>
       <button onClick={() => scrollToSection("skills")} className="text-gray-700 hover:text-gray-900 font-medium transition-colors duration-200">
         Skills
-      </button>
-      <button onClick={() => scrollToSection("projects")} className="text-gray-700 hover:text-gray-900 font-medium transition-colors duration-200">
-        Projects
       </button>
       <button onClick={() => scrollToSection("certificates")} className="text-gray-700 hover:text-gray-900 font-medium transition-colors duration-200">
         Certificates
@@ -48,6 +45,13 @@ const Navbar = () => {
             <SheetContent side="right">
               <div className="flex flex-col space-y-4 pt-8">
                 {navLinks}
+                <Button 
+                  onClick={() => scrollToSection("projects")} 
+                  variant="outline" 
+                  className="border-gray-900 text-gray-900 hover:bg-gray-100 px-8 py-4 text-lg w-full"
+                >
+                  View Projects
+                </Button>
                 <Button asChild className="bg-gray-900 text-white hover:bg-gray-700 flex items-center space-x-2">
                   <a href="/Rifal Azhar Permana.CV.pdf" target="_blank" rel="noopener noreferrer" download>
                     <Download className="h-4 w-4" />
@@ -60,6 +64,13 @@ const Navbar = () => {
         ) : (
           <div className="flex items-center space-x-6">
             {navLinks}
+            <Button 
+              onClick={() => scrollToSection("projects")} 
+              variant="outline" 
+              className="border-gray-900 text-gray-900 hover:bg-gray-100 px-8 py-4 text-lg"
+            >
+              View Projects
+            </Button>
             <Button asChild className="bg-gray-900 text-white hover:bg-gray-700 flex items-center space-x-2">
               <a href="/Rifal Azhar Permana.CV.pdf" target="_blank" rel="noopener noreferrer" download>
                 <Download className="h-4 w-4" />
