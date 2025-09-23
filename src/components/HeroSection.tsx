@@ -22,11 +22,11 @@ const HeroSection = () => {
           <span>Contact Me</span>
         </Button>
         <Button
-          asChild // Menggunakan asChild untuk merender <a> di dalam Button
+          asChild
           variant="outline"
           className="border-gray-900 text-gray-900 hover:bg-gray-100 px-8 py-4 text-lg"
         >
-          <a href="/PORTOFOLIO Rifal Azhar Permana (2025).pptx" target="_blank" rel="noopener noreferrer">
+          <a href="https://www.canva.com/design/DAGy1QAIbgc/Ap7XEIu14HBSPnLT1qWwcQ/edit" target="_blank" rel="noopener noreferrer">
             View Design Portfolio
           </a>
         </Button>
