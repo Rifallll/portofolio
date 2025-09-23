@@ -17,7 +17,7 @@ const SkillsSection = () => {
   const [emblaRef] = useEmblaCarousel({ loop: true, align: 'center' });
 
   return (
-    <section id="skills" className="py-20 bg-gray-50">
+    <section id="skills" className="py-20 bg-gray-50"> {/* Mengubah bg-white menjadi bg-gray-50 */}
       <div className="container mx-auto px-4 text-center">
         <h2 className="text-4xl font-bold text-gray-900 mb-4">Skills & Expertise</h2>
         <p className="text-lg text-gray-600 mb-12">
@@ -26,7 +26,7 @@ const SkillsSection = () => {
 
         <div className="relative mx-auto max-w-6xl">
           <div className="embla overflow-hidden" ref={emblaRef}>
-            <div className="embla__container flex gap-6 items-stretch"> {/* Mengubah gap-4 menjadi gap-6 */}
+            <div className="embla__container flex gap-4 items-stretch">
               {skillsData.map((skill, index) => (
                 <div key={index} className="embla__slide flex-none w-full md:w-1/2 lg:w-1/3 min-w-0 px-2">
                   <SkillItem {...skill} />
