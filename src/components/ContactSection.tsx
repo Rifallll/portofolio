@@ -1,10 +1,10 @@
 import React from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { Mail, Phone, MapPin, MessageSquareText } from "lucide-react"; // Mengganti Send dengan MessageSquareText
+import { Mail, Phone, MapPin, MessageSquareText } from "lucide-react";
 
 const ContactSection = () => {
-  const whatsappLink = "https://wa.me/6285217421701"; // Tautan langsung ke WhatsApp
+  const whatsappLink = "https://wa.me/6285217421701";
 
   return (
     <section id="contact" className="py-20 bg-gray-50">
@@ -55,7 +55,8 @@ const ContactSection = () => {
           </div>
 
           {/* Right Column: WhatsApp Button */}
-          <Card className="p-8 shadow-lg flex flex-col items-center justify-center h-full">
+          {/* Menghapus h-full agar ukuran kartu menyesuaikan konten */}
+          <Card className="p-8 shadow-lg flex flex-col items-center justify-center">
             <h3 className="text-2xl font-bold text-gray-900 mb-6">Message Me Directly</h3>
             <p className="text-gray-700 text-center mb-8">
               Click the button below to send me a message on WhatsApp.
