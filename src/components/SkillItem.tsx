@@ -18,11 +18,11 @@ const SkillItem: React.FC<SkillItemProps> = ({ title, proficiency, level, icon: 
         <Icon className="h-6 w-6 text-gray-700" /> {/* Render the icon */}
       </CardHeader>
       <CardContent>
-        <div className="flex justify-between items-baseline mb-2">
+        <div className="flex justify-between items-center mb-2"> {/* Mengubah items-baseline menjadi items-center */}
           <span className="text-sm text-gray-600">PROFICIENCY LEVEL</span>
           <span className="text-lg font-bold text-gray-900">{proficiency}% {level}</span>
         </div>
-        <Progress value={proficiency} className="h-2 bg-gray-200" /> {/* Menghapus indicatorClassName */}
+        <Progress value={proficiency} className="h-2 bg-gray-200" />
         <div className="relative w-full mt-2 flex justify-between text-xs text-gray-500"> {/* Simplify labels */}
           <span>Beginner</span>
           <span>Expert</span>
