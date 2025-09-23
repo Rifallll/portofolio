@@ -26,8 +26,8 @@ const HeroSection = () => {
           variant="outline"
           className="border-gray-900 text-gray-900 hover:bg-gray-100 px-8 py-4 text-lg"
         >
-          <a href="https://www.canva.com/design/DAGy1QAIbgc/Ap7XEIu14HBSPnLT1qWwcQ/edit" target="_blank" rel="noopener noreferrer">
-            View Design Portfolio
+          <a href="/PORTOFOLIO Rifal Azhar Permana (2025).pptx" target="_blank" rel="noopener noreferrer" download>
+            View Portfolio (PPTX)
           </a>
         </Button>
       </div>
