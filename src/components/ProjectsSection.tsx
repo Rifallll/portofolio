@@ -18,7 +18,7 @@ const allProjectsData = [
     title: "Task Management App",
     description:
       "Collaborative project management tool with real-time updates, drag-and-drop functionality, and team collaboration features.",
-    technologies: ["TypeScript", "React", "Socket.io", "PostgreSQL"], // 'Prisma' telah dihapus
+    technologies: ["TypeScript", "React", "Socket.io", "PostgreSQL"],
     categories: ["Full-stack", "Web Development"],
     liveDemoLink: "#",
     codeLink: "#",
@@ -61,7 +61,8 @@ const allProjectsData = [
 ];
 
 const ProjectsSection = () => {
-  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: false, align: 'start' });
+  // Mengubah loop: false kembali menjadi loop: true
+  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true, align: 'start' });
   const [prevBtnDisabled, setPrevBtnDisabled] = useState(true);
   const [nextBtnDisabled, setNextBtnDisabled] = useState(true);
   const [activeCategory, setActiveCategory] = useState("All");
