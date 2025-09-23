@@ -1,6 +1,6 @@
 import React from "react";
 import { Button } from "@/components/ui/button";
-import { Mail, Linkedin, Github, Instagram } from "lucide-react"; // Menghapus Globe, karena akan menggunakan teks untuk Kaggle
+import { Mail, Linkedin, Github, Instagram } from "lucide-react";
 import { useSmoothScroll } from "@/hooks/use-smooth-scroll";
 
 const HeroSection = () => {
@@ -22,24 +22,26 @@ const HeroSection = () => {
           <span>Contact Me</span>
         </Button>
         <Button
-          onClick={() => scrollToSection("projects")}
+          asChild // Menggunakan asChild untuk merender <a> di dalam Button
           variant="outline"
           className="border-gray-900 text-gray-900 hover:bg-gray-100 px-8 py-4 text-lg"
         >
-          View Design Portfolio {/* Teks diubah di sini */}
+          <a href="/PORTOFOLIO Rifal Azhar Permana (2025).pptx" target="_blank" rel="noopener noreferrer">
+            View Design Portfolio
+          </a>
         </Button>
       </div>
 
       {/* Social Media Icons and Text Link */}
-      <div className="flex space-x-6 mb-12 items-center"> {/* Menambahkan items-center untuk perataan vertikal */}
+      <div className="flex space-x-6 mb-12 items-center">
         <a href="#" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Profile" className="text-gray-700 hover:text-gray-900 transition-colors duration-200">
           <Linkedin className="h-7 w-7" />
         </a>
         <a href="#" target="_blank" rel="noopener noreferrer" aria-label="GitHub Profile" className="text-gray-700 hover:text-gray-900 transition-colors duration-200">
           <Github className="h-7 w-7" />
         </a>
-        <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Kaggle Profile" className="text-gray-700 hover:text-gray-900 transition-colors duration-200 text-lg font-semibold"> {/* Menambahkan styling untuk teks */}
-          <span>Kaggle</span> {/* Mengganti ikon dengan teks "Kaggle" */}
+        <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Kaggle Profile" className="text-gray-700 hover:text-gray-900 transition-colors duration-200 text-lg font-semibold">
+          <span>Kaggle</span>
         </a>
         <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Instagram Profile" className="text-gray-700 hover:text-gray-900 transition-colors duration-200">
           <Instagram className="h-7 w-7" />
