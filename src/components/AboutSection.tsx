@@ -1,5 +1,5 @@
 import React from "react";
-import { Card, CardContent } from "@/components/ui/card";
+import { Card, CardContent } from "@/components/ui/card"; // Card dan CardContent masih dibutuhkan untuk bagian lain
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Separator } from "@/components/ui/separator";
 import { Briefcase, GraduationCap, HeartHandshake } from "lucide-react";
@@ -26,50 +26,46 @@ const AboutSection = () => {
             </p>
           </div>
 
-          <div className="lg:w-2/3 text-left">
-            <Card className="p-8 shadow-lg">
-              <CardContent className="p-0">
-                <h3 className="text-2xl font-bold text-gray-900 mb-4">My Story</h3>
-                <p className="text-gray-700 leading-relaxed mb-6">
-                  Hello! I'm John Doe, a dedicated Full Stack Developer with a passion for building
-                  dynamic and user-friendly web experiences. My journey into development began
-                  several years ago, driven by a curiosity to understand how digital products work
-                  and a desire to create impactful solutions.
-                </p>
-                <p className="text-gray-700 leading-relaxed mb-6">
-                  I specialize in modern web technologies, with a strong focus on React and Node.js.
-                  I thrive in environments where I can continuously learn and apply new skills to
-                  solve complex problems. My goal is always to write clean, efficient, and
-                  maintainable code that delivers exceptional performance and user satisfaction.
-                </p>
+          <div className="lg:w-2/3 text-left p-8"> {/* Menambahkan padding di sini */}
+            <h3 className="text-2xl font-bold text-gray-900 mb-4">My Story</h3>
+            <p className="text-gray-700 leading-relaxed mb-6">
+              Hello! I'm John Doe, a dedicated Full Stack Developer with a passion for building
+              dynamic and user-friendly web experiences. My journey into development began
+              several years ago, driven by a curiosity to understand how digital products work
+              and a desire to create impactful solutions.
+            </p>
+            <p className="text-gray-700 leading-relaxed mb-6">
+              I specialize in modern web technologies, with a strong focus on React and Node.js.
+              I thrive in environments where I can continuously learn and apply new skills to
+              solve complex problems. My goal is always to write clean, efficient, and
+              maintainable code that delivers exceptional performance and user satisfaction.
+            </p>
 
-                <Separator className="my-8" />
+            <Separator className="my-8" />
 
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                  <div className="flex items-center space-x-3">
-                    <Briefcase className="h-6 w-6 text-gray-700" />
-                    <div>
-                      <p className="font-semibold text-gray-900">Experience</p>
-                      <p className="text-gray-600">5+ Years</p>
-                    </div>
-                  </div>
-                  <div className="flex items-center space-x-3">
-                    <GraduationCap className="h-6 w-6 text-gray-700" />
-                    <div>
-                      <p className="font-semibold text-gray-900">Education</p>
-                      <p className="text-gray-600">Computer Science</p>
-                    </div>
-                  </div>
-                  <div className="flex items-center space-x-3">
-                    <HeartHandshake className="h-6 w-6 text-gray-700" />
-                    <div>
-                      <p className="font-semibold text-gray-900">Collaboration</p>
-                      <p className="text-gray-600">Team Player</p>
-                    </div>
-                  </div>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              <div className="flex items-center space-x-3">
+                <Briefcase className="h-6 w-6 text-gray-700" />
+                <div>
+                  <p className="font-semibold text-gray-900">Experience</p>
+                  <p className="text-gray-600">5+ Years</p>
                 </div>
-              </CardContent>
-            </Card>
+              </div>
+              <div className="flex items-center space-x-3">
+                <GraduationCap className="h-6 w-6 text-gray-700" />
+                <div>
+                  <p className="font-semibold text-gray-900">Education</p>
+                  <p className="text-gray-600">Computer Science</p>
+                </div>
+              </div>
+              <div className="flex items-center space-x-3">
+                <HeartHandshake className="h-6 w-6 text-gray-700" />
+                <div>
+                  <p className="font-semibold text-gray-900">Collaboration</p>
+                  <p className="text-gray-600">Team Player</p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
