@@ -18,7 +18,7 @@ const allProjectsData = [
     title: "Task Management App",
     description:
       "Collaborative project management tool with real-time updates, drag-and-drop functionality, and team collaboration features.",
-    technologies: ["TypeScript", "React", "Socket.io", "PostgreSQL", "Prisma"],
+    technologies: ["TypeScript", "React", "Socket.io", "PostgreSQL"], // 'Prisma' telah dihapus
     categories: ["Full-stack", "Web Development"],
     liveDemoLink: "#",
     codeLink: "#",
@@ -125,13 +125,12 @@ const ProjectsSection = () => {
           ))}
         </div>
 
-        <div className="relative max-w-7xl mx-auto"> {/* Menghapus px-4 dari sini */}
+        <div className="relative max-w-7xl mx-auto">
           <div className="embla overflow-hidden" ref={emblaRef}>
-            <div className="embla__container flex gap-6 px-4 items-stretch"> {/* Menambahkan px-4 di sini */}
+            <div className="embla__container flex gap-6 px-4 items-stretch">
               {filteredProjects.map((project, index) => (
                 <div
                   key={index}
-                  // Mengubah flex-none w-* menjadi flex-shrink-0 basis-*
                   className="embla__slide flex-shrink-0 basis-full md:basis-1/2 lg:basis-1/3 h-full"
                 >
                   <ProjectCard {...project} />
