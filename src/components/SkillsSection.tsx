@@ -49,7 +49,7 @@ const SkillsSection = () => {
 
         <div className="relative">
           <div className="embla overflow-hidden" ref={emblaRef}>
-            <div className="embla__container flex items-stretch"> {/* Menghapus kelas gap */}
+            <div className="embla__container flex gap-4 items-stretch"> {/* Menambahkan kembali gap-4 */}
               {skillsData.map((skill, index) => (
                 <div key={index} className="embla__slide flex-none w-full md:w-1/2 lg:w-1/3 h-full">
                   <SkillItem {...skill} />
