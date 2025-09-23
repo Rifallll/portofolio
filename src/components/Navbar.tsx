@@ -1,6 +1,6 @@
 import React from "react";
 import { Button } from "@/components/ui/button";
-import { Download, Menu, Palette } from "lucide-react"; // Menambahkan ikon Palette
+import { Download, Menu } from "lucide-react"; // Menghapus ikon Palette karena tidak lagi digunakan
 import { useSmoothScroll } from "@/hooks/use-smooth-scroll";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
@@ -54,12 +54,6 @@ const Navbar = () => {
                     <span>Download CV</span>
                   </a>
                 </Button>
-                <Button asChild className="bg-gray-900 text-white hover:bg-gray-700 flex items-center space-x-2">
-                  <a href="https://your-design-portfolio-link.com" target="_blank" rel="noopener noreferrer"> {/* Ganti dengan tautan portofolio desain Anda */}
-                    <Palette className="h-4 w-4" /> {/* Menggunakan ikon Palette */}
-                    <span>View Design Portfolio</span>
-                  </a>
-                </Button>
               </div>
             </SheetContent>
           </Sheet>
@@ -70,12 +64,6 @@ const Navbar = () => {
               <a href="/Rifal Azhar Permana.CV.pdf" target="_blank" rel="noopener noreferrer" download>
                 <Download className="h-4 w-4" />
                 <span>Download CV</span>
-              </a>
-            </Button>
-            <Button asChild className="bg-gray-900 text-white hover:bg-gray-700 flex items-center space-x-2">
-              <a href="https://your-design-portfolio-link.com" target="_blank" rel="noopener noreferrer"> {/* Ganti dengan tautan portofolio desain Anda */}
-                <Palette className="h-4 w-4" /> {/* Menggunakan ikon Palette */}
-                <span>View Design Portfolio</span>
               </a>
             </Button>
           </div>
