@@ -19,7 +19,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
   codeLink,
 }) => {
   return (
-    <Card className="w-full shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2 flex flex-col justify-between">
+    <Card className="w-full shadow-lg hover:shadow-xl flex flex-col justify-between"> {/* Removed transition-all duration-300 hover:-translate-y-2 */}
       <CardHeader>
         <div className="flex justify-between items-start mb-2">
           <CardTitle className="text-xl font-semibold text-gray-900">{title}</CardTitle>
