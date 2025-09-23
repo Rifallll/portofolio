@@ -56,9 +56,7 @@ const allProjectsData = [
 ];
 
 const ProjectsSection = () => {
-  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true, align: 'start' }); // Changed loop to true
-  // The state and callbacks for buttons are no longer needed as buttons are removed.
-  // Keeping them for now, but they won't affect functionality.
+  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true, align: 'start' });
   const [prevBtnDisabled, setPrevBtnDisabled] = useState(true);
   const [nextBtnDisabled, setNextBtnDisabled] = useState(true);
 
@@ -85,15 +83,14 @@ const ProjectsSection = () => {
 
         <div className="relative">
           <div className="embla overflow-hidden" ref={emblaRef}>
-            <div className="embla__container flex -ml-4">
+            <div className="embla__container flex -ml-4 items-stretch"> {/* Added items-stretch here */}
               {allProjectsData.map((project, index) => (
-                <div key={index} className="embla__slide flex-none w-full md:w-1/2 lg:w-1/3 pl-4">
+                <div key={index} className="embla__slide flex-none w-full md:w-1/2 lg:w-1/3 pl-4 h-full"> {/* Added h-full */}
                   <ProjectCard {...project} />
                 </div>
               ))}
             </div>
           </div>
-          {/* Navigation buttons removed as requested */}
         </div>
       </div>
     </section>
