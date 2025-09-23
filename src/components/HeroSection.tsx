@@ -25,8 +25,7 @@ const HeroSection = () => {
         <Button
           onClick={() => scrollToSection("projects")}
           variant="outline"
-          className="border-gray-200 text-gray-200 hover:bg-gray-800 px-8 py-4 text-lg"
-          // Menyesuaikan warna border dan text untuk latar gelap
+          className="border-gray-200 text-gray-200 hover:bg-gray-800 px-8 py-4 text-lg" {/* Menyesuaikan warna border dan text untuk latar gelap */}
         >
           View Projects
         </Button>
@@ -38,8 +37,7 @@ const HeroSection = () => {
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          className="h-8 w-8 text-gray-400 animate-bounce"
-          // Mengubah text-gray-500 menjadi text-gray-400
+          className="h-8 w-8 text-gray-400 animate-bounce" {/* Mengubah text-gray-500 menjadi text-gray-400 */}
           fill="none"
           viewBox="0 0 24 24"
           stroke="currentColor"

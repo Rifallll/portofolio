@@ -104,8 +104,7 @@ const ProjectsSection = () => {
             disabled={prevBtnDisabled}
             variant="outline"
             size="icon"
-            className="absolute left-0 top-1/2 -translate-y-1/2 bg-gray-800 text-gray-200 border-gray-700 rounded-full shadow-md hover:shadow-lg transition-all duration-200 z-10"
-            // Menyesuaikan warna tombol carousel
+            className="absolute left-0 top-1/2 -translate-y-1/2 bg-gray-800 text-gray-200 border-gray-700 rounded-full shadow-md hover:shadow-lg transition-all duration-200 z-10" {/* Menyesuaikan warna tombol carousel */}
           >
             <ArrowLeft className="h-5 w-5" />
             <span className="sr-only">Previous project</span>
@@ -115,8 +114,7 @@ const ProjectsSection = () => {
             disabled={nextBtnDisabled}
             variant="outline"
             size="icon"
-            className="absolute right-0 top-1/2 -translate-y-1/2 bg-gray-800 text-gray-200 border-gray-700 rounded-full shadow-md hover:shadow-lg transition-all duration-200 z-10"
-            // Menyesuaikan warna tombol carousel
+            className="absolute right-0 top-1/2 -translate-y-1/2 bg-gray-800 text-gray-200 border-gray-700 rounded-full shadow-md hover:shadow-lg transition-all duration-200 z-10" {/* Menyesuaikan warna tombol carousel */}
           >
             <ArrowRight className="h-5 w-5" />
             <span className="sr-only">Next project</span>
