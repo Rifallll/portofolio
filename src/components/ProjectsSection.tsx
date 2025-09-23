@@ -83,9 +83,9 @@ const ProjectsSection = () => {
 
         <div className="relative">
           <div className="embla overflow-hidden" ref={emblaRef}>
-            <div className="embla__container flex -ml-4 items-stretch"> {/* Added items-stretch here */}
+            <div className="embla__container flex gap-4 items-stretch"> {/* Changed -ml-4 to gap-4 */}
               {allProjectsData.map((project, index) => (
-                <div key={index} className="embla__slide flex-none w-full md:w-1/2 lg:w-1/3 pl-4 h-full"> {/* Added h-full */}
+                <div key={index} className="embla__slide flex-none w-full md:w-1/2 lg:w-1/3 h-full"> {/* Removed pl-4 */}
                   <ProjectCard {...project} />
                 </div>
               ))}
