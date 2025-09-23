@@ -150,9 +150,6 @@ const ContactSection = () => {
                 <Send className="h-5 w-5" />
                 <span>Send Message</span>
               </Button>
-              <p className="text-xs text-gray-500 mt-4 text-right">
-                * This form uses mailto. No data is stored or tracked.
-              </p>
             </form>
           </Card>
         </div>
