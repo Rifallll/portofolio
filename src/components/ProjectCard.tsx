@@ -19,7 +19,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
   codeLink,
 }) => {
   return (
-    <Card className="w-full shadow-lg hover:shadow-xl flex flex-col justify-between h-full"> {/* Added h-full */}
+    <Card className="w-full shadow-lg hover:shadow-xl flex flex-col justify-between h-full">
       <CardHeader>
         <div className="flex justify-between items-start mb-2">
           <CardTitle className="text-xl font-semibold text-gray-900">{title}</CardTitle>
@@ -27,7 +27,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
         </div>
         <CardDescription className="text-gray-600 text-left">{description}</CardDescription>
       </CardHeader>
-      <CardContent>
+      <CardContent className="flex flex-col flex-grow"> {/* Added flex-col and flex-grow */}
         <div className="flex flex-wrap gap-2 mb-4">
           {technologies.map((tech, index) => (
             <span
@@ -38,7 +38,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
             </span>
           ))}
         </div>
-        <div className="flex space-x-2">
+        <div className="flex space-x-2 mt-auto"> {/* Added mt-auto to push buttons to bottom */}
           {liveDemoLink && (
             <Button variant="outline" className="flex items-center space-x-1" asChild>
               <a href={liveDemoLink} target="_blank" rel="noopener noreferrer">
