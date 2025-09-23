@@ -81,7 +81,7 @@ const ProjectsSection = () => {
   }, [emblaApi, onSelect]);
 
   return (
-    <section id="projects" className="py-20 bg-gray-50"> {/* Mengubah bg-white menjadi bg-gray-50 */}
+    <section id="projects" className="py-20 bg-gray-50">
       <div className="container mx-auto px-4 text-center">
         <h2 className="text-4xl font-bold text-gray-900 mb-4">Featured Projects</h2>
         <p className="text-lg text-gray-600 mb-12">
@@ -93,7 +93,7 @@ const ProjectsSection = () => {
           <div className="embla overflow-hidden" ref={emblaRef}>
             <div className="embla__container flex gap-4 items-stretch">
               {allProjectsData.map((project, index) => (
-                <div key={index} className="embla__slide flex-none w-full md:w-1/2 lg:w-1/3 h-full">
+                <div key={index} className="embla__slide flex-none w-full md:w-1/2 lg:w-1/3 h-full px-2"> {/* Menambahkan px-2 di sini */}
                   <ProjectCard {...project} />
                 </div>
               ))}
