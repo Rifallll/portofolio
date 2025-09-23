@@ -1,12 +1,13 @@
 import React from "react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Stamp, ExternalLink, Github } from "lucide-react"; // Mengganti Code dengan Github
+import { Stamp, ExternalLink, Github } from "lucide-react";
 
 interface ProjectCardProps {
   title: string;
   description: string;
   technologies: string[];
+  categories: string[]; // Menambahkan properti categories
   liveDemoLink?: string;
   codeLink?: string;
 }
@@ -15,6 +16,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
   title,
   description,
   technologies,
+  categories, // Menerima properti categories
   liveDemoLink,
   codeLink,
 }) => {
@@ -50,7 +52,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
           {codeLink && (
             <Button variant="outline" className="flex items-center space-x-1" asChild>
               <a href={codeLink} target="_blank" rel="noopener noreferrer">
-                <Github className="h-4 w-4" /> {/* Mengganti Code dengan Github */}
+                <Github className="h-4 w-4" />
                 <span>Code</span>
               </a>
             </Button>
