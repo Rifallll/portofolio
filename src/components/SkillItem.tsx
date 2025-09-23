@@ -20,7 +20,7 @@ const SkillItem: React.FC<SkillItemProps> = ({ title, proficiency, level }) => {
           <span className="text-lg font-bold text-gray-900">{proficiency}% {level}</span>
         </div>
         <Progress value={proficiency} className="h-2 bg-gray-200" indicatorClassName="bg-gray-900" />
-        <div className="flex justify-between text-xs text-gray-500 mt-2">
+        <div className="flex justify-around text-[0.65rem] text-gray-500 mt-2">
           <span>Beginner</span>
           <span>Intermediate</span>
           <span>Advanced</span>
