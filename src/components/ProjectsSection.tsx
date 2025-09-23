@@ -61,7 +61,8 @@ const allProjectsData = [
 ];
 
 const ProjectsSection = () => {
-  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true, align: 'start' });
+  // Mengubah loop: true menjadi loop: false
+  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: false, align: 'start' });
   const [prevBtnDisabled, setPrevBtnDisabled] = useState(true);
   const [nextBtnDisabled, setNextBtnDisabled] = useState(true);
   const [activeCategory, setActiveCategory] = useState("All"); // State untuk kategori aktif
@@ -75,6 +76,7 @@ const ProjectsSection = () => {
     : allProjectsData.filter(project => project.categories.includes(activeCategory));
 
   const onSelect = useCallback((emblaApi: any) => {
+    if (!emblaApi) return; // Pastikan emblaApi sudah siap
     setPrevBtnDisabled(!emblaApi.canScrollPrev());
     setNextBtnDisabled(!emblaApi.canScrollNext());
   }, []);
@@ -92,13 +94,18 @@ const ProjectsSection = () => {
     onSelect(emblaApi);
     emblaApi.on("reInit", onSelect);
     emblaApi.on("select", onSelect);
+    // Cleanup event listeners saat komponen unmount atau emblaApi berubah
+    return () => {
+      emblaApi.off("reInit", onSelect);
+      emblaApi.off("select", onSelect);
+    };
   }, [emblaApi, onSelect]);
 
   // Re-initialize Embla Carousel when filtered projects change
   useEffect(() => {
     if (emblaApi) {
       emblaApi.reInit();
-      emblaApi.scrollTo(0); // Scroll to the first slide when filter changes
+      emblaApi.scrollTo(0); // Scroll ke slide pertama saat filter berubah
     }
   }, [filteredProjects, emblaApi]);
 
@@ -124,11 +131,11 @@ const ProjectsSection = () => {
           ))}
         </div>
 
-        <div className="relative max-w-7xl mx-auto px-4"> {/* Menambahkan max-w-7xl, mx-auto, dan px-4 di sini */}
+        <div className="relative max-w-7xl mx-auto px-4">
           <div className="embla overflow-hidden" ref={emblaRef}>
-            <div className="embla__container flex gap-6 items-stretch"> {/* Menghapus px-4 dari sini */}
+            <div className="embla__container flex gap-6 items-stretch">
               {filteredProjects.map((project, index) => (
-                <div key={index} className="embla__slide flex-none w-full md:w-1/2 lg:w-1/3 h-full"> {/* Menghapus px-2 dari sini, karena sudah ada padding di container */}
+                <div key={index} className="embla__slide flex-none w-full md:w-1/2 lg:w-1/3 h-full">
                   <ProjectCard {...project} />
                 </div>
               ))}
@@ -139,7 +146,7 @@ const ProjectsSection = () => {
             disabled={prevBtnDisabled}
             variant="outline"
             size="icon"
-            className="absolute -left-4 top-1/2 -translate-y-1/2 bg-white rounded-full shadow-md hover:shadow-lg transition-all duration-200 z-10 md:-left-8" // Menyesuaikan posisi kiri
+            className="absolute -left-4 top-1/2 -translate-y-1/2 bg-white rounded-full shadow-md hover:shadow-lg transition-all duration-200 z-10 md:-left-8"
           >
             <ArrowLeft className="h-5 w-5" />
             <span className="sr-only">Previous project</span>
@@ -149,7 +156,7 @@ const ProjectsSection = () => {
             disabled={nextBtnDisabled}
             variant="outline"
             size="icon"
-            className="absolute -right-4 top-1/2 -translate-y-1/2 bg-white rounded-full shadow-md hover:shadow-lg transition-all duration-200 z-10 md:-right-8" // Menyesuaikan posisi kanan
+            className="absolute -right-4 top-1/2 -translate-y-1/2 bg-white rounded-full shadow-md hover:shadow-lg transition-all duration-200 z-10 md:-right-8"
           >
             <ArrowRight className="h-5 w-5" />
             <span className="sr-only">Next project</span>
