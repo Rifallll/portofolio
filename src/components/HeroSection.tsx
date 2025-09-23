@@ -1,6 +1,6 @@
 import React from "react";
 import { Button } from "@/components/ui/button";
-import { Mail } from "lucide-react";
+import { Mail, Linkedin, Github, Twitter, Instagram } from "lucide-react"; // Import ikon media sosial
 import { useSmoothScroll } from "@/hooks/use-smooth-scroll";
 
 const HeroSection = () => {
@@ -13,7 +13,7 @@ const HeroSection = () => {
       <p className="text-lg text-gray-600 max-w-3xl mb-12 px-4">
         Berpengalaman dalam membangun aplikasi web yang responsif dan berkinerja tinggi menggunakan teknologi modern. Fokus pada pengalaman pengguna yang intuitif dan kode yang bersih.
       </p>
-      <div className="flex space-x-4 justify-center">
+      <div className="flex space-x-4 justify-center mb-8"> {/* Menambahkan margin-bottom */}
         <Button
           onClick={() => scrollToSection("contact")}
           className="bg-gray-900 text-white hover:bg-gray-700 flex items-center space-x-2 px-8 py-4 text-lg"
@@ -29,6 +29,23 @@ const HeroSection = () => {
           View Projects
         </Button>
       </div>
+
+      {/* Social Media Icons */}
+      <div className="flex space-x-6 mb-12"> {/* Menambahkan margin-bottom */}
+        <a href="#" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Profile" className="text-gray-700 hover:text-gray-900 transition-colors duration-200">
+          <Linkedin className="h-7 w-7" />
+        </a>
+        <a href="#" target="_blank" rel="noopener noreferrer" aria-label="GitHub Profile" className="text-gray-700 hover:text-gray-900 transition-colors duration-200">
+          <Github className="h-7 w-7" />
+        </a>
+        <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Twitter Profile" className="text-gray-700 hover:text-gray-900 transition-colors duration-200">
+          <Twitter className="h-7 w-7" />
+        </a>
+        <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Instagram Profile" className="text-gray-700 hover:text-gray-900 transition-colors duration-200">
+          <Instagram className="h-7 w-7" />
+        </a>
+      </div>
+
       <button 
         onClick={() => scrollToSection("projects")} 
         className="absolute bottom-8 cursor-pointer"
