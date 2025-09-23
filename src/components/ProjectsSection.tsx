@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useCallback, useEffect } from "react";
 import ProjectCard from "./ProjectCard";
 import { Button } from "@/components/ui/button";
-import { Eye } from "lucide-react";
+import { ArrowLeft, ArrowRight } from "lucide-react";
+import useEmblaCarousel from "embla-carousel-react";
 
 const allProjectsData = [
   {
@@ -54,16 +55,30 @@ const allProjectsData = [
   },
 ];
 
-const INITIAL_PROJECT_COUNT = 3;
-
 const ProjectsSection = () => {
-  const [showAllProjects, setShowAllProjects] = useState(false);
+  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: false, align: 'start' });
+  const [prevBtnDisabled, setPrevBtnDisabled] = useState(true);
+  const [nextBtnDisabled, setNextBtnDisabled] = useState(true);
 
-  const visibleProjects = showAllProjects
-    ? allProjectsData
-    : allProjectsData.slice(0, INITIAL_PROJECT_COUNT);
+  const scrollPrev = useCallback(() => {
+    emblaApi && emblaApi.scrollPrev();
+  }, [emblaApi]);
 
-  const remainingProjectsCount = allProjectsData.length - INITIAL_PROJECT_COUNT;
+  const scrollNext = useCallback(() => {
+    emblaApi && emblaApi.scrollNext();
+  }, [emblaApi]);
+
+  const onSelect = useCallback((emblaApi: any) => {
+    setPrevBtnDisabled(!emblaApi.canScrollPrev());
+    setNextBtnDisabled(!emblaApi.canScrollNext());
+  }, []);
+
+  useEffect(() => {
+    if (!emblaApi) return;
+    onSelect(emblaApi);
+    emblaApi.on("reInit", onSelect);
+    emblaApi.on("select", onSelect);
+  }, [emblaApi, onSelect]);
 
   return (
     <section id="projects" className="py-20 bg-white">
@@ -73,27 +88,39 @@ const ProjectsSection = () => {
           A selection of my best work showcasing different technologies and
           approaches
         </p>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {visibleProjects.map((project, index) => (
-            <ProjectCard key={index} {...project} />
-          ))}
-        </div>
 
-        {remainingProjectsCount > 0 && (
-          <div className="mt-12 flex justify-center"> {/* Added flex justify-center here */}
-            <Button
-              onClick={() => setShowAllProjects(!showAllProjects)}
-              className="bg-gray-900 text-white hover:bg-gray-700 flex items-center justify-center space-x-2 px-8 py-4 text-lg"
-            >
-              <Eye className="h-5 w-5" />
-              <span>
-                {showAllProjects
-                  ? "Show Less"
-                  : `View All Projects (${remainingProjectsCount} more)`}
-              </span>
-            </Button>
+        <div className="relative">
+          <div className="embla overflow-hidden" ref={emblaRef}>
+            <div className="embla__container flex -ml-4">
+              {allProjectsData.map((project, index) => (
+                <div key={index} className="embla__slide flex-none w-full md:w-1/2 lg:w-1/3 pl-4">
+                  <ProjectCard {...project} />
+                </div>
+              ))}
+            </div>
           </div>
-        )}
+
+          <Button
+            onClick={scrollPrev}
+            disabled={prevBtnDisabled}
+            variant="outline"
+            size="icon"
+            className="absolute top-1/2 left-0 -translate-x-1/2 -translate-y-1/2 z-10 bg-white rounded-full shadow-md hover:shadow-lg transition-shadow duration-200"
+          >
+            <ArrowLeft className="h-5 w-5" />
+            <span className="sr-only">Previous project</span>
+          </Button>
+          <Button
+            onClick={scrollNext}
+            disabled={nextBtnDisabled}
+            variant="outline"
+            size="icon"
+            className="absolute top-1/2 right-0 translate-x-1/2 -translate-y-1/2 z-10 bg-white rounded-full shadow-md hover:shadow-lg transition-shadow duration-200"
+          >
+            <ArrowRight className="h-5 w-5" />
+            <span className="sr-only">Next project</span>
+          </Button>
+        </div>
       </div>
     </section>
   );
