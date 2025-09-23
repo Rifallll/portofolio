@@ -1,6 +1,6 @@
 import React, { useState, useCallback, useEffect } from "react";
 import SkillItem from "./SkillItem";
-import { Code, Server, Palette, Database } from "lucide-react"; // Menghapus ArrowLeft, ArrowRight
+import { Code, Server, Palette, Database } from "lucide-react";
 import useEmblaCarousel from "embla-carousel-react";
 
 const skillsData = [
@@ -14,34 +14,10 @@ const skillsData = [
 ];
 
 const SkillsSection = () => {
-  const [emblaRef] = useEmblaCarousel({ loop: true, align: 'center' }); // Menghapus emblaApi dari destructuring
-
-  // Menghapus state dan fungsi terkait tombol navigasi karena tidak lagi digunakan
-  // const [prevBtnDisabled, setPrevBtnDisabled] = useState(true);
-  // const [nextBtnDisabled, setNextBtnDisabled] = useState(true);
-
-  // const onSelect = useCallback((emblaApi: any) => {
-  //   setPrevBtnDisabled(!emblaApi.canScrollPrev());
-  //   setNextBtnDisabled(!emblaApi.canScrollNext());
-  // }, []);
-
-  // const scrollPrev = useCallback(() => {
-  //   emblaApi?.scrollPrev();
-  // }, [emblaApi]);
-
-  // const scrollNext = useCallback(() => {
-  //   emblaApi?.scrollNext();
-  // }, [emblaApi]);
-
-  // useEffect(() => {
-  //   if (!emblaApi) return;
-  //   onSelect(emblaApi);
-  //   emblaApi.on("reInit", onSelect);
-  //   emblaApi.on("select", onSelect);
-  // }, [emblaApi, onSelect]);
+  const [emblaRef] = useEmblaCarousel({ loop: true, align: 'center' });
 
   return (
-    <section id="skills" className="py-20 bg-gray-50">
+    <section id="skills" className="py-20 bg-white"> {/* Mengubah bg-gray-50 menjadi bg-white */}
       <div className="container mx-auto px-4 text-center">
         <h2 className="text-4xl font-bold text-gray-900 mb-4">Skills & Expertise</h2>
         <p className="text-lg text-gray-600 mb-12">
@@ -58,7 +34,6 @@ const SkillsSection = () => {
               ))}
             </div>
           </div>
-          {/* Tombol navigasi kiri dan kanan dihapus */}
         </div>
       </div>
     </section>
