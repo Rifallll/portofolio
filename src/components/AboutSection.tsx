@@ -28,7 +28,7 @@ const AboutSection = () => {
           </Card>
 
           {/* Right Column: My Story and Highlights */}
-          <div className="lg:col-span-2 flex flex-col gap-8">
+          <div className="lg:col-span-2 flex flex-col gap-8 text-center"> {/* Added text-center here */}
             {/* My Story Card */}
             <Card className="p-8 shadow-lg">
               <CardHeader className="p-0 mb-4">
