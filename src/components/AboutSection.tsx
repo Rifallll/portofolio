@@ -17,7 +17,7 @@ const AboutSection = () => {
           {/* Kolom Kiri: Avatar dan Info Pribadi - Konten dipusatkan */}
           <div className="lg:w-1/3 flex flex-col items-center text-center"> {/* Menghapus lg:items-start dan lg:text-left untuk memusatkan konten */}
             <Avatar className="h-48 w-48 mb-6 border-4 border-gray-200 shadow-lg">
-              <AvatarImage src="/public/placeholder.svg" alt="Rifal Azhar Permana" />
+              <AvatarImage src="/public/placeholder.svg" alt="Rifal Azhar Permana" /> {/* Ganti '/public/placeholder.svg' dengan path gambar Anda */}
               <AvatarFallback className="text-6xl font-bold bg-gray-200 text-gray-700">RP</AvatarFallback>
             </Avatar>
             <h3 className="text-3xl font-bold text-gray-900 mb-2">Rifal Azhar Permana</h3>
