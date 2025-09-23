@@ -16,12 +16,12 @@ const AboutSection = () => {
         <div className="flex flex-col lg:flex-row items-center lg:items-start gap-12 max-w-5xl mx-auto">
           {/* Kolom Kiri: Avatar dan Info Pribadi - Konten dipusatkan */}
           <div className="lg:w-1/3 flex flex-col items-center text-center"> {/* Menghapus lg:items-start dan lg:text-left untuk memusatkan konten */}
-            <Avatar className="h-48 w-48 mb-6 border-4 border-gray-200 shadow-lg">
+            <Avatar className="h-32 w-32 sm:h-40 sm:w-40 lg:h-48 lg:w-48 mb-6 border-4 border-gray-200 shadow-lg">
               <AvatarImage src="/public/placeholder.svg" alt="John Doe" />
-              <AvatarFallback className="text-6xl font-bold bg-gray-200 text-gray-700">JD</AvatarFallback>
+              <AvatarFallback className="text-4xl sm:text-5xl lg:text-6xl font-bold bg-gray-200 text-gray-700">JD</AvatarFallback>
             </Avatar>
-            <h3 className="text-3xl font-bold text-gray-900 mb-2">John Doe</h3>
-            <p className="text-xl text-gray-700 mb-4">Full Stack Developer</p>
+            <h3 className="text-2xl sm:text-2xl lg:text-3xl font-bold text-gray-900 mb-2">John Doe</h3>
+            <p className="text-lg sm:text-xl text-gray-700 mb-4">Full Stack Developer</p>
             <p className="text-md text-gray-600 max-w-xs">
               Passionate about crafting robust and scalable web applications.
             </p>
