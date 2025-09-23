@@ -19,7 +19,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
   codeLink,
 }) => {
   return (
-    <Card className="w-full shadow-lg hover:shadow-xl flex flex-col justify-between h-full min-h-[350px]"> {/* Mengubah min-h menjadi 350px */}
+    <Card className="w-full shadow-lg hover:shadow-xl flex flex-col justify-between h-full min-h-[300px]"> {/* Mengubah min-h menjadi 300px */}
       <CardHeader>
         <div className="flex justify-between items-start mb-2">
           <CardTitle className="text-xl font-semibold text-gray-900">{title}</CardTitle>
