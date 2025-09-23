@@ -1,11 +1,21 @@
 import React from "react";
 import SkillItem from "./SkillItem";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
 
 const skillsData = [
   { title: "React & TypeScript", proficiency: 95, level: "EXPERT" },
   { title: "Node.js & Express", proficiency: 88, level: "EXPERT" },
   { title: "UI/UX Design", proficiency: 85, level: "EXPERT" },
   { title: "Database Design", proficiency: 82, level: "EXPERT" },
+  { title: "Cloud Computing", proficiency: 75, level: "ADVANCED" },
+  { title: "DevOps", proficiency: 70, level: "ADVANCED" },
+  { title: "Mobile Development", proficiency: 65, level: "INTERMEDIATE" },
 ];
 
 const SkillsSection = () => {
@@ -16,11 +26,24 @@ const SkillsSection = () => {
         <p className="text-lg text-gray-600 mb-12">
           Technologies and tools I use to bring ideas to life
         </p>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {skillsData.map((skill, index) => (
-            <SkillItem key={index} {...skill} />
-          ))}
-        </div>
+        <Carousel
+          opts={{
+            align: "start",
+          }}
+          className="w-full max-w-4xl mx-auto"
+        >
+          <CarouselContent className="-ml-4">
+            {skillsData.map((skill, index) => (
+              <CarouselItem key={index} className="pl-4 md:basis-1/2 lg:basis-1/3 xl:basis-1/4">
+                <div className="p-1">
+                  <SkillItem {...skill} />
+                </div>
+              </CarouselItem>
+            ))}
+          </CarouselContent>
+          <CarouselPrevious />
+          <CarouselNext />
+        </Carousel>
       </div>
     </section>
   );
