@@ -19,20 +19,20 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
   codeLink,
 }) => {
   return (
-    <Card className="w-full shadow-lg hover:shadow-xl flex flex-col justify-between h-full min-h-[250px] bg-gray-800 border-gray-700">
+    <Card className="w-full shadow-lg hover:shadow-xl flex flex-col justify-between h-full min-h-[250px] bg-gray-800 border-gray-700"> {/* Menyesuaikan warna latar belakang dan border kartu */}
       <CardHeader>
         <div className="flex justify-between items-start mb-2">
-          <CardTitle className="text-xl font-semibold text-white">{title}</CardTitle>
-          <Stamp className="h-5 w-5 text-gray-200" />
+          <CardTitle className="text-xl font-semibold text-white">{title}</CardTitle> {/* Mengubah text-gray-900 menjadi text-white */}
+          <Stamp className="h-5 w-5 text-gray-200" /> {/* Mengubah text-gray-900 menjadi text-gray-200 */}
         </div>
-        <CardDescription className="text-gray-300 text-left">{description}</CardDescription>
+        <CardDescription className="text-gray-300 text-left">{description}</CardDescription> {/* Mengubah text-gray-600 menjadi text-gray-300 */}
       </CardHeader>
       <CardContent className="flex flex-col">
         <div className="flex flex-wrap gap-2 mb-2">
           {technologies.map((tech, index) => (
             <span
               key={index}
-              className="bg-gray-700 text-gray-100 text-xs font-medium px-2.5 py-0.5 rounded-full" // Menyesuaikan warna tag teknologi
+              className="bg-gray-700 text-gray-100 text-xs font-medium px-2.5 py-0.5 rounded-full" {/* Menyesuaikan warna tag teknologi */}
             >
               {tech}
             </span>
