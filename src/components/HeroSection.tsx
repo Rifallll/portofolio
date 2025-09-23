@@ -8,16 +8,16 @@ const HeroSection = () => {
 
   return (
     <section id="home" className="min-h-screen flex flex-col items-center justify-center bg-white text-center pt-20">
-      <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-extrabold text-gray-900 mb-4">John Doe</h1>
-      <p className="text-xl sm:text-2xl md:text-3xl lg:text-4xl text-gray-700 mb-8">Full Stack Developer</p>
-      <p className="text-base sm:text-lg text-gray-600 max-w-3xl mb-12 px-4">
+      <h1 className="text-7xl md:text-8xl font-extrabold text-gray-900 mb-4">John Doe</h1>
+      <p className="text-3xl md:text-4xl text-gray-700 mb-8">Full Stack Developer</p>
+      <p className="text-lg text-gray-600 max-w-3xl mb-12 px-4">
         Passionate developer creating modern web applications with clean code and elegant
         design. I love turning complex problems into simple, beautiful solutions.
       </p>
-      <div className="flex space-x-2 sm:space-x-4">
+      <div className="flex space-x-4">
         <Button
           onClick={() => scrollToSection("contact")}
-          className="bg-gray-900 text-white hover:bg-gray-700 flex items-center space-x-2 px-6 py-3 text-base sm:px-8 sm:py-4 sm:text-lg"
+          className="bg-gray-900 text-white hover:bg-gray-700 flex items-center space-x-2 px-8 py-4 text-lg"
         >
           <Mail className="h-5 w-5" />
           <span>Contact Me</span>
@@ -25,7 +25,7 @@ const HeroSection = () => {
         <Button
           onClick={() => scrollToSection("projects")}
           variant="outline"
-          className="border-gray-900 text-gray-900 hover:bg-gray-100 px-6 py-3 text-base sm:px-8 sm:py-4 sm:text-lg"
+          className="border-gray-900 text-gray-900 hover:bg-gray-100 px-8 py-4 text-lg"
         >
           View Projects
         </Button>
