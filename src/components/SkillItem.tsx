@@ -10,7 +10,7 @@ interface SkillItemProps {
 
 const SkillItem: React.FC<SkillItemProps> = ({ title, proficiency, level }) => {
   return (
-    <Card className="w-full max-w-sm shadow-lg hover:shadow-xl transition-shadow duration-300">
+    <Card className="w-full max-w-sm shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2">
       <CardHeader>
         <CardTitle className="text-2xl font-semibold text-gray-900">{title}</CardTitle>
       </CardHeader>
