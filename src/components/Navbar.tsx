@@ -45,13 +45,6 @@ const Navbar = () => {
             <SheetContent side="right">
               <div className="flex flex-col space-y-4 pt-8">
                 {navLinks}
-                <Button 
-                  onClick={() => scrollToSection("projects")} 
-                  variant="outline" 
-                  className="border-gray-900 text-gray-900 hover:bg-gray-100 px-8 py-4 text-lg w-full"
-                >
-                  View Projects
-                </Button>
                 <Button asChild className="bg-gray-900 text-white hover:bg-gray-700 flex items-center space-x-2">
                   <a href="/Rifal Azhar Permana.CV.pdf" target="_blank" rel="noopener noreferrer" download>
                     <Download className="h-4 w-4" />
@@ -64,13 +57,6 @@ const Navbar = () => {
         ) : (
           <div className="flex items-center space-x-6">
             {navLinks}
-            <Button 
-              onClick={() => scrollToSection("projects")} 
-              variant="outline" 
-              className="border-gray-900 text-gray-900 hover:bg-gray-100 px-8 py-4 text-lg"
-            >
-              View Projects
-            </Button>
             <Button asChild className="bg-gray-900 text-white hover:bg-gray-700 flex items-center space-x-2">
               <a href="/Rifal Azhar Permana.CV.pdf" target="_blank" rel="noopener noreferrer" download>
                 <Download className="h-4 w-4" />
