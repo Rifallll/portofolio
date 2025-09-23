@@ -39,7 +39,7 @@ const ContactSection = () => {
   };
 
   return (
-    <section id="contact" className="py-20 bg-white">
+    <section id="contact" className="py-20 bg-gray-50"> {/* Changed bg-white to bg-gray-50 */}
       <div className="container mx-auto px-4 text-center">
         <h2 className="text-4xl font-bold text-gray-900 mb-4">Get In Touch</h2>
         <p className="text-lg text-gray-600 mb-12">
@@ -127,7 +127,7 @@ const ContactSection = () => {
                 />
                 {form.formState.errors.subject && (
                   <p className="text-red-500 text-sm mt-1">{form.formState.errors.subject.message}</p>
-                )}
+                  )}
               </div>
               <div>
                 <Label htmlFor="message" className="text-gray-700">Message *</Label>
