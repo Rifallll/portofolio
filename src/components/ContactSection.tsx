@@ -55,7 +55,7 @@ const ContactSection = () => {
           </div>
 
           {/* Right Column: WhatsApp Button */}
-          <Card className="p-8 shadow-lg flex flex-col items-center justify-center"> {/* Mengembalikan padding ke p-8 */}
+          <Card className="py-10 px-8 shadow-lg flex flex-col items-center justify-center"> {/* Mengubah p-8 menjadi py-10 px-8 */}
             <h3 className="text-2xl font-bold text-gray-900 mb-4">Message Me Directly</h3>
             <p className="text-gray-700 text-center mb-6">
               Click the button below to send me a message on WhatsApp.
