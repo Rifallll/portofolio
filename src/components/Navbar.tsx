@@ -1,6 +1,6 @@
 import React from "react";
 import { Button } from "@/components/ui/button";
-import { Download, Menu } from "lucide-react";
+import { Download, Menu, Palette } from "lucide-react"; // Menambahkan ikon Palette
 import { useSmoothScroll } from "@/hooks/use-smooth-scroll";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
@@ -55,9 +55,9 @@ const Navbar = () => {
                   </a>
                 </Button>
                 <Button asChild className="bg-gray-900 text-white hover:bg-gray-700 flex items-center space-x-2">
-                  <a href="/Rifal_Portfolio.pptx" target="_blank" rel="noopener noreferrer" download>
-                    <Download className="h-4 w-4" />
-                    <span>Download PPT</span>
+                  <a href="https://your-design-portfolio-link.com" target="_blank" rel="noopener noreferrer"> {/* Ganti dengan tautan portofolio desain Anda */}
+                    <Palette className="h-4 w-4" /> {/* Menggunakan ikon Palette */}
+                    <span>View Design Portfolio</span>
                   </a>
                 </Button>
               </div>
@@ -73,9 +73,9 @@ const Navbar = () => {
               </a>
             </Button>
             <Button asChild className="bg-gray-900 text-white hover:bg-gray-700 flex items-center space-x-2">
-              <a href="/Rifal_Portfolio.pptx" target="_blank" rel="noopener noreferrer" download>
-                <Download className="h-4 w-4" />
-                <span>Download PPT</span>
+              <a href="https://your-design-portfolio-link.com" target="_blank" rel="noopener noreferrer"> {/* Ganti dengan tautan portofolio desain Anda */}
+                <Palette className="h-4 w-4" /> {/* Menggunakan ikon Palette */}
+                <span>View Design Portfolio</span>
               </a>
             </Button>
           </div>
