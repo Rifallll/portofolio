@@ -14,7 +14,7 @@ const HeroSection = () => {
         Passionate developer creating modern web applications with clean code and elegant
         design. I love turning complex problems into simple, beautiful solutions.
       </p>
-      <div className="flex space-x-4">
+      <div className="flex space-x-4 justify-center"> {/* Menambahkan justify-center di sini */}
         <Button
           onClick={() => scrollToSection("contact")}
           className="bg-gray-900 text-white hover:bg-gray-700 flex items-center space-x-2 px-8 py-4 text-lg"
