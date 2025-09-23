@@ -26,7 +26,7 @@ const allProjectsData = [
     description:
       "Modern, responsive portfolio website built with privacy-first principles. No tracking, no analytics, just clean code and great UX.",
     technologies: ["React", "Tailwind CSS", "Framer Motion", "TypeScript"],
-    liveDemoLink: "#",
+    // liveDemoLink: "#", // Dihapus untuk demonstrasi
     codeLink: "#",
   },
   {
