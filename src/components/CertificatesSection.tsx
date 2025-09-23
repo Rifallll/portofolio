@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import CertificateCard from "./CertificateCard";
+import { Button } from "@/components/ui/button"; // Import Button component
 
 const certificatesData = [
   {
@@ -59,6 +60,16 @@ const certificatesData = [
 ];
 
 const CertificatesSection = () => {
+  const [showAllCertificates, setShowAllCertificates] = useState(false);
+
+  const displayedCertificates = showAllCertificates
+    ? certificatesData
+    : certificatesData.slice(0, 6);
+
+  const handleToggleShowAll = () => {
+    setShowAllCertificates(!showAllCertificates);
+  };
+
   return (
     <section id="certificates" className="py-20 bg-white">
       <div className="container mx-auto px-4 text-center">
@@ -68,10 +79,19 @@ const CertificatesSection = () => {
         </p>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {certificatesData.map((certificate, index) => (
+          {displayedCertificates.map((certificate, index) => (
             <CertificateCard key={index} {...certificate} />
           ))}
         </div>
+
+        {certificatesData.length > 6 && ( // Hanya tampilkan tombol jika ada lebih dari 6 sertifikasi
+          <Button
+            onClick={handleToggleShowAll}
+            className="mt-12 bg-gray-900 text-white hover:bg-gray-700 px-8 py-4 text-lg"
+          >
+            {showAllCertificates ? "Show Less" : "View All Certificates"}
+          </Button>
+        )}
       </div>
     </section>
   );
