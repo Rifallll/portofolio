@@ -4,6 +4,7 @@ import { Download, Menu } from "lucide-react";
 import { useSmoothScroll } from "@/hooks/use-smooth-scroll";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { ThemeToggle } from "@/components/ThemeToggle"; // Import ThemeToggle
 
 const Navbar = () => {
   const scrollToSection = useSmoothScroll();
@@ -49,6 +50,7 @@ const Navbar = () => {
                   <Download className="h-4 w-4" />
                   <span>Download CV</span>
                 </Button>
+                <ThemeToggle /> {/* Tambahkan ThemeToggle di sini untuk mobile */}
               </div>
             </SheetContent>
           </Sheet>
@@ -59,6 +61,7 @@ const Navbar = () => {
               <Download className="h-4 w-4" />
               <span>Download CV</span>
             </Button>
+            <ThemeToggle /> {/* Tambahkan ThemeToggle di sini untuk desktop */}
           </div>
         )}
       </div>
