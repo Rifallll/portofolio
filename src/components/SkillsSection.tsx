@@ -1,7 +1,6 @@
 import React, { useState, useCallback, useEffect } from "react";
 import SkillItem from "./SkillItem";
-import { Button } from "@/components/ui/button";
-import { ArrowLeft, ArrowRight, Code, Server, Palette, Database } from "lucide-react";
+import { Code, Server, Palette, Database } from "lucide-react"; // Menghapus ArrowLeft, ArrowRight
 import useEmblaCarousel from "embla-carousel-react";
 
 const skillsData = [
@@ -15,29 +14,31 @@ const skillsData = [
 ];
 
 const SkillsSection = () => {
-  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true, align: 'center' });
-  const [prevBtnDisabled, setPrevBtnDisabled] = useState(true);
-  const [nextBtnDisabled, setNextBtnDisabled] = useState(true);
+  const [emblaRef] = useEmblaCarousel({ loop: true, align: 'center' }); // Menghapus emblaApi dari destructuring
 
-  const onSelect = useCallback((emblaApi: any) => {
-    setPrevBtnDisabled(!emblaApi.canScrollPrev());
-    setNextBtnDisabled(!emblaApi.canScrollNext());
-  }, []);
+  // Menghapus state dan fungsi terkait tombol navigasi karena tidak lagi digunakan
+  // const [prevBtnDisabled, setPrevBtnDisabled] = useState(true);
+  // const [nextBtnDisabled, setNextBtnDisabled] = useState(true);
 
-  const scrollPrev = useCallback(() => {
-    emblaApi?.scrollPrev();
-  }, [emblaApi]);
+  // const onSelect = useCallback((emblaApi: any) => {
+  //   setPrevBtnDisabled(!emblaApi.canScrollPrev());
+  //   setNextBtnDisabled(!emblaApi.canScrollNext());
+  // }, []);
 
-  const scrollNext = useCallback(() => {
-    emblaApi?.scrollNext();
-  }, [emblaApi]);
+  // const scrollPrev = useCallback(() => {
+  //   emblaApi?.scrollPrev();
+  // }, [emblaApi]);
 
-  useEffect(() => {
-    if (!emblaApi) return;
-    onSelect(emblaApi);
-    emblaApi.on("reInit", onSelect);
-    emblaApi.on("select", onSelect);
-  }, [emblaApi, onSelect]);
+  // const scrollNext = useCallback(() => {
+  //   emblaApi?.scrollNext();
+  // }, [emblaApi]);
+
+  // useEffect(() => {
+  //   if (!emblaApi) return;
+  //   onSelect(emblaApi);
+  //   emblaApi.on("reInit", onSelect);
+  //   emblaApi.on("select", onSelect);
+  // }, [emblaApi, onSelect]);
 
   return (
     <section id="skills" className="py-20 bg-gray-50">
@@ -51,32 +52,13 @@ const SkillsSection = () => {
           <div className="embla overflow-hidden" ref={emblaRef}>
             <div className="embla__container flex gap-4 items-stretch">
               {skillsData.map((skill, index) => (
-                <div key={index} className="embla__slide flex-none w-full md:w-1/2 lg:w-1/3 min-w-0 px-2"> {/* Menambahkan px-2 di sini */}
+                <div key={index} className="embla__slide flex-none w-full md:w-1/2 lg:w-1/3 min-w-0 px-2">
                   <SkillItem {...skill} />
                 </div>
               ))}
             </div>
           </div>
-          <Button
-            onClick={scrollPrev}
-            disabled={prevBtnDisabled}
-            variant="outline"
-            size="icon"
-            className="absolute left-0 top-1/2 -translate-y-1/2 bg-white rounded-full shadow-md hover:shadow-lg transition-all duration-200 z-10 ml-4"
-          >
-            <ArrowLeft className="h-5 w-5" />
-            <span className="sr-only">Previous skill</span>
-          </Button>
-          <Button
-            onClick={scrollNext}
-            disabled={nextBtnDisabled}
-            variant="outline"
-            size="icon"
-            className="absolute right-0 top-1/2 -translate-y-1/2 bg-white rounded-full shadow-md hover:shadow-lg transition-all duration-200 z-10 mr-4"
-          >
-            <ArrowRight className="h-5 w-5" />
-            <span className="sr-only">Next skill</span>
-          </Button>
+          {/* Tombol navigasi kiri dan kanan dihapus */}
         </div>
       </div>
     </section>
