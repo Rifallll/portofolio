@@ -1,6 +1,6 @@
 import React from "react";
 import { Button } from "@/components/ui/button";
-import { Mail, Linkedin, Github, Kaggle, Instagram } from "lucide-react"; // Mengganti Twitter dengan Kaggle
+import { Mail, Linkedin, Github, Globe, Instagram } from "lucide-react"; // Mengganti Kaggle dengan Globe
 import { useSmoothScroll } from "@/hooks/use-smooth-scroll";
 
 const HeroSection = () => {
@@ -39,7 +39,7 @@ const HeroSection = () => {
           <Github className="h-7 w-7" />
         </a>
         <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Kaggle Profile" className="text-gray-700 hover:text-gray-900 transition-colors duration-200">
-          <Kaggle className="h-7 w-7" /> {/* Mengganti ikon Twitter dengan Kaggle */}
+          <Globe className="h-7 w-7" /> {/* Mengganti ikon Kaggle dengan Globe */}
         </a>
         <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Instagram Profile" className="text-gray-700 hover:text-gray-900 transition-colors duration-200">
           <Instagram className="h-7 w-7" />
