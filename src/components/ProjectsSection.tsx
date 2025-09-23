@@ -91,9 +91,9 @@ const ProjectsSection = () => {
 
         <div className="relative">
           <div className="embla overflow-hidden" ref={emblaRef}>
-            <div className="embla__container flex gap-6 items-stretch px-4"> {/* Mengubah gap-4 menjadi gap-6 dan menambahkan px-4 */}
+            <div className="embla__container flex gap-6 items-stretch"> {/* Menghapus px-4 dari sini */}
               {allProjectsData.map((project, index) => (
-                <div key={index} className="embla__slide flex-none w-full md:w-1/2 lg:w-1/3 h-full"> {/* Menghapus px-2 */}
+                <div key={index} className="embla__slide flex-none w-full md:w-1/2 lg:w-1/3 h-full px-3"> {/* Menambahkan px-3 di sini */}
                   <ProjectCard {...project} />
                 </div>
               ))}
