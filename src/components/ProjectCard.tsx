@@ -1,7 +1,7 @@
 import React from "react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Stamp, ExternalLink, Code } from "lucide-react";
+import { Stamp, ExternalLink, Code } from "lucide-react"; // Mengganti Pin dengan Stamp
 
 interface ProjectCardProps {
   title: string;
@@ -19,20 +19,20 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
   codeLink,
 }) => {
   return (
-    <Card className="w-full shadow-lg hover:shadow-xl flex flex-col justify-between h-full min-h-[250px] bg-gray-800 border-gray-700 text-white"> {/* Menyesuaikan latar belakang dan teks kartu */}
+    <Card className="w-full shadow-lg hover:shadow-xl flex flex-col justify-between h-full min-h-[250px]">
       <CardHeader>
         <div className="flex justify-between items-start mb-2">
-          <CardTitle className="text-xl font-semibold text-white">{title}</CardTitle> {/* Mengubah text-gray-900 menjadi text-white */}
-          <Stamp className="h-5 w-5 text-gray-200" /> {/* Mengubah text-gray-900 menjadi text-gray-200 */}
+          <CardTitle className="text-xl font-semibold text-gray-900">{title}</CardTitle>
+          <Stamp className="h-5 w-5 text-gray-900" /> {/* Mengganti Pin dengan Stamp dan mengubah warna menjadi hitam */}
         </div>
-        <CardDescription className="text-gray-300 text-left">{description}</CardDescription> {/* Mengubah text-gray-600 menjadi text-gray-300 */}
+        <CardDescription className="text-gray-600 text-left">{description}</CardDescription>
       </CardHeader>
       <CardContent className="flex flex-col">
         <div className="flex flex-wrap gap-2 mb-2">
           {technologies.map((tech, index) => (
             <span
               key={index}
-              className="bg-gray-700 text-gray-100 text-xs font-medium px-2.5 py-0.5 rounded-full" {/* Menyesuaikan warna tag teknologi */}
+              className="bg-gray-100 text-gray-800 text-xs font-medium px-2.5 py-0.5 rounded-full"
             >
               {tech}
             </span>
@@ -40,7 +40,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
         </div>
         <div className="flex space-x-2">
           {liveDemoLink && (
-            <Button variant="outline" className="flex items-center space-x-1 border-gray-600 text-gray-200 hover:bg-gray-700" asChild> {/* Menyesuaikan warna tombol */}
+            <Button variant="outline" className="flex items-center space-x-1" asChild>
               <a href={liveDemoLink} target="_blank" rel="noopener noreferrer">
                 <ExternalLink className="h-4 w-4" />
                 <span>Live Demo</span>
@@ -48,7 +48,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
             </Button>
           )}
           {codeLink && (
-            <Button variant="outline" className="flex items-center space-x-1 border-gray-600 text-gray-200 hover:bg-gray-700" asChild> {/* Menyesuaikan warna tombol */}
+            <Button variant="outline" className="flex items-center space-x-1" asChild>
               <a href={codeLink} target="_blank" rel="noopener noreferrer">
                 <Code className="h-4 w-4" />
                 <span>Code</span>

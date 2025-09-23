@@ -39,76 +39,78 @@ const ContactSection = () => {
   };
 
   return (
-    <section id="contact" className="py-20 bg-gray-900"> {/* Mengubah bg-gray-50 menjadi bg-gray-900 */}
+    <section id="contact" className="py-20 bg-gray-50">
       <div className="container mx-auto px-4 text-center">
-        <h2 className="text-4xl font-bold text-white mb-4">Get In Touch</h2> {/* Mengubah text-gray-900 menjadi text-white */}
-        <p className="text-lg text-gray-300 mb-12"> {/* Mengubah text-gray-600 menjadi text-gray-300 */}
+        <h2 className="text-4xl font-bold text-gray-900 mb-4">Get In Touch</h2>
+        <p className="text-lg text-gray-600 mb-12">
           Have a project in mind? Let's discuss how we can work together to bring
           your ideas to life.
         </p>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start text-left">
+          {/* Left Column: Let's Connect & Privacy */}
           <div>
-            <h3 className="text-2xl font-bold text-white mb-4">Let's Connect</h3> {/* Mengubah text-gray-900 menjadi text-white */}
-            <p className="text-gray-200 mb-8"> {/* Mengubah text-gray-700 menjadi text-gray-200 */}
+            <h3 className="text-2xl font-bold text-gray-900 mb-4">Let's Connect</h3>
+            <p className="text-gray-700 mb-8">
               I'm always interested in hearing about new projects and opportunities. Whether
               you have a question or just want to say hi, I'll do my best to get back to you!
             </p>
             <div className="space-y-4 mb-8">
-              <Card className="p-4 flex items-center space-x-4 shadow-sm hover:shadow-md transition-shadow duration-200 bg-gray-800 border-gray-700"> {/* Menyesuaikan latar belakang kartu */}
-                <Mail className="h-5 w-5 text-gray-400" /> {/* Mengubah text-gray-500 menjadi text-gray-400 */}
+              <Card className="p-4 flex items-center space-x-4 shadow-sm hover:shadow-md transition-shadow duration-200">
+                <Mail className="h-5 w-5 text-gray-500" />
                 <div>
-                  <p className="text-sm text-gray-400">Email</p> {/* Mengubah text-gray-500 menjadi text-gray-400 */}
-                  <span className="font-medium text-white">permanarifal269@gmail.com</span> {/* Mengubah text-gray-900 menjadi text-white */}
+                  <p className="text-sm text-gray-500">Email</p>
+                  <span className="font-medium text-gray-900">permanarifal269@gmail.com</span>
                 </div>
               </Card>
-              <Card className="p-4 flex items-center space-x-4 shadow-sm hover:shadow-md transition-shadow duration-200 bg-gray-800 border-gray-700"> {/* Menyesuaikan latar belakang kartu */}
-                <Phone className="h-5 w-5 text-gray-400" /> {/* Mengubah text-gray-500 menjadi text-gray-400 */}
+              <Card className="p-4 flex items-center space-x-4 shadow-sm hover:shadow-md transition-shadow duration-200">
+                <Phone className="h-5 w-5 text-gray-500" />
                 <div>
-                  <p className="text-sm text-gray-400">Phone</p> {/* Mengubah text-gray-500 menjadi text-gray-400 */}
-                  <span className="font-medium text-white">+6285217421701</span> {/* Mengubah text-gray-900 menjadi text-white */}
+                  <p className="text-sm text-gray-500">Phone</p>
+                  <span className="font-medium text-gray-900">+6285217421701</span>
                 </div>
               </Card>
-              <Card className="p-4 flex items-center space-x-4 shadow-sm hover:shadow-md transition-shadow duration-200 bg-gray-800 border-gray-700"> {/* Menyesuaikan latar belakang kartu */}
-                <MapPin className="h-5 w-5 text-gray-400" /> {/* Mengubah text-gray-500 menjadi text-gray-400 */}
+              <Card className="p-4 flex items-center space-x-4 shadow-sm hover:shadow-md transition-shadow duration-200">
+                <MapPin className="h-5 w-5 text-gray-500" />
                 <div>
-                  <p className="text-sm text-gray-400">Location</p> {/* Mengubah text-gray-500 menjadi text-gray-400 */}
-                  <span className="font-medium text-white">Pandeglang, Indonesia</span> {/* Mengubah text-gray-900 menjadi text-white */}
+                  <p className="text-sm text-gray-500">Location</p>
+                  <span className="font-medium text-gray-900">Pandeglang, Indonesia</span>
                 </div>
               </Card>
             </div>
-            <Card className="p-6 shadow-sm hover:shadow-md transition-shadow duration-200 bg-gray-800 border-gray-700"> {/* Menyesuaikan latar belakang kartu */}
-              <h3 className="text-lg font-semibold text-white mb-2">Privacy & Data Safety</h3> {/* Mengubah text-gray-900 menjadi text-white */}
-              <p className="text-sm text-gray-300"> {/* Mengubah text-gray-600 menjadi text-gray-300 */}
+            <Card className="p-6 shadow-sm hover:shadow-md transition-shadow duration-200">
+              <h3 className="text-lg font-semibold text-gray-900 mb-2">Privacy & Data Safety</h3>
+              <p className="text-sm text-gray-600">
                 This contact form uses client-side processing only. No data is stored on servers or
                 sent to third parties. Your information is used solely to contact you via email.
               </p>
             </Card>
           </div>
 
-          <Card className="p-8 shadow-lg bg-gray-800 border-gray-700"> {/* Menyesuaikan latar belakang kartu */}
+          {/* Right Column: Contact Form */}
+          <Card className="p-8 shadow-lg">
             <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
-                  <Label htmlFor="name" className="text-gray-200">Name *</Label> {/* Mengubah text-gray-700 menjadi text-gray-200 */}
+                  <Label htmlFor="name" className="text-gray-700">Name *</Label>
                   <Input
                     id="name"
                     {...form.register("name")}
                     placeholder="Your name"
-                    className="mt-1 bg-gray-700 text-white border-gray-600" {/* Menyesuaikan warna input */}
+                    className="mt-1"
                   />
                   {form.formState.errors.name && (
                     <p className="text-red-500 text-sm mt-1">{form.formState.errors.name.message}</p>
                   )}
                 </div>
                 <div>
-                  <Label htmlFor="email" className="text-gray-200">Email *</Label> {/* Mengubah text-gray-700 menjadi text-gray-200 */}
+                  <Label htmlFor="email" className="text-gray-700">Email *</Label>
                   <Input
                     id="email"
                     type="email"
                     {...form.register("email")}
                     placeholder="your.email@example.com"
-                    className="mt-1 bg-gray-700 text-white border-gray-600" {/* Menyesuaikan warna input */}
+                    className="mt-1"
                   />
                   {form.formState.errors.email && (
                     <p className="text-red-500 text-sm mt-1">{form.formState.errors.email.message}</p>
@@ -116,25 +118,25 @@ const ContactSection = () => {
                 </div>
               </div>
               <div>
-                <Label htmlFor="subject" className="text-gray-200">Subject *</Label> {/* Mengubah text-gray-700 menjadi text-gray-200 */}
+                <Label htmlFor="subject" className="text-gray-700">Subject *</Label>
                 <Input
                   id="subject"
                   {...form.register("subject")}
                   placeholder="Project inquiry"
-                  className="mt-1 bg-gray-700 text-white border-gray-600" {/* Menyesuaikan warna input */}
+                  className="mt-1"
                 />
                 {form.formState.errors.subject && (
                   <p className="text-red-500 text-sm mt-1">{form.formState.errors.subject.message}</p>
                   )}
               </div>
               <div>
-                <Label htmlFor="message" className="text-gray-200">Message *</Label> {/* Mengubah text-gray-700 menjadi text-gray-200 */}
+                <Label htmlFor="message" className="text-gray-700">Message *</Label>
                 <Textarea
                   id="message"
                   {...form.register("message")}
                   placeholder="Tell me about your project..."
                   rows={5}
-                  className="mt-1 bg-gray-700 text-white border-gray-600" {/* Menyesuaikan warna textarea */}
+                  className="mt-1"
                 />
                 {form.formState.errors.message && (
                   <p className="text-red-500 text-sm mt-1">{form.formState.errors.message.message}</p>
@@ -148,7 +150,7 @@ const ContactSection = () => {
                 <Send className="h-5 w-5" />
                 <span>Send Message</span>
               </Button>
-              <p className="text-xs text-gray-400 mt-4 text-right"> {/* Mengubah text-gray-500 menjadi text-gray-400 */}
+              <p className="text-xs text-gray-500 mt-4 text-right">
                 * This form uses mailto. No data is stored or tracked.
               </p>
             </form>

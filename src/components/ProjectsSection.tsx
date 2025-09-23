@@ -81,10 +81,10 @@ const ProjectsSection = () => {
   }, [emblaApi, onSelect]);
 
   return (
-    <section id="projects" className="py-20 bg-gray-900"> {/* Mengubah bg-white menjadi bg-gray-900 */}
+    <section id="projects" className="py-20 bg-white">
       <div className="container mx-auto px-4 text-center">
-        <h2 className="text-4xl font-bold text-white mb-4">Featured Projects</h2> {/* Mengubah text-gray-900 menjadi text-white */}
-        <p className="text-lg text-gray-300 mb-12"> {/* Mengubah text-gray-600 menjadi text-gray-300 */}
+        <h2 className="text-4xl font-bold text-gray-900 mb-4">Featured Projects</h2>
+        <p className="text-lg text-gray-600 mb-12">
           A selection of my best work showcasing different technologies and
           approaches
         </p>
@@ -104,7 +104,7 @@ const ProjectsSection = () => {
             disabled={prevBtnDisabled}
             variant="outline"
             size="icon"
-            className="absolute left-0 top-1/2 -translate-y-1/2 bg-gray-800 text-gray-200 border-gray-700 rounded-full shadow-md hover:shadow-lg transition-all duration-200 z-10" {/* Menyesuaikan warna tombol carousel */}
+            className="absolute left-0 top-1/2 -translate-y-1/2 bg-white rounded-full shadow-md hover:shadow-lg transition-all duration-200 z-10"
           >
             <ArrowLeft className="h-5 w-5" />
             <span className="sr-only">Previous project</span>
@@ -114,7 +114,7 @@ const ProjectsSection = () => {
             disabled={nextBtnDisabled}
             variant="outline"
             size="icon"
-            className="absolute right-0 top-1/2 -translate-y-1/2 bg-gray-800 text-gray-200 border-gray-700 rounded-full shadow-md hover:shadow-lg transition-all duration-200 z-10" {/* Menyesuaikan warna tombol carousel */}
+            className="absolute right-0 top-1/2 -translate-y-1/2 bg-white rounded-full shadow-md hover:shadow-lg transition-all duration-200 z-10"
           >
             <ArrowRight className="h-5 w-5" />
             <span className="sr-only">Next project</span>
