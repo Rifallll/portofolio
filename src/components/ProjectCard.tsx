@@ -19,7 +19,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
   codeLink,
 }) => {
   return (
-    <Card className="w-full shadow-lg hover:shadow-xl flex flex-col justify-between h-full min-h-[250px]"> {/* Mengubah min-h menjadi 250px */}
+    <Card className="w-full shadow-lg hover:shadow-xl flex flex-col justify-between h-full min-h-[250px]">
       <CardHeader>
         <div className="flex justify-between items-start mb-2">
           <CardTitle className="text-xl font-semibold text-gray-900">{title}</CardTitle>
@@ -27,8 +27,8 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
         </div>
         <CardDescription className="text-gray-600 text-left">{description}</CardDescription>
       </CardHeader>
-      <CardContent className="flex flex-col flex-grow">
-        <div className="flex flex-wrap gap-2 mb-4">
+      <CardContent className="flex flex-col"> {/* Menghapus flex-grow */}
+        <div className="flex flex-wrap gap-2 mb-2"> {/* Mengurangi mb-4 menjadi mb-2 */}
           {technologies.map((tech, index) => (
             <span
               key={index}
@@ -38,7 +38,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
             </span>
           ))}
         </div>
-        <div className="flex space-x-2 mt-auto">
+        <div className="flex space-x-2"> {/* Menghapus mt-auto */}
           {liveDemoLink && (
             <Button variant="outline" className="flex items-center space-x-1" asChild>
               <a href={liveDemoLink} target="_blank" rel="noopener noreferrer">
