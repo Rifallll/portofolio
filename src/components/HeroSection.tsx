@@ -26,7 +26,7 @@ const HeroSection = () => {
           variant="outline"
           className="border-gray-900 text-gray-900 hover:bg-gray-100 px-8 py-4 text-lg"
         >
-          <a href="/PORTOFOLIO Rifal Azhar Permana (2025).pptx" target="_blank" rel="noopener noreferrer" download>
+          <a href="/PORTOFOLIO Rifal Azhar Permana (2025).pptx" target="_blank" rel="noopener noreferrer">
             View Portfolio (PPTX)
           </a>
         </Button>
