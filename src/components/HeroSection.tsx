@@ -30,7 +30,11 @@ const HeroSection = () => {
           View Projects
         </Button>
       </div>
-      <div className="absolute bottom-8">
+      <button 
+        onClick={() => scrollToSection("projects")} 
+        className="absolute bottom-8 cursor-pointer"
+        aria-label="Scroll to projects section"
+      >
         <svg
           xmlns="http://www.w3.org/2000/svg"
           className="h-8 w-8 text-gray-500 animate-bounce"
@@ -45,7 +49,7 @@ const HeroSection = () => {
             d="M19 9l-7 7-7-7"
           />
         </svg>
-      </div>
+      </button>
     </section>
   );
 };
