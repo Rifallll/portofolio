@@ -75,7 +75,7 @@ const CertificatesSection = () => {
       <div className="container mx-auto px-4 text-center">
         <h2 className="text-4xl font-bold text-gray-900 mb-4">Certifications</h2>
         <p className="text-lg text-gray-600 mb-12">
-          Sertifikasi yang telah saya peroleh untuk meningkatkan keahlian
+          Certifications I have obtained to enhance my skills
         </p>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">

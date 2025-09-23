@@ -29,7 +29,7 @@ const SkillsSection = () => {
       <div className="container mx-auto px-4 text-center">
         <h2 className="text-4xl font-bold text-gray-900 mb-4">Skills & Expertise</h2>
         <p className="text-lg text-gray-600 mb-12">
-          Keahlian dan perangkat yang saya gunakan untuk mewujudkan ide
+          The skills and tools I use to bring ideas to life
         </p>
 
         <div className="relative mx-auto max-w-6xl">

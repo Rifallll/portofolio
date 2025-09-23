@@ -9,7 +9,7 @@ const AboutSection = () => {
       <div className="container mx-auto px-4 text-center">
         <h2 className="text-4xl font-bold text-gray-900 mb-4">About Me</h2>
         <p className="text-lg text-gray-600 mb-12">
-          Kenali lebih jauh perjalanan saya dan apa yang mendorong saya
+          Learn more about my journey and what drives me
         </p>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 items-start mt-12 max-w-6xl mx-auto">
@@ -23,7 +23,7 @@ const AboutSection = () => {
             <h3 className="text-3xl font-bold text-gray-900 mb-2">Rifal Azhar Permana</h3>
             <p className="text-xl text-gray-700 mb-4">Web Developer</p>
             <p className="text-md text-gray-600 max-w-xs">
-              Berpengalaman dalam membangun aplikasi web yang responsif dan berkinerja tinggi.
+              Experienced in building responsive and high-performance web applications.
             </p>
           </Card>
 
@@ -36,10 +36,10 @@ const AboutSection = () => {
               </CardHeader>
               <CardContent className="p-0 text-lg">
                 <p className="text-gray-700 leading-relaxed mb-4">
-                  Halo! Saya Rifal Azhar Permana, seorang Web Developer dengan pengalaman dalam membangun aplikasi web yang responsif dan berkinerja tinggi. Saya bersemangat dalam menciptakan solusi digital yang inovatif dan efisien.
+                  Hello! I'm Rifal Azhar Permana, a Web Developer with experience in building responsive and high-performance web applications. I am passionate about creating innovative and efficient digital solutions.
                 </p>
                 <p className="text-gray-700 leading-relaxed">
-                  Keahlian saya mencakup pengembangan front-end dan back-end, dengan fokus pada penggunaan teknologi modern untuk memberikan pengalaman pengguna yang luar biasa. Saya selalu mencari tantangan baru dan kesempatan untuk terus belajar dan berkembang di dunia pengembangan web.
+                  My expertise includes front-end and back-end development, with a focus on using modern technologies to deliver exceptional user experiences. I am always looking for new challenges and opportunities to continue learning and growing in the world of web development.
                 </p>
               </CardContent>
             </Card>
