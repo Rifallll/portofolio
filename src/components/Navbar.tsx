@@ -4,7 +4,6 @@ import { Download, Menu } from "lucide-react";
 import { useSmoothScroll } from "@/hooks/use-smooth-scroll";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-// import { ThemeToggle } from "@/components/ThemeToggle"; // Import ThemeToggle dihapus
 
 const Navbar = () => {
   const scrollToSection = useSmoothScroll();
@@ -36,7 +35,7 @@ const Navbar = () => {
   return (
     <nav className="w-full bg-white shadow-sm fixed top-0 left-0 z-50">
       <div className="container mx-auto px-4 py-4 flex justify-between items-center">
-        <div className="text-2xl font-bold text-gray-900">Portfolio</div> {/* Mengganti teks di sini */}
+        <div className="text-2xl font-bold text-gray-900">Portfolio</div>
         
         {isMobile ? (
           <Sheet>
@@ -55,7 +54,12 @@ const Navbar = () => {
                     <span>Download CV</span>
                   </a>
                 </Button>
-                {/* <ThemeToggle /> Dihapus */}
+                <Button asChild className="bg-gray-900 text-white hover:bg-gray-700 flex items-center space-x-2">
+                  <a href="/Rifal_Portfolio.pptx" target="_blank" rel="noopener noreferrer" download>
+                    <Download className="h-4 w-4" />
+                    <span>Download PPT</span>
+                  </a>
+                </Button>
               </div>
             </SheetContent>
           </Sheet>
@@ -68,7 +72,12 @@ const Navbar = () => {
                 <span>Download CV</span>
               </a>
             </Button>
-            {/* <ThemeToggle /> Dihapus */}
+            <Button asChild className="bg-gray-900 text-white hover:bg-gray-700 flex items-center space-x-2">
+              <a href="/Rifal_Portfolio.pptx" target="_blank" rel="noopener noreferrer" download>
+                <Download className="h-4 w-4" />
+                <span>Download PPT</span>
+              </a>
+            </Button>
           </div>
         )}
       </div>
