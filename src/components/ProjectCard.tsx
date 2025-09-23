@@ -22,7 +22,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
 }) => {
   return (
     <Card className="w-full shadow-lg hover:shadow-xl flex flex-col justify-between h-full min-h-[250px]">
-      <CardHeader>
+      <CardHeader className="pr-4"> {/* Menambahkan pr-4 di sini */}
         <div className="flex justify-between items-start mb-2">
           <CardTitle className="text-xl font-semibold text-gray-900">{title}</CardTitle>
           <Stamp className="h-5 w-5 text-gray-900" />

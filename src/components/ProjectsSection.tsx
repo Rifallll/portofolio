@@ -124,11 +124,11 @@ const ProjectsSection = () => {
           ))}
         </div>
 
-        <div className="relative">
+        <div className="relative max-w-7xl mx-auto px-4"> {/* Menambahkan max-w-7xl, mx-auto, dan px-4 di sini */}
           <div className="embla overflow-hidden" ref={emblaRef}>
-            <div className="embla__container flex gap-6 items-stretch px-4">
+            <div className="embla__container flex gap-6 items-stretch"> {/* Menghapus px-4 dari sini */}
               {filteredProjects.map((project, index) => (
-                <div key={index} className="embla__slide flex-none w-full md:w-1/2 lg:w-1/3 h-full">
+                <div key={index} className="embla__slide flex-none w-full md:w-1/2 lg:w-1/3 h-full"> {/* Menghapus px-2 dari sini, karena sudah ada padding di container */}
                   <ProjectCard {...project} />
                 </div>
               ))}
@@ -139,7 +139,7 @@ const ProjectsSection = () => {
             disabled={prevBtnDisabled}
             variant="outline"
             size="icon"
-            className="absolute left-0 top-1/2 -translate-y-1/2 bg-white rounded-full shadow-md hover:shadow-lg transition-all duration-200 z-10"
+            className="absolute -left-4 top-1/2 -translate-y-1/2 bg-white rounded-full shadow-md hover:shadow-lg transition-all duration-200 z-10 md:-left-8" // Menyesuaikan posisi kiri
           >
             <ArrowLeft className="h-5 w-5" />
             <span className="sr-only">Previous project</span>
@@ -149,7 +149,7 @@ const ProjectsSection = () => {
             disabled={nextBtnDisabled}
             variant="outline"
             size="icon"
-            className="absolute right-0 top-1/2 -translate-y-1/2 bg-white rounded-full shadow-md hover:shadow-lg transition-all duration-200 z-10"
+            className="absolute -right-4 top-1/2 -translate-y-1/2 bg-white rounded-full shadow-md hover:shadow-lg transition-all duration-200 z-10 md:-right-8" // Menyesuaikan posisi kanan
           >
             <ArrowRight className="h-5 w-5" />
             <span className="sr-only">Next project</span>
