@@ -1,7 +1,7 @@
 import React from "react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Star, ExternalLink, Code } from "lucide-react";
+import { Pin, ExternalLink, Code } from "lucide-react"; // Mengganti Star dengan Pin
 
 interface ProjectCardProps {
   title: string;
@@ -23,12 +23,12 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
       <CardHeader>
         <div className="flex justify-between items-start mb-2">
           <CardTitle className="text-xl font-semibold text-gray-900">{title}</CardTitle>
-          <Star className="h-5 w-5 text-gray-400" />
+          <Pin className="h-5 w-5 text-gray-400" /> {/* Mengganti Star dengan Pin */}
         </div>
         <CardDescription className="text-gray-600 text-left">{description}</CardDescription>
       </CardHeader>
-      <CardContent className="flex flex-col"> {/* Menghapus flex-grow */}
-        <div className="flex flex-wrap gap-2 mb-2"> {/* Mengurangi mb-4 menjadi mb-2 */}
+      <CardContent className="flex flex-col">
+        <div className="flex flex-wrap gap-2 mb-2">
           {technologies.map((tech, index) => (
             <span
               key={index}
@@ -38,7 +38,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
             </span>
           ))}
         </div>
-        <div className="flex space-x-2"> {/* Menghapus mt-auto */}
+        <div className="flex space-x-2">
           {liveDemoLink && (
             <Button variant="outline" className="flex items-center space-x-1" asChild>
               <a href={liveDemoLink} target="_blank" rel="noopener noreferrer">
