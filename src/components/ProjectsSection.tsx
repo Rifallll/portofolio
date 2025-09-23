@@ -28,7 +28,7 @@ const allProjectsData = [
     description:
       "Modern, responsive portfolio website built with privacy-first principles. No tracking, no analytics, just clean code and great UX.",
     technologies: ["React", "Tailwind CSS", "Framer Motion", "TypeScript"],
-    categories: ["Frontend", "Web Development"], // 'UI/UX' telah dihapus
+    categories: ["Frontend", "Web Development", "UI/UX"], // 'UI/UX' ditambahkan kembali
     codeLink: "#",
   },
   {
@@ -36,7 +36,7 @@ const allProjectsData = [
     description:
       "An analytics dashboard for social media performance, built with React and Recharts for data visualization.",
     technologies: ["React", "Chart.js", "Tailwind CSS", "API Integration"],
-    categories: ["Frontend"], // 'Data Visualization' telah dihapus
+    categories: ["Frontend", "Data Visualization"], // 'Data Visualization' ditambahkan kembali
     liveDemoLink: "#",
     codeLink: "#",
   },
