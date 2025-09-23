@@ -95,7 +95,8 @@ const ContactSection = () => {
                     id="name"
                     {...form.register("name")}
                     placeholder="Your name"
-                    className="mt-1 bg-gray-700 text-white border-gray-600" {/* Menyesuaikan warna input */}
+                    className="mt-1 bg-gray-700 text-white border-gray-600"
+                    // Menyesuaikan warna input
                   />
                   {form.formState.errors.name && (
                     <p className="text-red-500 text-sm mt-1">{form.formState.errors.name.message}</p>
@@ -108,7 +109,8 @@ const ContactSection = () => {
                     type="email"
                     {...form.register("email")}
                     placeholder="your.email@example.com"
-                    className="mt-1 bg-gray-700 text-white border-gray-600" {/* Menyesuaikan warna input */}
+                    className="mt-1 bg-gray-700 text-white border-gray-600"
+                    // Menyesuaikan warna input
                   />
                   {form.formState.errors.email && (
                     <p className="text-red-500 text-sm mt-1">{form.formState.errors.email.message}</p>
@@ -121,7 +123,8 @@ const ContactSection = () => {
                   id="subject"
                   {...form.register("subject")}
                   placeholder="Project inquiry"
-                  className="mt-1 bg-gray-700 text-white border-gray-600" {/* Menyesuaikan warna input */}
+                  className="mt-1 bg-gray-700 text-white border-gray-600"
+                  // Menyesuaikan warna input
                 />
                 {form.formState.errors.subject && (
                   <p className="text-red-500 text-sm mt-1">{form.formState.errors.subject.message}</p>
@@ -134,7 +137,8 @@ const ContactSection = () => {
                   {...form.register("message")}
                   placeholder="Tell me about your project..."
                   rows={5}
-                  className="mt-1 bg-gray-700 text-white border-gray-600" {/* Menyesuaikan warna textarea */}
+                  className="mt-1 bg-gray-700 text-white border-gray-600"
+                  // Menyesuaikan warna textarea
                 />
                 {form.formState.errors.message && (
                   <p className="text-red-500 text-sm mt-1">{form.formState.errors.message.message}</p>

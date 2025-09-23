@@ -49,7 +49,7 @@ const SkillsSection = () => {
 
         <div className="relative">
           <div className="embla overflow-hidden" ref={emblaRef}>
-            <div className="embla__container flex items-stretch">
+            <div className="embla__container flex items-stretch"> {/* Menghapus kelas gap */}
               {skillsData.map((skill, index) => (
                 <div key={index} className="embla__slide flex-none w-full md:w-1/2 lg:w-1/3 h-full">
                   <SkillItem {...skill} />
@@ -62,7 +62,8 @@ const SkillsSection = () => {
             disabled={prevBtnDisabled}
             variant="outline"
             size="icon"
-            className="absolute -left-4 top-1/2 -translate-y-1/2 bg-gray-800 text-gray-200 border-gray-700 rounded-full shadow-md hover:shadow-lg transition-all duration-200 z-10" {/* Menyesuaikan warna tombol carousel */}
+            className="absolute -left-4 top-1/2 -translate-y-1/2 bg-gray-800 text-gray-200 border-gray-700 rounded-full shadow-md hover:shadow-lg transition-all duration-200 z-10"
+            // Menyesuaikan warna tombol carousel
           >
             <ArrowLeft className="h-5 w-5" />
             <span className="sr-only">Previous skill</span>
@@ -72,7 +73,8 @@ const SkillsSection = () => {
             disabled={nextBtnDisabled}
             variant="outline"
             size="icon"
-            className="absolute -right-4 top-1/2 -translate-y-1/2 bg-gray-800 text-gray-200 border-gray-700 rounded-full shadow-md hover:shadow-lg transition-all duration-200 z-10" {/* Menyesuaikan warna tombol carousel */}
+            className="absolute -right-4 top-1/2 -translate-y-1/2 bg-gray-800 text-gray-200 border-gray-700 rounded-full shadow-md hover:shadow-lg transition-all duration-200 z-10"
+            // Menyesuaikan warna tombol carousel
           >
             <ArrowRight className="h-5 w-5" />
             <span className="sr-only">Next skill</span>

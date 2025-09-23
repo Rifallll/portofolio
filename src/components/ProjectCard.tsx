@@ -32,7 +32,8 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
           {technologies.map((tech, index) => (
             <span
               key={index}
-              className="bg-gray-700 text-gray-100 text-xs font-medium px-2.5 py-0.5 rounded-full" {/* Menyesuaikan warna tag teknologi */}
+              className="bg-gray-700 text-gray-100 text-xs font-medium px-2.5 py-0.5 rounded-full"
+              // Menyesuaikan warna tag teknologi
             >
               {tech}
             </span>
