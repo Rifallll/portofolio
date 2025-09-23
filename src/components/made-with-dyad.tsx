@@ -5,7 +5,7 @@ export const MadeWithDyad = () => {
         href="https://www.dyad.sh/"
         target="_blank"
         rel="noopener noreferrer"
-        className="text-sm text-gray-400 hover:text-gray-200" {/* Menyesuaikan warna teks */}
+        className="text-sm text-gray-400 hover:text-gray-200" // Menyesuaikan warna teks
       >
         Made with Dyad
       </a>
