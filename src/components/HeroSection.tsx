@@ -26,7 +26,7 @@ const HeroSection = () => {
           variant="outline"
           className="border-gray-900 text-gray-900 hover:bg-gray-100 px-8 py-4 text-lg"
         >
-          View Projects
+          View Design Portfolio {/* Teks diubah di sini */}
         </Button>
       </div>
 
