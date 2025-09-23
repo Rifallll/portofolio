@@ -11,19 +11,19 @@ const Navbar = () => {
 
   const navLinks = (
     <>
-      <button onClick={() => scrollToSection("home")} className="text-gray-700 hover:text-gray-900 font-medium">
+      <button onClick={() => scrollToSection("home")} className="text-gray-700 hover:text-gray-900 font-medium transition-colors duration-200">
         Home
       </button>
-      <button onClick={() => scrollToSection("skills")} className="text-gray-700 hover:text-gray-900 font-medium">
+      <button onClick={() => scrollToSection("skills")} className="text-gray-700 hover:text-gray-900 font-medium transition-colors duration-200">
         Skills
       </button>
-      <button onClick={() => scrollToSection("projects")} className="text-gray-700 hover:text-gray-900 font-medium">
+      <button onClick={() => scrollToSection("projects")} className="text-gray-700 hover:text-gray-900 font-medium transition-colors duration-200">
         Projects
       </button>
-      <button onClick={() => scrollToSection("about")} className="text-gray-700 hover:text-gray-900 font-medium">
+      <button onClick={() => scrollToSection("about")} className="text-gray-700 hover:text-gray-900 font-medium transition-colors duration-200">
         About
       </button>
-      <button onClick={() => scrollToSection("contact")} className="text-gray-700 hover:text-gray-900 font-medium">
+      <button onClick={() => scrollToSection("contact")} className="text-gray-700 hover:text-gray-900 font-medium transition-colors duration-200">
         Contact
       </button>
     </>

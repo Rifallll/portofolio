@@ -39,7 +39,7 @@ const ContactSection = () => {
   };
 
   return (
-    <section id="contact" className="py-20 bg-gray-50"> {/* Changed bg-white to bg-gray-50 */}
+    <section id="contact" className="py-20 bg-gray-50">
       <div className="container mx-auto px-4 text-center">
         <h2 className="text-4xl font-bold text-gray-900 mb-4">Get In Touch</h2>
         <p className="text-lg text-gray-600 mb-12">
@@ -56,21 +56,21 @@ const ContactSection = () => {
               you have a question or just want to say hi, I'll do my best to get back to you!
             </p>
             <div className="space-y-4 mb-8">
-              <Card className="p-4 flex items-center space-x-4 shadow-sm">
+              <Card className="p-4 flex items-center space-x-4 shadow-sm hover:shadow-md transition-shadow duration-200">
                 <Mail className="h-5 w-5 text-gray-500" />
                 <div>
                   <p className="text-sm text-gray-500">Email</p>
                   <span className="font-medium text-gray-900">john.doe@example.com</span>
                 </div>
               </Card>
-              <Card className="p-4 flex items-center space-x-4 shadow-sm">
+              <Card className="p-4 flex items-center space-x-4 shadow-sm hover:shadow-md transition-shadow duration-200">
                 <Phone className="h-5 w-5 text-gray-500" />
                 <div>
                   <p className="text-sm text-gray-500">Phone</p>
                   <span className="font-medium text-gray-900">+1 (555) 123-4567</span>
                 </div>
               </Card>
-              <Card className="p-4 flex items-center space-x-4 shadow-sm">
+              <Card className="p-4 flex items-center space-x-4 shadow-sm hover:shadow-md transition-shadow duration-200">
                 <MapPin className="h-5 w-5 text-gray-500" />
                 <div>
                   <p className="text-sm text-gray-500">Location</p>
@@ -78,7 +78,7 @@ const ContactSection = () => {
                 </div>
               </Card>
             </div>
-            <Card className="p-6 shadow-sm">
+            <Card className="p-6 shadow-sm hover:shadow-md transition-shadow duration-200">
               <h3 className="text-lg font-semibold text-gray-900 mb-2">Privacy & Data Safety</h3>
               <p className="text-sm text-gray-600">
                 This contact form uses client-side processing only. No data is stored on servers or
