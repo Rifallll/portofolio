@@ -39,7 +39,7 @@ const ContactSection = () => {
   };
 
   return (
-    <section id="contact" className="py-20 bg-gray-50">
+    <section id="contact" className="py-20 bg-white"> {/* Mengubah bg-gray-50 menjadi bg-white */}
       <div className="container mx-auto px-4 text-center">
         <h2 className="text-4xl font-bold text-gray-900 mb-4">Get In Touch</h2>
         <p className="text-lg text-gray-600 mb-12">
