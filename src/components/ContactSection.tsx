@@ -15,7 +15,7 @@ const ContactSection = () => {
           your ideas to life.
         </p>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start text-left"> {/* Mengubah items-center menjadi items-start */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start text-left">
           {/* Left Column: Let's Connect & Privacy */}
           <div>
             <h3 className="text-2xl font-bold text-gray-900 mb-4">Let's Connect</h3>
@@ -55,7 +55,7 @@ const ContactSection = () => {
           </div>
 
           {/* Right Column: WhatsApp Button */}
-          <Card className="py-16 px-8 shadow-lg flex flex-col items-center justify-center">
+          <Card className="h-full px-8 shadow-lg flex flex-col items-center justify-center"> {/* Menambahkan h-full dan menghapus py-16 */}
             <h3 className="text-2xl font-bold text-gray-900 mb-4">Message Me Directly</h3>
             <p className="text-gray-700 text-center mb-8">
               Click the button below to send me a message on WhatsApp.
