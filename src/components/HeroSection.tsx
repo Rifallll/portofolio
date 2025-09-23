@@ -8,7 +8,7 @@ const HeroSection = () => {
 
   return (
     <section id="home" className="min-h-screen flex flex-col items-center justify-center bg-white text-center pt-20">
-      <h1 className="text-7xl md:text-8xl font-extrabold text-gray-900 mb-4">John Doe</h1>
+      <h1 className="text-7xl md:text-8xl font-extrabold text-gray-900 mb-4">Rifal Azhar Permana</h1>
       <p className="text-3xl md:text-4xl text-gray-700 mb-8">Full Stack Developer</p>
       <p className="text-lg text-gray-600 max-w-3xl mb-12 px-4">
         Passionate developer creating modern web applications with clean code and elegant

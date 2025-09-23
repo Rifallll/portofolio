@@ -33,7 +33,7 @@ const Navbar = () => {
   return (
     <nav className="w-full bg-white shadow-sm fixed top-0 left-0 z-50">
       <div className="container mx-auto px-4 py-4 flex justify-between items-center">
-        <div className="text-2xl font-bold text-gray-900">John</div>
+        <div className="text-2xl font-bold text-gray-900">Rifal Azhar Permana</div>
         
         {isMobile ? (
           <Sheet>

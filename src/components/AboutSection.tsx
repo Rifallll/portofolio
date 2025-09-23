@@ -17,10 +17,10 @@ const AboutSection = () => {
           {/* Kolom Kiri: Avatar dan Info Pribadi - Konten dipusatkan */}
           <div className="lg:w-1/3 flex flex-col items-center text-center"> {/* Menghapus lg:items-start dan lg:text-left untuk memusatkan konten */}
             <Avatar className="h-48 w-48 mb-6 border-4 border-gray-200 shadow-lg">
-              <AvatarImage src="/public/placeholder.svg" alt="John Doe" />
-              <AvatarFallback className="text-6xl font-bold bg-gray-200 text-gray-700">JD</AvatarFallback>
+              <AvatarImage src="/public/placeholder.svg" alt="Rifal Azhar Permana" />
+              <AvatarFallback className="text-6xl font-bold bg-gray-200 text-gray-700">RP</AvatarFallback>
             </Avatar>
-            <h3 className="text-3xl font-bold text-gray-900 mb-2">John Doe</h3>
+            <h3 className="text-3xl font-bold text-gray-900 mb-2">Rifal Azhar Permana</h3>
             <p className="text-xl text-gray-700 mb-4">Full Stack Developer</p>
             <p className="text-md text-gray-600 max-w-xs">
               Passionate about crafting robust and scalable web applications.
@@ -35,7 +35,7 @@ const AboutSection = () => {
               </CardHeader>
               <CardContent className="p-0">
                 <p className="text-gray-700 leading-relaxed mb-4">
-                  Hello! I'm John Doe, a dedicated Full Stack Developer with a passion for building
+                  Hello! I'm Rifal Azhar Permana, a dedicated Full Stack Developer with a passion for building
                   dynamic and user-friendly web experiences. My journey into development began
                   several years ago, driven by a curiosity to understand how digital products work
                   and a desire to create impactful solutions.
