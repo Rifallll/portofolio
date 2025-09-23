@@ -47,11 +47,11 @@ const SkillsSection = () => {
           Technologies and tools I use to bring ideas to life
         </p>
 
-        <div className="relative">
-          <div className="embla overflow-hidden px-12" ref={emblaRef}>
-            <div className="embla__container flex items-stretch justify-center">
+        <div className="relative mx-auto max-w-6xl"> {/* Menambahkan mx-auto max-w-6xl */}
+          <div className="embla overflow-hidden" ref={emblaRef}> {/* Menghapus px-12 */}
+            <div className="embla__container flex gap-4 items-stretch"> {/* Menghapus justify-center */}
               {skillsData.map((skill, index) => (
-                <div key={index} className="embla__slide flex-none w-full md:w-1/2 lg:w-1/3 h-full">
+                <div key={index} className="embla__slide flex-none w-full md:w-1/2 lg:w-1/3 min-w-0"> {/* Menambahkan min-w-0 */}
                   <SkillItem {...skill} />
                 </div>
               ))}
@@ -62,7 +62,7 @@ const SkillsSection = () => {
             disabled={prevBtnDisabled}
             variant="outline"
             size="icon"
-            className="absolute left-0 top-1/2 -translate-y-1/2 bg-white rounded-full shadow-md hover:shadow-lg transition-all duration-200 z-10"
+            className="absolute left-0 top-1/2 -translate-y-1/2 bg-white rounded-full shadow-md hover:shadow-lg transition-all duration-200 z-10 ml-4" {/* Menambahkan ml-4 */}
           >
             <ArrowLeft className="h-5 w-5" />
             <span className="sr-only">Previous skill</span>
@@ -72,7 +72,7 @@ const SkillsSection = () => {
             disabled={nextBtnDisabled}
             variant="outline"
             size="icon"
-            className="absolute right-0 top-1/2 -translate-y-1/2 bg-white rounded-full shadow-md hover:shadow-lg transition-all duration-200 z-10"
+            className="absolute right-0 top-1/2 -translate-y-1/2 bg-white rounded-full shadow-md hover:shadow-lg transition-all duration-200 z-10 mr-4" {/* Menambahkan mr-4 */}
           >
             <ArrowRight className="h-5 w-5" />
             <span className="sr-only">Next skill</span>
