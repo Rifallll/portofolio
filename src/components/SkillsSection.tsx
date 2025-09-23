@@ -26,6 +26,13 @@ const SkillsSection = () => {
             <SkillItem key={index} {...skill} />
           ))}
         </div>
+        <Button
+          onClick={() => scrollToSection("projects")}
+          className="bg-gray-900 text-white hover:bg-gray-700 flex items-center space-x-2 px-8 py-4 text-lg"
+        >
+          <span>Lihat Semua Proyek</span>
+          <ArrowRight className="h-5 w-5" />
+        </Button>
       </div>
     </section>
   );

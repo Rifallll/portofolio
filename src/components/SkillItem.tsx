@@ -12,7 +12,7 @@ interface SkillItemProps {
 
 const SkillItem: React.FC<SkillItemProps> = ({ title, proficiency, level, icon: Icon }) => {
   return (
-    <Card className="w-full max-w-sm shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2">
+    <Card className="w-full max-w-sm shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2 hover:scale-[1.02]">
       <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2"> {/* Adjust header for icon */}
         <CardTitle className="text-2xl font-semibold text-gray-900">{title}</CardTitle>
         <Icon className="h-6 w-6 text-gray-700" /> {/* Render the icon */}
