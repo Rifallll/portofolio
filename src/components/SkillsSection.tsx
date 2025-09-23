@@ -62,7 +62,7 @@ const SkillsSection = () => {
             disabled={prevBtnDisabled}
             variant="outline"
             size="icon"
-            className="absolute -left-4 top-1/2 -translate-y-1/2 bg-white rounded-full shadow-md hover:shadow-lg transition-all duration-200 z-10"
+            className="absolute left-4 top-1/2 -translate-y-1/2 bg-white rounded-full shadow-md hover:shadow-lg transition-all duration-200 z-10"
           >
             <ArrowLeft className="h-5 w-5" />
             <span className="sr-only">Previous skill</span>
@@ -72,7 +72,7 @@ const SkillsSection = () => {
             disabled={nextBtnDisabled}
             variant="outline"
             size="icon"
-            className="absolute -right-4 top-1/2 -translate-y-1/2 bg-white rounded-full shadow-md hover:shadow-lg transition-all duration-200 z-10"
+            className="absolute right-4 top-1/2 -translate-y-1/2 bg-white rounded-full shadow-md hover:shadow-lg transition-all duration-200 z-10"
           >
             <ArrowRight className="h-5 w-5" />
             <span className="sr-only">Next skill</span>
