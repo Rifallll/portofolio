@@ -1,7 +1,7 @@
 import React from "react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Stamp, ExternalLink, Code } from "lucide-react";
+import { Stamp, ExternalLink, Github } from "lucide-react"; // Mengganti Code dengan Github
 
 interface ProjectCardProps {
   title: string;
@@ -25,10 +25,10 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
           <CardTitle className="text-xl font-semibold text-gray-900">{title}</CardTitle>
           <Stamp className="h-5 w-5 text-gray-900" />
         </div>
-        <CardDescription className="text-gray-600 text-left mb-4">{description}</CardDescription> {/* Mengubah mb-2 menjadi mb-4 */}
+        <CardDescription className="text-gray-600 text-left mb-4">{description}</CardDescription>
       </CardHeader>
       <CardContent className="flex flex-col">
-        <div className="flex flex-wrap gap-2 mb-4"> {/* Mengubah mb-2 menjadi mb-4 */}
+        <div className="flex flex-wrap gap-2 mb-4">
           {technologies.map((tech, index) => (
             <span
               key={index}
@@ -50,7 +50,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
           {codeLink && (
             <Button variant="outline" className="flex items-center space-x-1" asChild>
               <a href={codeLink} target="_blank" rel="noopener noreferrer">
-                <Code className="h-4 w-4" />
+                <Github className="h-4 w-4" /> {/* Mengganti Code dengan Github */}
                 <span>Code</span>
               </a>
             </Button>
