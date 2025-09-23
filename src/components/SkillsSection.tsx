@@ -15,7 +15,7 @@ const skillsData = [
 ];
 
 const SkillsSection = () => {
-  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true, align: 'start' });
+  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true, align: 'center' }); // Mengubah align menjadi 'center'
   const [prevBtnDisabled, setPrevBtnDisabled] = useState(true);
   const [nextBtnDisabled, setNextBtnDisabled] = useState(true);
 
@@ -49,7 +49,7 @@ const SkillsSection = () => {
 
         <div className="relative">
           <div className="embla overflow-hidden" ref={emblaRef}>
-            <div className="embla__container flex items-stretch"> {/* Menghapus kelas gap */}
+            <div className="embla__container flex items-stretch">
               {skillsData.map((skill, index) => (
                 <div key={index} className="embla__slide flex-none w-full md:w-1/2 lg:w-1/3 h-full">
                   <SkillItem {...skill} />
@@ -62,7 +62,7 @@ const SkillsSection = () => {
             disabled={prevBtnDisabled}
             variant="outline"
             size="icon"
-            className="absolute -left-4 top-1/2 -translate-y-1/2 bg-white rounded-full shadow-md hover:shadow-lg transition-all duration-200 z-10"
+            className="absolute left-4 top-1/2 -translate-y-1/2 bg-white rounded-full shadow-md hover:shadow-lg transition-all duration-200 z-10" // Mengubah -left-4 menjadi left-4
           >
             <ArrowLeft className="h-5 w-5" />
             <span className="sr-only">Previous skill</span>
@@ -72,7 +72,7 @@ const SkillsSection = () => {
             disabled={nextBtnDisabled}
             variant="outline"
             size="icon"
-            className="absolute -right-4 top-1/2 -translate-y-1/2 bg-white rounded-full shadow-md hover:shadow-lg transition-all duration-200 z-10"
+            className="absolute right-4 top-1/2 -translate-y-1/2 bg-white rounded-full shadow-md hover:shadow-lg transition-all duration-200 z-10" // Mengubah -right-4 menjadi right-4
           >
             <ArrowRight className="h-5 w-5" />
             <span className="sr-only">Next skill</span>
