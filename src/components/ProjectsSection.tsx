@@ -80,7 +80,7 @@ const ProjectsSection = () => {
         </div>
 
         {remainingProjectsCount > 0 && (
-          <div className="mt-12">
+          <div className="mt-12 flex justify-center"> {/* Added flex justify-center here */}
             <Button
               onClick={() => setShowAllProjects(!showAllProjects)}
               className="bg-gray-900 text-white hover:bg-gray-700 flex items-center justify-center space-x-2 px-8 py-4 text-lg"
