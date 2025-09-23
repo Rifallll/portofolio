@@ -18,7 +18,7 @@ const AboutSection = () => {
             <img
               src="/1.jpeg" // Pastikan path ini benar ke gambar Anda di folder public
               alt="Rifal Azhar Permana"
-              className="h-48 w-48 mb-6 rounded-full object-cover border-4 border-gray-200 shadow-lg"
+              className="h-48 w-48 mb-6 rounded-xl object-cover border-4 border-gray-200 shadow-lg" {/* Diubah dari rounded-full menjadi rounded-xl */}
             />
             <h3 className="text-3xl font-bold text-gray-900 mb-2">Rifal Azhar Permana</h3>
             <p className="text-xl text-gray-700 mb-4">Full Stack Developer</p>
