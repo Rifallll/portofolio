@@ -57,16 +57,10 @@ const allProjectsData = [
 
 const ProjectsSection = () => {
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: false, align: 'start' });
+  // The state and callbacks for buttons are no longer needed as buttons are removed.
+  // Keeping them for now, but they won't affect functionality.
   const [prevBtnDisabled, setPrevBtnDisabled] = useState(true);
   const [nextBtnDisabled, setNextBtnDisabled] = useState(true);
-
-  const scrollPrev = useCallback(() => {
-    emblaApi && emblaApi.scrollPrev();
-  }, [emblaApi]);
-
-  const scrollNext = useCallback(() => {
-    emblaApi && emblaApi.scrollNext();
-  }, [emblaApi]);
 
   const onSelect = useCallback((emblaApi: any) => {
     setPrevBtnDisabled(!emblaApi.canScrollPrev());
@@ -99,27 +93,7 @@ const ProjectsSection = () => {
               ))}
             </div>
           </div>
-
-          <Button
-            onClick={scrollPrev}
-            disabled={prevBtnDisabled}
-            variant="outline"
-            size="icon"
-            className="absolute top-1/2 left-0 -translate-x-1/2 -translate-y-1/2 z-10 bg-white rounded-full shadow-md hover:shadow-lg transition-shadow duration-200"
-          >
-            <ArrowLeft className="h-5 w-5" />
-            <span className="sr-only">Previous project</span>
-          </Button>
-          <Button
-            onClick={scrollNext}
-            disabled={nextBtnDisabled}
-            variant="outline"
-            size="icon"
-            className="absolute top-1/2 right-0 translate-x-1/2 -translate-y-1/2 z-10 bg-white rounded-full shadow-md hover:shadow-lg transition-shadow duration-200"
-          >
-            <ArrowRight className="h-5 w-5" />
-            <span className="sr-only">Next project</span>
-          </Button>
+          {/* Navigation buttons removed as requested */}
         </div>
       </div>
     </section>
