@@ -1,7 +1,7 @@
 import React from "react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Stamp, ExternalLink, Code } from "lucide-react"; // Mengganti Pin dengan Stamp
+import { Stamp, ExternalLink, Code } from "lucide-react";
 
 interface ProjectCardProps {
   title: string;
@@ -23,12 +23,12 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
       <CardHeader>
         <div className="flex justify-between items-start mb-2">
           <CardTitle className="text-xl font-semibold text-gray-900">{title}</CardTitle>
-          <Stamp className="h-5 w-5 text-gray-900" /> {/* Mengganti Pin dengan Stamp dan mengubah warna menjadi hitam */}
+          <Stamp className="h-5 w-5 text-gray-900" />
         </div>
-        <CardDescription className="text-gray-600 text-left">{description}</CardDescription>
+        <CardDescription className="text-gray-600 text-left mb-4">{description}</CardDescription> {/* Mengubah mb-2 menjadi mb-4 */}
       </CardHeader>
       <CardContent className="flex flex-col">
-        <div className="flex flex-wrap gap-2 mb-2">
+        <div className="flex flex-wrap gap-2 mb-4"> {/* Mengubah mb-2 menjadi mb-4 */}
           {technologies.map((tech, index) => (
             <span
               key={index}
