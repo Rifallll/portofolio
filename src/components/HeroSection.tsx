@@ -1,6 +1,6 @@
 import React from "react";
 import { Button } from "@/components/ui/button";
-import { Mail, Linkedin, Github, Twitter, Instagram } from "lucide-react"; // Import ikon media sosial
+import { Mail, Linkedin, Github, Kaggle, Instagram } from "lucide-react"; // Mengganti Twitter dengan Kaggle
 import { useSmoothScroll } from "@/hooks/use-smooth-scroll";
 
 const HeroSection = () => {
@@ -13,7 +13,7 @@ const HeroSection = () => {
       <p className="text-lg text-gray-600 max-w-3xl mb-12 px-4">
         Berpengalaman dalam membangun aplikasi web yang responsif dan berkinerja tinggi menggunakan teknologi modern. Fokus pada pengalaman pengguna yang intuitif dan kode yang bersih.
       </p>
-      <div className="flex space-x-4 justify-center mb-8"> {/* Menambahkan margin-bottom */}
+      <div className="flex space-x-4 justify-center mb-8">
         <Button
           onClick={() => scrollToSection("contact")}
           className="bg-gray-900 text-white hover:bg-gray-700 flex items-center space-x-2 px-8 py-4 text-lg"
@@ -31,15 +31,15 @@ const HeroSection = () => {
       </div>
 
       {/* Social Media Icons */}
-      <div className="flex space-x-6 mb-12"> {/* Menambahkan margin-bottom */}
+      <div className="flex space-x-6 mb-12">
         <a href="#" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Profile" className="text-gray-700 hover:text-gray-900 transition-colors duration-200">
           <Linkedin className="h-7 w-7" />
         </a>
         <a href="#" target="_blank" rel="noopener noreferrer" aria-label="GitHub Profile" className="text-gray-700 hover:text-gray-900 transition-colors duration-200">
           <Github className="h-7 w-7" />
         </a>
-        <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Twitter Profile" className="text-gray-700 hover:text-gray-900 transition-colors duration-200">
-          <Twitter className="h-7 w-7" />
+        <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Kaggle Profile" className="text-gray-700 hover:text-gray-900 transition-colors duration-200">
+          <Kaggle className="h-7 w-7" /> {/* Mengganti ikon Twitter dengan Kaggle */}
         </a>
         <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Instagram Profile" className="text-gray-700 hover:text-gray-900 transition-colors duration-200">
           <Instagram className="h-7 w-7" />
