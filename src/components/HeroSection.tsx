@@ -21,15 +21,7 @@ const HeroSection = () => {
           <Mail className="h-5 w-5" />
           <span>Contact Me</span>
         </Button>
-        <Button
-          asChild
-          variant="outline"
-          className="border-gray-900 text-gray-900 hover:bg-gray-100 px-8 py-4 text-lg"
-        >
-          <a href="https://www.canva.com/design/DAGy1QAIbgc/Ap7XEIu14HBSPnLT1qWwcQ/edit" target="_blank" rel="noopener noreferrer">
-            View Design Portfolio
-          </a>
-        </Button>
+        {/* Tombol "View Design Portfolio" telah dihapus */}
       </div>
 
       {/* Social Media Icons and Text Link */}
