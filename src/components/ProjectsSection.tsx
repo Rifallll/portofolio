@@ -61,22 +61,19 @@ const allProjectsData = [
 ];
 
 const ProjectsSection = () => {
-  // Mengubah loop: true menjadi loop: false
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: false, align: 'start' });
   const [prevBtnDisabled, setPrevBtnDisabled] = useState(true);
   const [nextBtnDisabled, setNextBtnDisabled] = useState(true);
-  const [activeCategory, setActiveCategory] = useState("All"); // State untuk kategori aktif
+  const [activeCategory, setActiveCategory] = useState("All");
 
-  // Ekstrak kategori unik dari semua proyek
   const allCategories = ["All", ...new Set(allProjectsData.flatMap(project => project.categories))];
 
-  // Proyek yang difilter berdasarkan kategori aktif
   const filteredProjects = activeCategory === "All"
     ? allProjectsData
     : allProjectsData.filter(project => project.categories.includes(activeCategory));
 
   const onSelect = useCallback((emblaApi: any) => {
-    if (!emblaApi) return; // Pastikan emblaApi sudah siap
+    if (!emblaApi) return;
     setPrevBtnDisabled(!emblaApi.canScrollPrev());
     setNextBtnDisabled(!emblaApi.canScrollNext());
   }, []);
@@ -94,18 +91,16 @@ const ProjectsSection = () => {
     onSelect(emblaApi);
     emblaApi.on("reInit", onSelect);
     emblaApi.on("select", onSelect);
-    // Cleanup event listeners saat komponen unmount atau emblaApi berubah
     return () => {
       emblaApi.off("reInit", onSelect);
       emblaApi.off("select", onSelect);
     };
   }, [emblaApi, onSelect]);
 
-  // Re-initialize Embla Carousel when filtered projects change
   useEffect(() => {
     if (emblaApi) {
       emblaApi.reInit();
-      emblaApi.scrollTo(0); // Scroll ke slide pertama saat filter berubah
+      emblaApi.scrollTo(0);
     }
   }, [filteredProjects, emblaApi]);
 
@@ -117,7 +112,6 @@ const ProjectsSection = () => {
           A selection of my best work showcasing different technologies and approaches
         </p>
 
-        {/* Filter Buttons */}
         <div className="flex flex-wrap justify-center gap-3 mb-12">
           {allCategories.map(category => (
             <Button
@@ -131,11 +125,15 @@ const ProjectsSection = () => {
           ))}
         </div>
 
-        <div className="relative max-w-7xl mx-auto px-4">
+        <div className="relative max-w-7xl mx-auto"> {/* Menghapus px-4 dari sini */}
           <div className="embla overflow-hidden" ref={emblaRef}>
-            <div className="embla__container flex gap-6 items-stretch">
+            <div className="embla__container flex gap-6 px-4 items-stretch"> {/* Menambahkan px-4 di sini */}
               {filteredProjects.map((project, index) => (
-                <div key={index} className="embla__slide flex-none w-full md:w-1/2 lg:w-1/3 h-full">
+                <div
+                  key={index}
+                  // Mengubah flex-none w-* menjadi flex-shrink-0 basis-*
+                  className="embla__slide flex-shrink-0 basis-full md:basis-1/2 lg:basis-1/3 h-full"
+                >
                   <ProjectCard {...project} />
                 </div>
               ))}
