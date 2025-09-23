@@ -39,11 +39,8 @@ const Navbar = () => {
           <Sheet>
             <SheetTrigger asChild>
               <Button variant="outline" size="icon">
-                {/* Membungkus anak-anak tombol dalam satu elemen span */}
-                <span>
-                  <Menu className="h-6 w-6" />
-                  <span className="sr-only">Toggle navigation menu</span>
-                </span>
+                <Menu className="h-6 w-6" />
+                <span className="sr-only">Toggle navigation menu</span>
               </Button>
             </SheetTrigger>
             <SheetContent side="right">
