@@ -50,7 +50,7 @@ const Navbar = () => {
               <div className="flex flex-col space-y-4 pt-8">
                 {navLinks}
                 <Button asChild className="bg-gray-900 text-white hover:bg-gray-700 flex items-center space-x-2">
-                  <a href="/Rifal_Azhar_Permana_CV.pdf" target="_blank" rel="noopener noreferrer" download>
+                  <a href="/Rifal Azhar Permana.CV.pdf" target="_blank" rel="noopener noreferrer" download>
                     <Download className="h-4 w-4" />
                     <span>Download CV</span>
                   </a>
@@ -63,7 +63,7 @@ const Navbar = () => {
           <div className="flex items-center space-x-6">
             {navLinks}
             <Button asChild className="bg-gray-900 text-white hover:bg-gray-700 flex items-center space-x-2">
-              <a href="/Rifal_Azhar_Permana_CV.pdf" target="_blank" rel="noopener noreferrer" download>
+              <a href="/Rifal Azhar Permana.CV.pdf" target="_blank" rel="noopener noreferrer" download>
                 <Download className="h-4 w-4" />
                 <span>Download CV</span>
               </a>
