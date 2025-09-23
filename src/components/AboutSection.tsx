@@ -21,9 +21,9 @@ const AboutSection = () => {
               className="h-64 w-full object-cover rounded-xl mb-6 border-4 border-gray-200"
             />
             <h3 className="text-3xl font-bold text-gray-900 mb-2">Rifal Azhar Permana</h3>
-            <p className="text-xl text-gray-700 mb-4">Social Media Specialist</p>
+            <p className="text-xl text-gray-700 mb-4">Web Developer</p>
             <p className="text-md text-gray-600 max-w-xs">
-              Berpengalaman dalam mengembangkan strategi konten dan meningkatkan kehadiran merek.
+              Berpengalaman dalam membangun aplikasi web yang responsif dan berkinerja tinggi.
             </p>
           </Card>
 
@@ -36,10 +36,10 @@ const AboutSection = () => {
               </CardHeader>
               <CardContent className="p-0 text-lg">
                 <p className="text-gray-700 leading-relaxed mb-4">
-                  Halo! Saya Rifal Azhar Permana, seorang Spesialis Media Sosial berpengalaman dengan rekam jejak terbukti dalam mengembangkan dan melaksanakan strategi konten untuk meningkatkan keterlibatan dan mengembangkan kehadiran merek di Instagram, Facebook, dan TikTok.
+                  Halo! Saya Rifal Azhar Permana, seorang Web Developer dengan pengalaman dalam membangun aplikasi web yang responsif dan berkinerja tinggi. Saya bersemangat dalam menciptakan solusi digital yang inovatif dan efisien.
                 </p>
                 <p className="text-gray-700 leading-relaxed">
-                  Keahlian saya juga mencakup strategi Hubungan Masyarakat (PR), mengelola hubungan media, dan membuat kampanye untuk meningkatkan reputasi dan visibilitas merek. Saya bersemangat dalam menciptakan pengalaman digital yang berdampak dan terus belajar keterampilan baru untuk memecahkan masalah yang kompleks.
+                  Keahlian saya mencakup pengembangan front-end dan back-end, dengan fokus pada penggunaan teknologi modern untuk memberikan pengalaman pengguna yang luar biasa. Saya selalu mencari tantangan baru dan kesempatan untuk terus belajar dan berkembang di dunia pengembangan web.
                 </p>
               </CardContent>
             </Card>
@@ -50,7 +50,7 @@ const AboutSection = () => {
                 <CardContent className="flex flex-col items-center p-0">
                   <Briefcase className="h-10 w-10 text-gray-700 mb-3" />
                   <p className="font-semibold text-xl text-gray-900">Experience</p>
-                  <p className="text-gray-600">Proven Track Record</p>
+                  <p className="text-gray-600">Building Web Solutions</p>
                 </CardContent>
               </Card>
               <Card className="p-6 text-center shadow-sm hover:shadow-md transition-shadow duration-200">
@@ -64,7 +64,7 @@ const AboutSection = () => {
                 <CardContent className="flex flex-col items-center p-0">
                   <HeartHandshake className="h-10 w-10 text-gray-700 mb-3" />
                   <p className="font-semibold text-xl text-gray-900">Collaboration</p>
-                  <p className="text-gray-600">Leadership & Teamwork</p>
+                  <p className="text-gray-600">Teamwork & Innovation</p>
                 </CardContent>
               </Card>
             </div>

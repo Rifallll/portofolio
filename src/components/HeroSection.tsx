@@ -9,9 +9,9 @@ const HeroSection = () => {
   return (
     <section id="home" className="min-h-screen flex flex-col items-center justify-center bg-white text-center pt-20">
       <h1 className="text-7xl md:text-8xl font-extrabold text-gray-900 mb-4">Rifal Azhar Permana</h1>
-      <p className="text-3xl md:text-4xl text-gray-700 mb-8">Social Media Specialist</p>
+      <p className="text-3xl md:text-4xl text-gray-700 mb-8">Web Developer</p>
       <p className="text-lg text-gray-600 max-w-3xl mb-12 px-4">
-        Berpengalaman dengan kemampuan terbukti dalam mengembangkan dan melaksanakan strategi konten untuk meningkatkan keterlibatan dan mengembangkan kehadiran merek di Instagram, Facebook, dan TikTok.
+        Berpengalaman dalam membangun aplikasi web yang responsif dan berkinerja tinggi menggunakan teknologi modern. Fokus pada pengalaman pengguna yang intuitif dan kode yang bersih.
       </p>
       <div className="flex space-x-4 justify-center">
         <Button
