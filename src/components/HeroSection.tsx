@@ -1,8 +1,11 @@
 import React from "react";
 import { Button } from "@/components/ui/button";
 import { Mail } from "lucide-react";
+import { useSmoothScroll } from "@/hooks/use-smooth-scroll";
 
 const HeroSection = () => {
+  const scrollToSection = useSmoothScroll();
+
   return (
     <section id="home" className="min-h-screen flex flex-col items-center justify-center bg-white text-center pt-20">
       <h1 className="text-7xl md:text-8xl font-extrabold text-gray-900 mb-4">John Doe</h1>
@@ -12,11 +15,18 @@ const HeroSection = () => {
         design. I love turning complex problems into simple, beautiful solutions.
       </p>
       <div className="flex space-x-4">
-        <Button className="bg-gray-900 text-white hover:bg-gray-700 flex items-center space-x-2 px-8 py-4 text-lg">
+        <Button
+          onClick={() => scrollToSection("contact")}
+          className="bg-gray-900 text-white hover:bg-gray-700 flex items-center space-x-2 px-8 py-4 text-lg"
+        >
           <Mail className="h-5 w-5" />
           <span>Contact Me</span>
         </Button>
-        <Button variant="outline" className="border-gray-900 text-gray-900 hover:bg-gray-100 px-8 py-4 text-lg">
+        <Button
+          onClick={() => scrollToSection("projects")}
+          variant="outline"
+          className="border-gray-900 text-gray-900 hover:bg-gray-100 px-8 py-4 text-lg"
+        >
           View Projects
         </Button>
       </div>
