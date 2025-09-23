@@ -2,13 +2,13 @@ import React from "react";
 import SkillItem from "./SkillItem";
 import { Button } from "@/components/ui/button";
 import { useSmoothScroll } from "@/hooks/use-smooth-scroll";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Code, Server, Palette, Database } from "lucide-react"; // Import specific icons
 
 const skillsData = [
-  { title: "React & TypeScript", proficiency: 95, level: "EXPERT" },
-  { title: "Node.js & Express", proficiency: 88, level: "EXPERT" },
-  { title: "UI/UX Design", proficiency: 85, level: "EXPERT" },
-  { title: "Database Design", proficiency: 82, level: "EXPERT" },
+  { title: "React & TypeScript", proficiency: 95, level: "EXPERT", icon: Code }, // Add icon
+  { title: "Node.js & Express", proficiency: 88, level: "EXPERT", icon: Server }, // Add icon
+  { title: "UI/UX Design", proficiency: 85, level: "EXPERT", icon: Palette }, // Add icon
+  { title: "Database Design", proficiency: 82, level: "EXPERT", icon: Database }, // Add icon
 ];
 
 const SkillsSection = () => {
@@ -26,7 +26,6 @@ const SkillsSection = () => {
             <SkillItem key={index} {...skill} />
           ))}
         </div>
-        {/* "View My Projects" button removed as requested */}
       </div>
     </section>
   );
