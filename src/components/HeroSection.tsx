@@ -2,7 +2,7 @@ import React from "react";
 import { Button } from "@/components/ui/button";
 import { Mail, Linkedin, Github, Instagram } from "lucide-react";
 import { useSmoothScroll } from "@/hooks/use-smooth-scroll";
-import ResumeModal from "./ResumeModal"; // Import ResumeModal
+// import ResumeModal from "./ResumeModal"; // Remove ResumeModal import from HeroSection
 
 const HeroSection = () => {
   const scrollToSection = useSmoothScroll();
@@ -22,14 +22,15 @@ const HeroSection = () => {
           <Mail className="h-5 w-5" />
           <span>Contact Me</span>
         </Button>
-        <ResumeModal>
-          <Button
-            variant="outline"
-            className="border-gray-900 text-gray-900 hover:bg-gray-100 px-8 py-4 text-lg"
-          >
-            View/Download CV
-          </Button>
-        </ResumeModal>
+        <Button
+          asChild
+          variant="outline"
+          className="border-gray-900 text-gray-900 hover:bg-gray-100 px-8 py-4 text-lg"
+        >
+          <a href="/PORTOFOLIO Rifal Azhar Permana (2025).pdf" target="_blank" rel="noopener noreferrer">
+            View Portfolio (PDF)
+          </a>
+        </Button>
       </div>
 
       {/* Social Media Icons and Text Link */}
