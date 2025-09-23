@@ -2,9 +2,9 @@ import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
 import SkillsSection from "@/components/SkillsSection";
 import ProjectsSection from "@/components/ProjectsSection";
-import AboutSection from "@/components/AboutSection"; // Import AboutSection
+import AboutSection from "@/components/AboutSection";
 import ContactSection from "@/components/ContactSection";
-import { MadeWithDyad } from "@/components/made-with-dyad";
+// import { MadeWithDyad } from "@/components/made-with-dyad"; // Dihapus
 
 const Index = () => {
   return (
@@ -13,9 +13,9 @@ const Index = () => {
       <HeroSection />
       <SkillsSection />
       <ProjectsSection />
-      <AboutSection /> {/* Tambahkan AboutSection di sini */}
+      <AboutSection />
       <ContactSection />
-      <MadeWithDyad />
+      {/* <MadeWithDyad /> Dihapus */}
     </div>
   );
 };
