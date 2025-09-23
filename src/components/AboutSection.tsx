@@ -12,28 +12,29 @@ const AboutSection = () => {
           Get to know more about my journey and what drives me
         </p>
 
-        <div className="flex flex-col lg:flex-row items-center lg:items-start gap-12 max-w-5xl mx-auto">
-          {/* Kolom Kiri: Foto dan Info Pribadi - Konten dipusatkan */}
-          <div className="lg:w-1/3 flex flex-col items-center text-center">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 items-start mt-12 max-w-6xl mx-auto">
+          {/* Left Column: Profile Card */}
+          <Card className="lg:col-span-1 p-8 shadow-xl hover:shadow-2xl transition-shadow duration-300 flex flex-col items-center text-center">
             <img
-              src="/1.jpeg" // Pastikan path ini benar ke gambar Anda di folder public
+              src="/1.jpeg" // Ensure this path is correct to your image in the public folder
               alt="Rifal Azhar Permana"
-              className="h-48 w-48 mb-6 rounded-xl object-cover border-4 border-gray-200 shadow-lg"
+              className="h-64 w-full object-cover rounded-xl mb-6 border-4 border-gray-200"
             />
             <h3 className="text-3xl font-bold text-gray-900 mb-2">Rifal Azhar Permana</h3>
             <p className="text-xl text-gray-700 mb-4">Full Stack Developer</p>
             <p className="text-md text-gray-600 max-w-xs">
               Passionate about crafting robust and scalable web applications.
             </p>
-          </div>
+          </Card>
 
-          {/* Kolom Kanan: My Story dan Sorotan */}
-          <div className="lg:w-2/3 text-left">
-            <Card className="p-8 shadow-lg mb-8">
+          {/* Right Column: My Story and Highlights */}
+          <div className="lg:col-span-2 flex flex-col gap-8">
+            {/* My Story Card */}
+            <Card className="p-8 shadow-lg">
               <CardHeader className="p-0 mb-4">
-                <CardTitle className="text-2xl font-bold text-gray-900">My Story</CardTitle>
+                <CardTitle className="text-3xl font-bold text-gray-900">My Story</CardTitle>
               </CardHeader>
-              <CardContent className="p-0">
+              <CardContent className="p-0 text-lg">
                 <p className="text-gray-700 leading-relaxed mb-4">
                   Hello! I'm Rifal Azhar Permana, a dedicated Full Stack Developer with a passion for building
                   dynamic and user-friendly web experiences. My journey into development began
@@ -49,26 +50,26 @@ const AboutSection = () => {
               </CardContent>
             </Card>
 
-            {/* Bagian Sorotan dengan Kartu */}
+            {/* Highlights Grid */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               <Card className="p-6 text-center shadow-sm hover:shadow-md transition-shadow duration-200">
                 <CardContent className="flex flex-col items-center p-0">
-                  <Briefcase className="h-8 w-8 text-gray-700 mb-3" />
-                  <p className="font-semibold text-lg text-gray-900">Experience</p>
+                  <Briefcase className="h-10 w-10 text-gray-700 mb-3" />
+                  <p className="font-semibold text-xl text-gray-900">Experience</p>
                   <p className="text-gray-600">5+ Years</p>
                 </CardContent>
               </Card>
               <Card className="p-6 text-center shadow-sm hover:shadow-md transition-shadow duration-200">
                 <CardContent className="flex flex-col items-center p-0">
-                  <GraduationCap className="h-8 w-8 text-gray-700 mb-3" />
-                  <p className="font-semibold text-lg text-gray-900">Education</p>
+                  <GraduationCap className="h-10 w-10 text-gray-700 mb-3" />
+                  <p className="font-semibold text-xl text-gray-900">Education</p>
                   <p className="text-gray-600">Computer Science</p>
                 </CardContent>
               </Card>
               <Card className="p-6 text-center shadow-sm hover:shadow-md transition-shadow duration-200">
                 <CardContent className="flex flex-col items-center p-0">
-                  <HeartHandshake className="h-8 w-8 text-gray-700 mb-3" />
-                  <p className="font-semibold text-lg text-gray-900">Collaboration</p>
+                  <HeartHandshake className="h-10 w-10 text-gray-700 mb-3" />
+                  <p className="font-semibold text-xl text-gray-900">Collaboration</p>
                   <p className="text-gray-600">Team Player</p>
                 </CardContent>
               </Card>
