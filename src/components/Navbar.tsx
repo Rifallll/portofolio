@@ -12,22 +12,22 @@ const Navbar = () => {
 
   const navLinks = (
     <>
-      <Button variant="ghost" onClick={() => scrollToSection("home")} className="text-primary-foreground hover:text-accent font-bold transition-colors duration-200 px-4 py-2 rounded-md">
+      <Button variant="ghost" onClick={() => scrollToSection("home")} className="text-foreground hover:text-primary font-bold transition-colors duration-200 px-4 py-2 rounded-md">
         HOME
       </Button>
-      <Button variant="ghost" onClick={() => scrollToSection("about")} className="text-primary-foreground hover:text-accent font-medium transition-colors duration-200 px-4 py-2">
+      <Button variant="ghost" onClick={() => scrollToSection("about")} className="text-foreground hover:text-primary font-medium transition-colors duration-200 px-4 py-2">
         ABOUT
       </Button>
-      <Button variant="ghost" onClick={() => scrollToSection("skills")} className="text-primary-foreground hover:text-accent font-medium transition-colors duration-200 px-4 py-2">
+      <Button variant="ghost" onClick={() => scrollToSection("skills")} className="text-foreground hover:text-primary font-medium transition-colors duration-200 px-4 py-2">
         SKILLS
       </Button>
-      <Button variant="ghost" onClick={() => scrollToSection("projects")} className="text-primary-foreground hover:text-accent font-medium transition-colors duration-200 px-4 py-2">
+      <Button variant="ghost" onClick={() => scrollToSection("projects")} className="text-foreground hover:text-primary font-medium transition-colors duration-200 px-4 py-2">
         PROJECTS
       </Button>
-      <Button variant="ghost" onClick={() => scrollToSection("certificates")} className="text-primary-foreground hover:text-accent font-medium transition-colors duration-200 px-4 py-2">
+      <Button variant="ghost" onClick={() => scrollToSection("certificates")} className="text-foreground hover:text-primary font-medium transition-colors duration-200 px-4 py-2">
         CERTIFICATES
       </Button>
-      <Button variant="ghost" onClick={() => scrollToSection("contact")} className="text-primary-foreground hover:text-accent font-medium transition-colors duration-200 px-4 py-2">
+      <Button variant="ghost" onClick={() => scrollToSection("contact")} className="text-foreground hover:text-primary font-medium transition-colors duration-200 px-4 py-2">
         CONTACT
       </Button>
     </>
@@ -35,7 +35,7 @@ const Navbar = () => {
 
   return (
     <nav className="w-full fixed top-0 left-0 z-50 shadow-lg">
-      <div className="relative bg-primary rounded-b-3xl h-20 flex items-center justify-center"> {/* Ini adalah bilah tengah gelap */}
+      <div className="relative bg-primary rounded-b-3xl h-20 flex items-center justify-center">
         <div className="container mx-auto h-full relative">
           {isMobile ? (
             <>
@@ -57,15 +57,17 @@ const Navbar = () => {
             </>
           ) : (
             // Desktop: Tata letak kompleks dengan "tab"
-            <div className="grid grid-cols-[auto_1fr_auto] items-center h-full gap-4"> {/* Menggunakan grid untuk kontrol yang lebih baik */}
+            <div className="grid grid-cols-[auto_1fr_auto] items-center h-full gap-4">
               {/* "Tab" kiri untuk logo */}
               <div className="bg-card text-foreground px-8 py-3 rounded-full shadow-md z-10 -ml-4">
                 <span className="text-xl font-bold">Rifal Azhar Permana</span>
               </div>
 
               {/* Tautan navigasi tengah */}
-              <div className="flex justify-center items-center space-x-4">
-                {navLinks}
+              <div className="flex justify-center items-center bg-card px-8 py-3 rounded-full shadow-md z-10">
+                <div className="flex space-x-4">
+                  {navLinks}
+                </div>
               </div>
 
               {/* "Tab" kanan untuk tombol */}
