@@ -57,8 +57,8 @@ const Navbar = () => {
         </div>
       ) : (
         // Desktop: Single, centered, rounded bar
-        <div className="flex justify-center pt-6">
-          <div className="flex items-center bg-card px-8 py-3 rounded-full shadow-lg border border-border">
+        <div className="flex justify-center w-full bg-card shadow-md"> {/* Changed to full width, white background, no rounding */}
+          <div className="container mx-auto flex items-center justify-center py-3"> {/* Centered content */}
             <div className="flex space-x-4">
               {navLinks}
             </div>
