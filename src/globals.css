@@ -4,38 +4,38 @@
 
 @layer base {
   :root {
-    --background: 20 14.3% 4.1%; /* Dark charcoal/near black */
-    --foreground: 60 9.1% 92.1%; /* Off-white for text */
+    --background: 0 0% 100%; /* Pure white background */
+    --foreground: 20 14.3% 4.1%; /* Dark charcoal for text on white background */
 
     --card: 24 9.8% 10%; /* Darker background for cards */
-    --card-foreground: 60 9.1% 92.1%;
+    --card-foreground: 60 9.1% 92.1%; /* Off-white for text on dark cards */
 
-    --popover: 24 9.8% 10%;
-    --popover-foreground: 60 9.1% 92.1%;
+    --popover: 24 9.8% 10%; /* Dark popover background */
+    --popover-foreground: 60 9.1% 92.1%; /* Off-white for text on dark popover */
 
     --primary: 142.1 76.2% 36.3%; /* Deep Teal/Green */
     --primary-foreground: 355.7 100% 97.3%; /* Light contrast for primary */
 
     --secondary: 24 9.8% 10%; /* Darker secondary for subtle elements */
-    --secondary-foreground: 60 9.1% 92.1%;
+    --secondary-foreground: 60 9.1% 92.1%; /* Off-white for text on dark secondary */
 
-    --muted: 24 9.8% 10%;
-    --muted-foreground: 25 5.3% 44.7%;
+    --muted: 24 9.8% 10%; /* Dark muted background */
+    --muted-foreground: 25 5.3% 44.7%; /* Medium dark gray for muted text */
 
     --accent: 142.1 76.2% 36.3%; /* Using primary as accent for consistency */
-    --accent-foreground: 355.7 100% 97.3%;
+    --accent-foreground: 355.7 100% 97.3%; /* Light contrast for accent */
 
     --destructive: 0 72.2% 50.6%;
     --destructive-foreground: 60 9.1% 92.1%;
 
-    --border: 24 9.8% 10%;
-    --input: 24 9.8% 10%;
-    --ring: 142.1 76.2% 36.3%;
+    --border: 24 9.8% 10%; /* Dark border color */
+    --input: 24 9.8% 10%; /* Dark input background */
+    --ring: 142.1 76.2% 36.3%; /* Primary color for ring */
 
     --radius: 0.5rem;
 
-    --sidebar-background: 20 14.3% 4.1%;
-    --sidebar-foreground: 60 9.1% 92.1%;
+    --sidebar-background: 20 14.3% 4.1%; /* Dark sidebar background */
+    --sidebar-foreground: 60 9.1% 92.1%; /* Off-white for sidebar text */
     --sidebar-primary: 142.1 76.2% 36.3%;
     --sidebar-primary-foreground: 355.7 100% 97.3%;
     --sidebar-accent: 24 9.8% 10%;
