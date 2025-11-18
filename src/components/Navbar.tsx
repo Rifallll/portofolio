@@ -4,7 +4,7 @@ import { Menu } from "lucide-react";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { useSmoothScroll } from "@/hooks/use-smooth-scroll";
-// ResumeModal tidak lagi digunakan di Navbar, jadi importnya bisa dihapus jika tidak ada penggunaan lain di file ini.
+import ResumeModal from "./ResumeModal";
 
 const Navbar = () => {
   const isMobile = useIsMobile();
