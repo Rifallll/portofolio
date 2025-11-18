@@ -105,7 +105,7 @@ const ProjectsSection = () => {
   }, [filteredProjects, emblaApi]);
 
   return (
-    <section id="projects" className="py-20 bg-background">
+    <section id="projects" className="py-20 bg-secondary"> {/* Changed from bg-background to bg-secondary */}
       <div className="container mx-auto px-4 text-center">
         <h2 className="text-4xl font-bold text-primary mb-4">Featured Projects</h2>
         <p className="text-lg text-muted-foreground mb-8">
