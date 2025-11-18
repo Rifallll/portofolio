@@ -1,10 +1,10 @@
 import React from "react";
 import { Button } from "@/components/ui/button";
-import { Menu, Download } from "lucide-react"; // Import Download icon
+import { Menu } from "lucide-react";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { useSmoothScroll } from "@/hooks/use-smooth-scroll";
-import ResumeModal from "./ResumeModal"; // Keep ResumeModal for the desktop button
+import ResumeModal from "./ResumeModal";
 
 const Navbar = () => {
   const isMobile = useIsMobile();
@@ -50,37 +50,18 @@ const Navbar = () => {
               <SheetContent side="right" className="bg-card border-border">
                 <div className="flex flex-col space-y-4 pt-8">
                   {navLinks}
-                  <ResumeModal>
-                    <Button
-                      variant="outline"
-                      className="border-primary text-primary hover:bg-primary/10 px-8 py-3 text-lg rounded-full shadow-lg transition-all duration-300 hover:scale-105 flex items-center space-x-2"
-                    >
-                      <Download className="h-5 w-5" />
-                      <span>Download CV</span>
-                    </Button>
-                  </ResumeModal>
                 </div>
               </SheetContent>
             </Sheet>
           </div>
         </div>
       ) : (
-        // Desktop: Single, centered, rounded card with logo, nav links, and download CV button
+        // Desktop: Single, centered, rounded bar
         <div className="flex justify-center pt-6">
-          <div className="flex items-center justify-between bg-card px-8 py-3 rounded-full shadow-lg border border-border max-w-6xl w-full mx-auto">
-            <div className="text-2xl font-bold text-foreground">Rifal Azhar Permana</div>
+          <div className="flex items-center bg-card px-8 py-3 rounded-full shadow-lg border border-border">
             <div className="flex space-x-4">
               {navLinks}
             </div>
-            <ResumeModal>
-              <Button
-                variant="outline"
-                className="border-primary text-primary hover:bg-primary/10 px-4 py-2 text-base rounded-full shadow-lg transition-all duration-300 hover:scale-105 flex items-center space-x-2"
-              >
-                <Download className="h-4 w-4" />
-                <span>Download CV</span>
-              </Button>
-            </ResumeModal>
           </div>
         </div>
       )}
