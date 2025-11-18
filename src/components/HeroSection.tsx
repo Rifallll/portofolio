@@ -2,25 +2,25 @@ import React from "react";
 import { Button } from "@/components/ui/button";
 import { Mail, Linkedin, Github, Instagram } from "lucide-react";
 import { useSmoothScroll } from "@/hooks/use-smooth-scroll";
-// import ResumeModal from "./ResumeModal"; // Remove ResumeModal import from HeroSection
 
 const HeroSection = () => {
   const scrollToSection = useSmoothScroll();
 
   return (
     <section id="home" className="min-h-screen flex flex-col items-center justify-center bg-background text-center pt-20 relative overflow-hidden">
-      {/* Subtle background pattern/texture for sanati feel */}
-      <div className="absolute inset-0 opacity-5 pointer-events-none" style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%239C92AC\' fill-opacity=\'0.1\'%3E%3Cpath d=\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0 0v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zM12 14v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0 0v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4z\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")' }}></div>
+      {/* Richer background pattern/texture for a luxurious feel */}
+      <div className="absolute inset-0 bg-gradient-to-br from-background via-card to-background opacity-90 dark:from-gray-950 dark:via-gray-900 dark:to-gray-950 pointer-events-none"></div>
+      <div className="absolute inset-0 opacity-10 dark:opacity-20 pointer-events-none" style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%239C92AC\' fill-opacity=\'0.1\'%3E%3Cpath d=\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0 0v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zM12 14v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0 0v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4z\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")' }}></div>
 
-      <h1 className="text-7xl md:text-8xl font-extrabold text-primary mb-4 relative z-10">Rifal Azhar Permana</h1>
-      <p className="text-3xl md:text-4xl text-foreground mb-8 relative z-10">Web Developer</p>
+      <h1 className="text-7xl md:text-8xl font-extrabold text-primary mb-4 relative z-10 leading-tight">Rifal Azhar Permana</h1>
+      <p className="text-3xl md:text-4xl text-foreground mb-8 relative z-10 font-light">Web Developer</p>
       <p className="text-lg text-muted-foreground max-w-3xl mb-12 px-4 relative z-10">
         Experienced in building responsive and high-performance web applications using modern technologies. Focused on intuitive user experience and clean code.
       </p>
       <div className="flex space-x-4 justify-center mb-8 relative z-10">
         <Button
           onClick={() => scrollToSection("contact")}
-          className="bg-primary text-primary-foreground hover:bg-primary/90 flex items-center space-x-2 px-8 py-4 text-lg"
+          className="bg-primary text-primary-foreground hover:bg-primary/90 flex items-center space-x-2 px-8 py-4 text-lg shadow-lg hover:shadow-xl transition-all duration-300"
         >
           <Mail className="h-5 w-5" />
           <span>Contact Me</span>
@@ -28,7 +28,7 @@ const HeroSection = () => {
         <Button
           asChild
           variant="outline"
-          className="border-primary text-primary hover:bg-primary/10 px-8 py-4 text-lg"
+          className="border-primary text-primary hover:bg-primary/10 px-8 py-4 text-lg shadow-lg hover:shadow-xl transition-all duration-300"
         >
           <a href="/PORTOFOLIO Rifal Azhar Permana (2025).pdf" target="_blank" rel="noopener noreferrer">
             View Portfolio (PDF)
