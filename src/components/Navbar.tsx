@@ -4,7 +4,7 @@ import { Menu } from "lucide-react";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { useSmoothScroll } from "@/hooks/use-smooth-scroll";
-import ResumeModal from "./ResumeModal";
+// ResumeModal tidak lagi digunakan di Navbar, jadi importnya bisa dihapus jika tidak ada penggunaan lain di file ini.
 
 const Navbar = () => {
   const isMobile = useIsMobile();
@@ -34,39 +34,37 @@ const Navbar = () => {
   );
 
   return (
-    <nav className="w-full fixed top-0 left-0 z-50 shadow-lg">
-      <div className="relative bg-primary rounded-b-3xl h-20 flex items-center justify-center">
-        <div className="container mx-auto h-full relative">
-          {isMobile ? (
-            <>
-              {/* Mobile: Logo di kiri, hamburger di kanan */}
-              <div className="absolute left-4 top-1/2 -translate-y-1/2 text-2xl font-bold text-primary-foreground">Rifal Azhar Permana</div>
-              <Sheet>
-                <SheetTrigger asChild>
-                  <Button variant="outline" size="icon" className="absolute right-4 top-1/2 -translate-y-1/2 bg-secondary text-secondary-foreground border-border hover:bg-muted">
-                    <Menu className="h-6 w-6" />
-                    <span className="sr-only">Toggle navigation menu</span>
-                  </Button>
-                </SheetTrigger>
-                <SheetContent side="right" className="bg-card border-border">
-                  <div className="flex flex-col space-y-4 pt-8">
-                    {navLinks}
-                  </div>
-                </SheetContent>
-              </Sheet>
-            </>
-          ) : (
-            // Desktop: Hanya tautan navigasi di tengah
-            <div className="flex justify-center items-center h-full">
-              <div className="flex justify-center items-center bg-card px-8 py-3 rounded-full shadow-md z-10">
-                <div className="flex space-x-4">
+    <nav className="w-full fixed top-0 left-0 z-50">
+      {isMobile ? (
+        // Mobile: Logo di kiri, hamburger di kanan, full-width primary bar
+        <div className="relative bg-primary rounded-b-3xl h-20 flex items-center justify-center shadow-lg">
+          <div className="container mx-auto h-full relative">
+            <div className="absolute left-4 top-1/2 -translate-y-1/2 text-2xl font-bold text-primary-foreground">Rifal Azhar Permana</div>
+            <Sheet>
+              <SheetTrigger asChild>
+                <Button variant="outline" size="icon" className="absolute right-4 top-1/2 -translate-y-1/2 bg-secondary text-secondary-foreground border-border hover:bg-muted">
+                  <Menu className="h-6 w-6" />
+                  <span className="sr-only">Toggle navigation menu</span>
+                </Button>
+              </SheetTrigger>
+              <SheetContent side="right" className="bg-card border-border">
+                <div className="flex flex-col space-y-4 pt-8">
                   {navLinks}
                 </div>
-              </div>
-            </div>
-          )}
+              </SheetContent>
+            </Sheet>
+          </div>
         </div>
-      </div>
+      ) : (
+        // Desktop: Single, centered, rounded bar
+        <div className="flex justify-center pt-6">
+          <div className="flex items-center bg-card px-8 py-3 rounded-full shadow-lg border border-border">
+            <div className="flex space-x-4">
+              {navLinks}
+            </div>
+          </div>
+        </div>
+      )}
     </nav>
   );
 };
