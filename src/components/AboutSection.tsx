@@ -2,15 +2,16 @@ import React from "react";
 import { Separator } from "@/components/ui/separator";
 import { Briefcase, GraduationCap, HeartHandshake } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import SectionHeader from "./SectionHeader"; // Import SectionHeader
 
 const AboutSection = () => {
   return (
     <section id="about" className="py-20 bg-secondary">
       <div className="container mx-auto px-4 text-center">
-        <h2 className="text-4xl font-bold text-primary mb-4">About Me</h2>
-        <p className="text-lg text-muted-foreground mb-12">
-          Learn more about my journey and what drives me
-        </p>
+        <SectionHeader
+          title="About Me"
+          description="Learn more about my journey and what drives me"
+        />
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 items-start mt-12 max-w-6xl mx-auto">
           {/* Left Column: Profile Card */}
