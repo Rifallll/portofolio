@@ -4,66 +4,59 @@
 
 @layer base {
   :root {
-    --background: 0 0% 100%; /* Pure White */
-    --foreground: 220 10% 10%; /* Very Dark Gray */
+    --background: 40 20% 95%; /* Light creamy background */
+    --foreground: 220 10% 10%; /* Very Dark Gray for text */
 
-    --card: 0 0% 100%; /* White background for cards */
-    --card-foreground: 220 10% 10%; /* Very Dark Gray for text on white cards */
+    --card: 40 20% 98%; /* Slightly lighter card background */
+    --card-foreground: 220 10% 10%; /* Very Dark Gray for text on cards */
 
     --popover: 0 0% 100%; /* White popover background */
     --popover-foreground: 220 10% 10%; /* Very Dark Gray for text on white popover */
 
-    --primary: 220 70% 40%; /* Deep Sapphire Blue */
-    --primary-foreground: 0 0% 100%; /* White */
+    --primary: 220 10% 10%; /* Dark color for main headings/buttons */
+    --primary-foreground: 0 0% 100%; /* White for text on primary */
 
-    --secondary: 220 12% 95%; /* Light Cool Gray for subtle elements */
+    --secondary: 220 12% 90%; /* Light Gray for subtle elements */
     --secondary-foreground: 220 10% 20%; /* Darker Gray for text on light secondary */
 
-    --muted: 220 12% 95%; /* Light Cool Gray muted background */
+    --muted: 220 12% 90%; /* Light Gray muted background */
     --muted-foreground: 220 10% 40%; /* Medium Gray for muted text */
 
-    --accent: 220 70% 40%; /* Using primary as accent for consistency */
+    --accent: 220 10% 10%; /* Using primary as accent for consistency */
     --accent-foreground: 0 0% 100%; /* White contrast for accent */
 
     --destructive: 0 72.2% 50.6%;
     --destructive-foreground: 60 9.1% 92.1%;
 
-    --border: 220 12% 85%; /* Medium Light Gray border color */
+    --border: 220 12% 80%; /* Medium Light Gray border color */
     --input: 220 12% 90%; /* Light Gray input background */
-    --ring: 220 70% 40%; /* Primary color for ring */
+    --ring: 220 10% 10%; /* Primary color for ring */
 
     --radius: 0.5rem;
   }
 
-  .dark {
-    --background: 220 20% 5%; /* Even deeper charcoal, almost black */
-    --foreground: 220 12% 95%; /* Slightly brighter light gray for better contrast */
-
-    --card: 220 20% 8%; /* Slightly lighter than background for cards */
-    --card-foreground: 220 12% 95%; /* Light Gray for text on charcoal cards */
-
-    --popover: 220 20% 8%; /* Slightly lighter charcoal popover background */
-    --popover-foreground: 220 12% 95%; /* Light Gray for text on charcoal popover */
-
-    --primary: 40 80% 60%; /* Rich Gold/Amber */
-    --primary-foreground: 220 20% 5%; /* Match the new background */
-
-    --secondary: 220 20% 10%; /* Slightly lighter than card for subtle elements */
-    --secondary-foreground: 220 12% 85%; /* Lighter Gray for text on secondary */
-
-    --muted: 220 20% 10%; /* Slightly lighter charcoal muted background */
-    --muted-foreground: 220 12% 65%; /* Medium Gray for muted text */
-
-    --accent: 40 80% 60%; /* Using primary as accent for consistency */
-    --accent-foreground: 220 20% 5%; /* Match the new background contrast for accent */
-
+  /* Removing dark theme for now as the image only shows a light theme */
+  /* .dark {
+    --background: 220 20% 5%;
+    --foreground: 220 12% 95%;
+    --card: 220 20% 8%;
+    --card-foreground: 220 12% 95%;
+    --popover: 220 20% 8%;
+    --popover-foreground: 220 12% 95%;
+    --primary: 40 80% 60%;
+    --primary-foreground: 220 20% 5%;
+    --secondary: 220 20% 10%;
+    --secondary-foreground: 220 12% 85%;
+    --muted: 220 20% 10%;
+    --muted-foreground: 220 12% 65%;
+    --accent: 40 80% 60%;
+    --accent-foreground: 220 20% 5%;
     --destructive: 0 72.2% 50.6%;
     --destructive-foreground: 60 9.1% 92.1%;
-
-    --border: 220 20% 18%; /* Darker Gray Border */
-    --input: 220 20% 15%; /* Darker Gray input background */
-    --ring: 40 80% 60%; /* Primary color for ring */
-  }
+    --border: 220 20% 18%;
+    --input: 220 20% 15%;
+    --ring: 40 80% 60%;
+  } */
 }
 
 @layer base {
