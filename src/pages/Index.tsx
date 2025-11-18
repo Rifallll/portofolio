@@ -1,7 +1,7 @@
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
 import FeaturesSection from "@/components/FeaturesSection";
-import TestimonialsSection from "@/components/TestimonialsSection"; // Import the new component
+// import TestimonialsSection from "@/components/TestimonialsSection"; // Remove the import
 
 const Index = () => {
   return (
@@ -9,7 +9,7 @@ const Index = () => {
       <Navbar />
       <HeroSection />
       <FeaturesSection />
-      <TestimonialsSection /> {/* Add the TestimonialsSection here */}
+      {/* Remove the TestimonialsSection here */}
     </div>
   );
 };
