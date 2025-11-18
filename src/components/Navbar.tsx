@@ -56,27 +56,12 @@ const Navbar = () => {
               </Sheet>
             </>
           ) : (
-            // Desktop: Tata letak kompleks dengan "tab"
-            <div className="grid grid-cols-[auto_1fr_auto] items-center h-full gap-4">
-              {/* "Tab" kiri untuk logo */}
-              <div className="bg-card text-foreground px-8 py-3 rounded-full shadow-md z-10 -ml-4">
-                <span className="text-xl font-bold">Rifal Azhar Permana</span>
-              </div>
-
-              {/* Tautan navigasi tengah */}
+            // Desktop: Hanya tautan navigasi di tengah
+            <div className="flex justify-center items-center h-full">
               <div className="flex justify-center items-center bg-card px-8 py-3 rounded-full shadow-md z-10">
                 <div className="flex space-x-4">
                   {navLinks}
                 </div>
-              </div>
-
-              {/* "Tab" kanan untuk tombol */}
-              <div className="bg-card text-foreground px-8 py-3 rounded-full shadow-md z-10 -mr-4">
-                <ResumeModal>
-                  <Button variant="outline" className="border-none bg-transparent text-foreground hover:bg-muted">
-                    Download CV
-                  </Button>
-                </ResumeModal>
               </div>
             </div>
           )}
