@@ -12,18 +12,18 @@ interface SkillItemProps {
 
 const SkillItem: React.FC<SkillItemProps> = ({ title, proficiency, level, icon: Icon }) => {
   return (
-    <Card className="w-full max-w-sm shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2 hover:scale-[1.02]">
+    <Card className="w-full max-w-sm shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2 hover:scale-[1.02] bg-card border border-border">
       <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2"> {/* Adjust header for icon */}
-        <CardTitle className="text-2xl font-semibold text-gray-900">{title}</CardTitle>
-        <Icon className="h-6 w-6 text-gray-700" /> {/* Render the icon */}
+        <CardTitle className="text-2xl font-semibold text-foreground">{title}</CardTitle>
+        <Icon className="h-6 w-6 text-primary" /> {/* Render the icon */}
       </CardHeader>
       <CardContent>
         <div className="flex justify-between items-baseline mb-2">
-          <span className="text-sm text-gray-600">PROFICIENCY LEVEL</span>
-          <span className="text-lg font-bold text-gray-900">{proficiency}% {level}</span>
+          <span className="text-sm text-muted-foreground">PROFICIENCY LEVEL</span>
+          <span className="text-lg font-bold text-foreground">{proficiency}% {level}</span>
         </div>
-        <Progress value={proficiency} className="h-2 bg-gray-200" /> {/* Menghapus indicatorClassName */}
-        <div className="relative w-full mt-2 flex justify-between text-xs text-gray-500"> {/* Simplify labels */}
+        <Progress value={proficiency} className="h-2 bg-muted" indicatorClassName="bg-primary" /> {/* Menambahkan indicatorClassName */}
+        <div className="relative w-full mt-2 flex justify-between text-xs text-muted-foreground"> {/* Simplify labels */}
           <span>Beginner</span>
           <span>Expert</span>
         </div>

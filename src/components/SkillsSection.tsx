@@ -25,10 +25,10 @@ const SkillsSection = () => {
   const [emblaRef] = useEmblaCarousel({ loop: true, align: 'center' });
 
   return (
-    <section id="skills" className="py-20 bg-gray-50">
+    <section id="skills" className="py-20 bg-background">
       <div className="container mx-auto px-4 text-center">
-        <h2 className="text-4xl font-bold text-gray-900 mb-4">Skills & Expertise</h2>
-        <p className="text-lg text-gray-600 mb-12">
+        <h2 className="text-4xl font-bold text-primary mb-4">Skills & Expertise</h2>
+        <p className="text-lg text-muted-foreground mb-12">
           The skills and tools I use to bring ideas to life
         </p>
 

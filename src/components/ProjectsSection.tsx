@@ -105,10 +105,10 @@ const ProjectsSection = () => {
   }, [filteredProjects, emblaApi]);
 
   return (
-    <section id="projects" className="py-20 bg-white">
+    <section id="projects" className="py-20 bg-background">
       <div className="container mx-auto px-4 text-center">
-        <h2 className="text-4xl font-bold text-gray-900 mb-4">Featured Projects</h2>
-        <p className="text-lg text-gray-600 mb-8">
+        <h2 className="text-4xl font-bold text-primary mb-4">Featured Projects</h2>
+        <p className="text-lg text-muted-foreground mb-8">
           A selection of my best work showcasing different technologies and approaches
         </p>
 
@@ -118,7 +118,7 @@ const ProjectsSection = () => {
               key={category}
               variant={activeCategory === category ? "default" : "outline"}
               onClick={() => setActiveCategory(category)}
-              className="px-4 py-2 rounded-full text-sm md:text-base"
+              className={`px-4 py-2 rounded-full text-sm md:text-base ${activeCategory === category ? "bg-primary text-primary-foreground hover:bg-primary/90" : "bg-secondary text-secondary-foreground border-border hover:bg-muted"}`}
             >
               {category}
             </Button>
@@ -143,7 +143,7 @@ const ProjectsSection = () => {
             disabled={prevBtnDisabled}
             variant="outline"
             size="icon"
-            className="absolute -left-4 top-1/2 -translate-y-1/2 bg-white rounded-full shadow-md hover:shadow-lg transition-all duration-200 z-10 md:-left-8"
+            className="absolute -left-4 top-1/2 -translate-y-1/2 bg-card text-foreground border-border rounded-full shadow-md hover:shadow-lg transition-all duration-200 z-10 md:-left-8 hover:bg-muted"
           >
             <ArrowLeft className="h-5 w-5" />
             <span className="sr-only">Previous project</span>
@@ -153,7 +153,7 @@ const ProjectsSection = () => {
             disabled={nextBtnDisabled}
             variant="outline"
             size="icon"
-            className="absolute -right-4 top-1/2 -translate-y-1/2 bg-white rounded-full shadow-md hover:shadow-lg transition-all duration-200 z-10 md:-right-8"
+            className="absolute -right-4 top-1/2 -translate-y-1/2 bg-card text-foreground border-border rounded-full shadow-md hover:shadow-lg transition-all duration-200 z-10 md:-right-8 hover:bg-muted"
           >
             <ArrowRight className="h-5 w-5" />
             <span className="sr-only">Next project</span>

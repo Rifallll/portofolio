@@ -21,20 +21,20 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
   codeLink,
 }) => {
   return (
-    <Card className="w-full shadow-lg hover:shadow-xl flex flex-col justify-between h-full min-h-[250px]">
+    <Card className="w-full shadow-lg hover:shadow-xl flex flex-col justify-between h-full min-h-[250px] bg-card border border-border">
       <CardHeader className="pr-4"> {/* Menambahkan pr-4 di sini */}
         <div className="flex justify-between items-start mb-2">
-          <CardTitle className="text-xl font-semibold text-gray-900">{title}</CardTitle>
-          <Stamp className="h-5 w-5 text-gray-900" />
+          <CardTitle className="text-xl font-semibold text-foreground">{title}</CardTitle>
+          <Stamp className="h-5 w-5 text-primary" />
         </div>
-        <CardDescription className="text-gray-600 text-left mb-4">{description}</CardDescription>
+        <CardDescription className="text-muted-foreground text-left mb-4">{description}</CardDescription>
       </CardHeader>
       <CardContent className="flex flex-col">
         <div className="flex flex-wrap gap-2 mb-4">
           {technologies.map((tech, index) => (
             <span
               key={index}
-              className="bg-gray-100 text-gray-800 text-xs font-medium px-2.5 py-0.5 rounded-full"
+              className="bg-muted text-muted-foreground text-xs font-medium px-2.5 py-0.5 rounded-full"
             >
               {tech}
             </span>
@@ -42,7 +42,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
         </div>
         <div className="flex space-x-2">
           {liveDemoLink && (
-            <Button variant="outline" className="flex items-center space-x-1" asChild>
+            <Button variant="outline" className="flex items-center space-x-1 border-border text-foreground hover:bg-muted" asChild>
               <a href={liveDemoLink} target="_blank" rel="noopener noreferrer">
                 <ExternalLink className="h-4 w-4" />
                 <span>Live Demo</span>
@@ -50,7 +50,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
             </Button>
           )}
           {codeLink && (
-            <Button variant="outline" className="flex items-center space-x-1" asChild>
+            <Button variant="outline" className="flex items-center space-x-1 border-border text-foreground hover:bg-muted" asChild>
               <a href={codeLink} target="_blank" rel="noopener noreferrer">
                 <Github className="h-4 w-4" />
                 <span>Code</span>

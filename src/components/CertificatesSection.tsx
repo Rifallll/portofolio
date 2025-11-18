@@ -71,10 +71,10 @@ const CertificatesSection = () => {
   };
 
   return (
-    <section id="certificates" className="py-20 bg-white">
+    <section id="certificates" className="py-20 bg-secondary">
       <div className="container mx-auto px-4 text-center">
-        <h2 className="text-4xl font-bold text-gray-900 mb-4">Certifications</h2>
-        <p className="text-lg text-gray-600 mb-12">
+        <h2 className="text-4xl font-bold text-primary mb-4">Certifications</h2>
+        <p className="text-lg text-muted-foreground mb-12">
           Certifications I have obtained to enhance my skills
         </p>
 
@@ -87,7 +87,7 @@ const CertificatesSection = () => {
         {certificatesData.length > 6 && ( // Hanya tampilkan tombol jika ada lebih dari 6 sertifikasi
           <Button
             onClick={handleToggleShowAll}
-            className="mt-12 bg-gray-900 text-white hover:bg-gray-700 px-8 py-4 text-lg"
+            className="mt-12 bg-primary text-primary-foreground hover:bg-primary/90 px-8 py-4 text-lg"
           >
             {showAllCertificates ? "Show Less" : "View All Certificates"}
           </Button>
