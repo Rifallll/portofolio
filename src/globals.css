@@ -36,32 +36,32 @@
   }
 
   .dark {
-    --background: 220 20% 10%; /* Deep Charcoal */
-    --foreground: 220 12% 90%; /* Light Gray */
+    --background: 220 20% 5%; /* Even deeper charcoal, almost black */
+    --foreground: 220 12% 95%; /* Slightly brighter light gray for better contrast */
 
-    --card: 220 20% 12%; /* Slightly Lighter Charcoal for cards */
-    --card-foreground: 220 12% 90%; /* Light Gray for text on charcoal cards */
+    --card: 220 20% 8%; /* Slightly lighter than background for cards */
+    --card-foreground: 220 12% 95%; /* Light Gray for text on charcoal cards */
 
-    --popover: 220 20% 12%; /* Slightly Lighter Charcoal popover background */
-    --popover-foreground: 220 12% 90%; /* Light Gray for text on charcoal popover */
+    --popover: 220 20% 8%; /* Slightly lighter charcoal popover background */
+    --popover-foreground: 220 12% 95%; /* Light Gray for text on charcoal popover */
 
     --primary: 40 80% 60%; /* Rich Gold/Amber */
-    --primary-foreground: 220 20% 10%; /* Deep Charcoal */
+    --primary-foreground: 220 20% 5%; /* Match the new background */
 
-    --secondary: 220 20% 15%; /* Slightly Lighter Charcoal for subtle elements */
-    --secondary-foreground: 220 12% 80%; /* Lighter Gray for text on secondary */
+    --secondary: 220 20% 10%; /* Slightly lighter than card for subtle elements */
+    --secondary-foreground: 220 12% 85%; /* Lighter Gray for text on secondary */
 
-    --muted: 220 20% 15%; /* Slightly Lighter Charcoal muted background */
-    --muted-foreground: 220 12% 60%; /* Medium Gray for muted text */
+    --muted: 220 20% 10%; /* Slightly lighter charcoal muted background */
+    --muted-foreground: 220 12% 65%; /* Medium Gray for muted text */
 
     --accent: 40 80% 60%; /* Using primary as accent for consistency */
-    --accent-foreground: 220 20% 10%; /* Deep Charcoal contrast for accent */
+    --accent-foreground: 220 20% 5%; /* Match the new background contrast for accent */
 
     --destructive: 0 72.2% 50.6%;
     --destructive-foreground: 60 9.1% 92.1%;
 
-    --border: 220 20% 25%; /* Darker Gray Border */
-    --input: 220 20% 20%; /* Darker Gray input background */
+    --border: 220 20% 18%; /* Darker Gray Border */
+    --input: 220 20% 15%; /* Darker Gray input background */
     --ring: 40 80% 60%; /* Primary color for ring */
   }
 }
