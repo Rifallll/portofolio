@@ -16,17 +16,19 @@ const AboutSection = () => {
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mt-12 max-w-6xl mx-auto">
           {/* Left Column: Profile Card (simplified as per image) */}
-          <Card className="p-6 max-w-sm mx-auto shadow-xl rounded-2xl bg-card border-2 border-primary/30 flex flex-col items-center transition-all duration-300 hover:shadow-2xl hover:-translate-y-1">
+          <Card className="p-6 max-w-sm mx-auto shadow-xl rounded-2xl bg-card border-2 border-primary/30 flex flex-row items-start gap-6 transition-all duration-300 hover:shadow-2xl hover:-translate-y-1">
             <img
               src="/profile-image-new.jpg"
               alt="Rifal Azhar Permana"
-              className="w-28 h-28 rounded-lg object-cover mb-4 border-4 border-primary/30 shadow-md"
+              className="w-24 h-24 rounded-full object-cover border-4 border-primary/30 shadow-md flex-shrink-0"
             />
-            <h3 className="text-3xl font-bold text-foreground mb-1">Rifal Azhar Permana</h3>
-            <p className="text-xl text-muted-foreground mb-4">Web Developer</p>
-            <p className="text-base text-muted-foreground text-center max-w-xs">
-              Experienced in building responsive, high-performance, and user-friendly web applications.
-            </p>
+            <div className="flex flex-col items-start text-left">
+              <h3 className="text-2xl font-bold text-foreground mb-1">Rifal Azhar Permana</h3>
+              <p className="text-lg text-muted-foreground mb-3">Web Developer</p>
+              <p className="text-sm text-muted-foreground">
+                Experienced in building responsive, high-performance, and user-friendly web applications.
+              </p>
+            </div>
           </Card>
 
           {/* Right Column: My Story and Feature Cards */}
