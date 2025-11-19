@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Download } from "lucide-react";
 import ResumeModal from "./ResumeModal";
 import { useSmoothScroll } from "@/hooks/use-smooth-scroll";
-import ScrollDownIndicator from "./ScrollDownIndicator"; // Import komponen baru
+import ScrollDownIndicator from "./ScrollDownIndicator";
 
 const HeroSection = () => {
   const scrollToSection = useSmoothScroll();
@@ -13,20 +13,25 @@ const HeroSection = () => {
   return (
     <section
       id="home"
-      className="min-h-screen flex flex-col lg:flex-row items-center justify-center text-center lg:text-left pt-24 relative overflow-hidden bg-gradient-to-br from-background to-secondary" // Menambahkan gradien latar belakang
+      className="min-h-screen flex flex-col lg:flex-row items-center justify-center text-center lg:text-left pt-24 relative overflow-hidden bg-gradient-to-br from-background to-secondary"
     >
-      {/* Animated background elements */}
+      {/* Animated background elements - more of them with varied animations */}
       <div className="absolute top-1/4 left-1/4 w-32 h-32 bg-primary/10 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-[float_6s_ease-in-out_infinite] z-0"></div>
       <div className="absolute bottom-1/4 right-1/4 w-48 h-48 bg-accent/10 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-[float_8s_ease-in-out_infinite_reverse] z-0"></div>
       <div className="absolute top-1/2 left-1/2 w-24 h-24 bg-secondary-foreground/10 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-[float_7s_ease-in-out_infinite] z-0"></div>
+      <div className="absolute top-1/3 right-1/3 w-20 h-20 bg-primary/15 rounded-full mix-blend-multiply filter blur-xl opacity-60 animate-[float_5s_ease-in-out_infinite_reverse] z-0"></div>
+      <div className="absolute bottom-1/3 left-1/3 w-40 h-40 bg-accent/15 rounded-full mix-blend-multiply filter blur-xl opacity-60 animate-[float_9s_ease-in-out_infinite] z-0"></div>
+      <div className="absolute top-1/5 left-1/5 w-28 h-28 bg-secondary-foreground/15 rounded-full mix-blend-multiply filter blur-xl opacity-50 animate-[float_7s_ease-in-out_infinite_reverse] z-0"></div>
+      <div className="absolute bottom-1/5 right-1/5 w-36 h-36 bg-primary/10 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-[float_6s_ease-in-out_infinite] z-0"></div>
+
 
       {/* Konten teks dan tombol */}
       <div className="container mx-auto px-4 relative z-10 flex flex-col lg:flex-row items-center lg:justify-between max-w-6xl h-full lg:gap-x-24">
         <div className="flex flex-col items-center lg:items-start lg:w-[60%] mb-12 lg:mb-0">
-          <h1 className="text-4xl md:text-5xl font-extrabold text-foreground mb-4 leading-snug"> {/* Ukuran judul disesuaikan */}
+          <h1 className="text-4xl md:text-5xl font-extrabold text-foreground mb-4 leading-snug">
             Hi, I'm <span className="text-primary">Rifal Azhar Permana</span>
           </h1>
-          <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-3xl"> {/* Ukuran deskripsi disesuaikan */}
+          <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-3xl">
             A passionate Web Developer dedicated to building responsive, high-performance, and user-friendly web applications.
           </p>
           <div className="flex flex-col sm:flex-row justify-center lg:justify-start items-center gap-4">
@@ -57,7 +62,7 @@ const HeroSection = () => {
           />
         </div>
       </div>
-      <ScrollDownIndicator targetSectionId="about" /> {/* Menambahkan indikator gulir ke bawah */}
+      <ScrollDownIndicator targetSectionId="about" />
     </section>
   );
 };
