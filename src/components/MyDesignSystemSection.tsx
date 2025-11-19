@@ -8,7 +8,7 @@ import { ArrowRight } from "lucide-react";
 
 const MyDesignSystemSection = () => {
   return (
-    <section id="my-design-system" className="py-20 bg-background">
+    <section id="my-design-system" className="py-20 bg-secondary"> {/* Changed from bg-background to bg-secondary */}
       <div className="container mx-auto px-4 max-w-screen-xl">
         <div className="flex flex-col md:flex-row items-center justify-between gap-16">
           {/* Left Column: Text Content */}
