@@ -20,7 +20,7 @@ const AboutSection = () => {
             <img
               src="/profile-image-new.jpg"
               alt="Rifal Azhar Permana"
-              className="w-64 h-64 rounded-lg object-cover border-4 border-primary/30 shadow-md"
+              className="w-48 h-48 rounded-lg object-cover border-4 border-primary/30 shadow-md"
             />
             <div className="flex flex-col items-center text-center">
               <h3 className="text-2xl font-bold text-foreground mb-1">Rifal Azhar Permana</h3>
