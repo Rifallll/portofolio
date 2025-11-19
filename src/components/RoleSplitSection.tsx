@@ -27,7 +27,7 @@ const RoleSplitSection = () => {
   };
 
   return (
-    <section id="role-split" className="py-20 bg-background">
+    <section id="role-split" className="py-20 bg-secondary"> {/* Changed to bg-secondary */}
       <div className="container mx-auto px-4 max-w-screen-xl">
         <h2 className="text-4xl font-bold text-foreground text-center mb-12">My Dual Expertise</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 items-center">

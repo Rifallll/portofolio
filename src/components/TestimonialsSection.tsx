@@ -65,7 +65,7 @@ const TestimonialsSection = () => {
   }, [emblaApi, onSelect]);
 
   return (
-    <section id="testimonials" className="py-20 bg-secondary"> {/* Changed from bg-background to bg-secondary */}
+    <section id="testimonials" className="py-20 bg-background"> {/* Changed to bg-background */}
       <div className="container mx-auto px-4 text-center max-w-screen-xl">
         <h2 className="text-4xl font-bold text-primary mb-4">What People Say</h2>
         <p className="text-lg text-muted-foreground mb-12">

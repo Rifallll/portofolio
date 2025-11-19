@@ -12,7 +12,7 @@ const RandomFactsSection = () => {
   };
 
   return (
-    <section id="random-facts" className="py-20 bg-background"> {/* Changed from bg-secondary to bg-background */}
+    <section id="random-facts" className="py-20 bg-secondary"> {/* Changed to bg-secondary */}
       <div className="container mx-auto px-4 max-w-screen-xl">
         <div className="flex flex-col md:flex-row items-center gap-16">
           {/* Image */}
