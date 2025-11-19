@@ -14,9 +14,9 @@ const AboutSection = () => {
           description="Learn more about my journey and what drives me"
         />
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mt-12 max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 mt-12 max-w-6xl mx-auto">
           {/* Left Column: Profile Card */}
-          <Card className="p-6 max-w-sm mx-auto shadow-xl rounded-2xl bg-card border-2 border-primary/30 flex flex-col items-center text-center gap-4 transition-all duration-300 hover:shadow-2xl hover:-translate-y-1">
+          <Card className="p-6 lg:col-span-2 shadow-xl rounded-2xl bg-card border-2 border-primary/30 flex flex-col items-center text-center gap-4 transition-all duration-300 hover:shadow-2xl hover:-translate-y-1">
             <img
               src="/profile-image-new.jpg"
               alt="Rifal Azhar Permana"
@@ -32,7 +32,7 @@ const AboutSection = () => {
           </Card>
 
           {/* Right Column: My Story and Feature Cards */}
-          <div className="space-y-8">
+          <div className="space-y-8 lg:col-span-3">
             {/* My Story Card */}
             <Card className="p-8 shadow-lg rounded-xl bg-card border border-border text-left">
               <CardHeader className="p-0 mb-4">
