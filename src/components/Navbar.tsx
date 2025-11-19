@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Menu, Download } from "lucide-react";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { useSmoothScroll } from "@/hooks/use-smooth-scroll";
+import { Link, NavLink } from "react-router-dom"; // Import Link and NavLink
 import ResumeModal from "./ResumeModal";
 import {
   NavigationMenu,
@@ -16,22 +16,21 @@ import {
 
 const Navbar = () => {
   const isMobile = useIsMobile();
-  const scrollToSection = useSmoothScroll();
 
   const navItems = [
-    { name: "HOME", id: "home" },
-    { name: "ABOUT", id: "about" },
-    { name: "SKILLS", id: "skills" },
-    { name: "PROJECTS", id: "projects" },
-    { name: "CERTIFICATES", id: "certificates" },
-    { name: "CONTACT", id: "contact" },
+    { name: "HOME", path: "/" },
+    { name: "ABOUT", path: "/about" },
+    { name: "SKILLS", path: "/skills" },
+    { name: "PROJECTS", path: "/projects" },
+    { name: "CERTIFICATES", path: "/certificates" },
+    { name: "CONTACT", path: "/contact" },
   ];
 
   return (
     <nav className="w-full fixed top-0 left-0 z-50 bg-background/80 backdrop-blur-sm shadow-sm">
       <div className="container mx-auto flex items-center justify-between py-4">
         {/* Logo/Name */}
-        <span className="text-xl font-bold text-foreground">Rifal Azhar Permana</span>
+        <Link to="/" className="text-xl font-bold text-foreground">Rifal Azhar Permana</Link>
 
         {isMobile ? (
           // Mobile Navigation
@@ -46,12 +45,14 @@ const Navbar = () => {
               <div className="flex flex-col space-y-4 pt-8">
                 {navItems.map((item) => (
                   <Button
-                    key={item.id}
+                    key={item.path}
                     variant="ghost"
-                    onClick={() => scrollToSection(item.id)}
+                    asChild
                     className="text-foreground hover:text-primary font-medium transition-colors duration-200 px-4 py-2 rounded-md justify-start"
                   >
-                    {item.name}
+                    <NavLink to={item.path} className={({ isActive }) => isActive ? "text-primary" : ""}>
+                      {item.name}
+                    </NavLink>
                   </Button>
                 ))}
                 <ResumeModal>
@@ -72,13 +73,18 @@ const Navbar = () => {
             <NavigationMenu>
               <NavigationMenuList className="flex space-x-1"> {/* Reduced space-x for a tighter look */}
                 {navItems.map((item) => (
-                  <NavigationMenuItem key={item.id}>
-                    <NavigationMenuLink
-                      onClick={() => scrollToSection(item.id)}
-                      // Adjusted classes for a cleaner, text-like appearance
-                      className="group inline-flex h-9 w-max items-center justify-center px-4 py-2 text-sm font-medium transition-colors hover:text-primary focus:text-primary focus:outline-none disabled:pointer-events-none disabled:opacity-50 text-foreground"
-                    >
-                      {item.name}
+                  <NavigationMenuItem key={item.path}>
+                    <NavigationMenuLink asChild>
+                      <NavLink
+                        to={item.path}
+                        className={({ isActive }) =>
+                          `group inline-flex h-9 w-max items-center justify-center px-4 py-2 text-sm font-medium transition-colors focus:outline-none disabled:pointer-events-none disabled:opacity-50 ${
+                            isActive ? "text-primary" : "text-foreground hover:text-primary"
+                          }`
+                        }
+                      >
+                        {item.name}
+                      </NavLink>
                     </NavigationMenuLink>
                   </NavigationMenuItem>
                 ))}

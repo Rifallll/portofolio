@@ -4,12 +4,10 @@ import React from "react";
 import { Button } from "@/components/ui/button";
 import { Download } from "lucide-react";
 import ResumeModal from "./ResumeModal";
-import { useSmoothScroll } from "@/hooks/use-smooth-scroll";
+import { Link } from "react-router-dom"; // Import Link
 import ScrollDownIndicator from "./ScrollDownIndicator";
 
 const HeroSection = () => {
-  const scrollToSection = useSmoothScroll();
-
   return (
     <section
       id="home"
@@ -29,10 +27,10 @@ const HeroSection = () => {
           </p>
           <div className="flex flex-col sm:flex-row justify-center lg:justify-center items-center gap-4">
             <Button
-              onClick={() => scrollToSection("projects")}
+              asChild // Use asChild to pass props to the Link component
               className="bg-primary text-primary-foreground hover:bg-primary/90 px-8 py-3 text-lg rounded-full shadow-lg transition-all duration-300 hover:scale-105"
             >
-              View My Work
+              <Link to="/projects">View My Work</Link>
             </Button>
             <ResumeModal>
               <Button
@@ -55,7 +53,7 @@ const HeroSection = () => {
           />
         </div>
       </div>
-      <ScrollDownIndicator targetSectionId="about" />
+      <ScrollDownIndicator targetSectionId="/about" /> {/* Update targetSectionId to path */}
     </section>
   );
 };
