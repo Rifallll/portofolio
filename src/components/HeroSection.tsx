@@ -16,7 +16,7 @@ const HeroSection = () => {
       className="min-h-screen flex flex-col lg:flex-row items-center justify-center text-center lg:text-left pt-24 relative overflow-hidden bg-gradient-to-br from-background to-secondary"
     >
       {/* Large pulsating circle behind the image */}
-      <div className="absolute right-0 top-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-primary/20 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-[pulse-opacity_4s_ease-in-out_infinite] z-0 lg:w-[700px] lg:h-[700px] lg:right-[-150px]"></div>
+      <div className="absolute right-0 top-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/20 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-[pulse-opacity_4s_ease-in-out_infinite] z-0 lg:w-[800px] lg:h-[800px] lg:right-[-200px]"></div>
 
       {/* Konten teks dan tombol */}
       <div className="container mx-auto px-4 relative z-10 flex flex-col lg:flex-row items-center lg:justify-between max-w-6xl h-full lg:gap-x-24">
