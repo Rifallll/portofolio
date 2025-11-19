@@ -26,7 +26,7 @@ const AboutSection = () => {
               <h3 className="text-2xl font-bold text-foreground mb-1">Rifal Azhar Permana</h3>
               <p className="text-lg text-muted-foreground mb-3">Web Developer</p>
               <p className="text-sm text-muted-foreground">
-                Experienced in building responsive, high-performance, and user-friendly web applications.
+                Experienced in building responsive, high-performance, and user-friendly web applications. I specialize in transforming complex requirements into scalable solutions using modern web technologies, with a strong focus on code quality, security, and optimal user experience.
               </p>
             </div>
           </Card>
