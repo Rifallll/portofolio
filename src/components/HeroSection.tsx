@@ -12,12 +12,14 @@ const HeroSection = () => {
       id="home"
       className="min-h-screen flex flex-col items-center justify-center text-center pt-24 pb-12 relative overflow-hidden bg-background"
     >
+      {/* Gambar yang akan tampil full width */}
+      <img
+        src="/s.png"
+        alt="Rifal Azhar Permana - Web Developer"
+        className="w-full h-auto mb-10 rounded-lg shadow-xl object-cover"
+      />
+      {/* Konten teks dan tombol tetap di dalam container */}
       <div className="container mx-auto px-4 relative z-10 flex flex-col items-center">
-        <img
-          src="/s.png"
-          alt="Rifal Azhar Permana - Web Developer"
-          className="max-w-full h-auto mb-10 rounded-lg shadow-xl"
-        />
         <h1 className="text-5xl font-extrabold text-foreground mb-4 leading-tight">
           Hi, I'm <span className="text-primary">Rifal Azhar Permana</span>
         </h1>
