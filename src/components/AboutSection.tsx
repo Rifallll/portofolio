@@ -16,7 +16,7 @@ const AboutSection = () => {
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mt-12 max-w-6xl mx-auto">
           {/* Left Column: Profile Card (simplified as per image) */}
-          <Card className="p-8 shadow-xl rounded-2xl bg-card border-2 border-primary/30 flex flex-col items-center transition-all duration-300 hover:shadow-2xl hover:-translate-y-1">
+          <Card className="p-6 max-w-sm mx-auto shadow-xl rounded-2xl bg-card border-2 border-primary/30 flex flex-col items-center transition-all duration-300 hover:shadow-2xl hover:-translate-y-1">
             <img
               src="/profile-image-new.jpg"
               alt="Rifal Azhar Permana"
@@ -24,7 +24,7 @@ const AboutSection = () => {
             />
             <h3 className="text-3xl font-bold text-foreground mb-1">Rifal Azhar Permana</h3>
             <p className="text-xl text-muted-foreground mb-4">Web Developer</p>
-            <p className="text-base text-muted-foreground text-center max-w-sm">
+            <p className="text-base text-muted-foreground text-center max-w-xs">
               Experienced in building responsive, high-performance, and user-friendly web applications.
             </p>
           </Card>
