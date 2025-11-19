@@ -5,7 +5,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import SectionHeader from "./SectionHeader";
 import { MapPin, Phone, Mail, Instagram, Linkedin, GraduationCap, Code, Lightbulb, Wrench, Globe } from "lucide-react";
 
-const AboutSection: React.FC = () => {
+const AboutSection = () => { // Dikembalikan ke tanpa React.FC
   return (
     <section id="about" className="py-20 bg-secondary">
       <div className="container mx-auto px-4 text-center">
@@ -23,7 +23,7 @@ const AboutSection: React.FC = () => {
               className="w-24 h-24 rounded-full object-cover mb-4 border-4 border-primary/20"
             />
             <h3 className="text-3xl font-bold text-foreground mb-1">Rifal Azhar Permana</h3>
-            <p className="text-xl text-muted-foreground mb-6">Web Developer</p> {/* Dikembalikan ke mb-6 */}
+            <p className="text-xl text-muted-foreground mb-6">Web Developer</p>
 
             <div className="space-y-3 w-full text-left">
               <div className="flex items-center space-x-4">
