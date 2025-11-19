@@ -4,6 +4,8 @@ import React from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import SectionHeader from "./SectionHeader";
 import { Briefcase, GraduationCap, HeartHandshake } from "lucide-react";
+import WhatIDoSection from "./WhatIDoSection"; // Import the new component
+import MyJourneySection from "./MyJourneySection"; // Import the new component
 
 const AboutSection = () => {
   return (
@@ -26,23 +28,15 @@ const AboutSection = () => {
               <h3 className="text-2xl font-bold text-foreground mb-1">Rifal Azhar Permana</h3>
               <p className="text-lg text-muted-foreground mb-3">Web Developer</p>
               <p className="text-sm text-muted-foreground">
-                Experienced in building responsive, high-performance, and user-friendly web applications. I specialize in transforming complex requirements into scalable solutions using modern web technologies, with a strong focus on code quality, security, and optimal user experience. My expertise extends across the full software development lifecycle, from architectural design and database modeling to deployment and continuous maintenance. I am adept at integrating third-party APIs, optimizing server-side logic for speed, and ensuring cross-browser compatibility. Furthermore, I am a collaborative team player who thrives in Agile environments, constantly seeking to leverage the latest industry trends to deliver innovative digital products that drive business growth.
+                Experienced in building responsive, high-performance, and user-friendly web applications. I specialize in transforming complex requirements into scalable solutions using modern web technologies, with a strong focus on code quality, security, and optimal user experience.
               </p>
             </div>
           </Card>
 
           {/* Right Column: My Story and Feature Cards */}
           <div className="space-y-8 lg:col-span-3">
-            {/* My Story Card */}
-            <Card className="p-8 shadow-lg rounded-xl bg-card border border-border text-left">
-              <CardHeader className="p-0 mb-4">
-                <CardTitle className="text-3xl font-bold text-primary">My Story</CardTitle>
-              </CardHeader>
-              <CardContent className="p-0 text-lg text-muted-foreground space-y-4">
-                <p>Hello! I'm Rifal Azhar Permana, a Web Developer with experience in building responsive and high-performance web applications. I am passionate about creating innovative and efficient digital solutions.</p>
-                <p>My expertise includes front-end and back-end development, with a focus on using modern technologies to deliver exceptional user experiences. I am always looking for new challenges and opportunities to continue learning and growing in the world of web development.</p>
-              </CardContent>
-            </Card>
+            {/* My Journey Card */}
+            <MyJourneySection />
 
             {/* Feature Cards (Experience, Education, Collaboration) */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -63,6 +57,12 @@ const AboutSection = () => {
               </Card>
             </div>
           </div>
+        </div>
+
+        {/* What I Do Section */}
+        <div className="mt-16">
+          <h3 className="text-3xl font-bold text-primary mb-8">What I Do</h3>
+          <WhatIDoSection />
         </div>
       </div>
     </section>
