@@ -35,21 +35,12 @@
     --radius: 0.75rem; /* Slightly larger border radius for a softer look */
   }
 
-  @keyframes float {
-    0% {
-      transform: translate(0px, 0px);
-    }
-    25% {
-      transform: translate(10px, -20px);
+  @keyframes pulse-opacity {
+    0%, 100% {
+      opacity: 0.4; /* Redup */
     }
     50% {
-      transform: translate(0px, -30px); /* Increased vertical movement */
-    }
-    75% {
-      transform: translate(-10px, -20px);
-    }
-    100% {
-      transform: translate(0px, 0px);
+      opacity: 0.8; /* Terang */
     }
   }
 }

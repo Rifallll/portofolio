@@ -15,15 +15,8 @@ const HeroSection = () => {
       id="home"
       className="min-h-screen flex flex-col lg:flex-row items-center justify-center text-center lg:text-left pt-24 relative overflow-hidden bg-gradient-to-br from-background to-secondary"
     >
-      {/* Animated background elements - more of them with varied animations */}
-      <div className="absolute top-1/4 left-1/4 w-32 h-32 bg-primary/10 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-[float_6s_ease-in-out_infinite] z-0"></div>
-      <div className="absolute bottom-1/4 right-1/4 w-48 h-48 bg-accent/10 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-[float_8s_ease-in-out_infinite_reverse] z-0"></div>
-      <div className="absolute top-1/2 left-1/2 w-24 h-24 bg-secondary-foreground/10 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-[float_7s_ease-in-out_infinite] z-0"></div>
-      <div className="absolute top-1/3 right-1/3 w-20 h-20 bg-primary/15 rounded-full mix-blend-multiply filter blur-xl opacity-60 animate-[float_5s_ease-in-out_infinite_reverse] z-0"></div>
-      <div className="absolute bottom-1/3 left-1/3 w-40 h-40 bg-accent/15 rounded-full mix-blend-multiply filter blur-xl opacity-60 animate-[float_9s_ease-in-out_infinite] z-0"></div>
-      <div className="absolute top-1/5 left-1/5 w-28 h-28 bg-secondary-foreground/15 rounded-full mix-blend-multiply filter blur-xl opacity-50 animate-[float_7s_ease-in-out_infinite_reverse] z-0"></div>
-      <div className="absolute bottom-1/5 right-1/5 w-36 h-36 bg-primary/10 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-[float_6s_ease-in-out_infinite] z-0"></div>
-
+      {/* Large pulsating circle behind the image */}
+      <div className="absolute right-0 top-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-primary/20 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-[pulse-opacity_4s_ease-in-out_infinite] z-0 lg:w-[700px] lg:h-[700px] lg:right-[-150px]"></div>
 
       {/* Konten teks dan tombol */}
       <div className="container mx-auto px-4 relative z-10 flex flex-col lg:flex-row items-center lg:justify-between max-w-6xl h-full lg:gap-x-24">
