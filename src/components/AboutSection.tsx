@@ -15,15 +15,15 @@ const AboutSection: React.FC = () => {
         />
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mt-12 max-w-6xl mx-auto">
-          {/* Left Column: Profile Card & Contact Info (even more compact) */}
-          <Card className="p-6 shadow-lg rounded-xl bg-card border border-border flex flex-col items-center"> {/* Mengurangi padding dari p-8 menjadi p-6 */}
+          {/* Left Column: Profile Card & Contact Info */}
+          <Card className="p-8 shadow-lg rounded-xl bg-card border border-border flex flex-col items-center">
             <img
               src="/profile-image-new.jpg"
               alt="Rifal Azhar Permana"
               className="w-24 h-24 rounded-full object-cover mb-4 border-4 border-primary/20"
             />
             <h3 className="text-3xl font-bold text-foreground mb-1">Rifal Azhar Permana</h3>
-            <p className="text-xl text-muted-foreground mb-4">Web Developer</p> {/* Mengurangi margin-bottom dari mb-6 menjadi mb-4 */}
+            <p className="text-xl text-muted-foreground mb-6">Web Developer</p> {/* Dikembalikan ke mb-6 */}
 
             <div className="space-y-3 w-full text-left">
               <div className="flex items-center space-x-4">
