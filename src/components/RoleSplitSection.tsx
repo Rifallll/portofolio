@@ -27,7 +27,7 @@ const expertiseData: ExpertiseItem[] = [
       "Copywriting & Brand Tone",
     ],
     percentage: 35,
-    color: "hsl(var(--primary))", // Purple
+    color: "hsl(var(--red-pie-1))", // Deep Red
   },
   {
     title: "UI/UX & Digital Design",
@@ -42,7 +42,7 @@ const expertiseData: ExpertiseItem[] = [
       "Graphic & Video Editing",
     ],
     percentage: 30,
-    color: "hsl(var(--accent))", // Orange-Yellow
+    color: "hsl(var(--red-pie-2))", // Orange-Red
   },
   {
     title: "Web Development & Automation",
@@ -57,7 +57,7 @@ const expertiseData: ExpertiseItem[] = [
       "Technical Debugging",
     ],
     percentage: 20,
-    color: "hsl(var(--blue-custom))", // Custom Blue
+    color: "hsl(var(--red-pie-3))", // Magenta-Red
   },
   {
     title: "Communication & Public Relations",
@@ -72,7 +72,7 @@ const expertiseData: ExpertiseItem[] = [
       "Team Leadership & Coordination",
     ],
     percentage: 15,
-    color: "hsl(var(--green-custom))", // Custom Green
+    color: "hsl(var(--red-pie-4))", // Pink-Red
   },
 ];
 
@@ -148,7 +148,7 @@ const RoleSplitSection = () => {
               <Card className="p-6 shadow-lg hover:shadow-xl transition-shadow duration-300 bg-card border border-border h-full flex flex-col">
                 <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-4">
                   <CardTitle className="text-xl font-bold text-foreground">{expertise.title}</CardTitle>
-                  <expertise.icon className="h-6 w-6 text-primary" />
+                  <expertise.icon className="h-6 w-6" style={{ color: expertise.color }} /> {/* Icon color matches segment */}
                 </CardHeader>
                 <CardContent className="flex-grow">
                   <motion.ul
