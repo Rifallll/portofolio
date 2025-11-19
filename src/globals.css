@@ -34,8 +34,9 @@
 
     --radius: 0.75rem; /* Slightly larger border radius for a softer look */
 
-    --blue-custom: 210 70% 50%; /* Custom blue for pie chart */
-    --green-custom: 140 60% 40%; /* Custom green for pie chart */
+    /* Custom blue and green for pie chart (if needed, but will use primary/foreground for dual) */
+    --blue-custom: 210 70% 50%;
+    --green-custom: 140 60% 40%;
   }
 
   @keyframes pulse-opacity {
