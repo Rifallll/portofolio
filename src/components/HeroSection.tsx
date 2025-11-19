@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Download } from "lucide-react";
 import ResumeModal from "./ResumeModal";
 import { useSmoothScroll } from "@/hooks/use-smooth-scroll";
+import ScrollDownIndicator from "./ScrollDownIndicator"; // Import komponen baru
 
 const HeroSection = () => {
   const scrollToSection = useSmoothScroll();
@@ -12,15 +13,15 @@ const HeroSection = () => {
   return (
     <section
       id="home"
-      className="min-h-screen flex flex-col lg:flex-row items-center justify-center text-center lg:text-left pt-24 relative overflow-hidden bg-background"
+      className="min-h-screen flex flex-col lg:flex-row items-center justify-center text-center lg:text-left pt-24 relative overflow-hidden bg-gradient-to-br from-background to-secondary" // Menambahkan gradien latar belakang
     >
       {/* Konten teks dan tombol */}
       <div className="container mx-auto px-4 relative z-10 flex flex-col lg:flex-row items-center lg:justify-between max-w-6xl h-full lg:gap-x-24">
         <div className="flex flex-col items-center lg:items-start lg:w-[60%] mb-12 lg:mb-0">
-          <h1 className="text-5xl md:text-6xl font-extrabold text-foreground mb-4 leading-snug"> {/* Ukuran judul diperbesar */}
+          <h1 className="text-4xl md:text-5xl font-extrabold text-foreground mb-4 leading-snug"> {/* Ukuran judul disesuaikan */}
             Hi, I'm <span className="text-primary">Rifal Azhar Permana</span>
           </h1>
-          <p className="text-xl md:text-2xl text-muted-foreground mb-8 max-w-3xl"> {/* Ukuran deskripsi diperbesar */}
+          <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-3xl"> {/* Ukuran deskripsi disesuaikan */}
             A passionate Web Developer dedicated to building responsive, high-performance, and user-friendly web applications.
           </p>
           <div className="flex flex-col sm:flex-row justify-center lg:justify-start items-center gap-4">
@@ -51,6 +52,7 @@ const HeroSection = () => {
           />
         </div>
       </div>
+      <ScrollDownIndicator targetSectionId="about" /> {/* Menambahkan indikator gulir ke bawah */}
     </section>
   );
 };
