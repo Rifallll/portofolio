@@ -68,9 +68,9 @@ const Navbar = () => {
           </Sheet>
         ) : (
           // Desktop Navigation
-          <div className="flex items-center space-x-8">
+          <div className="flex-grow flex justify-center"> {/* This div centers the nav links */}
             <NavigationMenu>
-              <NavigationMenuList>
+              <NavigationMenuList className="flex space-x-1"> {/* Reduced space-x for a tighter look */}
                 {navItems.map((item) => (
                   <NavigationMenuItem key={item.id}>
                     <NavigationMenuLink
@@ -83,16 +83,18 @@ const Navbar = () => {
                 ))}
               </NavigationMenuList>
             </NavigationMenu>
-            <ResumeModal>
-              <Button
-                variant="outline"
-                className="border-primary text-primary hover:bg-primary/10 px-6 py-2 text-base rounded-full shadow-sm transition-all duration-300 flex items-center space-x-2"
-              >
-                <Download className="h-4 w-4" />
-                <span>Download CV</span>
-              </Button>
-            </ResumeModal>
           </div>
+        )}
+        {!isMobile && (
+          <ResumeModal>
+            <Button
+              variant="outline"
+              className="border-primary text-primary hover:bg-primary/10 px-6 py-2 text-base rounded-full shadow-sm transition-all duration-300 flex items-center space-x-2"
+            >
+              <Download className="h-4 w-4" />
+              <span>Download CV</span>
+            </Button>
+          </ResumeModal>
         )}
       </div>
     </nav>
