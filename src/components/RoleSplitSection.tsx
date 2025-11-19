@@ -24,7 +24,7 @@ const expertiseData: ExpertiseItem[] = [
       "Graphic Design",
       "Video Editing",
     ],
-    percentage: 60,
+    percentage: 40, // Diubah menjadi 40%
     color: "hsl(var(--primary))", // Purple
   },
   {
@@ -39,7 +39,7 @@ const expertiseData: ExpertiseItem[] = [
       "Fundamental SQL",
       "Web Scraping",
     ],
-    percentage: 40,
+    percentage: 60, // Diubah menjadi 60%
     color: "hsl(var(--foreground))", // Black
   },
 ];
@@ -135,8 +135,8 @@ const RoleSplitSection = () => {
                 }}
               ></div>
               <div className="absolute w-60 h-60 rounded-full bg-background z-10 flex flex-col items-center justify-center border-4 border-primary/30 animate-pulse-slow"> {/* Increased inner circle, added pulse animation */}
-                <span className="text-primary text-2xl font-extrabold text-center">60% Designer</span> {/* Enhanced typography */}
-                <span className="text-foreground text-2xl font-extrabold text-center">40% Coder</span> {/* Enhanced typography */}
+                <span className="text-foreground text-2xl font-extrabold text-center">60% Coder</span> {/* Diperbarui */}
+                <span className="text-primary text-2xl font-extrabold text-center">40% Designer</span> {/* Diperbarui */}
               </div>
             </div>
           </motion.div>
