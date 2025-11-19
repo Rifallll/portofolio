@@ -33,10 +33,6 @@
     --ring: 260 70% 40%; /* Primary color for ring */
 
     --radius: 0.75rem; /* Slightly larger border radius for a softer look */
-
-    /* New font variables */
-    --font-heading: "Luckiest Guy", sans-serif;
-    --font-body: "Inter", sans-serif;
   }
 }
 
@@ -46,10 +42,6 @@
   }
 
   body {
-    @apply bg-background text-foreground font-body; /* Apply body font globally */
-  }
-
-  h1, h2, h3, h4, h5, h6 {
-    @apply font-heading; /* Apply heading font to all headings */
+    @apply bg-background text-foreground;
   }
 }

@@ -8,8 +8,8 @@ interface SectionHeaderProps {
 const SectionHeader: React.FC<SectionHeaderProps> = ({ title, description }) => {
   return (
     <div className="text-center mb-12">
-      <h2 className="text-4xl font-heading text-primary mb-4">{title}</h2>
-      <p className="text-lg text-muted-foreground font-body">{description}</p>
+      <h2 className="text-4xl font-bold text-primary mb-4">{title}</h2>
+      <p className="text-lg text-muted-foreground">{description}</p>
     </div>
   );
 };

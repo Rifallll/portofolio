@@ -12,22 +12,22 @@ const Navbar = () => {
 
   const navLinks = (
     <>
-      <Button variant="ghost" onClick={() => scrollToSection("home")} className="text-foreground hover:text-primary font-body font-bold transition-colors duration-200 px-4 py-2 rounded-md">
+      <Button variant="ghost" onClick={() => scrollToSection("home")} className="text-foreground hover:text-primary font-medium transition-colors duration-200 px-4 py-2 rounded-md">
         HOME
       </Button>
-      <Button variant="ghost" onClick={() => scrollToSection("about")} className="text-foreground hover:text-primary font-body font-medium transition-colors duration-200 px-4 py-2">
+      <Button variant="ghost" onClick={() => scrollToSection("about")} className="text-foreground hover:text-primary font-medium transition-colors duration-200 px-4 py-2">
         ABOUT
       </Button>
-      <Button variant="ghost" onClick={() => scrollToSection("skills")} className="text-foreground hover:text-primary font-body font-medium transition-colors duration-200 px-4 py-2">
+      <Button variant="ghost" onClick={() => scrollToSection("skills")} className="text-foreground hover:text-primary font-medium transition-colors duration-200 px-4 py-2">
         SKILLS
       </Button>
-      <Button variant="ghost" onClick={() => scrollToSection("projects")} className="text-foreground hover:text-primary font-body font-medium transition-colors duration-200 px-4 py-2">
+      <Button variant="ghost" onClick={() => scrollToSection("projects")} className="text-foreground hover:text-primary font-medium transition-colors duration-200 px-4 py-2">
         PROJECTS
       </Button>
-      <Button variant="ghost" onClick={() => scrollToSection("certificates")} className="text-foreground hover:text-primary font-body font-medium transition-colors duration-200 px-4 py-2">
+      <Button variant="ghost" onClick={() => scrollToSection("certificates")} className="text-foreground hover:text-primary font-medium transition-colors duration-200 px-4 py-2">
         CERTIFICATES
       </Button>
-      <Button variant="ghost" onClick={() => scrollToSection("contact")} className="text-foreground hover:text-primary font-body font-medium transition-colors duration-200 px-4 py-2">
+      <Button variant="ghost" onClick={() => scrollToSection("contact")} className="text-foreground hover:text-primary font-medium transition-colors duration-200 px-4 py-2">
         CONTACT
       </Button>
     </>
@@ -39,7 +39,7 @@ const Navbar = () => {
         // Mobile: Logo di kiri, hamburger di kanan, full-width primary bar
         <div className="relative bg-primary rounded-b-3xl h-20 flex items-center justify-center shadow-lg">
           <div className="container mx-auto h-full relative">
-            <div className="absolute left-4 top-1/2 -translate-y-1/2 text-2xl font-heading text-primary-foreground">Rifal Azhar Permana</div>
+            <div className="absolute left-4 top-1/2 -translate-y-1/2 text-2xl font-bold text-primary-foreground">Rifal Azhar Permana</div>
             <Sheet>
               <SheetTrigger asChild>
                 <Button variant="outline" size="icon" className="absolute right-4 top-1/2 -translate-y-1/2 bg-secondary text-secondary-foreground border-border hover:bg-muted">

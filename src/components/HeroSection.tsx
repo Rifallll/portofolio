@@ -10,10 +10,10 @@ const HeroSection = () => {
   return (
     <section id="home" className="min-h-screen flex flex-col items-center justify-center bg-background text-center pt-24 pb-12 relative overflow-hidden">
       <div className="container mx-auto px-4 relative z-10">
-        <h1 className="text-5xl md:text-6xl font-heading text-foreground mb-6 leading-tight">
-          Hi, I'm <span className="text-accent">Rifal Azhar Permana</span>
+        <h1 className="text-5xl md:text-6xl font-bold text-foreground mb-6 leading-tight">
+          Hi, I'm <span className="text-primary">Rifal Azhar Permana</span>
         </h1>
-        <p className="text-xl md:text-2xl text-muted-foreground font-body mb-10 max-w-3xl mx-auto">
+        <p className="text-xl md:text-2xl text-muted-foreground mb-10 max-w-3xl mx-auto">
           A passionate Web Developer dedicated to building responsive, high-performance, and user-friendly web applications.
         </p>
         <div className="flex flex-col sm:flex-row justify-center items-center gap-4">
