@@ -40,8 +40,6 @@ const HeroSection = () => {
             </Button>
           </ResumeModal>
         </div>
-        <p className="text-lg text-muted-foreground mt-4">folio</p>
-        <p className="text-xl text-muted-foreground">Web Developer</p> {/* Menambahkan teks "Web Developer" di sini */}
       </div>
     </section>
   );
