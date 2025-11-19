@@ -4,59 +4,40 @@
 
 @layer base {
   :root {
-    --background: 40 20% 95%; /* Light creamy background */
+    --background: 220 20% 98%; /* Very light cool gray */
     --foreground: 220 10% 10%; /* Very Dark Gray for text */
 
-    --card: 40 20% 98%; /* Slightly lighter card background */
+    --card: 0 0% 100%; /* Pure white for cards to pop */
     --card-foreground: 220 10% 10%; /* Very Dark Gray for text on cards */
 
     --popover: 0 0% 100%; /* White popover background */
     --popover-foreground: 220 10% 10%; /* Very Dark Gray for text on white popover */
 
-    --primary: 220 10% 10%; /* Dark color for main headings/buttons */
+    --primary: 260 70% 40%; /* A vibrant purple for primary actions/headings */
     --primary-foreground: 0 0% 100%; /* White for text on primary */
 
-    --secondary: 220 12% 90%; /* Light Gray for subtle elements */
-    --secondary-foreground: 220 10% 20%; /* Darker Gray for text on light secondary */
+    --secondary: 220 15% 95%; /* Light gray for subtle elements */
+    --secondary-foreground: 220 10% 30%; /* Darker Gray for text on light secondary */
 
-    --muted: 220 12% 90%; /* Light Gray muted background */
+    --muted: 220 15% 95%; /* Light gray muted background */
     --muted-foreground: 220 10% 40%; /* Medium Gray for muted text */
 
-    --accent: 220 10% 10%; /* Using primary as accent for consistency */
-    --accent-foreground: 0 0% 100%; /* White contrast for accent */
+    --accent: 40 100% 60%; /* Vibrant orange-yellow for highlights */
+    --accent-foreground: 220 10% 10%; /* Dark text on accent */
 
     --destructive: 0 72.2% 50.6%;
     --destructive-foreground: 60 9.1% 92.1%;
 
-    --border: 220 12% 80%; /* Medium Light Gray border color */
-    --input: 220 12% 90%; /* Light Gray input background */
-    --ring: 220 10% 10%; /* Primary color for ring */
+    --border: 220 10% 85%; /* Light gray border color */
+    --input: 220 15% 95%; /* Light gray input background */
+    --ring: 260 70% 40%; /* Primary color for ring */
 
-    --radius: 0.5rem;
+    --radius: 0.75rem; /* Slightly larger border radius for a softer look */
+
+    /* New font variables */
+    --font-heading: "Luckiest Guy", sans-serif;
+    --font-body: "Inter", sans-serif;
   }
-
-  /* Removing dark theme for now as the image only shows a light theme */
-  /* .dark {
-    --background: 220 20% 5%;
-    --foreground: 220 12% 95%;
-    --card: 220 20% 8%;
-    --card-foreground: 220 12% 95%;
-    --popover: 220 20% 8%;
-    --popover-foreground: 220 12% 95%;
-    --primary: 40 80% 60%;
-    --primary-foreground: 220 20% 5%;
-    --secondary: 220 20% 10%;
-    --secondary-foreground: 220 12% 85%;
-    --muted: 220 20% 10%;
-    --muted-foreground: 220 12% 65%;
-    --accent: 40 80% 60%;
-    --accent-foreground: 220 20% 5%;
-    --destructive: 0 72.2% 50.6%;
-    --destructive-foreground: 60 9.1% 92.1%;
-    --border: 220 20% 18%;
-    --input: 220 20% 15%;
-    --ring: 40 80% 60%;
-  } */
 }
 
 @layer base {
@@ -65,6 +46,10 @@
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-body; /* Apply body font globally */
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading; /* Apply heading font to all headings */
   }
 }
