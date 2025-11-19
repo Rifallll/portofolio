@@ -9,7 +9,12 @@ const HeroSection = () => {
 
   return (
     <section id="home" className="min-h-screen flex flex-col items-center justify-center bg-background text-center pt-24 pb-12 relative overflow-hidden">
-      <div className="container mx-auto px-4 relative z-10">
+      <div className="container mx-auto px-4 relative z-10 flex flex-col items-center">
+        <img
+          src="/s.png" // Path to your image in the public folder
+          alt="Hero Image"
+          className="w-48 h-48 md:w-64 md:h-64 object-cover rounded-full mb-8 shadow-lg border-4 border-primary/20"
+        />
         <h1 className="text-5xl md:text-6xl font-bold text-foreground mb-6 leading-tight">
           Hi, I'm <span className="text-primary">Rifal Azhar Permana</span>
         </h1>
