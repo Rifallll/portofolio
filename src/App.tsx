@@ -11,6 +11,11 @@ import CertificatesPage from "./pages/CertificatesPage";
 import ContactPage from "./pages/ContactPage";
 import NotFound from "./pages/NotFound";
 
+// Placeholder pages for new routes
+const MyStoryPage = () => <div className="min-h-screen flex items-center justify-center text-2xl font-bold">My Story Page (Under Construction)</div>;
+const DesignSystemPage = () => <div className="min-h-screen flex items-center justify-center text-2xl font-bold">Design System Page (Under Construction)</div>;
+
+
 const queryClient = new QueryClient();
 
 const App = () => (
@@ -26,6 +31,8 @@ const App = () => (
           <Route path="/projects" element={<ProjectsPage />} />
           <Route path="/certificates" element={<CertificatesPage />} />
           <Route path="/contact" element={<ContactPage />} />
+          <Route path="/my-story-page" element={<MyStoryPage />} /> {/* New route */}
+          <Route path="/design-system" element={<DesignSystemPage />} /> {/* New route */}
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
