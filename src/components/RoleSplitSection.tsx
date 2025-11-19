@@ -18,11 +18,11 @@ const expertiseData: ExpertiseItem[] = [
     title: "Part Designer",
     icon: Palette,
     list: [
-      "UI Design",
-      "UX Design",
-      "Design Systems",
-      "Interaction Design",
-      "\"Making it pop\"",
+      "UI/UX Design",
+      "User Research",
+      "Wireframing & Prototyping",
+      "Graphic Design",
+      "Video Editing",
     ],
     percentage: 60,
     color: "hsl(var(--primary))", // Purple
@@ -33,11 +33,11 @@ const expertiseData: ExpertiseItem[] = [
     list: [
       "Front-end development",
       "HTML / CSS",
-      "JavaScript (Basic)", // Mengubah "kinda" menjadi "Basic"
-      "Web Development", // Ditambahkan dari CV
-      "Basic Python", // Ditambahkan dari CV
-      "Fundamental SQL", // Ditambahkan dari CV
-      "Web Scraping", // Ditambahkan dari CV
+      "JavaScript (Basic)",
+      "Web Development",
+      "Basic Python",
+      "Fundamental SQL",
+      "Web Scraping",
     ],
     percentage: 40,
     color: "hsl(var(--foreground))", // Black
