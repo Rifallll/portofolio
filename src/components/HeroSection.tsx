@@ -20,7 +20,6 @@ const HeroSection = () => {
       />
       {/* Konten teks dan tombol tetap di dalam container */}
       <div className="container mx-auto px-4 relative z-10 flex flex-col items-center">
-        {/* Teks yang diminta untuk dihapus telah dihapus di sini */}
         <div className="flex flex-col sm:flex-row justify-center items-center gap-4">
           <Button
             onClick={() => scrollToSection("projects")}
@@ -38,6 +37,7 @@ const HeroSection = () => {
             </Button>
           </ResumeModal>
         </div>
+        <p className="text-lg text-muted-foreground mt-4">folio</p> {/* Menambahkan teks "folio" di sini */}
       </div>
     </section>
   );
