@@ -33,9 +33,9 @@ const expertiseData: ExpertiseItem[] = [
     list: [
       "Front-end development",
       "HTML / CSS",
-      "JavaScript (Basic)",
+      "JavaScript", // Diperbarui
       "Web Development",
-      "Basic Python",
+      "Python", // Diperbarui
       "Fundamental SQL",
       "Web Scraping",
     ],
