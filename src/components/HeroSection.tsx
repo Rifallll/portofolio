@@ -21,7 +21,7 @@ const HeroSection = () => {
       {/* Konten teks dan tombol */}
       <div className="container mx-auto px-4 relative z-10 flex flex-col lg:flex-row items-center lg:justify-between max-w-6xl h-full lg:gap-x-24">
         <div className="flex flex-col items-center lg:items-start lg:w-[60%] mb-12 lg:mb-0">
-          <h1 className="text-4xl md:text-5xl font-extrabold text-foreground mb-4 leading-snug">
+          <h1 className="text-5xl md:text-6xl lg:text-7xl font-extrabold text-foreground mb-4 leading-tight">
             Hi, I'm <span className="text-primary">Rifal Azhar Permana</span>
           </h1>
           <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-3xl">
