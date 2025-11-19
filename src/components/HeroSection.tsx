@@ -10,10 +10,10 @@ const HeroSection = () => {
   return (
     <section
       id="home"
-      className="min-h-screen flex flex-col lg:flex-row items-center justify-center text-center lg:text-left pt-24 pb-12 relative overflow-hidden bg-background"
+      className="min-h-screen flex flex-col lg:flex-row items-center justify-center text-center lg:text-left pt-24 relative overflow-hidden bg-background" // Removed pb-12
     >
       {/* Konten teks dan tombol */}
-      <div className="container mx-auto px-4 relative z-10 flex flex-col lg:flex-row items-center lg:justify-between max-w-6xl">
+      <div className="container mx-auto px-4 relative z-10 flex flex-col lg:flex-row items-center lg:justify-between max-w-6xl h-full"> {/* Added h-full */}
         <div className="flex flex-col items-center lg:items-start lg:w-[45%] mb-12 lg:mb-0">
           <h1 className="text-5xl md:text-6xl font-extrabold text-foreground mb-6 leading-tight">
             Hi, I'm <span className="text-primary">Rifal Azhar Permana</span>
@@ -41,7 +41,7 @@ const HeroSection = () => {
         </div>
 
         {/* Gambar di sebelah kanan */}
-        <div className="lg:w-[55%] flex justify-center lg:justify-end">
+        <div className="lg:w-[55%] flex justify-center lg:justify-end lg:items-end h-full"> {/* Added lg:items-end and h-full */}
           <img
             src="/p.png"
             alt="Rifal Azhar Permana"
