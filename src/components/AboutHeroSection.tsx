@@ -1,50 +1,63 @@
 "use client";
 
 import React from "react";
-import SectionHeader from "./SectionHeader";
+import { motion } from "framer-motion"; // Assuming framer-motion is available or will be added
+import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
+import { ArrowRight } from "lucide-react";
 
 const AboutHeroSection = () => {
-  // Placeholder images for the gallery
-  const galleryImages = [
-    "/public/1.jpeg", // Replace with actual image paths
-    "/public/9.jpg",
-    "/public/placeholder.svg",
-    "/public/placeholder.svg",
-    "/public/placeholder.svg",
-    "/public/placeholder.svg",
-  ];
-
   return (
-    <section id="about-hero" className="py-20 bg-background">
-      <div className="container mx-auto px-4 max-w-6xl">
-        <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-8">
-          {/* Left Column: Text and Gallery */}
-          <div className="lg:w-2/3 text-left">
-            <h1 className="text-5xl font-extrabold text-foreground mb-4">about.</h1>
-            <p className="text-lg text-muted-foreground mb-6">
-              I'm a passionate Web Developer based in Pandeglang, Indonesia.
-            </p>
-            <p className="text-lg text-muted-foreground mb-8">
-              Since 2020, I've enjoyed turning complex problems into simple, beautiful, and intuitive designs. When I'm not coding, you'll find me exploring new technologies, reading, or enjoying nature.
-            </p>
-            <div className="grid grid-cols-3 sm:grid-cols-6 gap-4">
-              {galleryImages.map((src, index) => (
-                <div key={index} className="w-full h-20 bg-muted rounded-md overflow-hidden shadow-sm border border-border flex items-center justify-center">
-                  <img src={src} alt={`Gallery image ${index + 1}`} className="w-full h-full object-cover" />
-                </div>
-              ))}
-            </div>
-          </div>
+    <section id="about-hero" className="relative min-h-screen flex items-center justify-center py-20 bg-gradient-to-br from-background to-secondary overflow-hidden">
+      {/* Subtle background pattern or gradient for elegance */}
+      <div className="absolute inset-0 opacity-10 pointer-events-none">
+        <svg className="w-full h-full" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <pattern id="grid" width="80" height="80" patternUnits="userSpaceOnUse">
+            <path d="M80 0H0V80" stroke="hsl(var(--border))" strokeOpacity="0.2" fill="none"/>
+          </pattern>
+          <rect width="100%" height="100%" fill="url(#grid)" />
+        </svg>
+      </div>
 
-          {/* Right Column: Main Profile Image */}
-          <div className="lg:w-1/3 flex justify-center lg:justify-end">
+      <div className="container mx-auto px-4 max-w-screen-xl relative z-10 flex flex-col lg:flex-row items-center justify-between gap-16">
+        {/* Left Column: Text Content */}
+        <motion.div
+          initial={{ opacity: 0, x: -50 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+          className="lg:w-1/2 text-center lg:text-left"
+        >
+          <h1 className="text-6xl md:text-7xl font-extrabold text-foreground leading-tight mb-6">
+            About <span className="text-primary">Me</span>.
+          </h1>
+          <p className="text-xl text-muted-foreground mb-8 max-w-lg lg:max-w-none mx-auto lg:mx-0">
+            I'm a passionate Web Developer based in Pandeglang, Indonesia. Since 2020, I've enjoyed turning complex problems into simple, beautiful, and intuitive designs. When I'm not coding, you'll find me exploring new technologies, reading, or enjoying nature.
+          </p>
+          <Button asChild className="bg-primary text-primary-foreground hover:bg-primary/90 px-8 py-3 text-lg rounded-full shadow-lg transition-all duration-300 hover:scale-105 flex items-center space-x-2">
+            <Link to="/contact">
+              <span>Let's Connect</span>
+              <ArrowRight className="h-5 w-5 ml-2" />
+            </Link>
+          </Button>
+        </motion.div>
+
+        {/* Right Column: Main Profile Image */}
+        <motion.div
+          initial={{ opacity: 0, x: 50 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8, delay: 0.4 }}
+          className="lg:w-1/2 flex justify-center lg:justify-end"
+        >
+          <div className="relative w-80 h-80 md:w-96 md:h-96 rounded-full overflow-hidden shadow-2xl border-4 border-primary/30">
             <img
               src="/profile-image-new.jpg" // Use your main profile image
               alt="Rifal Azhar Permana"
-              className="w-64 h-64 md:w-80 md:h-80 rounded-full object-cover shadow-lg border-4 border-primary/20"
+              className="w-full h-full object-cover object-center"
             />
+            {/* Subtle pulsating border effect */}
+            <div className="absolute inset-0 rounded-full border-4 border-primary/50 animate-pulse-slow"></div>
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );
