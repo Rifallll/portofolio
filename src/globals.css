@@ -34,11 +34,8 @@
 
     --radius: 0.75rem; /* Slightly larger border radius for a softer look */
 
-    /* Custom red-themed colors for the pie chart */
-    --red-pie-1: 0 70% 40%;    /* Deep Red */
-    --red-pie-2: 10 70% 50%;   /* Orange-Red */
-    --red-pie-3: 340 70% 55%;  /* Magenta-Red */
-    --red-pie-4: 320 70% 65%;  /* Pink-Red */
+    --blue-custom: 210 70% 50%; /* Custom blue for pie chart */
+    --green-custom: 140 60% 40%; /* Custom green for pie chart */
   }
 
   @keyframes pulse-opacity {
