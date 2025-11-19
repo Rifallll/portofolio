@@ -1,19 +1,21 @@
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
-import { motion } from "framer-motion"; // Import motion
+// import { motion } from "framer-motion"; // Import motion - Dihapus
 
 const Index = () => {
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }} // Animasi awal: sedikit transparan dan bergeser ke bawah
-      animate={{ opacity: 1, y: 0 }} // Animasi saat ini: sepenuhnya terlihat dan di posisi normal
-      exit={{ opacity: 0, y: -20 }} // Animasi keluar: sedikit transparan dan bergeser ke atas
-      transition={{ duration: 0.5 }} // Durasi animasi
-      className="min-h-screen bg-background text-foreground"
-    >
+    // <motion.div // Dihapus
+    //   initial={{ opacity: 0, y: 20 }}
+    //   animate={{ opacity: 1, y: 0 }}
+    //   exit={{ opacity: 0, y: -20 }}
+    //   transition={{ duration: 0.5 }}
+    //   className="min-h-screen bg-background text-foreground"
+    // >
+    <div className="min-h-screen bg-background text-foreground"> {/* Menggunakan div biasa */}
       <Navbar />
       <HeroSection />
-    </motion.div>
+    </div>
+    // </motion.div> // Dihapus
   );
 };
 
