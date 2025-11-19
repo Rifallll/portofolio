@@ -33,9 +33,11 @@ const expertiseData: ExpertiseItem[] = [
     list: [
       "Front-end development",
       "HTML / CSS",
-      "JavaScript (kinda)",
-      "Swearing at my computer",
-      "Eating pizza",
+      "JavaScript (Basic)", // Mengubah "kinda" menjadi "Basic"
+      "Web Development", // Ditambahkan dari CV
+      "Basic Python", // Ditambahkan dari CV
+      "Fundamental SQL", // Ditambahkan dari CV
+      "Web Scraping", // Ditambahkan dari CV
     ],
     percentage: 40,
     color: "hsl(var(--foreground))", // Black
