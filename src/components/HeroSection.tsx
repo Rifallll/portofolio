@@ -20,6 +20,9 @@ const HeroSection = () => {
       />
       {/* Konten teks dan tombol tetap di dalam container */}
       <div className="container mx-auto px-4 relative z-10 flex flex-col items-center">
+        <h1 className="text-5xl md:text-6xl font-extrabold text-foreground mb-6 leading-tight">
+          Rifal Azhar Permana
+        </h1>
         <div className="flex flex-col sm:flex-row justify-center items-center gap-4">
           <Button
             onClick={() => scrollToSection("projects")}
@@ -32,12 +35,12 @@ const HeroSection = () => {
               variant="outline"
               className="border-primary text-primary hover:bg-primary/10 px-8 py-3 text-lg rounded-full shadow-lg transition-all duration-300 hover:scale-105 flex items-center space-x-2"
             >
-              <Download className="h-5 w-5" />
+            <Download className="h-5 w-5" />
               <span>Download CV</span>
             </Button>
           </ResumeModal>
         </div>
-        <p className="text-lg text-muted-foreground mt-4">folio</p> {/* Menambahkan teks "folio" di sini */}
+        <p className="text-lg text-muted-foreground mt-4">folio</p>
       </div>
     </section>
   );
