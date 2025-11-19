@@ -7,13 +7,14 @@ import MyDesignSystemSection from "@/components/MyDesignSystemSection";
 import RandomFactsSection from "@/components/RandomFactsSection";
 import SkillBarsSection from "@/components/SkillBarsSection";
 import FeaturedSection from "@/components/FeaturedSection";
-import Footer from "@/components/Footer"; // Import Footer component
+import TestimonialsSection from "@/components/TestimonialsSection"; // Import new component
+import Footer from "@/components/Footer";
 
 const AboutPage = () => {
   return (
     <div className="min-h-screen bg-background text-foreground flex flex-col">
       <Navbar />
-      <main className="flex-grow"> {/* Use main to push footer to bottom */}
+      <main className="flex-grow">
         <AboutHeroSection />
         <MyStorySection />
         <RoleSplitSection />
@@ -21,8 +22,9 @@ const AboutPage = () => {
         <RandomFactsSection />
         <SkillBarsSection />
         <FeaturedSection />
+        <TestimonialsSection /> {/* Add TestimonialsSection here */}
       </main>
-      <Footer /> {/* Add Footer here */}
+      <Footer />
     </div>
   );
 };
