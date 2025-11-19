@@ -47,7 +47,7 @@ const SkillBarsSection = () => {
   ];
 
   return (
-    <section id="skill-bars" className="py-20 bg-background">
+    <section id="skill-bars" className="py-20 bg-secondary"> {/* Changed from bg-background to bg-secondary */}
       <div className="container mx-auto px-4 text-center max-w-screen-xl">
         <h2 className="text-4xl font-bold text-primary mb-16">My Skills</h2>
         <div className="flex flex-wrap justify-center gap-12">

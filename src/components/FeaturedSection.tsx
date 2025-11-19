@@ -8,7 +8,7 @@ import { motion } from "framer-motion";
 
 const FeaturedSection = () => {
   return (
-    <section id="featured" className="py-20 bg-secondary">
+    <section id="featured" className="py-20 bg-background"> {/* Changed from bg-secondary to bg-background */}
       <div className="container mx-auto px-4 max-w-screen-xl">
         <div className="flex flex-col md:flex-row items-center gap-16">
           {/* Left Column: Text */}
