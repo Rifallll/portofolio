@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 import { Button } from "@/components/ui/button";
 import { Download } from "lucide-react";
@@ -45,7 +47,7 @@ const HeroSection = () => {
           <img
             src="/p.png"
             alt="Rifal Azhar Permana"
-            className="max-w-full h-auto lg:max-w-md xl:max-w-lg object-contain" {/* Ukuran gambar diperkecil */}
+            className="max-w-full h-auto lg:max-w-md xl:max-w-lg object-contain"
           />
         </div>
       </div>
