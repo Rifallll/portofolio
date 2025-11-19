@@ -20,12 +20,7 @@ const HeroSection = () => {
       />
       {/* Konten teks dan tombol tetap di dalam container */}
       <div className="container mx-auto px-4 relative z-10 flex flex-col items-center">
-        <h1 className="text-5xl font-extrabold text-foreground mb-4 leading-tight">
-          Hi, I'm <span className="text-primary">Rifal Azhar Permana</span>
-        </h1>
-        <p className="text-xl text-muted-foreground mb-8 max-w-2xl">
-          A passionate Web Developer crafting engaging and high-performance digital experiences.
-        </p>
+        {/* Teks yang diminta untuk dihapus telah dihapus di sini */}
         <div className="flex flex-col sm:flex-row justify-center items-center gap-4">
           <Button
             onClick={() => scrollToSection("projects")}
