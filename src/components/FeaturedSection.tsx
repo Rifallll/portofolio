@@ -3,7 +3,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Star } from "lucide-react";
+import { Star, ArrowRight } from "lucide-react"; // Import ArrowRight
 
 const FeaturedSection = () => {
   return (

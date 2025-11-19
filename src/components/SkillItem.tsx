@@ -22,7 +22,7 @@ const SkillItem: React.FC<SkillItemProps> = ({ title, proficiency, level, icon: 
           <span className="text-sm text-muted-foreground">PROFICIENCY LEVEL</span>
           <span className="text-lg font-bold text-foreground">{proficiency}% {level}</span>
         </div>
-        <Progress value={proficiency} className="h-2 bg-muted" indicatorClassName="bg-primary" /> {/* Menambahkan indicatorClassName */}
+        <Progress value={proficiency} className="h-2 bg-muted" /> {/* Menghapus indicatorClassName */}
         <div className="relative w-full mt-2 flex justify-between text-xs text-muted-foreground"> {/* Simplify labels */}
           <span>Beginner</span>
           <span>Expert</span>
