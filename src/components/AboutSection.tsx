@@ -18,12 +18,12 @@ const AboutSection = () => {
             <img
               src="/profile-image-new.jpg"
               alt="Rifal Azhar Permana"
-              className="w-32 h-32 rounded-full object-cover mb-6 border-4 border-primary/20"
+              className="w-24 h-24 rounded-full object-cover mb-4 border-4 border-primary/20" {/* Ukuran gambar lebih kecil */}
             />
-            <h3 className="text-3xl font-bold text-foreground mb-2">Rifal Azhar Permana</h3>
-            <p className="text-xl text-muted-foreground mb-6">Web Developer</p>
+            <h3 className="text-3xl font-bold text-foreground mb-1">Rifal Azhar Permana</h3> {/* Jarak bawah lebih rapat */}
+            <p className="text-xl text-muted-foreground mb-6">Web Developer</p> {/* Jarak bawah tetap untuk memisahkan dari kontak */}
 
-            <div className="space-y-4 w-full text-left">
+            <div className="space-y-3 w-full text-left"> {/* Jarak antar item kontak lebih rapat */}
               <div className="flex items-center space-x-4">
                 <MapPin className="h-5 w-5 text-primary" />
                 <span className="font-medium text-foreground">Pandeglang, Indonesia</span>
