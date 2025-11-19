@@ -17,6 +17,9 @@ const HeroSection = () => {
         <h1 className="text-5xl md:text-6xl font-extrabold text-foreground mb-6 leading-tight">
           Rifal Azhar Permana
         </h1>
+        <p className="text-xl md:text-2xl text-muted-foreground mb-8 max-w-3xl">
+          A passionate Web Developer crafting engaging and high-performance digital experiences.
+        </p>
         <div className="flex flex-col sm:flex-row justify-center items-center gap-4">
           <Button
             onClick={() => scrollToSection("projects")}
