@@ -15,6 +15,11 @@ const HeroSection = () => {
       id="home"
       className="min-h-screen flex flex-col lg:flex-row items-center justify-center text-center lg:text-left pt-24 relative overflow-hidden bg-gradient-to-br from-background to-secondary" // Menambahkan gradien latar belakang
     >
+      {/* Animated background elements */}
+      <div className="absolute top-1/4 left-1/4 w-32 h-32 bg-primary/10 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-[float_6s_ease-in-out_infinite] z-0"></div>
+      <div className="absolute bottom-1/4 right-1/4 w-48 h-48 bg-accent/10 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-[float_8s_ease-in-out_infinite_reverse] z-0"></div>
+      <div className="absolute top-1/2 left-1/2 w-24 h-24 bg-secondary-foreground/10 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-[float_7s_ease-in-out_infinite] z-0"></div>
+
       {/* Konten teks dan tombol */}
       <div className="container mx-auto px-4 relative z-10 flex flex-col lg:flex-row items-center lg:justify-between max-w-6xl h-full lg:gap-x-24">
         <div className="flex flex-col items-center lg:items-start lg:w-[60%] mb-12 lg:mb-0">
