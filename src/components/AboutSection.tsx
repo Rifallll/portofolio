@@ -26,7 +26,7 @@ const AboutSection = () => {
               <h3 className="text-2xl font-bold text-foreground mb-1">Rifal Azhar Permana</h3>
               <p className="text-lg text-muted-foreground mb-3">Web Developer</p>
               <p className="text-sm text-muted-foreground">
-                Experienced in building responsive, high-performance, and user-friendly web applications. I specialize in transforming complex requirements into scalable solutions using modern web technologies, with a strong focus on code quality, security, and optimal user experience.
+                Experienced in building responsive, high-performance, and user-friendly web applications. I specialize in transforming complex requirements into scalable solutions using modern web technologies, with a strong focus on code quality, security, and optimal user experience. My expertise extends across the full software development lifecycle, from architectural design and database modeling to deployment and continuous maintenance. I am adept at integrating third-party APIs, optimizing server-side logic for speed, and ensuring cross-browser compatibility. Furthermore, I am a collaborative team player who thrives in Agile environments, constantly seeking to leverage the latest industry trends to deliver innovative digital products that drive business growth.
               </p>
             </div>
           </Card>
