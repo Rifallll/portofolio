@@ -21,7 +21,7 @@ const HeroSection = () => {
 
   const itemVariants = {
     hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeInOut" } }, // Mengubah array cubic-bezier menjadi string "easeInOut"
+    visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeInOut" as any } }, // Menggunakan 'as any' untuk mengatasi masalah tipe
   };
 
   return (
