@@ -11,6 +11,21 @@ const RoleSplitSection = () => {
     visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
   };
 
+  const listVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+      },
+    },
+  };
+
+  const listItemVariants = {
+    hidden: { opacity: 0, x: -20 },
+    visible: { opacity: 1, x: 0 },
+  };
+
   return (
     <section id="role-split" className="py-20 bg-background">
       <div className="container mx-auto px-4 max-w-screen-xl">
@@ -29,13 +44,19 @@ const RoleSplitSection = () => {
                 <Palette className="h-7 w-7 text-primary" />
               </CardHeader>
               <CardContent className="flex-grow">
-                <ul className="list-disc list-inside text-lg text-muted-foreground space-y-2">
-                  <li>UI Design</li>
-                  <li>UX Design</li>
-                  <li>Design Systems</li>
-                  <li>Interaction Design</li>
-                  <li>"Making it pop"</li>
-                </ul>
+                <motion.ul
+                  variants={listVariants}
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true, amount: 0.5 }}
+                  className="list-disc list-inside text-lg text-muted-foreground space-y-2"
+                >
+                  <motion.li variants={listItemVariants}>UI Design</motion.li>
+                  <motion.li variants={listItemVariants}>UX Design</motion.li>
+                  <motion.li variants={listItemVariants}>Design Systems</motion.li>
+                  <motion.li variants={listItemVariants}>Interaction Design</motion.li>
+                  <motion.li variants={listItemVariants}>"Making it pop"</motion.li>
+                </motion.ul>
               </CardContent>
             </Card>
           </motion.div>
@@ -78,13 +99,19 @@ const RoleSplitSection = () => {
                 <Code className="h-7 w-7 text-foreground" />
               </CardHeader>
               <CardContent className="flex-grow">
-                <ul className="list-disc list-inside text-lg text-muted-foreground space-y-2">
-                  <li>Front-end development</li>
-                  <li>HTML / CSS</li>
-                  <li>JavaScript (kinda)</li>
-                  <li>Swearing at my computer</li>
-                  <li>Eating pizza</li>
-                </ul>
+                <motion.ul
+                  variants={listVariants}
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true, amount: 0.5 }}
+                  className="list-disc list-inside text-lg text-muted-foreground space-y-2"
+                >
+                  <motion.li variants={listItemVariants}>Front-end development</motion.li>
+                  <motion.li variants={listItemVariants}>HTML / CSS</motion.li>
+                  <motion.li variants={listItemVariants}>JavaScript (kinda)</motion.li>
+                  <motion.li variants={listItemVariants}>Swearing at my computer</motion.li>
+                  <motion.li variants={listItemVariants}>Eating pizza</motion.li>
+                </motion.ul>
               </CardContent>
             </Card>
           </motion.div>
