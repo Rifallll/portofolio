@@ -20,7 +20,7 @@ const ResumeModal: React.FC<ResumeModalProps> = ({ children }) => {
   return (
     <Dialog>
       <DialogTrigger asChild>{children}</DialogTrigger>
-      <DialogContent className="max-w-2xl h-[80vh] p-0 flex flex-col bg-card border border-border text-foreground">
+      <DialogContent className="max-w-xl h-[80vh] p-0 flex flex-col bg-card border border-border text-foreground">
         <DialogHeader className="p-6 pb-2">
           <DialogTitle className="text-2xl font-bold text-primary">My Resume / CV</DialogTitle>
           <DialogDescription className="text-muted-foreground">
