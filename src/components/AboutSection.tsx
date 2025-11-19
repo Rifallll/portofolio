@@ -13,17 +13,17 @@ const AboutSection = () => {
         />
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mt-12 max-w-6xl mx-auto">
-          {/* Left Column: Profile Card & Contact Info (more compact) */}
+          {/* Left Column: Profile Card & Contact Info (even more compact) */}
           <Card className="p-8 shadow-lg rounded-xl bg-card border border-border flex flex-col items-center">
             <img
-              src="/profile-image-new.jpg" // Menggunakan gambar yang sudah diunggah
+              src="/profile-image-new.jpg"
               alt="Rifal Azhar Permana"
-              className="w-32 h-32 rounded-full object-cover mb-6 border-4 border-primary/20" // Ukuran lebih kecil dan melingkar
+              className="w-32 h-32 rounded-full object-cover mb-6 border-4 border-primary/20"
             />
             <h3 className="text-3xl font-bold text-foreground mb-2">Rifal Azhar Permana</h3>
-            <p className="text-xl text-muted-foreground mb-6">Web Developer</p> {/* Jarak bawah lebih besar */}
+            <p className="text-xl text-muted-foreground mb-6">Web Developer</p>
 
-            <div className="space-y-4 w-full text-left"> {/* Menghapus mt-6 agar lebih rapat */}
+            <div className="space-y-4 w-full text-left">
               <div className="flex items-center space-x-4">
                 <MapPin className="h-5 w-5 text-primary" />
                 <span className="font-medium text-foreground">Pandeglang, Indonesia</span>
