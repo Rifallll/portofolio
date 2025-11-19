@@ -47,7 +47,7 @@ const HeroSection = () => {
           <img
             src="/p.png"
             alt="Rifal Azhar Permana"
-            className="max-w-full h-auto lg:max-w-md xl:max-w-lg object-contain" {/* Ukuran gambar diperkecil */}
+            className="max-w-full h-auto lg:max-w-md xl:max-w-lg object-contain"
           />
         </div>
       </div>
