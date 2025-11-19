@@ -1,5 +1,6 @@
 import React from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Separator } from "@/components/ui/separator"; // Import Separator
 import SectionHeader from "./SectionHeader";
 import { Mail, Phone, Instagram, Linkedin, GraduationCap, Code, Lightbulb, BookOpen, Wrench, Globe } from "lucide-react";
 
@@ -27,7 +28,7 @@ const AboutSection = () => {
             </p>
           </Card>
 
-          {/* Right Column: Integrated Details Card */}
+          {/* Right Column: Integrated Details Block */}
           <Card className="lg:col-span-2 p-8 shadow-xl hover:shadow-2xl transition-shadow duration-300 flex flex-col text-left bg-card border border-border">
             <CardHeader className="p-0 mb-6">
               <CardTitle className="text-3xl font-bold text-primary">My Journey & Expertise</CardTitle>
@@ -52,6 +53,8 @@ const AboutSection = () => {
                 </div>
               </div>
 
+              <Separator className="my-6 bg-border" /> {/* Separator */}
+
               {/* Digital Skills */}
               <div>
                 <h3 className="text-2xl font-bold text-foreground mb-3 flex items-center space-x-2">
@@ -68,6 +71,8 @@ const AboutSection = () => {
                 </div>
               </div>
 
+              <Separator className="my-6 bg-border" /> {/* Separator */}
+
               {/* Interests */}
               <div>
                 <h3 className="text-2xl font-bold text-foreground mb-3 flex items-center space-x-2">
@@ -82,6 +87,8 @@ const AboutSection = () => {
                   <p>Photography</p>
                 </div>
               </div>
+
+              <Separator className="my-6 bg-border" /> {/* Separator */}
 
               {/* Soft Skills */}
               <div>
@@ -98,6 +105,8 @@ const AboutSection = () => {
                 </div>
               </div>
 
+              <Separator className="my-6 bg-border" /> {/* Separator */}
+
               {/* Tools & Platforms */}
               <div>
                 <h3 className="text-2xl font-bold text-foreground mb-3 flex items-center space-x-2">
@@ -113,6 +122,8 @@ const AboutSection = () => {
                 </div>
               </div>
 
+              <Separator className="my-6 bg-border" /> {/* Separator */}
+
               {/* Language */}
               <div>
                 <h3 className="text-2xl font-bold text-foreground mb-3 flex items-center space-x-2">
@@ -124,6 +135,8 @@ const AboutSection = () => {
                   <p>English (Intermediate)</p>
                 </div>
               </div>
+
+              <Separator className="my-6 bg-border" /> {/* Separator */}
 
               {/* Contact */}
               <div>
