@@ -40,10 +40,10 @@ const SkillBar: React.FC<SkillBarProps> = ({ name, percentage, color, delay }) =
 
 const SkillBarsSection = () => {
   const skills = [
-    { name: "UI Design", percentage: 95, color: "hsl(180 60% 50%)" }, // Teal
-    { name: "Design Systems", percentage: 90, color: "hsl(0 60% 70%)" }, // Light Red/Pink
-    { name: "Figma", percentage: 95, color: "hsl(40 100% 60%)" }, // Orange-Yellow (Accent)
-    { name: "Coding", percentage: 75, color: "hsl(220 10% 60%)" }, // Medium Gray
+    { name: "UI/UX Design", percentage: 90, color: "hsl(180 60% 50%)" }, // Teal
+    { name: "Web Dev", percentage: 80, color: "hsl(0 60% 70%)" }, // Light Red/Pink
+    { name: "Content Strategy", percentage: 95, color: "hsl(40 100% 60%)" }, // Orange-Yellow (Accent)
+    { name: "Social Media Ads", percentage: 85, color: "hsl(220 10% 60%)" }, // Medium Gray
   ];
 
   return (

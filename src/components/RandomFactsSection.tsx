@@ -24,7 +24,7 @@ const RandomFactsSection = () => {
             className="md:w-1/2 flex justify-center"
           >
             <img
-              src="/public/yoda.png" // Placeholder for Yoda image - Consider replacing with a relevant image
+              src="/yoda.png" // Corrected path for Yoda image
               alt="Yoda on a monitor"
               className="max-w-full h-auto rounded-lg shadow-2xl border border-border transform hover:scale-105 transition-transform duration-300"
             />

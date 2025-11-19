@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { motion } from "framer-motion"; // Assuming framer-motion is available or will be added
+import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
@@ -31,7 +31,7 @@ const AboutHeroSection = () => {
             About <span className="text-primary">Me</span>.
           </h1>
           <p className="text-xl text-muted-foreground mb-8 max-w-lg lg:max-w-none mx-auto lg:mx-0">
-            I'm a passionate Web Developer based in Pandeglang, Indonesia. Since 2020, I've enjoyed turning complex problems into simple, beautiful, and intuitive designs. When I'm not coding, you'll find me exploring new technologies, reading, or enjoying nature.
+            Deeply rooted in Computer Engineering, I have a proven track record in Digital Media Strategy. I am proficient in Content Strategy Development and as a Social Media Specialist, having successfully boosted audience engagement by up to 150% and led over 10+ data-driven digital campaigns. My strategic expertise is fortified by technical hard skills in Web Development (HTML/CSS), UI/UX Design, Web Scraping, and basic Python, enabling me to design digital solutions that are both communicative and analytically driven.
           </p>
           <Button asChild className="bg-primary text-primary-foreground hover:bg-primary/90 px-8 py-3 text-lg rounded-full shadow-lg transition-all duration-300 hover:scale-105 flex items-center space-x-2">
             <Link to="/contact">

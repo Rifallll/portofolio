@@ -7,10 +7,10 @@ import { motion } from "framer-motion";
 
 const Footer = () => {
   const socialLinks = [
-    { icon: Github, href: "https://github.com/yourusername", label: "GitHub" },
-    { icon: Linkedin, href: "https://linkedin.com/in/yourusername", label: "LinkedIn" },
-    { icon: Instagram, href: "https://instagram.com/yourusername", label: "Instagram" },
-    { icon: Mail, href: "mailto:your-email@example.com", label: "Email" },
+    { icon: Github, href: "https://github.com/rifalazharpermana", label: "GitHub" }, // Placeholder, update if user provides
+    { icon: Linkedin, href: "https://www.linkedin.com/in/rifalazharpermana", label: "LinkedIn" },
+    { icon: Instagram, href: "https://instagram.com/rifalazharpermana", label: "Instagram" }, // Placeholder, update if user provides
+    { icon: Mail, href: "mailto:rifalazharpermana@gmail.com", label: "Email" },
   ];
 
   const footerVariants = {

@@ -21,7 +21,7 @@ const MyStorySection = () => {
           >
             <div className="relative w-full max-w-md h-auto rounded-lg shadow-2xl border border-border overflow-hidden">
               <img
-                src="/public/desk-setup.png" // Placeholder for desk setup image
+                src="/desk-setup.png" // Corrected path for desk setup image
                 alt="Desk Setup"
                 className="w-full h-full object-cover"
               />
@@ -45,9 +45,7 @@ const MyStorySection = () => {
           >
             <h2 className="text-4xl font-bold text-foreground mb-6">My story</h2>
             <p className="text-lg text-muted-foreground mb-8">
-              Learn a little bit more about me, how I got into design, and how I built my career as a product
-              designer. I've included key things I've learned, book recommendations, and even some sneak peeks of
-              the first websites I created.
+              My journey began with a deep interest in Computer Engineering, which quickly evolved into a passion for Digital Media Strategy and Web Development. I've honed my skills in crafting engaging content strategies, managing social media campaigns, and building responsive web applications. From boosting audience engagement by 150% to developing over 20 websites, I thrive on creating impactful digital solutions.
             </p>
             <Button asChild variant="link" className="text-primary hover:text-primary/80 px-0 text-lg flex items-center space-x-2">
               <Link to="/my-story-page"> {/* Placeholder link */}

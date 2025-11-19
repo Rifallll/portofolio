@@ -19,18 +19,17 @@ const FeaturedSection = () => {
             viewport={{ once: true, amount: 0.5 }}
             className="md:w-1/2 text-left"
           >
-            <div className="text-7xl font-extrabold text-primary mb-4">40%</div>
+            <div className="text-7xl font-extrabold text-primary mb-4">150%</div>
             <h3 className="text-4xl font-bold text-foreground mb-6 flex items-center space-x-3">
               <Star className="h-8 w-8" />
-              <span>Featured Here & There</span>
+              <span>Recognized & Awarded</span>
             </h3>
             <p className="text-lg text-muted-foreground mb-8">
-              I've been lucky enough to have my work featured in books, magazines and websites around the world.
-              I've also spoken at various design events and enjoy sharing my love of design on social media.
+              I've been honored with the "Best Staff of Social Media Strategy" award and had the privilege to be a "Guest Speaker" at Expo Campus MAN 1 Pandeglang. My work has consistently led to significant improvements in engagement and reach, showcasing my dedication to impactful digital strategies.
             </p>
             <Button asChild variant="link" className="text-primary hover:text-primary/80 px-0 text-lg flex items-center space-x-2">
               <Link to="/projects">
-                <span>View Featured Work</span>
+                <span>View My Achievements</span>
                 <ArrowRight className="h-4 w-4" />
               </Link>
             </Button>
@@ -46,15 +45,15 @@ const FeaturedSection = () => {
           >
             <div className="relative w-full max-w-md h-auto">
               <motion.img
-                src="/public/magazine1.png" // Placeholder for magazine image 1
-                alt="Magazine cover 1"
+                src="/9.jpg" // Placeholder for magazine image 1
+                alt="Award or Recognition"
                 className="absolute w-[80%] h-auto rounded-lg shadow-2xl transform rotate-6 translate-x-8 -translate-y-8 transition-transform duration-500 hover:rotate-3 hover:translate-x-4 hover:-translate-y-4"
                 whileHover={{ scale: 1.05, rotate: 3, x: 16, y: -16 }}
                 transition={{ duration: 0.3 }}
               />
               <motion.img
-                src="/public/magazine2.png" // Placeholder for magazine image 2
-                alt="Magazine cover 2"
+                src="/s.png" // Placeholder for magazine image 2
+                alt="Speaking Event"
                 className="absolute w-[80%] h-auto rounded-lg shadow-2xl transform -rotate-6 -translate-x-8 translate-y-8 transition-transform duration-500 hover:-rotate-3 hover:-translate-x-4 hover:translate-y-4"
                 whileHover={{ scale: 1.05, rotate: -3, x: -16, y: 16 }}
                 transition={{ duration: 0.3 }}
