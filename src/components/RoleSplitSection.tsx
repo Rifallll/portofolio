@@ -2,7 +2,7 @@
 
 import React from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Palette, Code, LucideIcon } from "lucide-react";
+import { Palette, Code, LucideIcon, CircleDot } from "lucide-react"; // Import CircleDot for custom bullet points
 import { motion } from "framer-motion";
 
 interface ExpertiseItem {
@@ -33,9 +33,9 @@ const expertiseData: ExpertiseItem[] = [
     list: [
       "Front-end development",
       "HTML / CSS",
-      "JavaScript", // Diperbarui
+      "JavaScript",
       "Web Development",
-      "Python", // Diperbarui
+      "Python",
       "Fundamental SQL",
       "Web Scraping",
     ],
@@ -55,7 +55,7 @@ const RoleSplitSection = () => {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.05,
+        staggerChildren: 0.08, // Slightly increased stagger for smoother entry
       },
     },
   };
@@ -95,10 +95,10 @@ const RoleSplitSection = () => {
             transition={{ delay: 0.1 }}
             className="w-full max-w-sm"
           >
-            <Card className="p-6 shadow-lg hover:shadow-xl transition-shadow duration-300 bg-card border border-border h-full flex flex-col">
+            <Card className="p-6 shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 hover:scale-[1.02] bg-card border border-border h-full flex flex-col">
               <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-4">
-                <CardTitle className="text-xl font-bold text-primary">{expertiseData[0].title}</CardTitle>
-                <DesignerIcon className="h-6 w-6 text-primary" />
+                <CardTitle className="text-2xl font-bold text-primary">{expertiseData[0].title}</CardTitle>
+                <DesignerIcon className="h-7 w-7 text-primary" />
               </CardHeader>
               <CardContent className="flex-grow">
                 <motion.ul
@@ -106,11 +106,12 @@ const RoleSplitSection = () => {
                   initial="hidden"
                   whileInView="visible"
                   viewport={{ once: true, amount: 0.5 }}
-                  className="list-disc list-inside text-base text-muted-foreground space-y-1"
+                  className="text-base text-muted-foreground space-y-2" // Adjusted spacing
                 >
                   {expertiseData[0].list.map((item, itemIndex) => (
-                    <motion.li key={itemIndex} variants={listItemVariants}>
-                      {item}
+                    <motion.li key={itemIndex} variants={listItemVariants} className="flex items-center">
+                      <CircleDot className="h-4 w-4 text-primary mr-2 flex-shrink-0" /> {/* Custom bullet */}
+                      <span>{item}</span>
                     </motion.li>
                   ))}
                 </motion.ul>
@@ -126,16 +127,16 @@ const RoleSplitSection = () => {
             viewport={{ once: true, amount: 0.5 }}
             className="flex justify-center items-center w-full lg:w-auto"
           >
-            <div className="relative w-64 h-64 rounded-full bg-secondary flex items-center justify-center text-foreground font-semibold text-lg shadow-inner">
+            <div className="relative w-72 h-72 rounded-full bg-secondary flex items-center justify-center text-foreground font-semibold text-lg shadow-2xl"> {/* Increased size, stronger shadow */}
               <div
                 className="absolute inset-0 rounded-full"
                 style={{
                   background: `conic-gradient(${conicGradientStops})`,
                 }}
               ></div>
-              <div className="absolute w-52 h-52 rounded-full bg-background z-10 flex flex-col items-center justify-center border-2 border-border">
-                <span className="text-primary text-xl font-bold text-center">60% Designer</span>
-                <span className="text-foreground text-xl font-bold text-center">40% Coder</span>
+              <div className="absolute w-60 h-60 rounded-full bg-background z-10 flex flex-col items-center justify-center border-4 border-primary/30 animate-pulse-slow"> {/* Increased inner circle, added pulse animation */}
+                <span className="text-primary text-2xl font-extrabold text-center">60% Designer</span> {/* Enhanced typography */}
+                <span className="text-foreground text-2xl font-extrabold text-center">40% Coder</span> {/* Enhanced typography */}
               </div>
             </div>
           </motion.div>
@@ -149,10 +150,10 @@ const RoleSplitSection = () => {
             transition={{ delay: 0.3 }}
             className="w-full max-w-sm"
           >
-            <Card className="p-6 shadow-lg hover:shadow-xl transition-shadow duration-300 bg-card border border-border h-full flex flex-col">
+            <Card className="p-6 shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 hover:scale-[1.02] bg-card border border-border h-full flex flex-col">
               <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-4">
-                <CardTitle className="text-xl font-bold text-foreground">{expertiseData[1].title}</CardTitle>
-                <CoderIcon className="h-6 w-6 text-foreground" />
+                <CardTitle className="text-2xl font-bold text-foreground">{expertiseData[1].title}</CardTitle>
+                <CoderIcon className="h-7 w-7 text-foreground" />
               </CardHeader>
               <CardContent className="flex-grow">
                 <motion.ul
@@ -160,11 +161,12 @@ const RoleSplitSection = () => {
                   initial="hidden"
                   whileInView="visible"
                   viewport={{ once: true, amount: 0.5 }}
-                  className="list-disc list-inside text-base text-muted-foreground space-y-1"
+                  className="text-base text-muted-foreground space-y-2" // Adjusted spacing
                 >
                   {expertiseData[1].list.map((item, itemIndex) => (
-                    <motion.li key={itemIndex} variants={listItemVariants}>
-                      {item}
+                    <motion.li key={itemIndex} variants={listItemVariants} className="flex items-center">
+                      <CircleDot className="h-4 w-4 text-primary mr-2 flex-shrink-0" /> {/* Custom bullet */}
+                      <span>{item}</span>
                     </motion.li>
                   ))}
                 </motion.ul>
