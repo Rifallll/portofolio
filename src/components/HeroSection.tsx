@@ -14,7 +14,7 @@ const HeroSection = () => {
     >
       {/* Konten teks dan tombol */}
       <div className="container mx-auto px-4 relative z-10 flex flex-col lg:flex-row items-center lg:justify-between max-w-6xl">
-        <div className="flex flex-col items-center lg:items-start lg:w-1/2 mb-12 lg:mb-0">
+        <div className="flex flex-col items-center lg:items-start lg:w-[45%] mb-12 lg:mb-0">
           <h1 className="text-5xl md:text-6xl font-extrabold text-foreground mb-6 leading-tight">
             Hi, I'm <span className="text-primary">Rifal Azhar Permana</span>
           </h1>
@@ -41,7 +41,7 @@ const HeroSection = () => {
         </div>
 
         {/* Gambar di sebelah kanan */}
-        <div className="lg:w-1/2 flex justify-center lg:justify-end">
+        <div className="lg:w-[55%] flex justify-center lg:justify-end">
           <img
             src="/p.png"
             alt="Rifal Azhar Permana"
