@@ -2,7 +2,7 @@
 
 import React from "react";
 import { Button } from "@/components/ui/button";
-import { Download } from "lucide-react"; // Corrected import
+import { Download } from "lucide-react";
 import ResumeModal from "./ResumeModal";
 import { useSmoothScroll } from "@/hooks/use-smooth-scroll";
 import ScrollDownIndicator from "./ScrollDownIndicator";
@@ -13,21 +13,21 @@ const HeroSection = () => {
   return (
     <section
       id="home"
-      className="min-h-screen flex flex-col lg:flex-row items-center justify-center text-center lg:text-left pt-24 relative overflow-hidden bg-gradient-to-br from-background to-secondary"
+      className="min-h-screen flex flex-col lg:flex-row items-center justify-center text-center pt-24 relative overflow-hidden bg-gradient-to-br from-background to-secondary"
     >
       {/* Large pulsating circle behind the image */}
       <div className="absolute right-0 top-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/20 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-[pulse-opacity_4s_ease-in-out_infinite] z-0 lg:w-[800px] lg:h-[800px] lg:right-[-200px]"></div>
 
       {/* Konten teks dan tombol */}
       <div className="container mx-auto px-4 relative z-10 flex flex-col lg:flex-row items-center lg:justify-between max-w-6xl h-full lg:gap-x-24">
-        <div className="flex flex-col items-center lg:items-start lg:w-[60%] mb-12 lg:mb-0">
+        <div className="flex flex-col items-center lg:items-center lg:w-[60%] mb-12 lg:mb-0">
           <h1 className="text-5xl md:text-6xl lg:text-7xl font-extrabold text-foreground mb-4 leading-tight">
             Hi, I'm <span className="text-primary">Rifal Azhar Permana</span>
           </h1>
           <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-3xl">
             A passionate Web Developer dedicated to building responsive, high-performance, and user-friendly web applications.
           </p>
-          <div className="flex flex-col sm:flex-row justify-center lg:justify-start items-center gap-4">
+          <div className="flex flex-col sm:flex-row justify-center lg:justify-center items-center gap-4">
             <Button
               onClick={() => scrollToSection("projects")}
               className="bg-primary text-primary-foreground hover:bg-primary/90 px-8 py-3 text-lg rounded-full shadow-lg transition-all duration-300 hover:scale-105"
