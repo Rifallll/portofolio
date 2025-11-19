@@ -10,8 +10,7 @@ const HeroSection = () => {
   return (
     <section
       id="home"
-      className="min-h-screen flex flex-col items-center justify-center text-center pt-24 pb-12 relative overflow-hidden bg-cover bg-center"
-      style={{ backgroundImage: "url('/s.png')" }}
+      className="min-h-screen flex flex-col items-center justify-center text-center pt-24 pb-12 relative overflow-hidden bg-background"
     >
       <div className="container mx-auto px-4 relative z-10 flex flex-col items-center">
         <img
@@ -19,6 +18,12 @@ const HeroSection = () => {
           alt="Rifal Azhar Permana - Web Developer"
           className="max-w-full h-auto mb-10 rounded-lg shadow-xl"
         />
+        <h1 className="text-5xl font-extrabold text-foreground mb-4 leading-tight">
+          Hi, I'm <span className="text-primary">Rifal Azhar Permana</span>
+        </h1>
+        <p className="text-xl text-muted-foreground mb-8 max-w-2xl">
+          A passionate Web Developer crafting engaging and high-performance digital experiences.
+        </p>
         <div className="flex flex-col sm:flex-row justify-center items-center gap-4">
           <Button
             onClick={() => scrollToSection("projects")}
