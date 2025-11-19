@@ -16,13 +16,13 @@ const AboutSection = () => {
 
         <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 mt-12 max-w-6xl mx-auto">
           {/* Left Column: Profile Card */}
-          <Card className="p-6 lg:col-span-2 shadow-xl rounded-2xl bg-card border-2 border-primary/30 flex flex-col items-start text-left gap-4 transition-all duration-300 hover:shadow-2xl hover:-translate-y-1">
+          <Card className="p-6 lg:col-span-2 shadow-xl rounded-2xl bg-card border-2 border-primary/30 flex flex-col items-center text-center gap-4 transition-all duration-300 hover:shadow-2xl hover:-translate-y-1">
             <img
               src="/profile-image-new.jpg"
               alt="Rifal Azhar Permana"
               className="w-32 h-32 rounded-lg object-cover border-4 border-primary/30 shadow-md"
             />
-            <div className="flex flex-col items-start text-left">
+            <div className="flex flex-col items-center text-center">
               <h3 className="text-2xl font-bold text-foreground mb-1">Rifal Azhar Permana</h3>
               <p className="text-lg text-muted-foreground mb-3">Web Developer</p>
               <p className="text-sm text-muted-foreground">
