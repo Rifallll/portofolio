@@ -6,7 +6,7 @@ import { Download } from "lucide-react";
 import ResumeModal from "./ResumeModal";
 import { Link } from "react-router-dom";
 import ScrollDownIndicator from "./ScrollDownIndicator";
-import { motion } from "framer-motion"; // Import motion
+import { motion } from "framer-motion";
 
 const HeroSection = () => {
   const containerVariants = {
@@ -21,7 +21,7 @@ const HeroSection = () => {
 
   const itemVariants = {
     hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.4, 0, 0.2, 1] } }, // Mengubah 'easeOut' menjadi array cubic-bezier
   };
 
   return (

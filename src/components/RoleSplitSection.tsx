@@ -2,7 +2,7 @@
 
 import React from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Palette, Code, LucideIcon } from "lucide-react"; // Import ikon yang dibutuhkan
+import { Palette, Code, LucideIcon } from "lucide-react";
 import { motion } from "framer-motion";
 
 interface ExpertiseItem {
@@ -74,6 +74,9 @@ const RoleSplitSection = () => {
     })
     .join(", ");
 
+  const DesignerIcon = expertiseData[0].icon;
+  const CoderIcon = expertiseData[1].icon;
+
   return (
     <section id="role-split" className="py-20 bg-secondary">
       <div className="container mx-auto px-4 max-w-screen-xl">
@@ -93,7 +96,7 @@ const RoleSplitSection = () => {
             <Card className="p-6 shadow-lg hover:shadow-xl transition-shadow duration-300 bg-card border border-border h-full flex flex-col">
               <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-4">
                 <CardTitle className="text-xl font-bold text-primary">{expertiseData[0].title}</CardTitle>
-                <expertiseData[0].icon className="h-6 w-6 text-primary" />
+                <DesignerIcon className="h-6 w-6 text-primary" />
               </CardHeader>
               <CardContent className="flex-grow">
                 <motion.ul
@@ -147,7 +150,7 @@ const RoleSplitSection = () => {
             <Card className="p-6 shadow-lg hover:shadow-xl transition-shadow duration-300 bg-card border border-border h-full flex flex-col">
               <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-4">
                 <CardTitle className="text-xl font-bold text-foreground">{expertiseData[1].title}</CardTitle>
-                <expertiseData[1].icon className="h-6 w-6 text-foreground" />
+                <CoderIcon className="h-6 w-6 text-foreground" />
               </CardHeader>
               <CardContent className="flex-grow">
                 <motion.ul
