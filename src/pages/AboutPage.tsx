@@ -1,34 +1,20 @@
 import React from "react";
 import Navbar from "@/components/Navbar";
-import SectionHeader from "@/components/SectionHeader";
-import MyJourneySection from "@/components/MyJourneySection";
-import WhatIDoSection from "@/components/WhatIDoSection";
-import AboutFeatureCards from "@/components/AboutFeatureCards"; // Import the new component
-import TestimonialsSection from "@/components/TestimonialsSection";
-import CallToActionSection from "@/components/CallToActionSection";
+import AboutHeroSection from "@/components/AboutHeroSection";
+import RoleSplitSection from "@/components/RoleSplitSection";
+import RandomFactsSection from "@/components/RandomFactsSection";
+import SkillBarsSection from "@/components/SkillBarsSection";
+import FeaturedSection from "@/components/FeaturedSection";
 
 const AboutPage = () => {
   return (
-    <div className="min-h-screen bg-secondary text-foreground">
+    <div className="min-h-screen bg-background text-foreground">
       <Navbar />
-      <section id="about" className="py-20">
-        <div className="container mx-auto px-4 text-center">
-          <SectionHeader
-            title="About Me"
-            description="Learn more about my journey and what drives me"
-          />
-          <div className="mt-12">
-            <MyJourneySection />
-          </div>
-          <div className="mt-16">
-            <h3 className="text-3xl font-bold text-primary mb-8">What I Do</h3>
-            <WhatIDoSection />
-          </div>
-          <AboutFeatureCards /> {/* Add the feature cards here */}
-        </div>
-      </section>
-      <TestimonialsSection />
-      <CallToActionSection />
+      <AboutHeroSection />
+      <RoleSplitSection />
+      <RandomFactsSection />
+      <SkillBarsSection />
+      <FeaturedSection />
     </div>
   );
 };
