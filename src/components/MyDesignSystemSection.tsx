@@ -8,7 +8,7 @@ import { ArrowRight } from "lucide-react";
 
 const MyDesignSystemSection = () => {
   return (
-    <section id="my-design-system" className="py-20 bg-secondary">
+    <section id="my-design-system" className="py-20 bg-background"> {/* Changed from bg-secondary to bg-background */}
       <div className="container mx-auto px-4 max-w-screen-xl text-center md:text-left">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
