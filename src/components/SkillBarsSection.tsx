@@ -2,7 +2,7 @@
 
 import React from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { motion } from "framer-motion"; // Assuming framer-motion is available
+import { motion } from "framer-motion";
 
 interface SkillBarProps {
   name: string;
@@ -14,16 +14,18 @@ interface SkillBarProps {
 const SkillBar: React.FC<SkillBarProps> = ({ name, percentage, color, delay }) => {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.6, delay: delay }}
+      initial={{ opacity: 0, y: 50 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.7, delay: delay }}
+      viewport={{ once: true, amount: 0.5 }}
       className="flex flex-col items-center h-full justify-end group"
     >
       <div className="relative w-28 h-72 bg-muted rounded-t-lg overflow-hidden shadow-md group-hover:shadow-xl transition-shadow duration-300">
         <motion.div
           initial={{ height: 0 }}
-          animate={{ height: `${percentage}%` }}
-          transition={{ duration: 1, delay: delay + 0.3, ease: "easeOut" }}
+          whileInView={{ height: `${percentage}%` }}
+          transition={{ duration: 1.2, delay: delay + 0.3, ease: "easeOut" }}
+          viewport={{ once: true, amount: 0.5 }}
           className="absolute bottom-0 left-0 w-full rounded-t-lg"
           style={{ backgroundColor: color }}
         ></motion.div>
