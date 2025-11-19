@@ -1,7 +1,7 @@
 import React from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import SectionHeader from "./SectionHeader";
-import { Mail, Phone, Instagram, Linkedin, GraduationCap, Code, Lightbulb, BookOpen, Tool, Globe } from "lucide-react";
+import { Mail, Phone, Instagram, Linkedin, GraduationCap, Code, Lightbulb, BookOpen, Wrench, Globe } from "lucide-react"; // Changed Tool to Wrench
 
 const AboutSection = () => {
   return (
@@ -102,7 +102,7 @@ const AboutSection = () => {
               {/* Tools & Platforms Card */}
               <Card className="p-6 shadow-lg bg-card border border-border">
                 <CardHeader className="p-0 mb-4 flex flex-row items-center space-x-2">
-                  <Tool className="h-6 w-6 text-primary" />
+                  <Wrench className="h-6 w-6 text-primary" /> {/* Changed Tool to Wrench */}
                   <CardTitle className="text-2xl font-bold text-foreground">Tools & Platforms</CardTitle>
                 </CardHeader>
                 <CardContent className="p-0 text-lg text-muted-foreground space-y-1">
