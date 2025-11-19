@@ -14,11 +14,11 @@ const HeroSection = () => {
     >
       {/* Konten teks dan tombol */}
       <div className="container mx-auto px-4 relative z-10 flex flex-col lg:flex-row items-center lg:justify-between max-w-6xl h-full">
-        <div className="flex flex-col items-center lg:items-start lg:w-[45%] mb-12 lg:mb-0">
-          <h1 className="text-4xl md:text-5xl font-extrabold text-foreground mb-4 leading-snug"> {/* Adjusted font size and line height */}
+        <div className="flex flex-col items-center lg:items-start lg:w-[55%] mb-12 lg:mb-0"> {/* Lebar kolom teks diubah menjadi 55% */}
+          <h1 className="text-4xl md:text-5xl font-extrabold text-foreground mb-4 leading-snug">
             Hi, I'm <span className="text-primary">Rifal Azhar Permana</span>
           </h1>
-          <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-3xl"> {/* Adjusted font size */}
+          <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-3xl">
             A passionate Web Developer dedicated to building responsive, high-performance, and user-friendly web applications.
           </p>
           <div className="flex flex-col sm:flex-row justify-center lg:justify-start items-center gap-4">
@@ -41,7 +41,7 @@ const HeroSection = () => {
         </div>
 
         {/* Gambar di sebelah kanan */}
-        <div className="lg:w-[55%] flex justify-center lg:justify-end lg:items-end h-full">
+        <div className="lg:w-[45%] flex justify-center lg:justify-end lg:items-end h-full"> {/* Lebar kolom gambar diubah menjadi 45% */}
           <img
             src="/p.png"
             alt="Rifal Azhar Permana"
