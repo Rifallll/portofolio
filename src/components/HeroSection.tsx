@@ -2,7 +2,7 @@
 
 import React from "react";
 import { Button } from "@/components/ui/button";
-import { Download } from "@/components/ui/button";
+import { Download } from "lucide-react"; // Corrected import
 import ResumeModal from "./ResumeModal";
 import { useSmoothScroll } from "@/hooks/use-smooth-scroll";
 import ScrollDownIndicator from "./ScrollDownIndicator";
