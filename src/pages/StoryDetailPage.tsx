@@ -1,7 +1,6 @@
 "use client";
 
 import React from "react";
-// import Navbar from "@/components/Navbar"; // Dihapus
 import Footer from "@/components/Footer";
 import BlogSidebar from "@/components/BlogSidebar";
 import { motion } from "framer-motion";
@@ -27,10 +26,9 @@ const StoryDetailPage = () => {
 
   return (
     <div className="min-h-screen bg-background text-foreground flex flex-col">
-      {/* <Navbar /> */} {/* Navbar dihapus */}
-      <div className="flex flex-1"> {/* Menghapus pt-[64px] karena Navbar dihapus */}
+      <div className="flex flex-1 flex-col lg:flex-row"> {/* Mengubah tata letak flex */}
         <BlogSidebar />
-        <main className="flex-grow p-8 lg:p-12 bg-white text-gray-800">
+        <main className="flex-grow p-8 lg:p-12 bg-white text-gray-800 lg:ml-72"> {/* Menambahkan lg:ml-72 */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
