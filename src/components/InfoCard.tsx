@@ -22,7 +22,7 @@ const InfoCard: React.FC<InfoCardProps> = ({
       initial={{ opacity: 0, y: 50 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, ease: "easeOut" }}
-      className="relative w-full max-w-3xl mx-auto"
+      className="relative w-full max-w-xl mx-auto" {/* Changed max-w-3xl to max-w-xl */}
     >
       <Card className="relative p-6 rounded-xl shadow-lg overflow-hidden bg-card border border-border">
         {/* Diagonal Stripe */}
