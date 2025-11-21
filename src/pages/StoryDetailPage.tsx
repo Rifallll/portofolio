@@ -158,10 +158,12 @@ const StoryDetailPage = () => {
       <div className="min-h-screen bg-background text-foreground flex flex-col lg:flex-row">
         <BlogSidebar />
         <div className="flex-1 flex flex-col overflow-y-auto lg:ml-72">
-          <main className="flex-grow p-8 lg:p-12 bg-white text-gray-800 flex items-center justify-center">
-            <div className="text-center">
-              <h1 className="text-4xl font-bold text-gray-900 mb-4">Story Not Found</h1>
-              <p className="text-lg text-gray-600 mb-8">
+          <main className="flex-grow p-8 lg:p-12 bg-background text-foreground"> {/* Menggunakan bg-background dan text-foreground */}
+            <div className="text-center max-w-3xl mx-auto"> {/* Menambahkan text-center di sini */}
+              <h1 className="text-4xl md:text-5xl font-extrabold text-foreground leading-tight mb-4">
+                Story Not Found
+              </h1>
+              <p className="text-lg text-muted-foreground mb-8">
                 Maaf, cerita yang Anda cari tidak ditemukan.
               </p>
               <Button asChild variant="outline" className="border-primary text-primary hover:bg-primary/10 px-6 py-3 text-lg rounded-full shadow-lg transition-all duration-300 hover:scale-105 flex items-center space-x-2 mx-auto">
@@ -182,34 +184,33 @@ const StoryDetailPage = () => {
     <div className="h-screen bg-background text-foreground flex flex-col lg:flex-row">
       <BlogSidebar />
       <div className="flex-1 flex flex-col overflow-y-auto lg:ml-72">
-        <main className="flex-grow p-8 lg:p-12 bg-white text-gray-800">
+        <main className="flex-grow p-8 lg:p-12 bg-card text-foreground"> {/* Menggunakan bg-card dan text-foreground */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             className="max-w-3xl mx-auto"
           >
-            <div className="mb-8">
-              <div className="flex flex-wrap gap-2 mb-4">
+            <div className="mb-8 text-center"> {/* Menambahkan text-center untuk judul dan info */}
+              <div className="flex flex-wrap justify-center gap-2 mb-4"> {/* Menambahkan justify-center */}
                 {storyContent.tags.map((tag, index) => (
                   <span key={index} className="text-sm text-primary font-medium">
                     {tag}
                   </span>
                 ))}
               </div>
-              <h1 className="text-4xl md:text-5xl font-extrabold text-gray-900 leading-tight mb-4">
+              <h1 className="text-4xl md:text-5xl font-extrabold text-foreground leading-tight mb-4">
                 {storyContent.title}
               </h1>
-              <p className="text-sm text-gray-600 mb-6">
+              <p className="text-sm text-muted-foreground mb-6">
                 POSTED BY: <span className="font-semibold text-primary">{storyContent.postedBy}</span> - {storyContent.date}
               </p>
-              <div className="flex space-x-2 mb-8">
-                {/* Placeholder for social share buttons */}
-                <Button variant="outline" size="sm" className="bg-blue-500 text-white hover:bg-blue-600">
+              <div className="flex justify-center space-x-2 mb-8"> {/* Menambahkan justify-center */}
+                <Button variant="outline" size="sm" className="border-border text-foreground hover:bg-muted">
                   <svg className="h-4 w-4 mr-2" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26L21.61 21.75h-5.21L8.79 13.542 1.807 2.25H5.12L10.73 10.474 18.244 2.25zM17.29 20.75h2.139L7.03 3.75H4.892L17.29 20.75z"></path></svg>
                   Post
                 </Button>
-                <Button variant="outline" size="sm" className="bg-blue-700 text-white hover:bg-blue-800">
+                <Button variant="outline" size="sm" className="border-border text-foreground hover:bg-muted">
                   <svg className="h-4 w-4 mr-2" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.447 2.063H3.553A1.49 1.49 0 002.063 3.553v16.894c0 .823.667 1.49 1.49 1.49h16.894c.823 0 1.49-.667 1.49-1.49V3.553c0-.823-.667-1.49-1.49-1.49zM8.89 19.89H5.11V9.11h3.78v10.78zM7 7.33a2.33 2.33 0 110-4.66 2.33 2.33 0 010 4.66zm12.89 12.56h-3.78v-5.33c0-1.22-.44-2.06-1.56-2.06-1.11 0-1.78.89-1.78 2.06v5.33h-3.78V9.11h3.78v1.67c.56-.89 1.22-1.67 2.22-1.67 2.44 0 3.33 1.67 3.33 4.11v6.67z"></path></svg>
                   Share
                 </Button>
@@ -219,10 +220,10 @@ const StoryDetailPage = () => {
             <img
               src={storyContent.mainImage}
               alt={storyContent.title}
-              className="w-full max-w-lg h-auto object-cover rounded-lg shadow-md mb-8 mx-auto"
+              className="w-full h-auto object-cover rounded-lg shadow-md mb-12 mx-auto" // Menambahkan mb-12
             />
 
-            <div className="prose prose-lg max-w-none text-gray-800">
+            <div className="prose prose-lg max-w-none text-foreground leading-relaxed text-justify"> {/* Menggunakan text-foreground */}
               {storyContent.paragraphs.map((paragraph, index) => (
                 <p key={index} className="mb-6 leading-relaxed text-justify" dangerouslySetInnerHTML={{ __html: paragraph }} />
               ))}
