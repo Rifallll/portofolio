@@ -150,9 +150,11 @@ const BlogSidebar = () => {
         <Accordion type="multiple" className="w-full">
           {storyChapters.map((chapter) => (
             <AccordionItem key={chapter.id} value={chapter.id} className="border-b border-gray-700">
-              <AccordionTrigger className="flex justify-between items-center py-2 text-gray-300 hover:text-primary transition-colors duration-200 text-left">
-                <span className="text-lg">{chapter.title}</span>
-                {chapter.years && <span className="text-sm text-gray-400 ml-2">{chapter.years}</span>}
+              <AccordionTrigger className="flex flex-col items-start py-2 text-gray-300 hover:text-primary transition-colors duration-200 text-left">
+                <div className="flex justify-between items-baseline w-full">
+                  <span className="text-lg font-semibold">{chapter.title}</span>
+                  {chapter.years && <span className="text-sm text-gray-400 ml-2">{chapter.years}</span>}
+                </div>
               </AccordionTrigger>
               <AccordionContent className="pl-4 py-2 text-gray-400 text-sm space-y-1">
                 {chapter.points.map((point, index) => (
