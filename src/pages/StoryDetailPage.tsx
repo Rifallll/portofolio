@@ -28,7 +28,7 @@ const allStoriesContent: { [key: string]: { title: string; tags: string[]; poste
     tags: ["SMA", "IPA 1", "MAN 1 Pandeglang", "Kenangan"], // Diperbarui
     postedBy: "Rifal Azhar Permana",
     date: "2021-05-10",
-    mainImage: "/public/placeholder-story-1.jpg", // Ganti dengan gambar yang relevan
+    mainImage: "/Man 1/IPA/1.jpg", // Diperbarui: Ini sekarang adalah gambar utama
     paragraphs: [
       `Pertemanan di SMA itu aneh, lucu, menyebalkan, tapi justru itulah yang membuatnya tidak tergantikan. Semuanya dimulai pada tahun 2019 saat kita pertama kali melangkah masuk ke MAN 1 Pandeglang dengan wajah polos dan pikiran penuh tanda tanya. Di hari-hari awal itu, kita masih saling menebak siapa yang cerewet, siapa yang pendiam, siapa yang pintar matematika, dan siapa yang hanya pintar meramaikan kelas. Lambat laun, kelas berubah menjadi rumah kedua. Kita terbiasa tertawa di momen yang bahkan guru pun tidak paham apa lucunya. Kita terbiasa saling curi pandang ketika sedang bosan, lalu sama-sama menahan tawa saat ada teman yang ketiduran di jam pelajaran paling serius.`,
       `Jam kosong menjadi legenda tersendiri. Kadang kita gunakan untuk mengerjakan tugas, tapi lebih sering justru untuk melakukan apa saja selain itu. Dari ngobrol panjang sampai cerita hidup, dari iseng menggoda teman sampai membuat rencana jalan-jalan yang biasanya tidak jadi tetapi tetap seru dibahas. Dan tentu saja, tidak ada satu hari pun yang berlalu tanpa candaan receh yang hanya bisa dipahami oleh kita sendiri.`,
@@ -39,7 +39,7 @@ const allStoriesContent: { [key: string]: { title: string; tags: string[]; poste
       `Pertemanan ini adalah perjalanan penuh warna, penuh kejutan, dan penuh perasaan yang sulit dijelaskan dengan kata sederhana. Ini adalah cerita yang tumbuh dari kebiasaan kecil, dari momen lucu yang selalu muncul tiba-tiba, dari perjalanan ke tempat-tempat yang tidak terhitung jumlahnya, dan dari kesempatan terakhir yang kita habiskan bersama sebelum masing-masing melangkah ke dunia baru. Semoga setiap langkah yang kita ambil setelah ini selalu membawa ingatan bahwa kita pernah menjalani masa yang begitu lengkap, begitu hidup, dan begitu berarti.`,
     ],
     additionalImages: [
-      { src: "/Man 1/IPA/1.jpg", alt: "Kenangan SMA 1" }, // Menambahkan gambar baru
+      // Gambar ini telah dipindahkan ke mainImage
       { src: "/Man 1/IPA/12 (2).jpg", alt: "Kenangan SMA 2" },
       { src: "/Man 1/IPA/13.jpg", alt: "Kenangan SMA 3" },
       { src: "/Man 1/IPA/14.jpg", alt: "Kenangan SMA 4" },
