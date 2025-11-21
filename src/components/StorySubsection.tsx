@@ -22,7 +22,7 @@ const StorySubsection: React.FC<StorySubsectionProps> = ({ title, content, delay
       <div className="pb-4 mb-4 border-b border-border"> {/* Menambahkan border-b untuk pemisah judul */}
         <h2 className="text-2xl font-bold text-foreground">{title}</h2>
       </div>
-      <div className="text-lg text-muted-foreground leading-relaxed text-justify">
+      <div className="prose prose-lg max-w-none text-muted-foreground leading-relaxed text-justify"> {/* Menambahkan kelas prose di sini */}
         <div dangerouslySetInnerHTML={{ __html: content }} />
       </div>
     </motion.div>
