@@ -11,10 +11,8 @@ import ProjectsPage from "./pages/ProjectsPage";
 import CertificatesPage from "./pages/CertificatesPage";
 import ContactPage from "./pages/ContactPage";
 import NotFound from "./pages/NotFound";
-// import MyStoryPage from "./pages/MyStoryPage"; // Removed
 import DesignSystemPage from "./pages/DesignSystemPage";
-// import SMADetailPage from "./pages/SMADetailPage"; // Removed
-// import KuliahDetailPage from "./pages/KuliahDetailPage"; // Removed
+import StoryDetailPage from "./pages/StoryDetailPage"; // Import the new StoryDetailPage
 
 
 const queryClient = new QueryClient();
@@ -35,11 +33,8 @@ const App = () => {
             <Route path="/projects" element={<ProjectsPage />} />
             <Route path="/certificates" element={<CertificatesPage />} />
             <Route path="/contact" element={<ContactPage />} />
-            {/* <Route path="/my-story-page" element={<MyStoryPage />} /> */}
             <Route path="/design-system" element={<DesignSystemPage />} />
-            {/* Removed detail routes */}
-            {/* <Route path="/my-story/sma" element={<SMADetailPage />} /> */}
-            {/* <Route path="/my-story/kuliah" element={<KuliahDetailPage />} /> */}
+            <Route path="/my-story-detail" element={<StoryDetailPage />} /> {/* New route */}
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
