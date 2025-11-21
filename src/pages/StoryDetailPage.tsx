@@ -185,7 +185,7 @@ const StoryDetailPage = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="w-full max-w-2xl mx-auto" // Menambahkan max-w-2xl dan mx-auto
+            className="w-full" // Menghapus max-w-2xl mx-auto
           >
             <div className="mb-8 text-left">
               <div className="flex flex-wrap gap-2 mb-4">
@@ -216,7 +216,7 @@ const StoryDetailPage = () => {
             <img
               src={storyContent.mainImage}
               alt={storyContent.title}
-              className="w-full h-auto object-cover rounded-lg shadow-md mb-12 mx-auto max-w-2xl" // Menambahkan max-w-2xl
+              className="w-full h-auto object-cover rounded-lg shadow-md mb-12 mx-auto max-w-2xl"
             />
 
             <div className="prose prose-lg max-w-none text-foreground leading-relaxed text-left">
