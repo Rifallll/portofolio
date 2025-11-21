@@ -22,7 +22,7 @@ const storyChapters = [
     id: "chapter-1",
     title: "MAN 1 Pandeglang",
     points: [
-      { title: "Pertemanan", slug: "man1-pertemanan" },
+      { title: "IPA 1", slug: "man1-pertemanan" }, // Diubah dari "Pertemanan" menjadi "IPA 1"
       { title: "Organisasi", slug: "man1-organisasi" },
       { title: "Ekskul", slug: "man1-ekskul" },
       { title: "Penghargaan", slug: "man1-penghargaan" },
