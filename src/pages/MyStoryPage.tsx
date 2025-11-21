@@ -3,7 +3,7 @@
 import React from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import StoryEntry from "@/components/StoryEntry"; // Import komponen StoryEntry yang baru
+import StoryEntry from "@/components/StoryEntry";
 
 const storyData = [
   {
@@ -33,25 +33,25 @@ const storyData = [
   {
     title: "Membangun Karier Web Development Secara Profesional",
     description: `Selama menjalani perkuliahan, web development bukan lagi sekadar sesuatu yang kupelajari—tetapi mulai menjadi bagian nyata dari karierku. Aku membangun website untuk berbagai kebutuhan: mulai dari UMKM, personal brand, hingga proyek skala lebih besar. Setiap website memberikan tantangan baru, mulai dari UI/UX, performa, hingga strategi struktur konten. Kini aku telah membangun lebih dari dua puluh website, masing-masing menjadi perjalanan belajar yang memperkuat kualitas kerjaku.`,
-    imageSrcs: ["/placeholder-story-1.jpg", "/placeholder-story-3.jpg"], // Reusing
+    imageSrcs: ["/placeholder-story-1.jpg", "/placeholder-story-3.jpg", "/placeholder-story-5.jpg"], // Menambahkan 3 gambar
     imageAlt: "Premium developer workspace with dual monitors"
   },
   {
     title: "Memperluas Keahlian ke Digital Media & Content Strategy",
     description: `Ketika semakin dalam masuk ke industri digital, aku menyadari bahwa website hanyalah fondasi awal. Konten, strategi komunikasi, dan identitas digital adalah elemen yang membuat sebuah produk benar-benar hidup. Karena itu, aku memperluas fokusku ke content strategy, digital media, dan social media management. Aku mulai merancang alur konten, membuat visual direction, hingga menyusun strategi kampanye digital yang mampu memberikan peningkatan engagement signifikan.`,
-    imageSrcs: ["/placeholder-story-2.jpg", "/placeholder-story-4.jpg"], // Reusing
+    imageSrcs: ["/placeholder-story-2.jpg", "/placeholder-story-4.jpg", "/placeholder-story-6.jpg"], // Menambahkan 3 gambar
     imageAlt: "Creative content strategy workspace"
   },
   {
     title: "Pengalaman Profesional & Pencapaian",
     description: `Dalam beberapa tahun terakhir, aku berkesempatan membantu berbagai brand membangun kehadiran digital mereka. Beberapa kampanye yang aku rancang berhasil meningkatkan engagement hingga 150%. Website yang kubuat membantu brand tampil lebih profesional dan kredibel. Pengalaman ini membentuk pemahamanku tentang pentingnya strategi digital yang kuat, efektif, dan berorientasi pada hasil.`,
-    imageSrcs: ["/placeholder-story-5.jpg", "/placeholder-story-7.jpg"], // Reusing
+    imageSrcs: ["/placeholder-story-5.jpg", "/placeholder-story-7.jpg", "/placeholder-story-1.jpg"], // Menambahkan 3 gambar
     imageAlt: "Professional analytics dashboard"
   },
   {
     title: "Melangkah Menuju Masa Depan",
     description: `Perjalananku belum selesai—justru baru dimulai. Dunia teknologi terus berevolusi, dan aku berkomitmen untuk terus berkembang, belajar, dan menciptakan solusi digital yang tidak hanya fungsional tetapi juga bermakna. Dari rasa penasaran saat kecil hingga menjadi sebuah profesi yang sekarang aku jalani, perjalanan ini mengajarkanku bahwa inovasi tidak pernah berhenti, dan begitu juga aku.`,
-    imageSrcs: ["/placeholder-story-6.jpg", "/placeholder-story-8.jpg"], // Reusing
+    imageSrcs: ["/placeholder-story-6.jpg", "/placeholder-story-8.jpg", "/placeholder-story-2.jpg"], // Menambahkan 3 gambar
     imageAlt: "Futuristic silhouette looking at digital screens"
   },
 ];
@@ -60,10 +60,10 @@ const MyStoryPage = () => {
   return (
     <div className="min-h-screen bg-background text-foreground flex flex-col">
       <Navbar />
-      <main className="flex-grow container mx-auto px-4 py-20 max-w-screen-lg">
+      <main className="flex-grow container mx-auto px-4 py-20 max-w-screen-md"> {/* Menyesuaikan lebar maksimum untuk tampilan blog */}
         <h1 className="text-5xl md:text-6xl font-extrabold text-foreground mb-12 text-center">My Story</h1>
 
-        <div className="space-y-16">
+        <div className="space-y-12"> {/* Mengurangi spasi vertikal antar bagian cerita agar lebih padat seperti blog */}
           {storyData.map((story, index) => (
             <StoryEntry
               key={index}
