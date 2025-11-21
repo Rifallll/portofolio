@@ -2,7 +2,6 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"; // Import Card components
 
 interface StoryEntryProps {
   title: string;
@@ -10,6 +9,7 @@ interface StoryEntryProps {
   imageSrcs: string[]; // Array untuk beberapa gambar
   imageAlt: string;
   delay?: number; // Untuk animasi bertahap
+  isReversed?: boolean; // Properti baru untuk membalik tata letak
 }
 
 const StoryEntry: React.FC<StoryEntryProps> = ({
@@ -18,8 +18,9 @@ const StoryEntry: React.FC<StoryEntryProps> = ({
   imageSrcs,
   imageAlt,
   delay = 0,
+  isReversed = false,
 }) => {
-  const cardVariants = {
+  const sectionVariants = {
     hidden: { opacity: 0, y: 50 },
     visible: { opacity: 1, y: 0, transition: { duration: 0.6, delay: delay, ease: "easeOut" } },
   };
@@ -30,43 +31,43 @@ const StoryEntry: React.FC<StoryEntryProps> = ({
   };
 
   return (
-    <motion.div
-      variants={cardVariants}
+    <motion.section
+      variants={sectionVariants}
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, amount: 0.3 }}
-      className="w-full"
+      className={`w-full flex flex-col lg:flex-row items-center gap-12 lg:gap-16 py-12 lg:py-16 ${isReversed ? "lg:flex-row-reverse" : ""}`}
     >
-      <Card className="p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 bg-card border border-border">
-        <CardHeader className="text-center md:text-left pb-4">
-          <CardTitle className="text-3xl font-bold text-foreground">{title}</CardTitle>
-        </CardHeader>
-        <CardContent className="text-left">
-          <p className="text-lg text-muted-foreground leading-relaxed mb-8">{description}</p>
+      {/* Text Content */}
+      <div className="lg:w-1/2 text-center lg:text-left">
+        <h2 className="text-4xl font-bold text-foreground mb-4">{title}</h2>
+        <p className="text-lg text-muted-foreground leading-relaxed">{description}</p>
+      </div>
 
-          {imageSrcs.length > 0 && (
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mt-4">
-              {imageSrcs.map((src, idx) => (
-                <motion.div
-                  key={idx}
-                  variants={imageItemVariants}
-                  initial="hidden"
-                  whileInView="visible"
-                  viewport={{ once: true, amount: 0.5 }}
-                  transition={{ delay: delay + 0.2 + idx * 0.1 }}
-                >
-                  <img
-                    src={src}
-                    alt={`${imageAlt} ${idx + 1}`}
-                    className="w-full h-48 object-cover rounded-md shadow-md border border-border transition-transform duration-300 hover:scale-105"
-                  />
-                </motion.div>
-              ))}
-            </div>
-          )}
-        </CardContent>
-      </Card>
-    </motion.div>
+      {/* Images */}
+      {imageSrcs.length > 0 && (
+        <div className="lg:w-1/2 flex justify-center">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full max-w-lg">
+            {imageSrcs.map((src, idx) => (
+              <motion.div
+                key={idx}
+                variants={imageItemVariants}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, amount: 0.5 }}
+                transition={{ delay: delay + 0.2 + idx * 0.1 }}
+              >
+                <img
+                  src={src}
+                  alt={`${imageAlt} ${idx + 1}`}
+                  className="w-full h-48 object-cover rounded-lg shadow-md border border-border transition-transform duration-300 hover:scale-105"
+                />
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      )}
+    </motion.section>
   );
 };
 
