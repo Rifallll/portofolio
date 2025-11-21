@@ -34,7 +34,7 @@ const blogArchiveData = [
 
 const BlogSidebar = () => {
   return (
-    <aside className="w-full lg:w-72 bg-gray-900 text-gray-100 p-6 flex flex-col space-y-8 sticky top-0 h-screen overflow-y-auto scroll-smooth">
+    <aside className="w-full lg:w-72 bg-gray-900 text-gray-100 p-6 flex flex-col space-y-8 sticky top-0 h-screen overflow-y-auto scroll-smooth hide-scrollbar">
       <Link to="/" className="text-3xl font-serif font-bold leading-tight text-white">
         Life Is An <br /> Absurd <br /> Journey
       </Link>

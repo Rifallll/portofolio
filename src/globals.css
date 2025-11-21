@@ -68,4 +68,14 @@
   body {
     @apply bg-background text-foreground;
   }
+
+  /* Custom styles to hide scrollbar */
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none; /* For Chrome, Safari, and Opera */
+  }
+
+  .hide-scrollbar {
+    -ms-overflow-style: none;  /* For IE and Edge */
+    scrollbar-width: none;  /* For Firefox */
+  }
 }
