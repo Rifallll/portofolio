@@ -154,8 +154,8 @@ const StoryDetailPage = () => {
       <div className="min-h-screen bg-background text-foreground flex flex-col lg:flex-row">
         <BlogSidebar />
         <div className="flex-1 flex flex-col overflow-y-auto lg:ml-72">
-          <main className="flex-grow p-8 lg:p-12 bg-background text-foreground">
-            <div className="text-left max-w-3xl mx-auto">
+          <main className="flex-grow p-8 lg:p-12 bg-background text-foreground"> {/* Changed to bg-background */}
+            <div className="text-left max-w-3xl mx-auto bg-card p-8 rounded-xl shadow-lg border border-border"> {/* Added card styling */}
               <h1 className="text-4xl md:text-5xl font-extrabold text-foreground leading-tight mb-4">
                 Story Not Found
               </h1>
@@ -180,12 +180,12 @@ const StoryDetailPage = () => {
     <div className="h-screen bg-background text-foreground flex flex-col lg:flex-row">
       <BlogSidebar />
       <div className="flex-1 flex flex-col overflow-y-auto lg:ml-72">
-        <main className="flex-grow p-8 lg:p-12 bg-card text-foreground">
+        <main className="flex-grow p-8 lg:p-12 bg-background text-foreground"> {/* Changed to bg-background */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="max-w-3xl mx-auto"
+            className="max-w-3xl mx-auto bg-card p-8 rounded-xl shadow-lg border border-border" // Added card styling
           >
             <div className="mb-8 text-left">
               <div className="flex flex-wrap gap-2 mb-4">

@@ -85,9 +85,9 @@ const storyChapters = [
 
 const BlogSidebar = () => {
   return (
-    <aside className="w-full lg:w-72 bg-gray-900 text-gray-100 p-6 flex flex-col space-y-8 overflow-y-auto scroll-smooth hide-scrollbar
-                  lg:fixed lg:top-0 lg:left-0 lg:h-screen">
-      <Link to="/" className="text-3xl font-serif font-bold leading-tight text-white">
+    <aside className="w-full lg:w-72 bg-card text-foreground p-6 flex flex-col space-y-8 overflow-y-auto scroll-smooth hide-scrollbar
+                  lg:fixed lg:top-0 lg:left-0 lg:h-screen border-r border-border shadow-lg"> {/* Updated styling */}
+      <Link to="/" className="text-3xl font-bold leading-tight text-primary mb-8"> {/* Updated styling */}
         Life Is An <br /> Absurd <br /> Journey
       </Link>
 
@@ -95,9 +95,9 @@ const BlogSidebar = () => {
         <Input
           type="text"
           placeholder="Search the site"
-          className="w-full bg-gray-800 border-gray-700 text-gray-100 placeholder-gray-400 pl-10"
+          className="w-full bg-muted border-border text-foreground placeholder-muted-foreground pl-10" // Updated styling
         />
-        <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-400" />
+        <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" /> {/* Updated styling */}
       </div>
 
       <nav className="space-y-3">
@@ -107,7 +107,7 @@ const BlogSidebar = () => {
             to={item.path}
             className={({ isActive }) =>
               `block text-lg font-medium hover:text-primary transition-colors duration-200 ${
-                isActive ? "text-primary" : "text-gray-300"
+                isActive ? "text-primary" : "text-muted-foreground" // Updated styling
               }`
             }
           >
@@ -117,23 +117,23 @@ const BlogSidebar = () => {
       </nav>
 
       <div className="story-chapters">
-        <h3 className="text-xl font-bold text-white mb-4">MY JOURNEY</h3>
+        <h3 className="text-xl font-bold text-foreground mb-4">MY JOURNEY</h3> {/* Updated styling */}
         <Accordion type="multiple" className="w-full">
           {storyChapters.map((chapter) => (
-            <AccordionItem key={chapter.id} value={chapter.id} className="border-b border-gray-700">
-              <AccordionTrigger className="flex flex-col items-start py-2 text-gray-300 hover:text-primary transition-colors duration-200 text-left">
+            <AccordionItem key={chapter.id} value={chapter.id} className="border-b border-border"> {/* Updated styling */}
+              <AccordionTrigger className="flex flex-col items-start py-2 text-foreground hover:text-primary transition-colors duration-200 text-left"> {/* Updated styling */}
                 <div className="flex justify-between items-baseline w-full">
                   <span className="text-lg font-semibold">{chapter.title}</span>
                 </div>
               </AccordionTrigger>
-              <AccordionContent className="pl-4 py-2 text-gray-400 text-sm space-y-1">
+              <AccordionContent className="pl-4 py-2 text-muted-foreground text-sm space-y-1"> {/* Updated styling */}
                 {chapter.points.map((point, index) => (
                   <NavLink
                     key={index}
                     to={`/story/${point.slug}`}
                     className={({ isActive }) =>
                       `flex items-start py-1 hover:text-primary transition-colors duration-200 ${
-                        isActive ? "text-primary" : "text-gray-400"
+                        isActive ? "text-primary" : "text-muted-foreground" // Updated styling
                       }`
                     }
                   >
