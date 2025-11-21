@@ -60,17 +60,17 @@ const MyStoryPage = () => {
   return (
     <div className="min-h-screen bg-background text-foreground flex flex-col">
       <Navbar />
-      <main className="flex-grow container mx-auto px-4 py-20 max-w-screen-xl relative">
+      <main className="flex-grow container mx-auto px-4 py-20 max-w-screen-xl relative bg-gradient-to-b from-background to-secondary/50"> {/* Menambahkan gradien latar belakang */}
         <h1 className="text-5xl md:text-6xl font-extrabold text-foreground mb-12 text-center">My Story</h1>
 
         <div className="relative space-y-20 lg:space-y-24">
           {/* Vertical timeline line */}
-          <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-primary/20 hidden lg:block"></div>
+          <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-0.5 bg-primary/10 hidden lg:block"></div> {/* Garis lebih tipis dan warna lebih lembut */}
 
           {storyData.map((story, index) => (
             <div key={index} className="relative">
               {/* Timeline dot for large screens */}
-              <div className="hidden lg:block absolute left-1/2 transform -translate-x-1/2 z-10 w-6 h-6 rounded-full bg-primary border-4 border-background shadow-md"></div>
+              <div className="hidden lg:block absolute left-1/2 transform -translate-x-1/2 z-10 w-4 h-4 rounded-full bg-primary border-2 border-background shadow-md"></div> {/* Titik lebih kecil dan border lebih tipis */}
 
               {/* Story Entry */}
               <StoryEntry
