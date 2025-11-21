@@ -7,7 +7,7 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft } from "lucide-react";
-import RelatedPostsSection from "@/components/RelatedPostsSection"; // Import the new component
+// import RelatedPostsSection from "@/components/RelatedPostsSection"; // Import the new component - Dihapus
 
 const StoryDetailPage = () => {
   // Placeholder content for the blog post
@@ -90,7 +90,7 @@ const StoryDetailPage = () => {
               </Button>
             </div>
           </motion.div>
-          <RelatedPostsSection /> {/* Add the RelatedPostsSection here */}
+          {/* <RelatedPostsSection /> Dihapus */}
         </main>
         <Footer />
       </div>
