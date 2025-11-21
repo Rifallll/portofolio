@@ -4,12 +4,11 @@ import React from "react";
 import Footer from "@/components/Footer";
 import BlogSidebar from "@/components/BlogSidebar";
 import { motion } from "framer-motion";
-import { Link, useParams } from "react-router-dom"; // Import useParams
+import { Link, useParams } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft } from "lucide-react";
-import StorySubsection from "@/components/StorySubsection"; // Import the new component
+import StorySubsection from "@/components/StorySubsection";
 
-// Define a type for story content, including optional subsections
 type StoryContent = {
   title: string;
   tags: string[];
@@ -18,10 +17,9 @@ type StoryContent = {
   mainImage: string;
   paragraphs: string[];
   additionalImages?: { src: string; alt: string }[];
-  subsections?: { title: string; content: string }[]; // Add this for structured subsections
+  subsections?: { title: string; content: string }[];
 };
 
-// Dummy data for all stories based on slugs
 const allStoriesContent: { [key: string]: StoryContent } = {
   "make-it-happen-go-travel": {
     title: "Make It Happen! Go Travel!",
@@ -37,11 +35,11 @@ const allStoriesContent: { [key: string]: StoryContent } = {
     ],
   },
   "man1-pertemanan": {
-    title: "IPA 1 MAN 1 Pandeglang", // Diperbarui
-    tags: ["SMA", "IPA 1", "MAN 1 Pandeglang", "Kenangan"], // Diperbarui
+    title: "IPA 1 MAN 1 Pandeglang",
+    tags: ["SMA", "IPA 1", "MAN 1 Pandeglang", "Kenangan"],
     postedBy: "Rifal Azhar Permana",
-    date: "2025-11-21", // Tanggal diperbarui di sini
-    mainImage: "/Man 1/IPA/1.jpg", // Diperbarui: Ini sekarang adalah gambar utama
+    date: "2025-11-21",
+    mainImage: "/Man 1/IPA/1.jpg",
     paragraphs: [
       `Pertemanan di SMA itu aneh, lucu, menyebalkan, tapi justru itulah yang membuatnya tidak tergantikan. Semuanya dimulai pada tahun 2019 saat kita pertama kali melangkah masuk ke MAN 1 Pandeglang dengan wajah polos dan pikiran penuh tanda tanya. Di hari-hari awal itu, kita masih saling menebak siapa yang cerewet, siapa yang pendiam, siapa yang pintar matematika, dan siapa yang hanya pintar meramaikan kelas. Lambat laun, kelas berubah menjadi rumah kedua. Kita terbiasa tertawa di momen yang bahkan guru pun tidak paham apa lucunya. Kita terbiasa saling curi pandang ketika sedang bosan, lalu sama-sama menahan tawa saat ada teman yang ketiduran di jam pelajaran paling serius.`,
       `Jam kosong menjadi legenda tersendiri. Kadang kita gunakan untuk mengerjakan tugas, tapi lebih sering justru untuk melakukan apa saja selain itu. Dari ngobrol panjang sampai cerita hidup, dari iseng menggoda teman sampai membuat rencana jalan-jalan yang biasanya tidak jadi tetapi tetap seru dibahas. Dan tentu saja, tidak ada satu hari pun yang berlalu tanpa candaan receh yang hanya bisa dipahami oleh kita sendiri.`,
@@ -52,7 +50,6 @@ const allStoriesContent: { [key: string]: StoryContent } = {
       `Pertemanan ini adalah perjalanan penuh warna, penuh kejutan, dan penuh perasaan yang sulit dijelaskan dengan kata sederhana. Ini adalah cerita yang tumbuh dari kebiasaan kecil, dari momen lucu yang selalu muncul tiba-tiba, dari perjalanan ke tempat-tempat yang tidak terhitung jumlahnya, dan dari kesempatan terakhir yang kita habiskan bersama sebelum masing-masing melangkah ke dunia baru. Semoga setiap langkah yang kita ambil setelah ini selalu membawa ingatan bahwa kita pernah menjalani masa yang begitu lengkap, begitu hidup, dan begitu berarti.`,
     ],
     additionalImages: [
-      // Gambar ini telah dipindahkan ke mainImage
       { src: "/Man 1/IPA/12 (2).jpg", alt: "Kenangan SMA 2" },
       { src: "/Man 1/IPA/13.jpg", alt: "Kenangan SMA 3" },
       { src: "/Man 1/IPA/14.jpg", alt: "Kenangan SMA 4" },
@@ -66,11 +63,11 @@ const allStoriesContent: { [key: string]: StoryContent } = {
     tags: ["SMA", "Organisasi", "Adiwiyata", "OSIS", "PMR", "Kepemimpinan", "MAN 1 Pandeglang"],
     postedBy: "Rifal Azhar Permana",
     date: "2020-11-15",
-    mainImage: "/public/placeholder-story-2.jpg", // Ganti dengan gambar yang relevan
+    mainImage: "/public/placeholder-story-2.jpg",
     paragraphs: [
       `Selama bersekolah di MAN 1 Pandeglang, saya aktif mengikuti beberapa organisasi yang memberi banyak pengalaman berharga. Melalui kegiatan-kegiatan tersebut, saya belajar memahami tanggung jawab, bekerja dalam tim, menghadapi berbagai situasi, dan mengembangkan kemampuan diri. Setiap organisasi yang saya ikuti memiliki cerita dan perannya masing-masing dalam membentuk kebiasaan serta karakter saya selama menjalani masa SMA. Dari kegiatan lingkungan, kepemimpinan, sampai kesehatan, semuanya memberikan pelajaran yang berbeda dan menjadi bagian penting dalam perjalanan saya di sekolah.`,
     ],
-    subsections: [ // Menggunakan properti subsections baru
+    subsections: [
       {
         title: "Adiwiyata (2019–2022)",
         content: `<p>Saya mulai bergabung dengan Adiwiyata pada tahun 2019, tepat memasuki masa awal saya di MAN 1 Pandeglang. Pada tahap awal saya hanya mengikuti kegiatan sebagai anggota, belajar menjaga kebersihan lingkungan sekolah, menata taman, merawat tanaman, serta memastikan area halaman tetap tertib. Kegiatan harian seperti membersihkan kelas, memindahkan pot, merapikan sudut taman, hingga menata kembali area yang rusak menjadi bagian dari rutinitas. Selain itu Adiwiyata juga memiliki program seperti seleberih atau penilaian kelas bersih, hiking lingkungan untuk pengenalan alam sekolah, penghijauan kecil, proyek sudut hijau, dan kerja bakti besar menjelang acara sekolah.</p>
@@ -91,7 +88,6 @@ const allStoriesContent: { [key: string]: StoryContent } = {
       },
     ],
   },
-  // Tambahkan konten untuk slug lainnya di sini
   "telkom-perkuliahan": {
     title: "Perkuliahan di Telkom University",
     tags: ["Kuliah", "Telkom University", "Teknik Komputer"],
@@ -150,8 +146,8 @@ const allStoriesContent: { [key: string]: StoryContent } = {
 };
 
 const StoryDetailPage = () => {
-  const { slug } = useParams<{ slug: string }>(); // Mengambil slug dari URL
-  const storyContent = slug ? allStoriesContent[slug] : undefined; // Mencari konten berdasarkan slug
+  const { slug } = useParams<{ slug: string }>();
+  const storyContent = slug ? allStoriesContent[slug] : undefined;
 
   if (!storyContent) {
     return (
@@ -159,14 +155,14 @@ const StoryDetailPage = () => {
         <BlogSidebar />
         <div className="flex-1 flex flex-col overflow-y-auto lg:ml-72">
           <main className="flex-grow p-8 lg:p-12 bg-background text-foreground">
-            <div className="text-left max-w-3xl mx-auto"> {/* Mengubah text-center menjadi text-left */}
+            <div className="text-left max-w-3xl mx-auto">
               <h1 className="text-4xl md:text-5xl font-extrabold text-foreground leading-tight mb-4">
                 Story Not Found
               </h1>
               <p className="text-lg text-muted-foreground mb-8">
                 Maaf, cerita yang Anda cari tidak ditemukan.
               </p>
-              <Button asChild variant="outline" className="border-primary text-primary hover:bg-primary/10 px-6 py-3 text-lg rounded-full shadow-lg transition-all duration-300 hover:scale-105 flex items-center space-x-2"> {/* Menghapus mx-auto */}
+              <Button asChild variant="outline" className="border-primary text-primary hover:bg-primary/10 px-6 py-3 text-lg rounded-full shadow-lg transition-all duration-300 hover:scale-105 flex items-center space-x-2">
                 <Link to="/about">
                   <ArrowLeft className="h-5 w-5" />
                   <span>Kembali ke About</span>
@@ -191,8 +187,8 @@ const StoryDetailPage = () => {
             transition={{ duration: 0.6 }}
             className="max-w-3xl mx-auto"
           >
-            <div className="mb-8 text-left"> {/* Mengubah text-center menjadi text-left */}
-              <div className="flex flex-wrap gap-2 mb-4"> {/* Menghapus justify-center */}
+            <div className="mb-8 text-left">
+              <div className="flex flex-wrap gap-2 mb-4">
                 {storyContent.tags.map((tag, index) => (
                   <span key={index} className="text-sm text-primary font-medium">
                     {tag}
@@ -205,7 +201,7 @@ const StoryDetailPage = () => {
               <p className="text-sm text-muted-foreground mb-6">
                 POSTED BY: <span className="font-semibold text-primary">{storyContent.postedBy}</span> - {storyContent.date}
               </p>
-              <div className="flex space-x-2 mb-8"> {/* Menghapus justify-center */}
+              <div className="flex space-x-2 mb-8">
                 <Button variant="outline" size="sm" className="border-border text-foreground hover:bg-muted">
                   <svg className="h-4 w-4 mr-2" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26L21.61 21.75h-5.21L8.79 13.542 1.807 2.25H5.12L10.73 10.474 18.244 2.25zM17.29 20.75h2.139L7.03 3.75H4.892L17.29 20.75z"></path></svg>
                   Post
@@ -260,11 +256,11 @@ const StoryDetailPage = () => {
               </motion.div>
             )}
 
-            <div className="mt-12 text-left"> {/* Mengubah text-center menjadi text-left */}
+            <div className="mt-12 text-left">
               <Button
                 asChild
                 variant="outline"
-                className="border-primary text-primary hover:bg-primary/10 px-6 py-3 text-lg rounded-full shadow-lg transition-all duration-300 hover:scale-105 flex items-center space-x-2" {/* Menghapus mx-auto */}
+                className="border-primary text-primary hover:bg-primary/10 px-6 py-3 text-lg rounded-full shadow-lg transition-all duration-300 hover:scale-105 flex items-center space-x-2"
               >
                 <Link to="/about">
                   <ArrowLeft className="h-5 w-5" />
