@@ -9,7 +9,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { Search, CircleDot } from "lucide-react"; // Import CircleDot for list items
+import { Search, CircleDot } from "lucide-react";
 
 const blogNavItems = [
   { name: "HOME", path: "/" },
@@ -20,69 +20,69 @@ const blogNavItems = [
   { name: "DESTINATIONS", path: "#" }, // Placeholder
 ];
 
-// Data untuk bab cerita Anda yang baru
+// Data untuk bab cerita Anda dengan slug untuk setiap poin
 const storyChapters = [
   {
     id: "chapter-1",
     title: "MAN 1 Pandeglang",
     points: [
-      "Pertemanan",
-      "Organisasi",
-      "Ekskul",
-      "Penghargaan",
-      "Lomba",
-      "Pengalaman",
+      { title: "Pertemanan", slug: "man1-pertemanan" },
+      { title: "Organisasi", slug: "man1-organisasi" },
+      { title: "Ekskul", slug: "man1-ekskul" },
+      { title: "Penghargaan", slug: "man1-penghargaan" },
+      { title: "Lomba", slug: "man1-lomba" },
+      { title: "Pengalaman", slug: "man1-pengalaman" },
     ],
   },
   {
     id: "chapter-2",
     title: "Telkom University",
     points: [
-      "Perkuliahan",
-      "Organisasi",
-      "Proyek",
-      "Magang",
-      "Komunitas",
-      "Kegiatan Kampus",
+      { title: "Perkuliahan", slug: "telkom-perkuliahan" },
+      { title: "Organisasi", slug: "telkom-organisasi" },
+      { title: "Proyek", slug: "telkom-proyek" },
+      { title: "Magang", slug: "telkom-magang" },
+      { title: "Komunitas", slug: "telkom-komunitas" },
+      { title: "Kegiatan Kampus", slug: "telkom-kegiatan-kampus" },
     ],
   },
   {
     id: "chapter-3",
     title: "Web Development Journey",
     points: [
-      "Belajar Dasar",
-      "Project Pertama",
-      "Tools & Skill",
-      "Website Klien",
+      { title: "Belajar Dasar", slug: "webdev-belajar-dasar" },
+      { title: "Project Pertama", slug: "webdev-project-pertama" },
+      { title: "Tools & Skill", slug: "webdev-tools-skill" },
+      { title: "Website Klien", slug: "webdev-website-klien" },
     ],
   },
   {
     id: "chapter-4",
     title: "Digital Media & Content Strategy",
     points: [
-      "Copywriting",
-      "Social Media",
-      "Campaign",
-      "Portfolio",
+      { title: "Copywriting", slug: "digital-copywriting" },
+      { title: "Social Media", slug: "digital-social-media" },
+      { title: "Campaign", slug: "digital-campaign" },
+      { title: "Portfolio", slug: "digital-portfolio" },
     ],
   },
   {
     id: "chapter-5",
     title: "Professional Career",
     points: [
-      "Project Website",
-      "Digital Campaign",
-      "Skill Set",
-      "Pencapaian",
+      { title: "Project Website", slug: "career-project-website" },
+      { title: "Digital Campaign", slug: "career-digital-campaign" },
+      { title: "Skill Set", slug: "career-skill-set" },
+      { title: "Pencapaian", slug: "career-pencapaian" },
     ],
   },
   {
     id: "chapter-6",
     title: "Visi & Masa Depan",
     points: [
-      "Target",
-      "Skill Baru",
-      "Proyek Impian",
+      { title: "Target", slug: "future-target" },
+      { title: "Skill Baru", slug: "future-skill-baru" },
+      { title: "Proyek Impian", slug: "future-proyek-impian" },
     ],
   },
 ];
@@ -128,15 +128,23 @@ const BlogSidebar = () => {
               <AccordionTrigger className="flex flex-col items-start py-2 text-gray-300 hover:text-primary transition-colors duration-200 text-left">
                 <div className="flex justify-between items-baseline w-full">
                   <span className="text-lg font-semibold">{chapter.title}</span>
-                  {/* Menghapus chapter.years karena tidak ada di data baru */}
+                  {chapter.years && <span className="text-sm text-gray-400 ml-2">{chapter.years}</span>}
                 </div>
               </AccordionTrigger>
               <AccordionContent className="pl-4 py-2 text-gray-400 text-sm space-y-1">
                 {chapter.points.map((point, index) => (
-                  <div key={index} className="flex items-start">
+                  <NavLink
+                    key={index}
+                    to={`/story/${point.slug}`}
+                    className={({ isActive }) =>
+                      `flex items-start py-1 hover:text-primary transition-colors duration-200 ${
+                        isActive ? "text-primary" : "text-gray-400"
+                      }`
+                    }
+                  >
                     <CircleDot className="h-4 w-4 text-primary mr-2 mt-1 flex-shrink-0" />
-                    <span>{point}</span>
-                  </div>
+                    <span>{point.title}</span>
+                  </NavLink>
                 ))}
               </AccordionContent>
             </AccordionItem>

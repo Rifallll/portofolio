@@ -4,31 +4,139 @@ import React from "react";
 import Footer from "@/components/Footer";
 import BlogSidebar from "@/components/BlogSidebar";
 import { motion } from "framer-motion";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom"; // Import useParams
 import { Button } from "@/components/ui/button";
 import { ArrowLeft } from "lucide-react";
-// import RelatedPostsSection from "@/components/RelatedPostsSection"; // Import the new component - Dihapus
 
-const StoryDetailPage = () => {
-  // Placeholder content for the blog post
-  const storyContent = {
+// Dummy data for all stories based on slugs
+const allStoriesContent: { [key: string]: { title: string; tags: string[]; postedBy: string; date: string; mainImage: string; paragraphs: string[] } } = {
+  "make-it-happen-go-travel": {
     title: "Make It Happen! Go Travel!",
     tags: ["#MAKEITHAPPEN", "LIFE LESSONS", "LIFE TALK", "LUMIA", "MAKE IT HAPPEN", "TRAVEL"],
     postedBy: "Rifal Azhar Permana",
     date: "2024-11-21",
-    mainImage: "/1.jpeg", // Using an existing image from public folder
+    mainImage: "/1.jpeg",
     paragraphs: [
       `Jika ada kalimat "Don't work hard, work smart" saya kurang setuju. Saya lebih pilih "Work smart and work hard".`,
       `Bekerja keras adalah fondasi, tetapi bekerja cerdas adalah kunci untuk mencapai hasil yang maksimal. Dalam perjalanan hidup ini, saya selalu percaya bahwa setiap usaha yang kita lakukan, baik itu besar maupun kecil, akan membawa kita selangkah lebih dekat pada tujuan.`,
       `Perjalanan adalah salah satu cara terbaik untuk belajar dan tumbuh. Setiap tempat baru, setiap budaya yang berbeda, dan setiap tantangan yang dihadapi di perjalanan memberikan pelajaran berharga yang tidak bisa didapatkan di bangku sekolah. Ini adalah investasi terbaik untuk diri sendiri.`,
       `Jadi, jangan ragu untuk mewujudkan impian Anda. Buatlah rencana, bekerja keras dan cerdas, dan jangan takut untuk menjelajahi dunia. Karena pada akhirnya, pengalaman adalah guru terbaik, dan setiap langkah adalah bagian dari cerita hidup yang luar biasa.`,
     ],
-  };
+  },
+  // Contoh konten untuk slug baru (Anda bisa menambahkan lebih banyak di sini)
+  "man1-pertemanan": {
+    title: "Pertemanan di MAN 1 Pandeglang",
+    tags: ["SMA", "Pertemanan", "MAN 1 Pandeglang"],
+    postedBy: "Rifal Azhar Permana",
+    date: "2021-05-10",
+    mainImage: "/public/placeholder-story-1.jpg", // Ganti dengan gambar yang relevan
+    paragraphs: [
+      `Masa SMA adalah masa penuh warna, terutama dalam hal pertemanan. Di MAN 1 Pandeglang, saya menemukan banyak teman yang beragam, masing-masing dengan cerita dan impiannya sendiri. Kami belajar bersama, tertawa bersama, dan saling mendukung dalam suka maupun duka.`,
+      `Lingkungan sekolah yang suportif juga membentuk karakter saya. Guru-guru yang inspiratif dan fasilitas yang memadai membuat proses belajar menjadi lebih menyenangkan. Pertemanan yang terjalin di masa ini menjadi fondasi penting bagi perjalanan hidup saya selanjutnya.`,
+    ],
+  },
+  "man1-organisasi": {
+    title: "Organisasi yang Pernah Diikuti di MAN 1 Pandeglang",
+    tags: ["SMA", "Organisasi", "MAN 1 Pandeglang"],
+    postedBy: "Rifal Azhar Permana",
+    date: "2020-11-15",
+    mainImage: "/public/placeholder-story-2.jpg", // Ganti dengan gambar yang relevan
+    paragraphs: [
+      `Selama di MAN 1 Pandeglang, saya aktif mengikuti beberapa organisasi. Salah satunya adalah OSIS, di mana saya belajar banyak tentang kepemimpinan, kerja tim, dan bagaimana mengelola sebuah acara. Pengalaman ini sangat berharga dalam membentuk kemampuan organisasi saya.`,
+      `Selain OSIS, saya juga terlibat dalam organisasi keagamaan yang membantu saya memperdalam pemahaman spiritual dan sosial. Melalui organisasi-organisasi ini, saya tidak hanya mendapatkan teman baru, tetapi juga mengembangkan soft skill yang sangat berguna di masa depan.`,
+    ],
+  },
+  // Tambahkan konten untuk slug lainnya di sini
+  "telkom-perkuliahan": {
+    title: "Perkuliahan di Telkom University",
+    tags: ["Kuliah", "Telkom University", "Teknik Komputer"],
+    postedBy: "Rifal Azhar Permana",
+    date: "2023-03-01",
+    mainImage: "/public/placeholder-story-3.jpg",
+    paragraphs: [
+      `Memasuki dunia perkuliahan di Telkom University adalah babak baru yang penuh tantangan. Jurusan Teknik Komputer menuntut pemahaman mendalam tentang logika dan pemrograman. Setiap mata kuliah adalah petualangan baru yang mengasah kemampuan analitis dan problem-solving saya.`,
+      `Lingkungan kampus yang dinamis dengan berbagai kegiatan akademik dan non-akademik membuat pengalaman kuliah semakin kaya. Saya belajar untuk beradaptasi dengan ritme perkuliahan yang cepat dan berinteraksi dengan dosen serta teman-teman dari berbagai latar belakang.`,
+    ],
+  },
+  "webdev-belajar-dasar": {
+    title: "Belajar HTML/CSS Pertama Kali",
+    tags: ["Web Development", "HTML", "CSS", "Belajar Coding"],
+    postedBy: "Rifal Azhar Permana",
+    date: "2022-08-01",
+    mainImage: "/public/placeholder-story-4.jpg",
+    paragraphs: [
+      `Awal mula saya terjun ke dunia web development adalah ketika pertama kali belajar HTML dan CSS. Rasanya seperti menemukan bahasa baru yang memungkinkan saya untuk menciptakan sesuatu yang bisa dilihat dan diinteraksikan oleh banyak orang. Dari sekadar membuat halaman statis, saya mulai memahami struktur dasar sebuah website.`,
+      `Setiap baris kode yang saya tulis adalah langkah kecil menuju pemahaman yang lebih besar. Tantangan dalam menata layout dan membuat desain responsif menjadi motivasi untuk terus belajar dan bereksperimen. Ini adalah fondasi yang kuat untuk perjalanan saya sebagai seorang web developer.`,
+    ],
+  },
+  "digital-copywriting": {
+    title: "Membuat Konten & Copywriting",
+    tags: ["Digital Media", "Content Strategy", "Copywriting"],
+    postedBy: "Rifal Azhar Permana",
+    date: "2023-01-15",
+    mainImage: "/public/placeholder-story-5.jpg",
+    paragraphs: [
+      `Dunia digital media tidak hanya tentang visual, tetapi juga tentang bagaimana kita menyampaikan pesan. Saya mulai mendalami copywriting, seni menulis teks yang persuasif dan menarik. Belajar bagaimana merangkai kata-kata agar audiens tertarik dan tergerak untuk bertindak adalah tantangan yang menyenangkan.`,
+      `Membuat konten yang relevan dan menarik adalah kunci. Saya bereksperimen dengan berbagai gaya penulisan dan format konten untuk menemukan apa yang paling efektif. Ini adalah proses kreatif yang terus berkembang seiring dengan tren dan kebutuhan audiens.`,
+    ],
+  },
+  "career-project-website": {
+    title: "Daftar Project Website yang Pernah Dibuat",
+    tags: ["Professional Career", "Project Website", "Portfolio"],
+    postedBy: "Rifal Azhar Permana",
+    date: "2024-01-01",
+    mainImage: "/public/placeholder-story-6.jpg",
+    paragraphs: [
+      `Dalam perjalanan karir profesional saya, saya telah mengerjakan berbagai proyek website, mulai dari e-commerce, portofolio pribadi, hingga sistem manajemen konten. Setiap proyek memberikan pelajaran baru dan kesempatan untuk mengaplikasikan teknologi terbaru.`,
+      `Saya bangga dengan setiap website yang saya bangun, karena di dalamnya terdapat dedikasi untuk menciptakan pengalaman pengguna yang optimal dan fungsionalitas yang solid. Ini adalah bukti nyata dari kemampuan saya dalam menerjemahkan ide menjadi solusi digital yang nyata.`,
+    ],
+  },
+  "future-target": {
+    title: "Target Karier 1–3 Tahun Kedepan",
+    tags: ["Visi", "Masa Depan", "Target Karier"],
+    postedBy: "Rifal Azhar Permana",
+    date: "2024-12-01",
+    mainImage: "/public/placeholder-story-7.jpg",
+    paragraphs: [
+      `Dalam 1-3 tahun ke depan, saya memiliki target untuk terus mengembangkan diri sebagai seorang Full-stack Developer yang handal. Saya ingin mendalami teknologi backend seperti Node.js dan Python, serta menguasai framework frontend yang lebih kompleks.`,
+      `Selain itu, saya juga berencana untuk mengambil sertifikasi profesional di bidang web development dan digital marketing untuk memperkuat kredibilitas saya. Saya percaya bahwa pembelajaran berkelanjutan adalah kunci untuk tetap relevan di industri yang terus berubah ini.`,
+    ],
+  },
+};
+
+const StoryDetailPage = () => {
+  const { slug } = useParams<{ slug: string }>(); // Mengambil slug dari URL
+  const storyContent = slug ? allStoriesContent[slug] : undefined; // Mencari konten berdasarkan slug
+
+  if (!storyContent) {
+    return (
+      <div className="min-h-screen bg-background text-foreground flex flex-col lg:flex-row">
+        <BlogSidebar />
+        <div className="flex-1 flex flex-col overflow-y-auto lg:ml-72">
+          <main className="flex-grow p-8 lg:p-12 bg-white text-gray-800 flex items-center justify-center">
+            <div className="text-center">
+              <h1 className="text-4xl font-bold text-gray-900 mb-4">Story Not Found</h1>
+              <p className="text-lg text-gray-600 mb-8">
+                Maaf, cerita yang Anda cari tidak ditemukan.
+              </p>
+              <Button asChild variant="outline" className="border-primary text-primary hover:bg-primary/10 px-6 py-3 text-lg rounded-full shadow-lg transition-all duration-300 hover:scale-105 flex items-center space-x-2 mx-auto">
+                <Link to="/about">
+                  <ArrowLeft className="h-5 w-5" />
+                  <span>Kembali ke About</span>
+                </Link>
+              </Button>
+            </div>
+          </main>
+          <Footer />
+        </div>
+      </div>
+    );
+  }
 
   return (
-    <div className="h-screen bg-background text-foreground flex flex-col lg:flex-row"> {/* Mengubah min-h-screen menjadi h-screen */}
-      <BlogSidebar /> {/* On large screens, this is fixed. On mobile, it's part of the flex-col flow */}
-      <div className="flex-1 flex flex-col overflow-y-auto lg:ml-72"> {/* This div will contain the main content and footer, and will be scrollable */}
+    <div className="h-screen bg-background text-foreground flex flex-col lg:flex-row">
+      <BlogSidebar />
+      <div className="flex-1 flex flex-col overflow-y-auto lg:ml-72">
         <main className="flex-grow p-8 lg:p-12 bg-white text-gray-800">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -90,7 +198,6 @@ const StoryDetailPage = () => {
               </Button>
             </div>
           </motion.div>
-          {/* <RelatedPostsSection /> Dihapus */}
         </main>
         <Footer />
       </div>
