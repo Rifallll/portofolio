@@ -4,7 +4,7 @@ import React, { useEffect } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import StoryEntry from "@/components/StoryEntry";
-import BlogSidebar from "@/components/BlogSidebar"; // Import BlogSidebar
+import SectionHeader from "@/components/SectionHeader"; // Import SectionHeader
 
 const storySections = [
   {
@@ -88,26 +88,28 @@ const MyStoryPage = () => {
   return (
     <div className="min-h-screen bg-background text-foreground flex flex-col">
       <Navbar />
-      <main className="flex-grow container mx-auto px-4 py-20 max-w-screen-xl flex flex-col lg:flex-row gap-8">
-        {/* Sidebar */}
-        <BlogSidebar sections={storySections.map(s => ({ id: s.id, title: s.title, category: s.category }))} />
+      <main className="flex-grow container mx-auto px-4 py-20 max-w-screen-xl relative">
+        {/* Vertical timeline line */}
+        <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-border z-0" />
 
-        {/* Main Content */}
-        <div className="lg:flex-grow lg:w-3/4">
-          <h1 className="text-5xl md:text-6xl font-extrabold text-foreground mb-12 text-center lg:text-left">My Story</h1>
-          <div className="space-y-16"> {/* Increased space between story entries */}
-            {storySections.map((story, index) => (
-              <StoryEntry
-                key={index}
-                id={story.id}
-                title={story.title}
-                description={story.description}
-                imageSrcs={story.imageSrcs}
-                imageAlt={story.imageAlt}
-                delay={index * 0.1}
-              />
-            ))}
-          </div>
+        <SectionHeader
+          title="My Story"
+          description="A journey through my education, passions, and professional growth."
+        />
+
+        <div className="space-y-4"> {/* Reduced space-y to make timeline elements closer */}
+          {storySections.map((story, index) => (
+            <StoryEntry
+              key={index}
+              id={story.id}
+              title={story.title}
+              description={story.description}
+              imageSrcs={story.imageSrcs}
+              imageAlt={story.imageAlt}
+              position={index % 2 === 0 ? "left" : "right"} // Alternate position
+              delay={index * 0.1}
+            />
+          ))}
         </div>
       </main>
       <Footer />
