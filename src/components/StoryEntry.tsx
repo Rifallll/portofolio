@@ -2,37 +2,27 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { Link } from "react-router-dom"; // Import Link
-import { Button } from "@/components/ui/button"; // Import Button
-import { ArrowRight } from "lucide-react"; // Import ArrowRight icon
 
 interface StoryEntryProps {
+  id: string; // Add id for scrolling
   title: string;
   description: string;
   imageSrcs: string[]; // Array untuk beberapa gambar
   imageAlt: string;
   delay?: number; // Untuk animasi bertahap
-  isReversed?: boolean; // Properti baru untuk membalik tata letak
-  link?: string; // Properti baru untuk link ke halaman detail
 }
 
 const StoryEntry: React.FC<StoryEntryProps> = ({
+  id,
   title,
   description,
   imageSrcs,
   imageAlt,
   delay = 0,
-  isReversed = false,
-  link, // Terima properti link
 }) => {
   const sectionVariants = {
     hidden: { opacity: 0, y: 50 },
     visible: { opacity: 1, y: 0, transition: { duration: 0.6, delay: delay, ease: "easeOut" } },
-  };
-
-  const textContainerVariants = {
-    hidden: { opacity: 0, x: isReversed ? 50 : -50 },
-    visible: { opacity: 1, x: 0, transition: { duration: 0.7, delay: delay + 0.2, ease: "easeOut" } },
   };
 
   const imageItemVariants = {
@@ -42,33 +32,23 @@ const StoryEntry: React.FC<StoryEntryProps> = ({
 
   return (
     <motion.section
+      id={id} // Add id here
       variants={sectionVariants}
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, amount: 0.3 }}
-      className={`w-full flex flex-col lg:flex-row items-center gap-16 lg:gap-24 py-12 lg:py-16 ${isReversed ? "lg:flex-row-reverse" : ""}`}
+      className="w-full py-12 lg:py-16" // Simplified layout
     >
       {/* Text Content */}
-      <motion.div
-        variants={textContainerVariants}
-        className="lg:w-[48%] text-center lg:text-left p-8 rounded-xl shadow-lg border border-border bg-card"
-      >
+      <div className="p-8 rounded-xl"> {/* Removed shadow, border, bg-card */}
         <h2 className="text-4xl font-bold text-foreground mb-4">{title}</h2>
-        <p className="text-lg text-muted-foreground leading-relaxed mb-6">{description}</p>
-        {link && ( // Tampilkan tombol jika ada link
-          <Button asChild variant="link" className="text-primary hover:text-primary/80 px-0 text-lg flex items-center space-x-2">
-            <Link to={link}>
-              <span>Lihat Lebih Lanjut</span>
-              <ArrowRight className="h-4 w-4" />
-            </Link>
-          </Button>
-        )}
-      </motion.div>
+        <p className="text-lg text-muted-foreground leading-relaxed mb-6 text-justify">{description}</p>
+      </div>
 
       {/* Images */}
       {imageSrcs.length > 0 && (
-        <div className="lg:w-[48%] flex justify-center">
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full max-w-lg">
+        <div className="flex justify-center mt-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 w-full max-w-3xl"> {/* Adjusted max-w for images */}
             {imageSrcs.map((src, idx) => (
               <motion.div
                 key={idx}

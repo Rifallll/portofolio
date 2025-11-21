@@ -13,8 +13,8 @@ import ContactPage from "./pages/ContactPage";
 import NotFound from "./pages/NotFound";
 import MyStoryPage from "./pages/MyStoryPage";
 import DesignSystemPage from "./pages/DesignSystemPage";
-import SMADetailPage from "./pages/SMADetailPage"; // Import SMADetailPage
-import KuliahDetailPage from "./pages/KuliahDetailPage"; // Import KuliahDetailPage
+// import SMADetailPage from "./pages/SMADetailPage"; // Removed
+// import KuliahDetailPage from "./pages/KuliahDetailPage"; // Removed
 
 
 const queryClient = new QueryClient();
@@ -37,8 +37,9 @@ const App = () => {
             <Route path="/contact" element={<ContactPage />} />
             <Route path="/my-story-page" element={<MyStoryPage />} />
             <Route path="/design-system" element={<DesignSystemPage />} />
-            <Route path="/my-story/sma" element={<SMADetailPage />} /> {/* Rute baru untuk detail SMA */}
-            <Route path="/my-story/kuliah" element={<KuliahDetailPage />} /> {/* Rute baru untuk detail Kuliah */}
+            {/* Removed detail routes */}
+            {/* <Route path="/my-story/sma" element={<SMADetailPage />} /> */}
+            {/* <Route path="/my-story/kuliah" element={<KuliahDetailPage />} /> */}
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
