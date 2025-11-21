@@ -187,90 +187,87 @@ const StoryDetailPage = () => {
             transition={{ duration: 0.6 }}
             className="w-full"
           >
-            {/* Wrapper baru untuk konten utama agar lebih rapi dan terpusat */}
-            <div className="max-w-4xl mx-auto">
-              <div className="mb-8 text-left">
-                <div className="flex flex-wrap gap-2 mb-4">
-                  {storyContent.tags.map((tag, index) => (
-                    <span key={index} className="text-sm text-primary font-medium">
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-                <h1 className="text-4xl md:text-5xl font-extrabold text-foreground leading-tight mb-4">
-                  {storyContent.title}
-                </h1>
-                <p className="text-sm text-muted-foreground mb-6">
-                  POSTED BY: <span className="font-semibold text-primary">{storyContent.postedBy}</span> - {storyContent.date}
-                </p>
-                <div className="flex space-x-2 mb-8">
-                  <Button variant="outline" size="sm" className="border-border text-foreground hover:bg-muted">
-                    <svg className="h-4 w-4 mr-2" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26L21.61 21.75h-5.21L8.79 13.542 1.807 2.25H5.12L10.73 10.474 18.244 2.25zM17.29 20.75h2.139L7.03 3.75H4.892L17.29 20.75z"></path></svg>
-                    Post
-                  </Button>
-                  <Button variant="outline" size="sm" className="border-border text-foreground hover:bg-muted">
-                    <svg className="h-4 w-4 mr-2" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.447 2.063H3.553A1.49 1.49 0 002.063 3.553v16.894c0 .823.667 1.49 1.49 1.49h16.894c.823 0 1.49-.667 1.49-1.49V3.553c0-.823-.667-1.49-1.49-1.49zM8.89 19.89H5.11V9.11h3.78v10.78zM7 7.33a2.33 2.33 0 110-4.66 2.33 2.33 0 010 4.66zm12.89 12.56h-3.78v-5.33c0-1.22-.44-2.06-1.56-2.06-1.11 0-1.78.89-1.78 2.06v5.33h-3.78V9.11h3.78v1.67c.56-.89 1.22-1.67 2.22-1.67 2.44 0 3.33 1.67 3.33 4.11v6.67z"></path></svg>
-                    Share
-                  </Button>
-                </div>
-              </div>
-
-              <img
-                src={storyContent.mainImage}
-                alt={storyContent.title}
-                className="w-full h-auto object-cover rounded-lg shadow-md mb-12 mx-auto max-w-2xl"
-              />
-
-              <div className="prose prose-lg text-foreground leading-relaxed text-left"> {/* Menghapus max-w-none */}
-                {storyContent.paragraphs.map((paragraph, index) => (
-                  <p key={index} className="mb-6 leading-relaxed" dangerouslySetInnerHTML={{ __html: paragraph }} />
-                ))}
-
-                {storyContent.subsections && storyContent.subsections.map((subsection, index) => (
-                  <StorySubsection
-                    key={index}
-                    title={subsection.title}
-                    content={subsection.content}
-                    delay={0.1 * index + 0.2}
-                  />
+            <div className="mb-8 text-left">
+              <div className="flex flex-wrap gap-2 mb-4">
+                {storyContent.tags.map((tag, index) => (
+                  <span key={index} className="text-sm text-primary font-medium">
+                    {tag}
+                  </span>
                 ))}
               </div>
-
-              {storyContent.additionalImages && storyContent.additionalImages.length > 0 && (
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: (storyContent.paragraphs.length + (storyContent.subsections?.length || 0)) * 0.1 + 0.5 }}
-                  className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-12"
-                >
-                  {storyContent.additionalImages.map((image, index) => (
-                    <motion.img
-                      key={index}
-                      src={image.src}
-                      alt={image.alt}
-                      className="w-full h-60 object-cover rounded-lg shadow-md border border-border transition-transform duration-300 hover:scale-105"
-                      initial={{ opacity: 0, scale: 0.9 }}
-                      whileInView={{ opacity: 1, scale: 1 }}
-                      viewport={{ once: true, amount: 0.3 }}
-                      transition={{ duration: 0.5, delay: 0.1 * index }}
-                    />
-                  ))}
-                </motion.div>
-              )}
-
-              <div className="mt-12 text-left">
-                <Button
-                  asChild
-                  variant="outline"
-                  className="border-primary text-primary hover:bg-primary/10 px-6 py-3 text-lg rounded-full shadow-lg transition-all duration-300 hover:scale-105 flex items-center space-x-2"
-                >
-                  <Link to="/about">
-                    <ArrowLeft className="h-5 w-5" />
-                    <span>Kembali ke About</span>
-                  </Link>
+              <h1 className="text-4xl md:text-5xl font-extrabold text-foreground leading-tight mb-4">
+                {storyContent.title}
+              </h1>
+              <p className="text-sm text-muted-foreground mb-6">
+                POSTED BY: <span className="font-semibold text-primary">{storyContent.postedBy}</span> - {storyContent.date}
+              </p>
+              <div className="flex space-x-2 mb-8">
+                <Button variant="outline" size="sm" className="border-border text-foreground hover:bg-muted">
+                  <svg className="h-4 w-4 mr-2" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26L21.61 21.75h-5.21L8.79 13.542 1.807 2.25H5.12L10.73 10.474 18.244 2.25zM17.29 20.75h2.139L7.03 3.75H4.892L17.29 20.75z"></path></svg>
+                  Post
+                </Button>
+                <Button variant="outline" size="sm" className="border-border text-foreground hover:bg-muted">
+                  <svg className="h-4 w-4 mr-2" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.447 2.063H3.553A1.49 1.49 0 002.063 3.553v16.894c0 .823.667 1.49 1.49 1.49h16.894c.823 0 1.49-.667 1.49-1.49V3.553c0-.823-.667-1.49-1.49-1.49zM8.89 19.89H5.11V9.11h3.78v10.78zM7 7.33a2.33 2.33 0 110-4.66 2.33 2.33 0 010 4.66zm12.89 12.56h-3.78v-5.33c0-1.22-.44-2.06-1.56-2.06-1.11 0-1.78.89-1.78 2.06v5.33h-3.78V9.11h3.78v1.67c.56-.89 1.22-1.67 2.22-1.67 2.44 0 3.33 1.67 3.33 4.11v6.67z"></path></svg>
+                  Share
                 </Button>
               </div>
-            </div> {/* Akhir dari wrapper max-w-4xl */}
+            </div>
+
+            <img
+              src={storyContent.mainImage}
+              alt={storyContent.title}
+              className="w-full h-auto object-cover rounded-lg shadow-md mb-12 mx-auto max-w-2xl"
+            />
+
+            <div className="prose prose-lg max-w-none text-foreground leading-relaxed text-left">
+              {storyContent.paragraphs.map((paragraph, index) => (
+                <p key={index} className="mb-6 leading-relaxed" dangerouslySetInnerHTML={{ __html: paragraph }} />
+              ))}
+
+              {storyContent.subsections && storyContent.subsections.map((subsection, index) => (
+                <StorySubsection
+                  key={index}
+                  title={subsection.title}
+                  content={subsection.content}
+                  delay={0.1 * index + 0.2}
+                />
+              ))}
+            </div>
+
+            {storyContent.additionalImages && storyContent.additionalImages.length > 0 && (
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: (storyContent.paragraphs.length + (storyContent.subsections?.length || 0)) * 0.1 + 0.5 }}
+                className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-12"
+              >
+                {storyContent.additionalImages.map((image, index) => (
+                  <motion.img
+                    key={index}
+                    src={image.src}
+                    alt={image.alt}
+                    className="w-full h-60 object-cover rounded-lg shadow-md border border-border transition-transform duration-300 hover:scale-105"
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: true, amount: 0.3 }}
+                    transition={{ duration: 0.5, delay: 0.1 * index }}
+                  />
+                ))}
+              </motion.div>
+            )}
+
+            <div className="mt-12 text-left">
+              <Button
+                asChild
+                variant="outline"
+                className="border-primary text-primary hover:bg-primary/10 px-6 py-3 text-lg rounded-full shadow-lg transition-all duration-300 hover:scale-105 flex items-center space-x-2"
+              >
+                <Link to="/about">
+                  <ArrowLeft className="h-5 w-5" />
+                  <span>Kembali ke About</span>
+                </Link>
+              </Button>
+            </div>
           </motion.div>
         </main>
         <Footer />
