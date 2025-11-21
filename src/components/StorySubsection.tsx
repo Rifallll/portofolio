@@ -2,7 +2,7 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+// Menghapus import Card, CardContent, CardHeader, CardTitle
 
 interface StorySubsectionProps {
   title: string;
@@ -17,16 +17,14 @@ const StorySubsection: React.FC<StorySubsectionProps> = ({ title, content, delay
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, delay: delay, ease: "easeOut" }}
       viewport={{ once: true, amount: 0.3 }}
-      className="mb-8" // Margin bottom for spacing between subsections
+      className="mb-8 p-6 rounded-xl bg-secondary shadow-md border border-border" // Menggunakan bg-secondary, shadow, dan border untuk tampilan yang lebih lembut
     >
-      <Card className="bg-card border border-border shadow-lg hover:shadow-xl transition-shadow duration-300 rounded-xl p-6">
-        <CardHeader className="pb-4">
-          <CardTitle className="text-2xl font-bold text-primary">{title}</CardTitle>
-        </CardHeader>
-        <CardContent className="text-lg text-muted-foreground leading-relaxed text-justify">
-          <div dangerouslySetInnerHTML={{ __html: content }} />
-        </CardContent>
-      </Card>
+      <div className="pb-4 mb-4 border-b border-border"> {/* Menambahkan border-b untuk pemisah judul */}
+        <h2 className="text-2xl font-bold text-foreground">{title}</h2>
+      </div>
+      <div className="text-lg text-muted-foreground leading-relaxed text-justify">
+        <div dangerouslySetInnerHTML={{ __html: content }} />
+      </div>
     </motion.div>
   );
 };
