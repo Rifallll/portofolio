@@ -14,8 +14,7 @@ const allStoriesContent: { [key: string]: { title: string; tags: string[]; poste
     title: "Make It Happen! Go Travel!",
     tags: ["#MAKEITHAPPEN", "LIFE LESSONS", "LIFE TALK", "LUMIA", "MAKE IT HAPPEN", "TRAVEL"],
     postedBy: "Rifal Azhar Permana",
-    date: "2024-11-21",
-    mainImage: "/1.jpeg",
+    date: "2025-11-21", // Tanggal diperbarui di sini
     paragraphs: [
       `Jika ada kalimat "Don't work hard, work smart" saya kurang setuju. Saya lebih pilih "Work smart and work hard".`,
       `Bekerja keras adalah fondasi, tetapi bekerja cerdas adalah kunci untuk mencapai hasil yang maksimal. Dalam perjalanan hidup ini, saya selalu percaya bahwa setiap usaha yang kita lakukan, baik itu besar maupun kecil, akan membawa kita selangkah lebih dekat pada tujuan.`,
