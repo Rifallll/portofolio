@@ -24,8 +24,8 @@ const allStoriesContent: { [key: string]: { title: string; tags: string[]; poste
     ],
   },
   "man1-pertemanan": {
-    title: "Pertemanan di MAN 1 Pandeglang",
-    tags: ["SMA", "Pertemanan", "MAN 1 Pandeglang", "IPA 1"],
+    title: "IPA 1 MAN 1 Pandeglang", // Diperbarui
+    tags: ["SMA", "IPA 1", "MAN 1 Pandeglang", "Kenangan"], // Diperbarui
     postedBy: "Rifal Azhar Permana",
     date: "2021-05-10",
     mainImage: "/public/placeholder-story-1.jpg", // Ganti dengan gambar yang relevan
