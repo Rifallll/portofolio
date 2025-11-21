@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import Navbar from "@/components/Navbar";
+// import Navbar from "@/components/Navbar"; // Dihapus
 import Footer from "@/components/Footer";
 import BlogSidebar from "@/components/BlogSidebar";
 import { motion } from "framer-motion";
@@ -27,8 +27,8 @@ const StoryDetailPage = () => {
 
   return (
     <div className="min-h-screen bg-background text-foreground flex flex-col">
-      <Navbar />
-      <div className="flex flex-1 pt-[64px]"> {/* Adjust padding-top to account for fixed Navbar height */}
+      {/* <Navbar /> */} {/* Navbar dihapus */}
+      <div className="flex flex-1"> {/* Menghapus pt-[64px] karena Navbar dihapus */}
         <BlogSidebar />
         <main className="flex-grow p-8 lg:p-12 bg-white text-gray-800">
           <motion.div
