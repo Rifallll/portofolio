@@ -61,6 +61,11 @@
 }
 
 @layer base {
+  html, body {
+    height: 100%;
+    overflow: hidden; /* Ini akan mencegah scrolling pada elemen utama */
+  }
+
   * {
     @apply border-border;
   }
