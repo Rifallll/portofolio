@@ -26,7 +26,7 @@ const StoryDetailPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-background text-foreground flex flex-col lg:flex-row"> {/* Root container: flex-col on mobile, flex-row on large */}
+    <div className="h-screen bg-background text-foreground flex flex-col lg:flex-row"> {/* Mengubah min-h-screen menjadi h-screen */}
       <BlogSidebar /> {/* On large screens, this is fixed. On mobile, it's part of the flex-col flow */}
       <div className="flex-1 flex flex-col overflow-y-auto lg:ml-72"> {/* This div will contain the main content and footer, and will be scrollable */}
         <main className="flex-grow p-8 lg:p-12 bg-white text-gray-800">
