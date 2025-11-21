@@ -180,12 +180,12 @@ const StoryDetailPage = () => {
     <div className="h-screen bg-background text-foreground flex flex-col lg:flex-row">
       <BlogSidebar />
       <div className="flex-1 flex flex-col overflow-y-auto lg:ml-72">
-        <main className="flex-grow p-8 lg:p-12 bg-background text-foreground"> {/* Pastikan ini bg-background */}
+        <main className="flex-grow p-8 lg:p-12 bg-background text-foreground">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="max-w-3xl mx-auto" // Menghapus styling kartu
+            className="w-full" // Menghapus max-w-3xl mx-auto
           >
             <div className="mb-8 text-left">
               <div className="flex flex-wrap gap-2 mb-4">
