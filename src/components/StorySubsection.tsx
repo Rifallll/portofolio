@@ -17,14 +17,13 @@ const StorySubsection: React.FC<StorySubsectionProps> = ({ title, content, delay
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, delay: delay, ease: "easeOut" }}
       viewport={{ once: true, amount: 0.3 }}
-      className="mb-8 py-4" // Menghapus bg-secondary, shadow-md, border, dan p-6. Menambahkan py-4 untuk padding vertikal.
+      className="mb-8 py-4" // Keep structural spacing
     >
       <div className="pb-4 mb-4 border-b border-border"> {/* Menambahkan border-b untuk pemisah judul */}
         <h2 className="text-2xl font-bold text-foreground">{title}</h2>
       </div>
-      <div className="prose prose-lg max-w-none text-muted-foreground leading-relaxed text-justify"> {/* Menambahkan kelas prose di sini */}
-        <div dangerouslySetInnerHTML={{ __html: content }} />
-      </div>
+      {/* Menghapus kelas prose dari sini, biarkan parent StoryDetailPage yang mengelola */}
+      <div dangerouslySetInnerHTML={{ __html: content }} />
     </motion.div>
   );
 };
