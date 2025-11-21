@@ -9,7 +9,7 @@ import { Button } from "@/components/ui/button";
 import { ArrowLeft } from "lucide-react";
 
 // Dummy data for all stories based on slugs
-const allStoriesContent: { [key: string]: { title: string; tags: string[]; postedBy: string; date: string; mainImage: string; paragraphs: string[] } } = {
+const allStoriesContent: { [key: string]: { title: string; tags: string[]; postedBy: string; date: string; mainImage: string; paragraphs: string[]; additionalImages?: { src: string; alt: string }[] } } = {
   "make-it-happen-go-travel": {
     title: "Make It Happen! Go Travel!",
     tags: ["#MAKEITHAPPEN", "LIFE LESSONS", "LIFE TALK", "LUMIA", "MAKE IT HAPPEN", "TRAVEL"],
@@ -23,16 +23,29 @@ const allStoriesContent: { [key: string]: { title: string; tags: string[]; poste
       `Jadi, jangan ragu untuk mewujudkan impian Anda. Buatlah rencana, bekerja keras dan cerdas, dan jangan takut untuk menjelajahi dunia. Karena pada akhirnya, pengalaman adalah guru terbaik, dan setiap langkah adalah bagian dari cerita hidup yang luar biasa.`,
     ],
   },
-  // Contoh konten untuk slug baru (Anda bisa menambahkan lebih banyak di sini)
   "man1-pertemanan": {
     title: "Pertemanan di MAN 1 Pandeglang",
-    tags: ["SMA", "Pertemanan", "MAN 1 Pandeglang"],
+    tags: ["SMA", "Pertemanan", "MAN 1 Pandeglang", "IPA 1"],
     postedBy: "Rifal Azhar Permana",
     date: "2021-05-10",
     mainImage: "/public/placeholder-story-1.jpg", // Ganti dengan gambar yang relevan
     paragraphs: [
-      `Masa SMA adalah masa penuh warna, terutama dalam hal pertemanan. Di MAN 1 Pandeglang, saya menemukan banyak teman yang beragam, masing-masing dengan cerita dan impiannya sendiri. Kami belajar bersama, tertawa bersama, dan saling mendukung dalam suka maupun duka.`,
-      `Lingkungan sekolah yang suportif juga membentuk karakter saya. Guru-guru yang inspiratif dan fasilitas yang memadai membuat proses belajar menjadi lebih menyenangkan. Pertemanan yang terjalin di masa ini menjadi fondasi penting bagi perjalanan hidup saya selanjutnya.`,
+      `Pertemanan di masa SMA selalu punya cara unik untuk tumbuh. Semuanya dimulai dari hari-hari biasa di MAN 1 Pandeglang, ketika kita duduk di kelas yang terasa asing di awal namun perlahan berubah menjadi tempat paling nyaman untuk berbagi cerita. Dari kelas satu, hubungan kita dibangun oleh tawa yang muncul tanpa alasan, candaan kecil yang sering membuat guru geleng-geleng, dan obrolan panjang yang tidak pernah selesai bahkan setelah bel pulang berbunyi. Jam kosong sering menjadi momen paling ditunggu karena di situlah kelas berubah menjadi ruang bermain yang tidak ada aturannya. Kita bebas bercerita, bercanda, dan terkadang hanya duduk bengong sambil menertawakan hal paling sepele.`,
+      `Ketika memasuki kelas dua, keadaan berubah total. Sekolah berpindah ke dunia online dan layar laptop menjadi ruang kelas darurat. Pertemanan diuji melalui sinyal yang naik turun, kamera yang kadang mati tiba-tiba, dan chat grup yang lebih ramai dibanding materi pelajaran. Namun justru di masa itu kita belajar arti kehadiran. Jarak tidak menghentikan kebiasaan bercanda, tidak menghapus dukungan yang selalu datang ketika salah satu dari kita lelah, dan tidak mengurangi hangatnya pertemanan yang sudah kita bangun sejak awal.`,
+      `Ada satu tempat yang selalu menjadi bagian dari cerita kita, yaitu warung nasi Teteh di sebelah kanan sekolah. Di sana kita sering makan bareng, menunggu hujan reda, menyelesaikan tugas mendadak, atau sekadar duduk sambil bercerita apa saja. Tempat itu sederhana, tetapi selalu terasa penuh karena setiap sudutnya menyimpan percakapan yang tidak akan pernah bisa kita ulangi dengan cara yang sama.`,
+      `Kegiatan sekolah juga menambah warna dalam perjalanan ini. Praktikum di lab kimia sering membuat kita panik karena campuran yang tidak sesuai petunjuk tetapi anehnya selalu berhasil menciptakan tawa yang tidak terduga. Festival bahasa membuat kita tampil percaya diri meskipun latihan sering kacau. Manasik haji menjadi pengalaman hangat karena kita belajar bekerja sama sambil tetap bercanda di sela-sela barisan. Ada pula momen ketika kita pergi ke pantai dan melupakan semua tugas sekolah untuk menikmati angin sore dan cerita panjang yang tidak pernah selesai.`,
+      `Kelas tiga menjadi masa yang paling emosional. Ada perasaan ingin cepat lulus, tetapi di saat yang sama kita takut kehilangan rutinitas yang sudah menjadi bagian dari hidup. Setiap hari terasa lebih berarti. Kita semakin sering berfoto bersama, makan di warung Teteh lebih lama dari biasanya, dan mencoba menikmati setiap detik seolah semuanya akan berhenti dalam waktu dekat. Hingga akhirnya datang hari ketika kita duduk bersama di ruang wisuda, ruangan yang menjadi saksi bagaimana tawa, haru, dan rasa bangga bercampur menjadi satu. Saat itu kita tahu bahwa masa SMA benar-benar berakhir, tetapi kenangan yang kita tinggalkan tidak pernah mengikuti kata selesai.`,
+      `Pertemanan ini adalah perjalanan penuh warna, penuh kejutan, dan penuh perasaan yang sulit dijelaskan dengan kata sederhana. Ini adalah cerita yang tumbuh dari kebiasaan kecil, dari momen lucu yang selalu muncul tiba-tiba, dari perjalanan ke tempat-tempat yang tidak terhitung jumlahnya, dan dari kesempatan terakhir yang kita habiskan bersama sebelum masing-masing melangkah ke dunia baru. Semoga setiap langkah yang kita ambil setelah ini selalu membawa ingatan bahwa kita pernah menjalani masa yang begitu lengkap, begitu hidup, dan begitu berarti.`,
+    ],
+    additionalImages: [
+      { src: "/public/placeholder-story-1.jpg", alt: "Kenangan SMA 1" },
+      { src: "/public/placeholder-story-2.jpg", alt: "Kenangan SMA 2" },
+      { src: "/public/placeholder-story-3.jpg", alt: "Kenangan SMA 3" },
+      { src: "/public/placeholder-story-4.jpg", alt: "Kenangan SMA 4" },
+      { src: "/public/placeholder-story-5.jpg", alt: "Kenangan SMA 5" },
+      { src: "/public/placeholder-story-6.jpg", alt: "Kenangan SMA 6" },
+      { src: "/public/placeholder-story-7.jpg", alt: "Kenangan SMA 7" },
+      { src: "/public/placeholder-story-8.jpg", alt: "Kenangan SMA 8" },
     ],
   },
   "man1-organisasi": {
@@ -184,6 +197,28 @@ const StoryDetailPage = () => {
                 </p>
               ))}
             </div>
+
+            {storyContent.additionalImages && storyContent.additionalImages.length > 0 && (
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: storyContent.paragraphs.length * 0.1 + 0.5 }}
+                className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-12"
+              >
+                {storyContent.additionalImages.map((image, index) => (
+                  <motion.img
+                    key={index}
+                    src={image.src}
+                    alt={image.alt}
+                    className="w-full h-60 object-cover rounded-lg shadow-md border border-border transition-transform duration-300 hover:scale-105"
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: true, amount: 0.3 }}
+                    transition={{ duration: 0.5, delay: 0.1 * index }}
+                  />
+                ))}
+              </motion.div>
+            )}
 
             <div className="mt-12 text-center">
               <Button
