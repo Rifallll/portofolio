@@ -16,7 +16,8 @@ const storyData = [
     title: "Masa Sekolah di MAN 1 Pandeglang",
     description: `Ketika aku mulai bersekolah di MAN 1 Pandeglang, rasa penasaran itu berubah menjadi pengalaman eksplorasi yang lebih nyata. Di sini aku mulai mengenal struktur web, dasar HTML, dan bagaimana sebuah halaman sederhana bisa hidup di layar. Setiap kali sebuah kode berhasil berjalan, aku merasa seperti menemukan potongan puzzle baru dari dunia digital. Pengalaman sekolah ini menjadi pijakan penting dalam membangun arah yang akan aku pilih.`,
     imageSrcs: ["/placeholder-story-3.jpg", "/placeholder-story-4.jpg"],
-    imageAlt: "Modern classroom scene with a laptop"
+    imageAlt: "Modern classroom scene with a laptop",
+    link: "/my-story/sma" // Tambahkan link ke halaman detail SMA
   },
   {
     title: "Jatuh Cinta pada Web Development",
@@ -28,7 +29,8 @@ const storyData = [
     title: "Kuliah di Telkom University – Teknik Komputer",
     description: `Setelah lulus, aku memilih untuk memperluas pemahaman teknisku dengan melanjutkan pendidikan di Telkom University, jurusan Teknik Komputer. Kampus ini membuka ruang baru dengan materi yang jauh lebih kompleks: sistem komputer, jaringan, arsitektur perangkat keras, hingga pemrograman tingkat lanjut. Lingkungan akademik yang disiplin dan dinamis membuatku membangun pola pikir yang lebih terstruktur dan analitis dalam menghadapi tantangan teknologi.`,
     imageSrcs: ["/placeholder-story-7.jpg", "/placeholder-story-8.jpg"],
-    imageAlt: "Modern university campus"
+    imageAlt: "Modern university campus",
+    link: "/my-story/kuliah" // Tambahkan link ke halaman detail Kuliah
   },
   {
     title: "Membangun Karier Web Development Secara Profesional",
@@ -63,20 +65,20 @@ const MyStoryPage = () => {
       <main className="flex-grow container mx-auto px-4 py-20 max-w-screen-xl relative bg-gradient-to-b from-background to-secondary/50">
         <h1 className="text-5xl md:text-6xl font-extrabold text-foreground mb-12 text-center">My Story</h1>
 
-        <div className="relative space-y-24 lg:space-y-32"> {/* Spasi antar cerita lebih besar */}
+        <div className="relative space-y-24 lg:space-y-32">
           {/* Vertical timeline line */}
           <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-0.5 bg-primary/10 hidden lg:block"></div>
 
           {storyData.map((story, index) => (
             <div key={index} className="relative">
               {/* Timeline dot for large screens */}
-              <div className="hidden lg:block absolute left-1/2 transform -translate-x-1/2 z-20 w-5 h-5 rounded-full bg-primary border-4 border-background shadow-md"></div> {/* Titik lebih besar dan border lebih tebal */}
+              <div className="hidden lg:block absolute left-1/2 transform -translate-x-1/2 z-20 w-5 h-5 rounded-full bg-primary border-4 border-background shadow-md"></div>
 
               {/* Story Entry */}
               <StoryEntry
                 {...story}
                 delay={index * 0.1}
-                isReversed={index % 2 !== 0} // Alternate layout for every other entry
+                isReversed={index % 2 !== 0}
               />
             </div>
           ))}

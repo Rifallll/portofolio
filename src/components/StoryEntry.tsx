@@ -2,6 +2,9 @@
 
 import React from "react";
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom"; // Import Link
+import { Button } from "@/components/ui/button"; // Import Button
+import { ArrowRight } from "lucide-react"; // Import ArrowRight icon
 
 interface StoryEntryProps {
   title: string;
@@ -10,6 +13,7 @@ interface StoryEntryProps {
   imageAlt: string;
   delay?: number; // Untuk animasi bertahap
   isReversed?: boolean; // Properti baru untuk membalik tata letak
+  link?: string; // Properti baru untuk link ke halaman detail
 }
 
 const StoryEntry: React.FC<StoryEntryProps> = ({
@@ -19,6 +23,7 @@ const StoryEntry: React.FC<StoryEntryProps> = ({
   imageAlt,
   delay = 0,
   isReversed = false,
+  link, // Terima properti link
 }) => {
   const sectionVariants = {
     hidden: { opacity: 0, y: 50 },
@@ -49,7 +54,15 @@ const StoryEntry: React.FC<StoryEntryProps> = ({
         className="lg:w-[48%] text-center lg:text-left p-8 rounded-xl shadow-lg border border-border bg-card"
       >
         <h2 className="text-4xl font-bold text-foreground mb-4">{title}</h2>
-        <p className="text-lg text-muted-foreground leading-relaxed">{description}</p>
+        <p className="text-lg text-muted-foreground leading-relaxed mb-6">{description}</p>
+        {link && ( // Tampilkan tombol jika ada link
+          <Button asChild variant="link" className="text-primary hover:text-primary/80 px-0 text-lg flex items-center space-x-2">
+            <Link to={link}>
+              <span>Lihat Lebih Lanjut</span>
+              <ArrowRight className="h-4 w-4" />
+            </Link>
+          </Button>
+        )}
       </motion.div>
 
       {/* Images */}
