@@ -85,8 +85,8 @@ const storyChapters = [
 
 const BlogSidebar = () => {
   return (
-    <aside className="w-full lg:w-72 bg-card text-foreground p-6 flex flex-col space-y-8 overflow-y-auto scroll-smooth hide-scrollbar
-                  lg:fixed lg:top-0 lg:left-0 lg:h-screen border-r border-border shadow-lg"> {/* Updated styling */}
+    <aside className="w-full lg:w-72 bg-secondary text-foreground p-6 flex flex-col space-y-8 overflow-y-auto scroll-smooth hide-scrollbar
+                  lg:fixed lg:top-0 lg:left-0 lg:h-screen border-r border-border shadow-lg"> {/* Updated styling: bg-secondary */}
       <Link to="/" className="text-3xl font-bold leading-tight text-primary mb-8"> {/* Updated styling */}
         Life Is An <br /> Absurd <br /> Journey
       </Link>
@@ -95,7 +95,7 @@ const BlogSidebar = () => {
         <Input
           type="text"
           placeholder="Search the site"
-          className="w-full bg-muted border-border text-foreground placeholder-muted-foreground pl-10" // Updated styling
+          className="w-full bg-background border-border text-foreground placeholder-muted-foreground pl-10" // Updated styling: bg-background
         />
         <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" /> {/* Updated styling */}
       </div>
