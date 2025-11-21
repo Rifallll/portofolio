@@ -187,7 +187,7 @@ const StoryDetailPage = () => {
             <img
               src={storyContent.mainImage}
               alt={storyContent.title}
-              className="w-full h-auto object-cover rounded-lg shadow-md mb-8"
+              className="w-full max-w-2xl h-auto object-cover rounded-lg shadow-md mb-8 mx-auto"
             />
 
             <div className="prose prose-lg max-w-none text-gray-800">
