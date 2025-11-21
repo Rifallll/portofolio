@@ -11,7 +11,7 @@ import ProjectsPage from "./pages/ProjectsPage";
 import CertificatesPage from "./pages/CertificatesPage";
 import ContactPage from "./pages/ContactPage";
 import NotFound from "./pages/NotFound";
-import MyStoryPage from "./pages/MyStoryPage";
+// import MyStoryPage from "./pages/MyStoryPage"; // Removed
 import DesignSystemPage from "./pages/DesignSystemPage";
 // import SMADetailPage from "./pages/SMADetailPage"; // Removed
 // import KuliahDetailPage from "./pages/KuliahDetailPage"; // Removed
@@ -35,7 +35,7 @@ const App = () => {
             <Route path="/projects" element={<ProjectsPage />} />
             <Route path="/certificates" element={<CertificatesPage />} />
             <Route path="/contact" element={<ContactPage />} />
-            <Route path="/my-story-page" element={<MyStoryPage />} />
+            {/* <Route path="/my-story-page" element={<MyStoryPage />} /> */}
             <Route path="/design-system" element={<DesignSystemPage />} />
             {/* Removed detail routes */}
             {/* <Route path="/my-story/sma" element={<SMADetailPage />} /> */}
