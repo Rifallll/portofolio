@@ -2,9 +2,9 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-// import { Link } from "react-router-dom"; // Removed Link import
-// import { Button } from "@/components/ui/button"; // Removed Button import
-// import { ArrowRight } from "lucide-react"; // Removed ArrowRight import
+import { Link } from "react-router-dom"; // Re-import Link
+import { Button } from "@/components/ui/button"; // Re-import Button
+import { ArrowRight } from "lucide-react"; // Re-import ArrowRight
 import { Card, CardContent } from "@/components/ui/card"; // Import Card and CardContent
 
 const MyStorySection = () => {
@@ -50,13 +50,12 @@ const MyStorySection = () => {
             <p className="text-lg text-muted-foreground mb-8">
               My journey began with a deep interest in Computer Engineering, which quickly evolved into a passion for Digital Media Strategy and Web Development. I've honed my skills in crafting engaging content strategies, managing social media campaigns, and building responsive web applications. From boosting audience engagement by 150% to developing over 20 websites, I thrive on creating impactful digital solutions.
             </p>
-            {/* Removed the "Read my story" button */}
-            {/* <Button asChild variant="link" className="text-primary hover:text-primary/80 px-0 text-lg flex items-center space-x-2">
-              <Link to="/my-story-page">
-                <span>Read my story</span>
+            <Button asChild variant="link" className="text-primary hover:text-primary/80 px-0 text-lg flex items-center space-x-2">
+              <Link to="/about"> {/* Currently links to /about. Let me know if you want it to go elsewhere! */}
+                <span>View All</span>
                 <ArrowRight className="h-4 w-4" />
               </Link>
-            </Button> */}
+            </Button>
           </motion.div>
         </div>
       </div>
