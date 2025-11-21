@@ -56,15 +56,15 @@ const allStoriesContent: { [key: string]: { title: string; tags: string[]; poste
     mainImage: "/public/placeholder-story-2.jpg", // Ganti dengan gambar yang relevan
     paragraphs: [
       `Selama bersekolah di MAN 1 Pandeglang, saya aktif mengikuti beberapa organisasi yang memberi banyak pengalaman berharga. Melalui kegiatan-kegiatan tersebut, saya belajar memahami tanggung jawab, bekerja dalam tim, menghadapi berbagai situasi, dan mengembangkan kemampuan diri. Setiap organisasi yang saya ikuti memiliki cerita dan perannya masing-masing dalam membentuk kebiasaan serta karakter saya selama menjalani masa SMA. Dari kegiatan lingkungan, kepemimpinan, sampai kesehatan, semuanya memberikan pelajaran yang berbeda dan menjadi bagian penting dalam perjalanan saya di sekolah.`,
-      `**Adiwiyata (2019–2022)**`,
+      `<h2>Adiwiyata (2019–2022)</h2>`,
       `Saya mulai bergabung dengan Adiwiyata pada tahun 2019, tepat memasuki masa awal saya di MAN 1 Pandeglang. Pada tahap awal saya hanya mengikuti kegiatan sebagai anggota, belajar menjaga kebersihan lingkungan sekolah, menata taman, merawat tanaman, serta memastikan area halaman tetap tertib. Kegiatan harian seperti membersihkan kelas, memindahkan pot, merapikan sudut taman, hingga menata kembali area yang rusak menjadi bagian dari rutinitas. Selain itu Adiwiyata juga memiliki program seperti seleberih atau penilaian kelas bersih, hiking lingkungan untuk pengenalan alam sekolah, penghijauan kecil, proyek sudut hijau, dan kerja bakti besar menjelang acara sekolah.`,
       `Ada banyak momen yang hingga sekarang masih terasa jelas, misalnya ketika kami sudah menata taman sejak pagi namun siang hari hujan deras turun dan membuat seluruh hasil kerja kembali berantakan. Situasi seperti itu tidak bisa dihindari, tetapi justru membentuk kekompakan karena kami menghadapinya bersama.`,
       `Pada tahun 2021–2022 saya dipercaya menjabat sebagai Ketua Adiwiyata. Tanggung jawab yang saya jalankan meningkat, mulai dari memastikan kesiapan lingkungan setiap pagi, mengatur pembagian tugas anggota, mengoordinasikan program, hingga mengawasi kegiatan harian agar tidak ada bagian sekolah yang terlewat. Saya juga terlibat dalam perencanaan perbaikan taman, penambahan tanaman, serta pengembangan beberapa sudut baru agar area sekolah tampak lebih hidup. Pengalaman menjadi ketua membuat saya memahami bagaimana memimpin dengan memberi contoh, membuat keputusan, dan mengelola anggota agar kegiatan dapat berjalan baik.`,
-      `**OSIS (2021–2022)**`,
+      `<h2>OSIS (2021–2022)</h2>`,
       `Pada tahun 2021 saya masuk OSIS sebagai Kepala Bidang. Kegiatan di OSIS terasa jauh lebih dinamis karena hampir setiap bulan ada program yang harus dijalankan. Salah satu kegiatan terbesar adalah Class Meeting yang berisi perlombaan olahraga dan seni. Proses persiapan sering kali penuh kejadian tak terduga, seperti perlengkapan yang mendadak rusak atau peserta yang tidak hadir sesuai jadwal, tetapi suasananya selalu meriah dan melibatkan banyak siswa.`,
       `Di awal tahun pelajaran kami juga melaksanakan MPLS untuk menyambut siswa baru. Persiapannya cukup panjang karena mencakup penyusunan susunan acara, dekorasi, kebutuhan perangkat suara, serta penataan ruang agar kegiatan berjalan rapi. Selain itu OSIS menyelenggarakan kegiatan keagamaan seperti tadarus bersama dan peringatan hari besar Islam. Untuk pengembangan kepemimpinan, OSIS melaksanakan LDK yang berisi pelatihan dasar, simulasi, dan praktik kerja sama bagi anggota OSIS dan perwakilan kelas.`,
       `Di luar kegiatan tersebut, masih banyak program seperti lomba kerajinan tangan, lomba menyanyi lagu nasional, kebersihan kelas, hingga kegiatan akademik sederhana seperti karya ilmiah remaja. Tugas administratif seperti penyusunan program kerja dan laporan pertanggungjawaban juga menjadi bagian dari peran saya. Rapat OSIS sering berjalan panjang, namun dari rapat tersebut semua kegiatan besar terbentuk. Banyak kejadian lucu dan mendadak yang pada akhirnya membuat pengalaman di OSIS semakin berkesan.`,
-      `**PMR (2020–2022)**`,
+      `<h2>PMR (2020–2022)</h2>`,
       `Saya bergabung dengan PMR pada tahun 2020 karena tertarik mempelajari pertolongan pertama. Kegiatan PMR berjalan cukup intens, mulai dari latihan memasang perban, membalut luka, menggunakan tandu, hingga latihan pengenalan cedera dan simulasi penanganan keadaan darurat. Latihan seperti ini kadang menghasilkan momen lucu ketika perban tidak terpasang rapi, tetapi pelajaran yang diperoleh sangat bermanfaat.`,
       `Saat sekolah mengadakan acara besar seperti kegiatan olahraga atau upacara penting, PMR bertugas memberikan bantuan awal apabila ada siswa yang cedera atau merasa tidak enak badan. Saya beberapa kali menangani cedera ringan dan mencoba tetap tenang meskipun sempat gugup. Selain tugas lapangan, PMR juga mengadakan kegiatan edukasi kesehatan dan diskusi rutin untuk meningkatkan pemahaman anggota terhadap kondisi darurat.`,
       `Pengalaman selama berada di PMR membantu saya berkembang dalam hal ketenangan, kepedulian, dan tanggung jawab kepada orang lain. Kegiatan yang awalnya saya ikuti untuk belajar justru memberikan pengalaman yang membentuk cara berpikir saya menghadapi situasi mendadak.`,
@@ -203,9 +203,7 @@ const StoryDetailPage = () => {
 
             <div className="prose prose-lg max-w-none text-gray-800">
               {storyContent.paragraphs.map((paragraph, index) => (
-                <p key={index} className="mb-6 leading-relaxed text-justify">
-                  {paragraph}
-                </p>
+                <p key={index} className="mb-6 leading-relaxed text-justify" dangerouslySetInnerHTML={{ __html: paragraph }} />
               ))}
             </div>
 
