@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
+import { Card, CardContent } from "@/components/ui/card"; // Import Card and CardContent
 
 const MyStorySection = () => {
   return (
@@ -19,20 +20,22 @@ const MyStorySection = () => {
             viewport={{ once: true, amount: 0.5 }}
             className="md:w-1/2 flex justify-center relative"
           >
-            <div className="relative w-full max-w-md h-auto rounded-lg shadow-2xl border border-border overflow-hidden">
-              <img
-                src="/desk-setup.png" // Corrected path for desk setup image
-                alt="Desk Setup"
-                className="w-full h-full object-cover"
-              />
-              <div className="absolute -top-10 -left-10 w-32 h-32 md:w-40 md:h-40 rounded-full overflow-hidden shadow-lg border-4 border-primary/50">
+            <Card className="w-full max-w-md shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 bg-card border border-border rounded-xl overflow-hidden">
+              <CardContent className="p-0 relative"> {/* No padding for image */}
                 <img
-                  src="/profile-image-new.jpg" // Your profile image
-                  alt="Rifal Azhar Permana"
-                  className="w-full h-full object-cover object-center"
+                  src="/desk-setup.png" // Corrected path for desk setup image
+                  alt="Desk Setup"
+                  className="w-full h-full object-cover rounded-xl" // Apply rounded-xl to image
                 />
-              </div>
-            </div>
+                <div className="absolute -top-10 -left-10 w-32 h-32 md:w-40 md:h-40 rounded-full overflow-hidden shadow-lg border-4 border-primary/50">
+                  <img
+                    src="/profile-image-new.jpg" // Your profile image
+                    alt="Rifal Azhar Permana"
+                    className="w-full h-full object-cover object-center"
+                  />
+                </div>
+              </CardContent>
+            </Card>
           </motion.div>
 
           {/* Right Column: Text Content */}

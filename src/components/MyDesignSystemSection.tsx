@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
+import { Card, CardContent } from "@/components/ui/card"; // Import Card and CardContent
 
 const MyDesignSystemSection = () => {
   return (
@@ -41,13 +42,15 @@ const MyDesignSystemSection = () => {
             viewport={{ once: true, amount: 0.5 }}
             className="md:w-1/2 flex justify-center md:justify-end"
           >
-            <div className="relative w-full max-w-lg rounded-lg shadow-2xl border border-border overflow-hidden">
-              <img
-                src="/design-system-showcase.png" // Placeholder image for design system showcase
-                alt="Design System Showcase"
-                className="w-full h-auto object-cover"
-              />
-            </div>
+            <Card className="w-full max-w-lg shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 bg-card border border-border rounded-xl overflow-hidden">
+              <CardContent className="p-0"> {/* No padding for image */}
+                <img
+                  src="/design-system-showcase.png" // Placeholder image for design system showcase
+                  alt="Design System Showcase"
+                  className="w-full h-auto object-cover rounded-xl" // Apply rounded-xl to image
+                />
+              </CardContent>
+            </Card>
           </motion.div>
         </div>
       </div>
