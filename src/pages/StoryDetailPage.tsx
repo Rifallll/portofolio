@@ -25,10 +25,10 @@ const StoryDetailPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-background text-foreground flex flex-col">
-      <div className="flex flex-1 flex-col lg:flex-row"> {/* Mengubah tata letak flex */}
-        <BlogSidebar />
-        <main className="flex-grow p-8 lg:p-12 bg-white text-gray-800 lg:ml-72"> {/* Menambahkan lg:ml-72 */}
+    <div className="min-h-screen bg-background text-foreground flex flex-col lg:flex-row"> {/* Root container: flex-col on mobile, flex-row on large */}
+      <BlogSidebar /> {/* On large screens, this is fixed. On mobile, it's part of the flex-col flow */}
+      <div className="flex-1 flex flex-col overflow-y-auto lg:ml-72"> {/* This div will contain the main content and footer, and will be scrollable */}
+        <main className="flex-grow p-8 lg:p-12 bg-white text-gray-800">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -90,8 +90,8 @@ const StoryDetailPage = () => {
             </div>
           </motion.div>
         </main>
+        <Footer />
       </div>
-      <Footer />
     </div>
   );
 };
