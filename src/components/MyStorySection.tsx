@@ -8,7 +8,7 @@ import { ArrowRight } from "lucide-react";
 
 const MyStorySection = () => {
   return (
-    <section id="my-story" className="py-20 bg-background"> {/* Changed to bg-background */}
+    <section id="my-story" className="py-20 bg-background">
       <div className="container mx-auto px-4 max-w-screen-xl">
         <div className="flex flex-col md:flex-row items-center gap-16">
           {/* Left Column: Image */}
@@ -48,7 +48,7 @@ const MyStorySection = () => {
               My journey began with a deep interest in Computer Engineering, which quickly evolved into a passion for Digital Media Strategy and Web Development. I've honed my skills in crafting engaging content strategies, managing social media campaigns, and building responsive web applications. From boosting audience engagement by 150% to developing over 20 websites, I thrive on creating impactful digital solutions.
             </p>
             <Button asChild variant="link" className="text-primary hover:text-primary/80 px-0 text-lg flex items-center space-x-2">
-              <Link to="/my-story-page"> {/* Placeholder link */}
+              <Link to="/my-story-page"> {/* Updated link to /my-story-page */}
                 <span>Read my story</span>
                 <ArrowRight className="h-4 w-4" />
               </Link>

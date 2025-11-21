@@ -8,7 +8,7 @@ import { ArrowRight } from "lucide-react";
 
 const MyDesignSystemSection = () => {
   return (
-    <section id="my-design-system" className="py-20 bg-background"> {/* Changed to bg-background */}
+    <section id="my-design-system" className="py-20 bg-background">
       <div className="container mx-auto px-4 max-w-screen-xl">
         <div className="flex flex-col md:flex-row items-center justify-between gap-16">
           {/* Left Column: Text Content */}
@@ -26,7 +26,7 @@ const MyDesignSystemSection = () => {
               intuitive, accessible, and beautiful.
             </p>
             <Button asChild variant="link" className="text-primary hover:text-primary/80 px-0 text-lg flex items-center space-x-2">
-              <Link to="/design-system">
+              <Link to="/design-system"> {/* Updated link to /design-system */}
                 <span>View the design system</span>
                 <ArrowRight className="h-4 w-4" />
               </Link>
