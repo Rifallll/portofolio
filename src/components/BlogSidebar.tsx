@@ -9,7 +9,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { Search } from "lucide-react";
+import { Search, CircleDot } from "lucide-react"; // Import CircleDot for list items
 
 const blogNavItems = [
   { name: "HOME", path: "/" },
@@ -20,16 +20,96 @@ const blogNavItems = [
   { name: "DESTINATIONS", path: "#" }, // Placeholder
 ];
 
-const blogArchiveData = [
-  { year: "2024", count: 5 },
-  { year: "2023", count: 3 },
-  { year: "2022", count: 12 },
-  { year: "2021", count: 8 },
-  { year: "2020", count: 19 },
-  { year: "2019", count: 22 },
-  { year: "2018", count: 21 },
-  { year: "2017", count: 47 },
-  { year: "2016", count: 93 },
+// Data untuk bab cerita Anda
+const storyChapters = [
+  {
+    id: "chapter-1",
+    title: "Masa SMA di MAN 1 Pandeglang",
+    years: "(2018 – 2021)",
+    points: [
+      "Pertemanan & Lingkungan Sekolah",
+      "Organisasi yang Pernah Diikuti",
+      "Ekskul & Aktivitas Tambahan",
+      "Pengalaman Berkesan / Cerita Lapangan",
+      "Penghargaan & Prestasi SMA",
+      "Kegiatan Lomba / Kompetisi",
+      "Momen Terpenting di Masa SMA",
+    ],
+  },
+  {
+    id: "chapter-2",
+    title: "Perjalanan Kuliah di Telkom University",
+    years: "(2021 – Sekarang)",
+    points: [
+      "Adaptasi & Kehidupan Kampus",
+      "Belajar di Teknik Komputer",
+      "Organisasi Kampus / Kepanitiaan",
+      "Project Tugas Kuliah yang Bermakna",
+      "Pengalaman Magang / Proyek Riset",
+      "Teman & Komunitas yang Berpengaruh",
+      "Cerita Pencapaian Selama Kuliah",
+    ],
+  },
+  {
+    id: "chapter-3",
+    title: "Awal Masuk Dunia Web Development",
+    points: [
+      "Belajar HTML/CSS Pertama Kali",
+      "Proyek Website Pertama",
+      "Kesalahan & Pembelajaran Awal",
+      "Mulai Membuat Website untuk Orang Lain",
+      "Perjalanan Mengembangkan Skill Frontend",
+      "Menguasai UI/UX Dasar",
+    ],
+  },
+  {
+    id: "chapter-4",
+    title: "Pengalaman Organisasi & Project Nyata",
+    points: [
+      "Organisasi SMA & Kampus",
+      "Kepanitiaan Event & Peranmu",
+      "Kolaborasi dengan Teman / Tim",
+      "Project Website untuk Klien",
+      "Project Social Media / Branding",
+      "Apa yang Dipelajari dari Proyek Nyata",
+    ],
+  },
+  {
+    id: "chapter-5",
+    title: "Merambah ke Digital Media & Content Strategy",
+    points: [
+      "Awal Tertarik Digital Marketing",
+      "Membuat Konten & Copywriting",
+      "Strategi Media Sosial Pertama",
+      "Kesuksesan Kampanye (150% Engagement)",
+      "Kolaborasi dengan Brand / UMKM",
+      "Perjalanan Mengembangkan Personal Branding",
+    ],
+  },
+  {
+    id: "chapter-6",
+    title: "Professional Career & Portfolio Project",
+    points: [
+      "Daftar Project Website yang Pernah Dibuat",
+      "Project Digital Campaign / Social Media",
+      "Skill Teknis yang Dikuasai",
+      "Hasil Kerja yang Terukur (Metrics)",
+      "Cerita Dibalik Proyek-Proyek Terbaik",
+      "Testimoni / Feedback Klien",
+    ],
+  },
+  {
+    id: "chapter-7",
+    title: "Visi & Perjalanan ke Depan",
+    points: [
+      "Target Karier 1–3 Tahun Kedepan",
+      "Skill yang Ingin Dikembangkan",
+      "Mimpi Besar dalam Dunia Teknologi",
+      "Rencana Membangun Personal Brand",
+      "Proyek Masa Depan yang Ingin Diciptakan",
+      "Pesan Penutup / Filosofi Hidup",
+    ],
+  },
 ];
 
 const BlogSidebar = () => {
@@ -65,18 +145,22 @@ const BlogSidebar = () => {
         ))}
       </nav>
 
-      <div className="blog-archive">
-        <h3 className="text-xl font-bold text-white mb-4">BLOG ARCHIVE</h3>
+      <div className="story-chapters">
+        <h3 className="text-xl font-bold text-white mb-4">MY JOURNEY</h3> {/* Mengubah judul */}
         <Accordion type="multiple" className="w-full">
-          {blogArchiveData.map((archive) => (
-            <AccordionItem key={archive.year} value={archive.year} className="border-b border-gray-700">
-              <AccordionTrigger className="flex justify-between items-center py-2 text-gray-300 hover:text-primary transition-colors duration-200">
-                <span className="text-lg">{archive.year}</span>
-                <span className="text-sm text-gray-400">({archive.count})</span>
+          {storyChapters.map((chapter) => (
+            <AccordionItem key={chapter.id} value={chapter.id} className="border-b border-gray-700">
+              <AccordionTrigger className="flex justify-between items-center py-2 text-gray-300 hover:text-primary transition-colors duration-200 text-left">
+                <span className="text-lg">{chapter.title}</span>
+                {chapter.years && <span className="text-sm text-gray-400 ml-2">{chapter.years}</span>}
               </AccordionTrigger>
-              <AccordionContent className="pl-4 py-2 text-gray-400 text-sm">
-                {/* You can add specific month links here if needed */}
-                No entries for this month.
+              <AccordionContent className="pl-4 py-2 text-gray-400 text-sm space-y-1">
+                {chapter.points.map((point, index) => (
+                  <div key={index} className="flex items-start">
+                    <CircleDot className="h-4 w-4 text-primary mr-2 mt-1 flex-shrink-0" />
+                    <span>{point}</span>
+                  </div>
+                ))}
               </AccordionContent>
             </AccordionItem>
           ))}
