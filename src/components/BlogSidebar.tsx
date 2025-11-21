@@ -13,11 +13,7 @@ import { Search, CircleDot } from "lucide-react";
 
 const blogNavItems = [
   { name: "HOME", path: "/" },
-  { name: "HOW TO SUPPORT", path: "#" }, // Placeholder
   { name: "ABOUT", path: "/about" },
-  { name: "THE TEAM", path: "#" }, // Placeholder
-  { name: "SOCIAL MEDIA", path: "#" }, // Placeholder
-  { name: "DESTINATIONS", path: "#" }, // Placeholder
 ];
 
 // Data untuk bab cerita Anda dengan slug untuk setiap poin
@@ -128,7 +124,6 @@ const BlogSidebar = () => {
               <AccordionTrigger className="flex flex-col items-start py-2 text-gray-300 hover:text-primary transition-colors duration-200 text-left">
                 <div className="flex justify-between items-baseline w-full">
                   <span className="text-lg font-semibold">{chapter.title}</span>
-                  {/* chapter.years telah dihapus karena tidak ada lagi di data */}
                 </div>
               </AccordionTrigger>
               <AccordionContent className="pl-4 py-2 text-gray-400 text-sm space-y-1">
