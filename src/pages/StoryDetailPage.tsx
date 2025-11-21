@@ -158,8 +158,8 @@ const StoryDetailPage = () => {
       <div className="min-h-screen bg-background text-foreground flex flex-col lg:flex-row">
         <BlogSidebar />
         <div className="flex-1 flex flex-col overflow-y-auto lg:ml-72">
-          <main className="flex-grow p-8 lg:p-12 bg-background text-foreground"> {/* Menggunakan bg-background dan text-foreground */}
-            <div className="text-center max-w-3xl mx-auto"> {/* Menambahkan text-center di sini */}
+          <main className="flex-grow p-8 lg:p-12 bg-background text-foreground">
+            <div className="text-center max-w-3xl mx-auto">
               <h1 className="text-4xl md:text-5xl font-extrabold text-foreground leading-tight mb-4">
                 Story Not Found
               </h1>
@@ -184,15 +184,15 @@ const StoryDetailPage = () => {
     <div className="h-screen bg-background text-foreground flex flex-col lg:flex-row">
       <BlogSidebar />
       <div className="flex-1 flex flex-col overflow-y-auto lg:ml-72">
-        <main className="flex-grow p-8 lg:p-12 bg-card text-foreground"> {/* Menggunakan bg-card dan text-foreground */}
+        <main className="flex-grow p-8 lg:p-12 bg-card text-foreground">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             className="max-w-3xl mx-auto"
           >
-            <div className="mb-8 text-center"> {/* Menambahkan text-center untuk judul dan info */}
-              <div className="flex flex-wrap justify-center gap-2 mb-4"> {/* Menambahkan justify-center */}
+            <div className="mb-8 text-center">
+              <div className="flex flex-wrap justify-center gap-2 mb-4">
                 {storyContent.tags.map((tag, index) => (
                   <span key={index} className="text-sm text-primary font-medium">
                     {tag}
@@ -205,7 +205,7 @@ const StoryDetailPage = () => {
               <p className="text-sm text-muted-foreground mb-6">
                 POSTED BY: <span className="font-semibold text-primary">{storyContent.postedBy}</span> - {storyContent.date}
               </p>
-              <div className="flex justify-center space-x-2 mb-8"> {/* Menambahkan justify-center */}
+              <div className="flex justify-center space-x-2 mb-8">
                 <Button variant="outline" size="sm" className="border-border text-foreground hover:bg-muted">
                   <svg className="h-4 w-4 mr-2" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26L21.61 21.75h-5.21L8.79 13.542 1.807 2.25H5.12L10.73 10.474 18.244 2.25zM17.29 20.75h2.139L7.03 3.75H4.892L17.29 20.75z"></path></svg>
                   Post
@@ -220,12 +220,12 @@ const StoryDetailPage = () => {
             <img
               src={storyContent.mainImage}
               alt={storyContent.title}
-              className="w-full h-auto object-cover rounded-lg shadow-md mb-12 mx-auto" // Menambahkan mb-12
+              className="w-full h-auto object-cover rounded-lg shadow-md mb-12 mx-auto"
             />
 
-            <div className="prose prose-lg max-w-none text-foreground leading-relaxed text-justify"> {/* Menggunakan text-foreground */}
+            <div className="prose prose-lg max-w-none text-foreground leading-relaxed text-left"> {/* Mengubah text-justify menjadi text-left */}
               {storyContent.paragraphs.map((paragraph, index) => (
-                <p key={index} className="mb-6 leading-relaxed text-justify" dangerouslySetInnerHTML={{ __html: paragraph }} />
+                <p key={index} className="mb-6 leading-relaxed" dangerouslySetInnerHTML={{ __html: paragraph }} />
               ))}
 
               {storyContent.subsections && storyContent.subsections.map((subsection, index) => (
@@ -233,7 +233,7 @@ const StoryDetailPage = () => {
                   key={index}
                   title={subsection.title}
                   content={subsection.content}
-                  delay={0.1 * index + 0.2} // Staggered animation delay
+                  delay={0.1 * index + 0.2}
                 />
               ))}
             </div>
