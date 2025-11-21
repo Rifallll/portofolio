@@ -128,7 +128,7 @@ const BlogSidebar = () => {
               <AccordionTrigger className="flex flex-col items-start py-2 text-gray-300 hover:text-primary transition-colors duration-200 text-left">
                 <div className="flex justify-between items-baseline w-full">
                   <span className="text-lg font-semibold">{chapter.title}</span>
-                  {chapter.years && <span className="text-sm text-gray-400 ml-2">{chapter.years}</span>}
+                  {/* chapter.years telah dihapus karena tidak ada lagi di data */}
                 </div>
               </AccordionTrigger>
               <AccordionContent className="pl-4 py-2 text-gray-400 text-sm space-y-1">
