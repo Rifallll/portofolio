@@ -25,6 +25,11 @@ const StoryEntry: React.FC<StoryEntryProps> = ({
     visible: { opacity: 1, y: 0, transition: { duration: 0.6, delay: delay, ease: "easeOut" } },
   };
 
+  const textContainerVariants = {
+    hidden: { opacity: 0, x: isReversed ? 50 : -50 },
+    visible: { opacity: 1, x: 0, transition: { duration: 0.7, delay: delay + 0.2, ease: "easeOut" } },
+  };
+
   const imageItemVariants = {
     hidden: { opacity: 0, scale: 0.9 },
     visible: { opacity: 1, scale: 1, transition: { duration: 0.5, ease: "easeOut" } },
@@ -36,17 +41,20 @@ const StoryEntry: React.FC<StoryEntryProps> = ({
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, amount: 0.3 }}
-      className={`w-full flex flex-col lg:flex-row items-center gap-12 lg:gap-16 py-12 lg:py-16 ${isReversed ? "lg:flex-row-reverse" : ""}`}
+      className={`w-full flex flex-col lg:flex-row items-center gap-16 lg:gap-24 py-12 lg:py-16 ${isReversed ? "lg:flex-row-reverse" : ""}`}
     >
       {/* Text Content */}
-      <div className="lg:w-1/2 text-center lg:text-left">
+      <motion.div
+        variants={textContainerVariants}
+        className="lg:w-[48%] text-center lg:text-left p-8 rounded-xl shadow-lg border border-border bg-card"
+      >
         <h2 className="text-4xl font-bold text-foreground mb-4">{title}</h2>
         <p className="text-lg text-muted-foreground leading-relaxed">{description}</p>
-      </div>
+      </motion.div>
 
       {/* Images */}
       {imageSrcs.length > 0 && (
-        <div className="lg:w-1/2 flex justify-center">
+        <div className="lg:w-[48%] flex justify-center">
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full max-w-lg">
             {imageSrcs.map((src, idx) => (
               <motion.div
@@ -55,7 +63,7 @@ const StoryEntry: React.FC<StoryEntryProps> = ({
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true, amount: 0.5 }}
-                transition={{ delay: delay + 0.2 + idx * 0.1 }}
+                transition={{ delay: delay + 0.4 + idx * 0.1 }}
               >
                 <img
                   src={src}
