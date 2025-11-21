@@ -12,7 +12,7 @@ import CertificatesPage from "./pages/CertificatesPage";
 import ContactPage from "./pages/ContactPage";
 import NotFound from "./pages/NotFound";
 import DesignSystemPage from "./pages/DesignSystemPage";
-import MyStoryPage from "./pages/MyStoryPage"; // Import the renamed MyStoryPage
+import StoryDetailPage from "./pages/StoryDetailPage"; // Mengembalikan import ke StoryDetailPage
 
 
 const queryClient = new QueryClient();
@@ -34,7 +34,7 @@ const App = () => {
             <Route path="/certificates" element={<CertificatesPage />} />
             <Route path="/contact" element={<ContactPage />} />
             <Route path="/design-system" element={<DesignSystemPage />} />
-            <Route path="/my-story-detail" element={<MyStoryPage />} /> {/* Updated route */}
+            <Route path="/my-story-detail" element={<StoryDetailPage />} /> {/* Mengembalikan rute */}
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>

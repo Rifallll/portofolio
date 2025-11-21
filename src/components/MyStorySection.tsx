@@ -51,7 +51,7 @@ const MyStorySection = () => {
               My journey began with a deep interest in Computer Engineering, which quickly evolved into a passion for Digital Media Strategy and Web Development. I've honed my skills in crafting engaging content strategies, managing social media campaigns, and building responsive web applications. From boosting audience engagement by 150% to developing over 20 websites, I thrive on creating impactful digital solutions.
             </p>
             <Button asChild variant="link" className="text-primary hover:text-primary/80 px-0 text-lg flex items-center space-x-2">
-              <Link to="/my-story-detail"> {/* Updated link to the new MyStoryPage */}
+              <Link to="/my-story-detail"> {/* Mengembalikan link ke StoryDetailPage */}
                 <span>View All</span>
                 <ArrowRight className="h-4 w-4" />
               </Link>
