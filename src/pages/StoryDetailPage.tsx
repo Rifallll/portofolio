@@ -39,7 +39,6 @@ const allStoriesContent: { [key: string]: { title: string; tags: string[]; poste
       `Pertemanan ini adalah perjalanan penuh warna, penuh kejutan, dan penuh perasaan yang sulit dijelaskan dengan kata sederhana. Ini adalah cerita yang tumbuh dari kebiasaan kecil, dari momen lucu yang selalu muncul tiba-tiba, dari perjalanan ke tempat-tempat yang tidak terhitung jumlahnya, dan dari kesempatan terakhir yang kita habiskan bersama sebelum masing-masing melangkah ke dunia baru. Semoga setiap langkah yang kita ambil setelah ini selalu membawa ingatan bahwa kita pernah menjalani masa yang begitu lengkap, begitu hidup, dan begitu berarti.`,
     ],
     additionalImages: [
-      { src: "/Man 1/IPA/11.jpg", alt: "Kenangan SMA 1" },
       { src: "/Man 1/IPA/12 (2).jpg", alt: "Kenangan SMA 2" },
       { src: "/Man 1/IPA/13.jpg", alt: "Kenangan SMA 3" },
       { src: "/Man 1/IPA/14.jpg", alt: "Kenangan SMA 4" },
