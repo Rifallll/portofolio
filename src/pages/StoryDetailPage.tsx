@@ -14,7 +14,8 @@ const allStoriesContent: { [key: string]: { title: string; tags: string[]; poste
     title: "Make It Happen! Go Travel!",
     tags: ["#MAKEITHAPPEN", "LIFE LESSONS", "LIFE TALK", "LUMIA", "MAKE IT HAPPEN", "TRAVEL"],
     postedBy: "Rifal Azhar Permana",
-    date: "2025-11-21", // Tanggal diperbarui di sini
+    date: "2025-11-21",
+    mainImage: "/1.jpeg",
     paragraphs: [
       `Jika ada kalimat "Don't work hard, work smart" saya kurang setuju. Saya lebih pilih "Work smart and work hard".`,
       `Bekerja keras adalah fondasi, tetapi bekerja cerdas adalah kunci untuk mencapai hasil yang maksimal. Dalam perjalanan hidup ini, saya selalu percaya bahwa setiap usaha yang kita lakukan, baik itu besar maupun kecil, akan membawa kita selangkah lebih dekat pada tujuan.`,
@@ -26,7 +27,7 @@ const allStoriesContent: { [key: string]: { title: string; tags: string[]; poste
     title: "IPA 1 MAN 1 Pandeglang", // Diperbarui
     tags: ["SMA", "IPA 1", "MAN 1 Pandeglang", "Kenangan"], // Diperbarui
     postedBy: "Rifal Azhar Permana",
-    date: "2021-05-10",
+    date: "2025-11-21", // Tanggal diperbarui di sini
     mainImage: "/Man 1/IPA/1.jpg", // Diperbarui: Ini sekarang adalah gambar utama
     paragraphs: [
       `Pertemanan di SMA itu aneh, lucu, menyebalkan, tapi justru itulah yang membuatnya tidak tergantikan. Semuanya dimulai pada tahun 2019 saat kita pertama kali melangkah masuk ke MAN 1 Pandeglang dengan wajah polos dan pikiran penuh tanda tanya. Di hari-hari awal itu, kita masih saling menebak siapa yang cerewet, siapa yang pendiam, siapa yang pintar matematika, dan siapa yang hanya pintar meramaikan kelas. Lambat laun, kelas berubah menjadi rumah kedua. Kita terbiasa tertawa di momen yang bahkan guru pun tidak paham apa lucunya. Kita terbiasa saling curi pandang ketika sedang bosan, lalu sama-sama menahan tawa saat ada teman yang ketiduran di jam pelajaran paling serius.`,
