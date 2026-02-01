@@ -4,83 +4,242 @@
 
 @layer base {
   :root {
-    --background: 220 20% 98%; /* Very light cool gray */
-    --foreground: 220 10% 10%; /* Very Dark Gray for text */
+    /* 🌊 REFINED OCEAN THEME - 3 Color System Only */
 
-    --card: 0 0% 100%; /* Pure white for cards to pop */
-    --card-foreground: 220 10% 10%; /* Very Dark Gray for text on cards */
+    /* Color 1: Deep Ocean Navy (Base) */
+    --background: 220 40% 8%;
+    /* #0d1520 - Deep Navy */
+    --foreground: 210 40% 98%;
+    /* #f1f5f9 - Clean White */
 
-    --popover: 0 0% 100%; /* White popover background */
-    --popover-foreground: 220 10% 10%; /* Very Dark Gray for text on white popover */
+    --card: 220 35% 11%;
+    /* #161d2b - Slightly lighter navy */
+    --card-foreground: 210 40% 98%;
 
-    --primary: 260 70% 40%; /* A vibrant purple for primary actions/headings */
-    --primary-foreground: 0 0% 100%; /* White for text on primary */
+    --popover: 220 35% 11%;
+    --popover-foreground: 210 40% 98%;
 
-    --secondary: 220 15% 95%; /* Light gray for subtle elements */
-    --secondary-foreground: 220 10% 30%; /* Darker Gray for text on light secondary */
+    /* Color 2: Electric Cyan (Primary Accent) */
+    --primary: 189 94% 43%;
+    /* #06b6d4 - Cyan 500 */
+    --primary-foreground: 220 40% 8%;
 
-    --muted: 220 15% 95%; /* Light gray muted background */
-    --muted-foreground: 220 10% 40%; /* Medium Gray for muted text */
+    /* Color 3: White/Light (Text & Highlights) */
+    --secondary: 189 85% 90%;
+    /* #cffafe - Light Cyan */
+    --secondary-foreground: 220 40% 8%;
 
-    --accent: 40 100% 60%; /* Vibrant orange-yellow for highlights */
-    --accent-foreground: 220 10% 10%; /* Dark text on accent */
+    /* Accent = Cyan variant */
+    --accent: 188 86% 53%;
+    /* #22d3ee - Cyan 400 */
+    --accent-foreground: 220 40% 8%;
 
-    --destructive: 0 72.2% 50.6%;
-    --destructive-foreground: 60 9.1% 92.1%;
+    /* Muted = Desaturated blue */
+    --muted: 220 20% 20%;
+    /* #2d3748 - Muted Navy */
+    --muted-foreground: 210 20% 70%;
+    /* #94a3b8 - Muted Text */
 
-    --border: 220 10% 85%; /* Light gray border color */
-    --input: 220 15% 95%; /* Light gray input background */
-    --ring: 260 70% 40%; /* Primary color for ring */
+    /* Destructive - using cyan variant */
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 210 40% 98%;
 
-    --radius: 0.75rem; /* Slightly larger border radius for a softer look */
+    /* Borders & Inputs */
+    --border: 220 25% 15%;
+    /* #1e2836 - Subtle border */
+    --input: 220 25% 15%;
+    --ring: 189 94% 43%;
+    /* Cyan ring */
 
-    /* Custom blue and green for pie chart (if needed, but will use primary/foreground for dual) */
-    --blue-custom: 210 70% 50%;
-    --green-custom: 140 60% 40%;
+    --radius: 0.75rem;
   }
 
-  @keyframes pulse-opacity {
-    0%, 100% {
-      opacity: 0.4; /* Redup */
-    }
-    50% {
-      opacity: 0.8; /* Terang */
-    }
-  }
-
-  @keyframes pulse-slow {
-    0%, 100% {
-      transform: scale(1);
-      opacity: 0.7;
-    }
-    50% {
-      transform: scale(1.02);
-      opacity: 1;
-    }
+  .dark {
+    /* Same as root - ocean is naturally dark */
+    --background: 220 40% 8%;
+    --foreground: 210 40% 98%;
   }
 }
 
 @layer base {
-  html, body {
-    height: 100%;
-    /* overflow: hidden; <--- Ini dihapus */
+
+  /* 🎨 Premium Typography System */
+  html {
+    font-family: 'Inter', 'DM Sans', system-ui, sans-serif;
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: 'Space Grotesk', 'Inter', sans-serif;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+
+  code,
+  pre {
+    font-family: 'JetBrains Mono', 'Courier New', monospace;
   }
 
   * {
     @apply border-border;
   }
 
-  body {
-    @apply bg-background text-foreground;
+  /* Smooth Scroll Behavior */
+  html {
+    scroll-behavior: smooth;
   }
 
-  /* Custom styles to hide scrollbar */
+  /* Hide default cursor for custom cursor */
+  body {
+    cursor: none;
+  }
+
+  a,
+  button,
+  input,
+  textarea,
+  [role="button"] {
+    cursor: none;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    /* Simplified Ocean Gradient - 3 colors only */
+    background-image:
+      radial-gradient(at 20% 30%, rgba(6, 182, 212, 0.08) 0px, transparent 50%),
+      radial-gradient(at 80% 70%, rgba(34, 211, 238, 0.06) 0px, transparent 50%),
+      radial-gradient(at 40% 90%, rgba(13, 21, 32, 0.4) 0px, transparent 60%);
+    background-attachment: fixed;
+    min-height: 100vh;
+  }
+
+  * {
+    @apply border-border;
+  }
+}
+
+@layer utilities {
+
+  /* 🌊 Ocean Glass Effects */
+  .glass {
+    background-color: rgba(22, 29, 43, 0.7);
+    backdrop-filter: blur(20px) saturate(150%);
+    border: 1px solid rgba(6, 182, 212, 0.15);
+    box-shadow: 0 8px 32px 0 rgba(6, 182, 212, 0.1);
+  }
+
+  .glass-card {
+    background-color: rgba(22, 29, 43, 0.8);
+    backdrop-filter: blur(16px) saturate(150%);
+    border: 1px solid rgba(6, 182, 212, 0.2);
+    box-shadow: 0 4px 24px 0 rgba(6, 182, 212, 0.15);
+    transition: all 0.3s ease;
+  }
+
+  .glass-card:hover {
+    border-color: rgba(6, 182, 212, 0.4);
+    box-shadow: 0 8px 32px 0 rgba(6, 182, 212, 0.25);
+    transform: translateY(-2px);
+  }
+
+  /* 🌊 Ocean Gradient Text (Cyan variants only) */
+  .text-gradient-ocean {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 via-cyan-500 to-cyan-600;
+  }
+
+  .text-gradient-wave {
+    @apply bg-clip-text text-transparent bg-gradient-to-br from-cyan-300 via-cyan-500 to-blue-600;
+  }
+
+  .text-gradient-deep {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-blue-400 via-cyan-500 to-cyan-400;
+  }
+
+  /* 🌊 Ocean Glow Effects (Cyan only) */
+  .glow-ocean {
+    box-shadow: 0 0 20px rgba(6, 182, 212, 0.4),
+      0 0 40px rgba(6, 182, 212, 0.2);
+  }
+
+  .glow-cyan {
+    box-shadow: 0 0 20px rgba(34, 211, 238, 0.5),
+      0 0 40px rgba(34, 211, 238, 0.3);
+  }
+
+  /* 🎭 Animation Delays */
+  .animation-delay-200 {
+    animation-delay: 0.2s;
+  }
+
+  .animation-delay-400 {
+    animation-delay: 0.4s;
+  }
+
+  .animation-delay-600 {
+    animation-delay: 0.6s;
+  }
+
+  .animation-delay-2000 {
+    animation-delay: 2s;
+  }
+
+  .animation-delay-4000 {
+    animation-delay: 4s;
+  }
+
+  /* 🌊 Ocean Scrollbar */
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: hsl(var(--background));
+    border-left: 1px solid rgba(6, 182, 212, 0.1);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, rgba(6, 182, 212, 0.6), rgba(34, 211, 238, 0.4));
+    border-radius: 5px;
+    border: 2px solid hsl(var(--background));
+    transition: all 0.3s ease;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, rgba(6, 182, 212, 0.8), rgba(34, 211, 238, 0.6));
+    box-shadow: 0 0 10px rgba(6, 182, 212, 0.5);
+  }
+
   .hide-scrollbar::-webkit-scrollbar {
-    display: none; /* For Chrome, Safari, and Opera */
+    display: none;
   }
 
   .hide-scrollbar {
-    -ms-overflow-style: none;  /* For IE and Edge */
-    scrollbar-width: none;  /* For Firefox */
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 4px;
+    height: 4px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: rgba(6, 182, 212, 0.2);
+    border-radius: 10px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: rgba(6, 182, 212, 0.5);
   }
 }

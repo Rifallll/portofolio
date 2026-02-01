@@ -1,63 +1,65 @@
-"use client";
-
 import React from "react";
 import { motion } from "framer-motion";
-import { Button } from "@/components/ui/button";
-import { Link } from "react-router-dom";
-import { ArrowRight } from "lucide-react";
+import { User } from "lucide-react";
 
 const AboutHeroSection = () => {
   return (
-    <section id="about-hero" className="relative min-h-screen flex items-center justify-center py-20 bg-gradient-to-br from-background to-secondary overflow-hidden">
-      {/* Subtle background pattern or gradient for elegance */}
-      <div className="absolute inset-0 opacity-10 pointer-events-none">
-        <svg className="w-full h-full" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <pattern id="grid" width="80" height="80" patternUnits="userSpaceOnUse">
-            <path d="M80 0H0V80" stroke="hsl(var(--border))" strokeOpacity="0.2" fill="none"/>
-          </pattern>
-          <rect width="100%" height="100%" fill="url(#grid)" />
-        </svg>
+    <section id="about" className="relative min-h-[70vh] flex items-center justify-center overflow-hidden pt-20">
+      {/* Subtle Ocean Background */}
+      <div className="absolute inset-0">
+        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-cyan-500/5 rounded-full blur-3xl" />
       </div>
 
-      <div className="container mx-auto px-4 max-w-screen-xl relative z-10 flex flex-col lg:flex-row items-center justify-between gap-16">
-        {/* Left Column: Text Content */}
+      <div className="container mx-auto px-4 relative z-10 text-center">
         <motion.div
-          initial={{ opacity: 0, x: -50 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          className="lg:w-1/2 text-center lg:text-left"
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.6 }}
+          className="mb-8"
         >
-          <h1 className="text-6xl md:text-7xl font-extrabold text-foreground leading-tight mb-6">
-            About <span className="text-primary">Me</span>.
-          </h1>
-          <p className="text-xl text-muted-foreground mb-8 max-w-lg lg:max-w-none mx-auto lg:mx-0">
-            Deeply rooted in Computer Engineering, I have a proven track record in Digital Media Strategy. I am proficient in Content Strategy Development and as a Social Media Specialist, having successfully boosted audience engagement by up to 150% and led over 10+ data-driven digital campaigns. My strategic expertise is fortified by technical hard skills in Web Development (HTML/CSS), UI/UX Design, Web Scraping, and basic Python, enabling me to design digital solutions that are both communicative and analytically driven.
-          </p>
-          <Button asChild className="bg-primary text-primary-foreground hover:bg-primary/90 px-8 py-3 text-lg rounded-full shadow-lg transition-all duration-300 hover:scale-105 flex items-center space-x-2">
-            <Link to="/contact">
-              <span>Let's Connect</span>
-              <ArrowRight className="h-5 w-5 ml-2" />
-            </Link>
-          </Button>
-        </motion.div>
-
-        {/* Right Column: Main Profile Image */}
-        <motion.div
-          initial={{ opacity: 0, x: 50 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
-          className="lg:w-1/2 flex justify-center lg:justify-end"
-        >
-          <div className="relative w-80 h-80 md:w-96 md:h-96 rounded-full overflow-hidden shadow-2xl border-4 border-primary/30">
-            <img
-              src="/profile-image-new.jpg" // Use your main profile image
-              alt="Rifal Azhar Permana"
-              className="w-full h-full object-cover object-center"
-            />
-            {/* Subtle pulsating border effect */}
-            <div className="absolute inset-0 rounded-full border-4 border-primary/50 animate-pulse-slow"></div>
+          {/* Profile Image */}
+          <div className="relative w-40 h-40 md:w-48 md:h-48 mx-auto mb-8 rounded-full p-1 bg-gradient-to-tr from-cyan-500 to-cyan-600 shadow-lg shadow-cyan-500/20">
+            <div className="w-full h-full rounded-full overflow-hidden border-4 border-background">
+              <img
+                src="/p.png"
+                alt="Profile"
+                className="w-full h-full object-top object-cover hover:scale-105 transition-transform duration-500"
+              />
+            </div>
           </div>
         </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.2, duration: 0.6 }}
+          className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass border border-cyan-500/20 mb-6"
+        >
+          <User className="w-4 h-4 text-cyan-400" />
+          <span className="text-sm font-medium text-cyan-300">About Me</span>
+        </motion.div>
+
+        <motion.h1
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.3, duration: 0.6 }}
+          className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight"
+        >
+          <span className="block text-white">Building</span>
+          <span className="block text-gradient-ocean">Digital Experiences</span>
+        </motion.h1>
+
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.5, duration: 0.6 }}
+          className="text-xl md:text-2xl text-foreground/70 max-w-3xl mx-auto leading-relaxed"
+        >
+          A creative technologist passionate about blending{" "}
+          <span className="text-cyan-400 font-semibold">design</span> and{" "}
+          <span className="text-cyan-400 font-semibold">code</span> to create
+          meaningful digital products.
+        </motion.p>
       </div>
     </section>
   );

@@ -72,7 +72,7 @@ const ProjectsSection = () => {
     ? allProjectsData
     : allProjectsData.filter(project => project.categories.includes(activeCategory));
 
-  const onSelect = useCallback((emblaApi: any) => {
+  const onSelect = useCallback((emblaApi: { canScrollPrev: () => boolean, canScrollNext: () => boolean }) => {
     if (!emblaApi) return;
     setPrevBtnDisabled(!emblaApi.canScrollPrev());
     setNextBtnDisabled(!emblaApi.canScrollNext());
@@ -105,9 +105,11 @@ const ProjectsSection = () => {
   }, [filteredProjects, emblaApi]);
 
   return (
-    <section id="projects" className="py-20 bg-secondary"> {/* Changed from bg-background to bg-secondary */}
+    <section id="projects" className="py-20 bg-transparent">
       <div className="container mx-auto px-4 text-center">
-        <h2 className="text-4xl font-bold text-primary mb-4">Featured Projects</h2>
+        <h2 className="text-4xl md:text-5xl font-serif font-bold mb-4">
+          <span className="text-gradient-gold">Featured Projects</span>
+        </h2>
         <p className="text-lg text-muted-foreground mb-8">
           A selection of my best work showcasing different technologies and approaches
         </p>
@@ -118,7 +120,7 @@ const ProjectsSection = () => {
               key={category}
               variant={activeCategory === category ? "default" : "outline"}
               onClick={() => setActiveCategory(category)}
-              className={`px-4 py-2 rounded-full text-sm md:text-base ${activeCategory === category ? "bg-primary text-primary-foreground hover:bg-primary/90" : "bg-secondary text-secondary-foreground border-border hover:bg-muted"}`}
+              className={`px-4 py-2 rounded-full text-sm md:text-base transition-all duration-300 ${activeCategory === category ? "bg-primary text-primary-foreground hover:bg-primary/90 shadow-[0_0_15px_rgba(234,179,8,0.4)]" : "bg-white/5 text-foreground border-white/10 hover:bg-white/10 backdrop-blur-sm"}`}
             >
               {category}
             </Button>
@@ -143,7 +145,7 @@ const ProjectsSection = () => {
             disabled={prevBtnDisabled}
             variant="outline"
             size="icon"
-            className="absolute -left-4 top-1/2 -translate-y-1/2 bg-card text-foreground border-border rounded-full shadow-md hover:shadow-lg transition-all duration-200 z-10 md:-left-8 hover:bg-muted"
+            className="absolute -left-4 top-1/2 -translate-y-1/2 bg-card/50 text-foreground border-white/10 rounded-full shadow-md hover:shadow-lg transition-all duration-200 z-10 md:-left-8 hover:bg-card/80 backdrop-blur-md"
           >
             <ArrowLeft className="h-5 w-5" />
             <span className="sr-only">Previous project</span>
@@ -153,7 +155,7 @@ const ProjectsSection = () => {
             disabled={nextBtnDisabled}
             variant="outline"
             size="icon"
-            className="absolute -right-4 top-1/2 -translate-y-1/2 bg-card text-foreground border-border rounded-full shadow-md hover:shadow-lg transition-all duration-200 z-10 md:-right-8 hover:bg-muted"
+            className="absolute -right-4 top-1/2 -translate-y-1/2 bg-card/50 text-foreground border-white/10 rounded-full shadow-md hover:shadow-lg transition-all duration-200 z-10 md:-right-8 hover:bg-card/80 backdrop-blur-md"
           >
             <ArrowRight className="h-5 w-5" />
             <span className="sr-only">Next project</span>
