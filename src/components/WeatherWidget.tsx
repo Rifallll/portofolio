@@ -118,7 +118,7 @@ const WeatherWidget = () => {
                 fetch(`${baseUrl}?latitude=${lat}&longitude=${lon}&current=${currentParams}&hourly=${hourlyParams}&daily=${dailyParams}&timezone=auto`),
                 fetch(`https://air-quality-api.open-meteo.com/v1/air-quality?latitude=${lat}&longitude=${lon}&current=european_aqi`),
                 fetch(`https://marine-api.open-meteo.com/v1/marine?latitude=${lat}&longitude=${lon}&current=wave_height,wave_period`),
-                customName ? Promise.resolve(null) : fetch(`https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=${lat}&lon=${lon}`)
+                customName ? Promise.resolve(null) : fetch(`https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${lat}&longitude=${lon}&localityLanguage=id`)
             ]);
 
             const fData = await fRes.json();
@@ -128,7 +128,7 @@ const WeatherWidget = () => {
             let cityName = customName;
             if (!cityName && gRes) {
                 const geoData = await gRes.json();
-                cityName = geoData.address.city || geoData.address.town || geoData.address.village || geoData.address.county || "Selected Node";
+                cityName = geoData.locality || geoData.city || geoData.town || "Unknown Location";
             }
 
             if (fData.current) {
@@ -172,9 +172,20 @@ const WeatherWidget = () => {
         if (query.length < 3) { setSearchResults(INDONESIA_CITIES); return; }
         setIsSearching(true);
         try {
-            const res = await fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(query)}&countrycodes=id&limit=8`);
+            // Using a more lenient search or handling CORS better is hard without a backend proxy.
+            // For now, we'll keep Nominatim but add a fallback error handler or just suppress the error to user.
+            // Alternatively, switch to a simple mocked list filter if API fails.
+            const res = await fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(query)}&countrycodes=id&limit=5`, {
+                headers: { 'Accept-Language': 'id' }
+            });
+            if (!res.ok) throw new Error("Search failed");
             const data = await res.json();
             setSearchResults(data.map((item: { display_name: string, lat: string, lon: string }) => ({ name: item.display_name.split(',')[0], lat: parseFloat(item.lat), lon: parseFloat(item.lon) })));
+        } catch (e) {
+            console.warn("Search API failed, falling back to local list", e);
+            // Fallback to filtering local list
+            const localResults = INDONESIA_CITIES.filter(c => c.name.toLowerCase().includes(query.toLowerCase()));
+            setSearchResults(localResults);
         } finally { setIsSearching(false); }
     };
 
