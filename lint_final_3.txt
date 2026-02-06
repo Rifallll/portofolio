@@ -1,0 +1,30 @@
+
+> vite_react_shadcn_ts@0.0.0 lint
+> eslint .
+
+
+C:\Users\ASUS\dyad-apps\Portofolio Rifal Azhar Perrmana\src\components\HackerTerminal.tsx
+  117:56  error  Unexpected any. Specify a different type      @typescript-eslint/no-explicit-any
+  161:21  error  Empty block statement                         no-empty
+  192:57  error  Unexpected any. Specify a different type      @typescript-eslint/no-explicit-any
+  465:44  error  Unexpected any. Specify a different type      @typescript-eslint/no-explicit-any
+  563:71  error  Unexpected any. Specify a different type      @typescript-eslint/no-explicit-any
+  652:17  error  Unexpected lexical declaration in case block  no-case-declarations
+
+C:\Users\ASUS\dyad-apps\Portofolio Rifal Azhar Perrmana\src\components\ui\badge.tsx
+  36:17  warning  Fast refresh only works when a file only exports components. Use a new file to share constants or functions between components  react-refresh/only-export-components
+
+C:\Users\ASUS\dyad-apps\Portofolio Rifal Azhar Perrmana\src\components\ui\button.tsx
+  56:18  warning  Fast refresh only works when a file only exports components. Use a new file to share constants or functions between components  react-refresh/only-export-components
+
+C:\Users\ASUS\dyad-apps\Portofolio Rifal Azhar Perrmana\src\components\ui\form.tsx
+  169:3  warning  Fast refresh only works when a file only exports components. Use a new file to share constants or functions between components  react-refresh/only-export-components
+
+C:\Users\ASUS\dyad-apps\Portofolio Rifal Azhar Perrmana\src\components\ui\navigation-menu.tsx
+  119:3  warning  Fast refresh only works when a file only exports components. Use a new file to share constants or functions between components  react-refresh/only-export-components
+
+C:\Users\ASUS\dyad-apps\Portofolio Rifal Azhar Perrmana\src\components\ui\toggle.tsx
+  43:18  warning  Fast refresh only works when a file only exports components. Use a new file to share constants or functions between components  react-refresh/only-export-components
+
+✖ 11 problems (6 errors, 5 warnings)
+

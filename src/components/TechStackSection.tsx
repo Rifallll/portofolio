@@ -34,37 +34,48 @@ const TechStackSection = () => {
                 </motion.div>
 
                 {/* Marquee Effect Container */}
-                <div className="relative group w-full">
+                <div className="relative group/marquee w-full">
                     {/* Faded Edges Mask */}
                     <div className="absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-[#020617] to-transparent z-10 pointer-events-none" />
                     <div className="absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-[#020617] to-transparent z-10 pointer-events-none" />
 
                     <div className="flex overflow-hidden">
-                        <motion.div
-                            animate={{ x: [0, -2000] }}
-                            transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
-                            className="flex gap-8 py-4 flex-shrink-0"
+                        <div
+                            className="flex-none flex flex-nowrap gap-4 md:gap-8 py-4 w-max animate-marquee pause-on-hover will-change-transform"
                         >
-                            {[...techStack, ...techStack, ...techStack].map((tech, index) => (
+                            {/* Duplicate the list twice to create a seamless infinite loop */}
+                            {[...techStack, ...techStack].map((tech, index) => (
                                 <motion.div
                                     key={`${tech.name}-${index}`}
-                                    whileHover={{ y: -10, scale: 1.05 }}
-                                    className={`flex items-center gap-4 px-8 py-4 glass border-white/5 rounded-3xl group/item cursor-pointer transition-all ${tech.color} hover:bg-white/5 hover:border-cyan-500/30 shadow-xl`}
+                                    whileHover={{
+                                        y: -8, // Reduced movement
+                                        scale: 1.05, // Reduced scale
+                                        transition: { type: "spring", stiffness: 300, damping: 15 }
+                                    }}
+                                    className={`flex-shrink-0 flex items-center gap-2 md:gap-4 px-6 md:px-10 py-3 md:py-6 glass border-white/5 rounded-[2rem] group/item cursor-pointer transition-all ${tech.color} hover:bg-white/5 hover:border-cyan-500/30 hover:shadow-lg shadow-md relative overflow-hidden transform-gpu`} // Optimized shadows
                                 >
-                                    <div className="w-10 h-10 p-2 glass-card rounded-xl border border-white/10 group-hover/item:border-cyan-500/50 transition-colors">
-                                        <img
+                                    {/* Animated Background Pulse - Keeping it but ensuring it's efficient */}
+                                    <div className="absolute inset-0 bg-gradient-to-tr from-cyan-500/0 to-cyan-500/0 group-hover/item:from-cyan-500/10 group-hover/item:to-transparent transition-all duration-300" />
+
+                                    <div className="w-10 h-10 md:w-12 md:h-12 p-2.5 glass-card rounded-2xl border border-white/10 group-hover/item:border-cyan-500/50 transition-all duration-300 bg-black/40 relative z-10">
+                                        <motion.img
+                                            // Removed continuous rotation animation to save GPU
+                                            whileHover={{
+                                                scale: 1.1,
+                                            }}
                                             src={tech.icon}
                                             alt={tech.name}
+                                            loading="lazy"
                                             referrerPolicy="no-referrer"
-                                            className="w-full h-full object-contain filter grayscale group-hover/item:grayscale-0 transition-all duration-500"
+                                            className="w-full h-full object-contain filter grayscale group-hover/item:grayscale-0 transition-all duration-300"
                                         />
                                     </div>
-                                    <span className="font-bold text-slate-400 group-hover/item:text-white transition-colors tracking-tight">
+                                    <span className="font-extrabold text-slate-400 group-hover/item:text-white transition-colors tracking-tight text-sm md:text-base relative z-10">
                                         {tech.name}
                                     </span>
                                 </motion.div>
                             ))}
-                        </motion.div>
+                        </div>
                     </div>
                 </div>
             </div>

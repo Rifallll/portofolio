@@ -2,6 +2,47 @@
 @tailwind components;
 @tailwind utilities;
 
+/* GHOST PROTOCOL (STEALTH UI) */
+.stealth-mode {
+  filter: saturate(0.2) contrast(1.2) brightness(0.8) blur(0.5px);
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.stealth-mode main {
+  opacity: 0.15;
+  transition: opacity 0.8s ease;
+}
+
+.stealth-mode .terminal-window, 
+.stealth-mode .terminal-header, 
+.stealth-mode footer {
+  opacity: 1 !important;
+  filter: none !important;
+}
+
+/* THEME OVERRIDES */
+[data-theme="green"] .text-cyan-400,
+[data-theme="green"] .text-cyan-500 {
+  color: #22c55e !important;
+}
+[data-theme="green"] .bg-cyan-500 {
+  background-color: #22c55e !important;
+}
+[data-theme="green"] .border-cyan-500 {
+  border-color: #22c55e !important;
+}
+
+[data-theme="red"] .text-cyan-400,
+[data-theme="red"] .text-cyan-500 {
+  color: #ef4444 !important;
+}
+[data-theme="red"] .bg-cyan-500 {
+  background-color: #ef4444 !important;
+}
+[data-theme="red"] .border-cyan-500 {
+  border-color: #ef4444 !important;
+}
+
 @layer base {
   :root {
     /* 🌊 REFINED OCEAN THEME - 3 Color System Only */
@@ -96,19 +137,7 @@
     scroll-behavior: smooth;
   }
 
-  /* Hide default cursor for custom cursor */
-  body {
-    cursor: none;
-  }
-
-  a,
-  button,
-  input,
-  textarea,
-  [role="button"] {
-    cursor: none;
-  }
-
+  /* Custom cursor managed via CyberCursor.tsx */
   body {
     @apply bg-background text-foreground;
     /* Simplified Ocean Gradient - 3 colors only */
@@ -241,5 +270,36 @@
 
   .custom-scrollbar::-webkit-scrollbar-thumb:hover {
     background: rgba(6, 182, 212, 0.5);
+  }
+
+  @keyframes marquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  .animate-marquee {
+    animation: marquee 25s linear infinite;
+  }
+
+  .pause-on-hover:hover {
+    animation-play-state: paused;
+  }
+  
+  @keyframes fadeInLeft {
+    from { opacity: 0; transform: translateX(-20px); }
+    to { opacity: 1; transform: translateX(0); }
+  }
+  
+  @keyframes fadeInRight {
+    from { opacity: 0; transform: translateX(20px); }
+    to { opacity: 1; transform: translateX(0); }
+  }
+  
+  .animate-fade-in-left {
+    animation: fadeInLeft 0.8s ease-out forwards;
+  }
+  
+  .animate-fade-in-right {
+    animation: fadeInRight 0.8s ease-out forwards;
   }
 }

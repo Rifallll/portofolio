@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
+import { toast } from "sonner";
 import { motion, AnimatePresence, useSpring, useMotionValue } from "framer-motion";
 import { ResponsiveContainer, RadarChart, PolarGrid, PolarAngleAxis, Radar } from 'recharts';
 import Footer from "@/components/Footer";
@@ -8,6 +9,8 @@ import {
   Orbit, Lock, Server, Laptop, Sparkles, Briefcase, GraduationCap, Award,
   Download, Command
 } from "lucide-react";
+import { DecryptText } from "@/components/ui/DecryptText";
+import useSciFiSound from "@/hooks/use-sound";
 
 // --- CUSTOM HUD COMPONENTS ---
 
@@ -79,47 +82,88 @@ const ParticleNetwork = () => {
 };
 
 const SystemLog = () => {
-  const [logs, setLogs] = useState<string[]>([]);
+  const [logs, setLogs] = useState<{ id: number; text: string; type: 'info' | 'success' | 'warn' | 'error' }[]>([]);
+
   useEffect(() => {
-    const messages = ["SYSTEM_CHECK", "CONNECTED", "RENDERING", "ENCRYPTING", "SCANNING"];
+    const events = [
+      { text: "ESTABLISHING_SECURE_CONN...", type: 'info' },
+      { text: "HANDSHAKE_COMPLETE", type: 'success' },
+      { text: "ENCRYPTING_DATA_STREAM", type: 'warn' },
+      { text: "OPTIMIZING_VIEWPORT_X", type: 'info' },
+      { text: "PACKET_LOSS_DETECTED (0.001%)", type: 'error' },
+      { text: "RENDER_ENGINE_READY", type: 'success' },
+      { text: "FETCHING_ASSETS...", type: 'info' },
+      { text: "MEMORY_HEAP_STABLE", type: 'success' },
+      { text: "BYPASSING_FIREWALL...", type: 'warn' },
+      { text: "ACCESS_GRANTED_LEVEL_5", type: 'success' },
+      { text: "SCANNING_VULNERABILITIES", type: 'info' },
+      { text: "INDEXING_DB_NODES", type: 'info' },
+    ] as const;
+
+    let count = 0;
     const interval = setInterval(() => {
-      const newLog = `> ${messages[Math.floor(Math.random() * messages.length)]} [${Math.floor(Math.random() * 99)}ms]`;
-      setLogs(prev => [newLog, ...prev].slice(0, 8));
-    }, 2000);
+      const event = events[Math.floor(Math.random() * events.length)];
+      const hex = Math.floor(Math.random() * 0xFFFFFF).toString(16).toUpperCase().padStart(6, '0');
+      const timestamp = new Date().toLocaleTimeString('en-US', { hour12: false });
+
+      const newLog = {
+        id: Date.now() + Math.random(),
+        text: `[${timestamp}] 0x${hex} // ${event.text}`,
+        type: event.type
+      };
+
+      setLogs(prev => [newLog, ...prev].slice(0, 12));
+      count++;
+    }, 800);
+
     return () => clearInterval(interval);
   }, []);
+
   return (
-    <div className="mt-8 p-4 rounded-xl bg-slate-950/80 border border-white/5 font-mono text-[10px] text-cyan-500/80 overflow-hidden hidden lg:block shadow-[inset_0_0_20px_rgba(0,0,0,0.5)]">
-      <div className="flex items-center gap-2 border-b border-white/5 pb-2 mb-2">
-        <Terminal className="w-3 h-3" /> SYSTEM_LOG
+    <div className="mt-8 p-4 rounded-xl bg-black/90 border border-white/10 font-mono text-[9px] overflow-hidden hidden lg:block shadow-[0_0_30px_rgba(0,0,0,0.8)] relative group">
+      {/* GLOWING BORDER EFFECT */}
+      <div className="absolute inset-0 border border-cyan-500/20 rounded-xl pointer-events-none" />
+      <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-cyan-500/50 to-transparent opacity-50" />
+
+      {/* HEADER */}
+      <div className="flex items-center justify-between border-b border-white/10 pb-2 mb-2 relative z-10">
+        <div className="flex items-center gap-2 text-cyan-400">
+          <Terminal className="w-3 h-3" />
+          <span className="tracking-widest font-bold">KERNEL_LOG</span>
+        </div>
+        <div className="flex gap-1.5">
+          <div className="w-1.5 h-1.5 rounded-full bg-red-500/50 animate-pulse" />
+          <div className="w-1.5 h-1.5 rounded-full bg-yellow-500/50" />
+          <div className="w-1.5 h-1.5 rounded-full bg-green-500/50" />
+        </div>
       </div>
-      <div className="space-y-1 h-32 overflow-hidden flex flex-col-reverse">
-        {logs.map((log, i) => <div key={i} className="truncate opacity-70">{log}</div>)}
+
+      {/* LOGS CONTAINER */}
+      <div className="space-y-1.5 h-40 overflow-hidden flex flex-col pt-2 relative z-10 mask-linear-fade-bottom">
+        {logs.map((log) => (
+          <div
+            key={log.id}
+            className={`truncate font-medium tracking-tight animate-in fade-in slide-in-from-left-2 duration-300 ${log.type === 'success' ? 'text-green-400' :
+              log.type === 'warn' ? 'text-yellow-400' :
+                log.type === 'error' ? 'text-red-400' :
+                  'text-cyan-600'
+              }`}
+          >
+            <span className="opacity-50 mr-2">{">"}</span>
+            {log.text}
+          </div>
+        ))}
+        {/* BLINKING CURSOR AT BOTTOM */}
+        <div className="text-cyan-500 animate-pulse mt-auto pt-2">_</div>
       </div>
+
+      {/* SCANLINES OVERLAY */}
+      <div className="absolute inset-0 pointer-events-none opacity-5 bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.25)_50%),linear-gradient(90deg,rgba(255,0,0,0.06),rgba(0,255,0,0.02),rgba(0,0,255,0.06))]" style={{ backgroundSize: "100% 2px, 3px 100%" }} />
     </div>
   );
 };
 
-const playSfx = () => {
-  try {
-    const AudioContext = window.AudioContext || (window as unknown as { webkitAudioContext: typeof AudioContext }).webkitAudioContext;
-    if (!AudioContext) return;
-    const ctx = new AudioContext();
-    const osc = ctx.createOscillator();
-    const gain = ctx.createGain();
-    osc.connect(gain);
-    gain.connect(ctx.destination);
-    osc.type = 'sine';
-    osc.frequency.setValueAtTime(800, ctx.currentTime);
-    osc.frequency.exponentialRampToValueAtTime(300, ctx.currentTime + 0.1);
-    gain.gain.setValueAtTime(0.1, ctx.currentTime);
-    gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.1);
-    osc.start();
-    osc.stop(ctx.currentTime + 0.1);
-  } catch (e) {
-    // Silent catch for potential audio context issues
-  }
-};
+// Local playSfx removed in favor of useSciFiSound hook for performance and AudioContext safety.
 
 const radarData = [
   { subject: 'Frontend', A: 98, fullMark: 100 },
@@ -138,100 +182,234 @@ const MODULES = {
   EDUCATION: "education"
 };
 
-const skillData = [
+import { supabase } from "@/lib/supabase";
+
+interface SkillDisplay {
+  name: string;
+  level: number;
+  icon: React.ElementType | string;
+  desc: string;
+}
+
+interface SkillGroup {
+  category: string;
+  icon: React.ElementType;
+  skills: SkillDisplay[];
+}
+
+const initialSkillData: SkillGroup[] = [
   {
     category: "Core Engineering",
     icon: Laptop,
-    skills: [
-      { name: "React.js", level: 98, icon: "atom", desc: "Advanced Component Patterns" },
-      { name: "TypeScript", level: 95, icon: "code", desc: "Type-Safe Architecture" },
-      { name: "Next.js", level: 95, icon: "triangle", desc: "Server Actions & SSR" },
-      { name: "Tailwind", level: 99, icon: "wind", desc: "Atomic Design Systems" },
-    ]
+    skills: []
   },
   {
     category: "Creative Dev",
     icon: Sparkles,
-    skills: [
-      { name: "Three.js", level: 88, icon: "box", desc: "WebGL Experiences" },
-      { name: "Framer Motion", level: 92, icon: "move", desc: "Complex Gestures" },
-      { name: "GSAP", level: 85, icon: "zap", desc: "High-Perf Animation" },
-      { name: "Canvas API", level: 80, icon: "image", desc: "Generative Art" },
-    ]
+    skills: []
   },
   {
     category: "Backend & Cloud",
     icon: Server,
-    skills: [
-      { name: "Node.js", level: 90, icon: "hexagon", desc: "Scalable APIs" },
-      { name: "PostgreSQL", level: 88, icon: "database", desc: "Relational Data" },
-      { name: "Supabase", level: 94, icon: "database-zap", desc: "BaaS Integration" },
-      { name: "Docker", level: 82, icon: "container", desc: "Containerization" },
-    ]
+    skills: []
   },
   {
     category: "AI & Emerging Tech",
     icon: Cpu,
-    skills: [
-      { name: "OpenAI API", level: 85, icon: "bot", desc: "LLM Integration" },
-      { name: "Python", level: 80, icon: "code", desc: "Data Processing" },
-      { name: "TensorFlow.js", level: 75, icon: "brain", desc: "Browser AI Models" },
-      { name: "Solidity", level: 70, icon: "link", desc: "Smart Contracts" },
-    ]
+    skills: []
   }
 ];
 
-const experienceData = [
-  {
-    role: "Senior Frontend Engineer",
-    company: "Tech Giant Corp",
-    period: "2023 - PRESENT",
-    desc: "Leading a team of 10+ developers building the future of e-commerce.",
-    tech: ["Next.js", "GraphQL", "AWS"]
-  },
-  {
-    role: "Creative Developer",
-    company: "Digital Agency",
-    period: "2021 - 2023",
-    desc: "Created award-winning immersive websites for Fortune 500 clients.",
-    tech: ["WebGL", "Three.js", "GLSL"]
-  },
-  {
-    role: "Full Stack Developer",
-    company: "Startup Inc",
-    period: "2019 - 2021",
-    desc: "Built MVP from scratch and scaled to 100k+ active users.",
-    tech: ["React", "Node.js", "Postgres"]
-  }
-];
+// Helper to map icon string to Component
+const iconMap: Record<string, string> = {
+  "Atom": "atom",
+  "Code": "code",
+  "Triangle": "triangle",
+  "Wind": "wind",
+  "Box": "box",
+  "Move": "move",
+  "Zap": "zap",
+  "Image": "image",
+  "Hexagon": "hexagon",
+  "Database": "database",
+  "Server": "server",
+  "Container": "container",
+  "Bot": "bot",
+  "Brain": "brain",
+  "Link": "link"
+};
 
 const educationData = [
   {
-    degree: "B.S. Computer Science",
-    school: "University of Technology",
-    year: "2019",
-    grade: "GPA 3.8/4.0",
+    degree: "Bachelor of Computer Engineering",
+    school: "Telkom University",
+    year: "2020 - Present",
+    grade: "GPA 3.00",
     icon: GraduationCap
   },
   {
-    degree: "Full Stack Certification",
-    school: "Advanced Code Academy",
-    year: "2020",
-    grade: "Top 1% Graduate",
+    degree: "Science Major (IPA)",
+    school: "MAN 1 Pandeglang",
+    year: "2019 - 2022",
+    grade: "Graduated with Honors",
     icon: Award
   }
 ];
 
+// --- DATA ---
+interface Experience {
+  id?: number;
+  role: string;
+  company: string;
+  period?: string;
+  year?: string;
+  desc: string;
+  tech: string[];
+  created_at?: string;
+}
+
+interface SupabaseSkill {
+  category: string;
+  name: string;
+  proficiency: number;
+  icon_name: string;
+}
+
+import { useSEO } from "@/hooks/useSEO";
+
 const SkillsPage = () => {
+  useSEO("Skills & Stack | Rifal Azhar", "Explore Rifal Azhar's technical arsenal: React, Python, Data Science, and Digital Strategy.");
+
+  const { playSound } = useSciFiSound();
   const [activeModule, setActiveModule] = useState(MODULES.SKILLS);
   const [lastKey, setLastKey] = useState<string | null>(null);
 
+  // DYNAMIC DATA STATE
+  const [skillData, setSkillData] = useState<SkillGroup[]>(initialSkillData);
+  const [experienceData, setExperienceData] = useState<Experience[]>([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      // 1. Fetch Skills
+      const { data: skills } = await supabase.from("skills").select("*");
+      if (skills) {
+        const newSkillData = [...initialSkillData];
+        // Reset skills arrays first to avoid duplication on re-fetch if strict mode
+        newSkillData.forEach(d => d.skills = []);
+
+        skills.forEach(skill => {
+          const catIndex = newSkillData.findIndex(d => d.category === skill.category);
+          if (catIndex !== -1) {
+            newSkillData[catIndex].skills.push({
+              name: skill.name,
+              level: skill.proficiency,
+              icon: iconMap[skill.icon_name] || "code",
+              desc: `${skill.name} Development` // Or fetch desc if added to DB
+            });
+          } else {
+            // Check mapping for categories that might differ slightly or add new if needed
+            // For now we map strictly to the 4 categories defined in initialSkillData
+            // If category matches text exactly:
+            const exactMatch = newSkillData.find(d => d.category === skill.category);
+            if (exactMatch) {
+              exactMatch.skills.push({
+                name: skill.name,
+                level: skill.proficiency,
+                icon: iconMap[skill.icon_name] || "code",
+                desc: "Tech Stack"
+              });
+            } else {
+              // Fallback: Add to 'Core Engineering' or similar if unknown
+              newSkillData[0].skills.push({
+                name: skill.name,
+                level: skill.proficiency,
+                icon: iconMap[skill.icon_name] || "code",
+                desc: "Skill"
+              })
+            }
+          }
+        });
+
+        // Since Supabase might return text categories that don't match the HUD display names perfectly, 
+        // we should ideally map them or ensure Seed Data matches.
+        // Seed data uses: 'Frontend', 'Backend', 'DevOps', 'Design', 'Tools'.
+        // HUD uses: 'Core Engineering', 'Creative Dev', 'Backend & Cloud', 'AI & Emerging Tech'.
+        // Let's do a better mapping:
+        const mappedData: SkillGroup[] = [
+          { category: "Core Engineering", icon: Laptop, skills: [] },
+          { category: "Creative Dev", icon: Sparkles, skills: [] },
+          { category: "Backend & Cloud", icon: Server, skills: [] },
+          { category: "AI & Emerging Tech", icon: Cpu, skills: [] },
+        ];
+
+        skills.forEach((s: SupabaseSkill) => {
+          let targetCat = 0; // Default Core
+          if (s.category === 'Frontend') targetCat = 0;
+          else if (s.category === 'Design') targetCat = 1;
+          else if (s.category === 'Backend' || s.category === 'DevOps') targetCat = 2;
+          else if (s.category === 'Tools') targetCat = 3;
+
+          mappedData[targetCat].skills.push({
+            name: s.name,
+            level: s.proficiency,
+            icon: iconMap[s.icon_name] || "code",
+            desc: s.category
+          });
+        });
+        setSkillData(mappedData);
+      }
+
+      // 2. Fetch Experience
+      const { data: exp } = await supabase.from("experience").select("*").order("created_at", { ascending: false });
+      if (exp) {
+        setExperienceData(exp);
+      }
+    };
+
+    fetchData();
+
+    // Realtime Subscriptions
+    const skillsSub = supabase
+      .channel('skills-changes')
+      .on(
+        'postgres_changes',
+        { event: '*', schema: 'public', table: 'skills' },
+        () => {
+          fetchData();
+        }
+      )
+      .subscribe();
+
+    const experienceSub = supabase
+      .channel('experience-changes')
+      .on(
+        'postgres_changes',
+        { event: '*', schema: 'public', table: 'experience' },
+        (payload) => {
+          // For experience it's linear list, we could do optimistic, but re-fetch is consistent.
+          if (payload.eventType === 'INSERT') {
+            setExperienceData(prev => [payload.new as Experience, ...prev]);
+          } else if (payload.eventType === 'UPDATE') {
+            setExperienceData(prev => prev.map(item => item.id === payload.new.id ? (payload.new as Experience) : item));
+          } else if (payload.eventType === 'DELETE') {
+            setExperienceData(prev => prev.filter(item => item.id !== (payload.old as Experience).id));
+          }
+        }
+      )
+      .subscribe();
+
+    return () => {
+      skillsSub.unsubscribe();
+      experienceSub.unsubscribe();
+    };
+  }, []);
+
   const changeModule = React.useCallback((module: string) => {
     if (module !== activeModule) {
-      playSfx();
+      playSound('click');
       setActiveModule(module);
     }
-  }, [activeModule]);
+  }, [activeModule, playSound]);
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -249,18 +427,26 @@ const SkillsPage = () => {
   const y = useMotionValue(0);
   const mouseX = useSpring(x, { stiffness: 500, damping: 50 });
   const mouseY = useSpring(y, { stiffness: 500, damping: 50 });
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 1024);
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   const handleMouseMove = (e: React.MouseEvent) => {
+    if (isMobile) return;
     const { innerWidth, innerHeight } = window;
     const xPos = (e.clientX - innerWidth / 2) / 50;
     const yPos = (e.clientY - innerHeight / 2) / 50;
     x.set(xPos);
     y.set(yPos);
   };
-
   return (
     <div
-      className="min-h-screen bg-[#020617] text-white selection:bg-cyan-500/30 overflow-hidden relative font-sans"
+      className="min-h-screen bg-[#020617] text-white selection:bg-cyan-500/30 overflow-x-hidden lg:overflow-hidden relative font-sans"
       onMouseMove={handleMouseMove}
     >
       <Scanline />
@@ -277,7 +463,7 @@ const SkillsPage = () => {
         }}
       />
 
-      <div className="relative z-10 pt-32 pb-10 px-4 md:px-8 container mx-auto h-screen flex flex-col">
+      <div className="relative z-10 pt-36 lg:pt-40 pb-10 px-4 md:px-8 container mx-auto min-h-screen lg:h-screen flex flex-col">
 
         {/* HEADER */}
         <motion.div
@@ -287,33 +473,32 @@ const SkillsPage = () => {
         >
           <div className="absolute bottom-[-1px] left-0 w-32 h-[3px] bg-cyan-500 shadow-[0_0_15px_cyan]" />
           <div>
-            <div className="flex items-center gap-2 text-cyan-400 font-mono text-xs tracking-[0.3em] mb-2">
+            <div className="flex items-center gap-2 text-cyan-400 font-mono text-xs tracking-[0.3em] mb-8 md:mb-10">
               <Sparkles className="w-3 h-3 animate-spin-slow" />
               SYSTEM_READY // V.3.1.0
             </div>
-            <h1 className="text-4xl md:text-6xl font-bold tracking-tighter text-transparent bg-clip-text bg-gradient-to-r from-white via-cyan-200 to-cyan-500 uppercase">
-              Developer Database
+            <h1 className="text-4xl md:text-6xl font-bold tracking-tighter text-transparent bg-clip-text bg-gradient-to-r from-white via-cyan-200 to-cyan-500 uppercase leading-snug">
+              <DecryptText text="Developer Database" speed={60} />
             </h1>
           </div>
 
           <div className="hidden lg:flex items-center gap-6">
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              onClick={() => playSfx()}
+            <a
+              href="https://drive.google.com/file/d/1YysZCMvXb4kFLG9UkDN93tCk6hbyCbxs/view?usp=sharing"
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => playSound('click')}
               className="flex items-center gap-2 px-6 py-3 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 font-bold hover:bg-cyan-500 hover:text-black transition-all group"
             >
               <Download className="w-5 h-5 group-hover:animate-bounce" />
               ACCESS_RESUME_CV
-            </motion.button>
+            </a>
             <div className="w-48 h-32 relative opacity-80 mix-blend-screen pointer-events-none">
-              <ResponsiveContainer width="100%" height="100%">
-                <RadarChart cx="50%" cy="50%" outerRadius="80%" data={radarData}>
-                  <PolarGrid stroke="rgba(6,182,212,0.2)" />
-                  <PolarAngleAxis dataKey="subject" tick={{ fill: 'cyan', fontSize: 8 }} />
-                  <Radar name="Skills" dataKey="A" stroke="#06b6d4" fill="#06b6d4" fillOpacity={0.3} />
-                </RadarChart>
-              </ResponsiveContainer>
+              <RadarChart width={192} height={128} cx="50%" cy="50%" outerRadius="80%" data={radarData}>
+                <PolarGrid stroke="rgba(6,182,212,0.2)" />
+                <PolarAngleAxis dataKey="subject" tick={{ fill: 'cyan', fontSize: 8 }} />
+                <Radar name="Skills" dataKey="A" stroke="#06b6d4" fill="#06b6d4" fillOpacity={0.3} />
+              </RadarChart>
             </div>
           </div>
         </motion.div>
@@ -362,16 +547,18 @@ const SkillsPage = () => {
 
           {/* CENTER: VIEWPORT 3D */}
           <motion.div
-            className="lg:col-span-9 relative h-full overflow-y-auto pb-20 scrollbar-none"
-            style={{ perspective: "1500px" }}
+            className="lg:col-span-9 relative h-auto lg:h-full lg:overflow-y-auto pb-20 scrollbar-none lg:[perspective:1500px]"
           >
             <motion.div
               key={activeModule}
-              initial={{ opacity: 0, rotateX: 20, scale: 0.95 }}
+              initial={{ opacity: 0, rotateX: isMobile ? 0 : 20, scale: 0.95 }}
               animate={{ opacity: 1, rotateX: 0, scale: 1 }}
-              exit={{ opacity: 0, rotateX: -20, scale: 0.95 }}
+              exit={{ opacity: 0, rotateX: isMobile ? 0 : -20, scale: 0.95 }}
               transition={{ duration: 0.4 }}
-              style={{ rotateX: mouseY, rotateY: mouseX }}
+              style={{
+                rotateX: isMobile ? 0 : mouseY,
+                rotateY: isMobile ? 0 : mouseX
+              }}
               className="min-h-full"
             >
               {/* --- MODULE: SKILLS --- */}
@@ -455,12 +642,12 @@ const SkillsPage = () => {
             </motion.div>
           </motion.div>
 
-        </div>
-      </div>
+        </div >
+      </div >
 
       {/* Footer fixed at bottom or normal flow? Putting it in flow for mobile scrolling */}
-      <Footer />
-    </div>
+      < Footer />
+    </div >
   );
 };
 

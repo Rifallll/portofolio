@@ -3,10 +3,13 @@ import { useCallback } from 'react';
 const useSciFiSound = () => {
     const playSound = useCallback((type: 'hover' | 'click' | 'active' = 'hover') => {
         try {
-            const AudioContext = window.AudioContext || (window as any).webkitAudioContext;
-            if (!AudioContext) return;
+            const AudioContextClass = window.AudioContext || (window as unknown as { webkitAudioContext: typeof AudioContext }).webkitAudioContext;
+            if (!AudioContextClass) return;
 
-            const ctx = new AudioContext();
+            const ctx = new AudioContextClass();
+            if (ctx.state === 'suspended') {
+                ctx.resume();
+            }
             const osc = ctx.createOscillator();
             const gain = ctx.createGain();
 

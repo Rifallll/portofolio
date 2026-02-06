@@ -1,7 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { toast } from "sonner";
+import { supabase } from "@/lib/supabase";
 import CertificateCard from "./CertificateCard";
 import { motion, AnimatePresence, LayoutGroup } from "framer-motion";
 import { Shield, Database, LayoutGrid, Terminal } from "lucide-react";
+
+const NOISE_PATTERN = "data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E";
 
 const CATEGORIES = {
   ALL: "Registry_All",
@@ -10,24 +14,48 @@ const CATEGORIES = {
   COMM: "Public_Rel"
 };
 
-const certificatesData = [
-  { title: "Machine Learning Specialist", issuer: "DQLab", date: "2023", link: "#", category: CATEGORIES.TECH },
-  { title: "Data Analyst Professional", issuer: "Digital Talent Scholarship", date: "2023", link: "#", category: CATEGORIES.TECH },
-  { title: "UI/UX Design Masterclass", issuer: "Gamelab Indonesia", date: "2023", link: "#", category: CATEGORIES.TECH },
-  { title: "SQL Fundamental", issuer: "Coding Studio", date: "2023", link: "#", category: CATEGORIES.TECH },
-  { title: "Python Programming", issuer: "Rocket Digital Academy", date: "2023", link: "#", category: CATEGORIES.TECH },
-  { title: "Video Content Creator", issuer: "Thematic Academy", date: "2023", link: "#", category: CATEGORIES.MEDIA },
-  { title: "Social Media Specialist", issuer: "HubSpot Academy", date: "2022", link: "#", category: CATEGORIES.MEDIA },
-  { title: "Effective Communication", issuer: "MySkill", date: "2023", link: "#", category: CATEGORIES.COMM },
-  { title: "Public Speaking Excellence", issuer: "Bicara.Official", date: "2022", link: "#", category: CATEGORIES.COMM },
-  { title: "TOAFL (Arabic Foreign Language)", issuer: "Al Arabiya", date: "2022", link: "#", category: CATEGORIES.COMM },
-];
+// Removed static data
+const initialCertificatesData: any[] = [];
 
 const CertificatesSection = () => {
-  const [activeCategory, setActiveCategory] = useState(CATEGORIES.ALL);
+  const [certificatesData, setCertificatesData] = useState<any[]>(initialCertificatesData);
+  const [categories, setCategories] = useState<string[]>(["All"]);
+  const [activeCategory, setActiveCategory] = useState("All");
+
+  useEffect(() => {
+    const fetchCertificates = async () => {
+      const { data, error } = await supabase.from('certificates').select('*').order('id', { ascending: false });
+      if (data) {
+        setCertificatesData(data);
+        // Extract unique categories
+        const uniqueCats = Array.from(new Set(data.map(c => c.category)));
+        setCategories(["All", ...uniqueCats]);
+      }
+    };
+    fetchCertificates();
+
+    // Realtime Subscription
+    const subscription = supabase
+      .channel('certificates-changes')
+      .on(
+        'postgres_changes',
+        { event: '*', schema: 'public', table: 'certificates' },
+        (payload) => {
+          (payload) => {
+            toast.success("Certificates registry updated");
+            fetchCertificates();
+          }
+        }
+      )
+      .subscribe();
+
+    return () => {
+      subscription.unsubscribe();
+    };
+  }, []);
   const [showAllCertificates, setShowAllCertificates] = useState(false);
 
-  const filteredCertificates = activeCategory === CATEGORIES.ALL
+  const filteredCertificates = activeCategory === "All"
     ? certificatesData
     : certificatesData.filter(cert => cert.category === activeCategory);
 
@@ -38,7 +66,10 @@ const CertificatesSection = () => {
   return (
     <section id="certificates" className="py-40 bg-[#020408] relative overflow-hidden">
       {/* Texture Layer: Subtle Noise & Grain */}
-      <div className="absolute inset-0 opacity-[0.03] pointer-events-none bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
+      <div
+        className="absolute inset-0 opacity-[0.03] pointer-events-none"
+        style={{ backgroundImage: `url("${NOISE_PATTERN}")` }}
+      />
 
       {/* Decorative Monolith Background */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-cyan-900/10 blur-[160px] rounded-full pointer-events-none" />
@@ -80,7 +111,7 @@ const CertificatesSection = () => {
 
           {/* Precision Navigation / Filter */}
           <div className="flex flex-wrap items-center gap-4 mb-16">
-            {Object.values(CATEGORIES).map((cat) => (
+            {categories.map((cat) => (
               <button
                 key={cat}
                 onClick={() => {
@@ -88,36 +119,29 @@ const CertificatesSection = () => {
                   setShowAllCertificates(false);
                 }}
                 className={`px-8 py-3 rounded-md text-[10px] font-black uppercase tracking-[0.25em] transition-all duration-500 border ${activeCategory === cat
-                    ? "bg-white text-black border-white shadow-[0_10px_25px_rgba(255,255,255,0.1)] scale-105"
-                    : "bg-white/[0.02] text-slate-500 border-white/5 hover:border-white/10 hover:text-white"
+                  ? "bg-white text-black border-white shadow-[0_10px_25px_rgba(255,255,255,0.1)] scale-105"
+                  : "bg-white/[0.02] text-slate-500 border-white/5 hover:border-white/10 hover:text-white"
                   }`}
               >
-                {cat.replace(/_/g, " ")}
+                {cat}
               </button>
             ))}
           </div>
 
           {/* The Monolith Grid - Perfect Alignment */}
-          <div className="bg-white/[0.01] border border-white/5 rounded-2xl p-2 md:p-4 overflow-hidden shadow-2xl backdrop-blur-sm">
-            {/* Sync Header Table */}
-            <div className="grid grid-cols-[80px_1fr_200px_140px] items-center gap-6 px-6 py-6 mb-2 border-b border-white/5 opacity-40">
-              <div className="text-[10px] font-black uppercase tracking-[0.4em] flex items-center gap-2">
-                <Terminal className="w-3 h-3" /> Year
-              </div>
-              <div className="text-[10px] font-black uppercase tracking-[0.4em]">Validation_Label</div>
-              <div className="hidden md:block text-[10px] font-black uppercase tracking-[0.4em]">Issuing_Node</div>
-              <div className="text-[10px] font-black uppercase tracking-[0.4em] text-right">Action</div>
-            </div>
+          <div className="relative z-10">
+            {/* No Table Header - Pure Grid */}
 
-            <LayoutGroup>
-              <motion.div layout className="flex flex-col gap-2">
-                <AnimatePresence mode="popLayout">
-                  {displayedCertificates.map((certificate, index) => (
-                    <CertificateCard key={certificate.title} {...certificate} index={index} />
-                  ))}
-                </AnimatePresence>
-              </motion.div>
-            </LayoutGroup>
+            <motion.div
+              layout
+              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+            >
+              <AnimatePresence mode="popLayout">
+                {displayedCertificates.map((certificate, index) => (
+                  <CertificateCard key={certificate.title} {...certificate} index={index} />
+                ))}
+              </AnimatePresence>
+            </motion.div>
           </div>
 
           {filteredCertificates.length > 6 && (

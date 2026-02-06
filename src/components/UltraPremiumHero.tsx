@@ -187,11 +187,19 @@ const UltraPremiumHero = () => {
                         </div>
 
                         <div className="flex gap-8 overflow-hidden">
-                            {['React', 'TypeScript', 'Next.js', 'Tailwind CSS', 'Framer Motion', 'Node.js', 'PostgreSQL', 'AWS'].map((tech) => (
-                                <div key={tech} className="px-6 py-3 glass rounded-full text-foreground/60 font-medium whitespace-nowrap">
-                                    {tech}
-                                </div>
-                            ))}
+                            <div
+                                className="flex-none flex w-max items-center gap-8 animate-marquee"
+                            >
+                                {[...Array(2)].map((_, idx) => (
+                                    <React.Fragment key={idx}>
+                                        {['React', 'TypeScript', 'Next.js', 'Tailwind CSS', 'Framer Motion', 'Node.js', 'PostgreSQL', 'AWS'].map((tech) => (
+                                            <div key={tech} className="px-8 py-3 glass rounded-full text-foreground/60 font-black uppercase tracking-widest text-[10px] whitespace-nowrap border border-white/5 hover:border-blue-500/30 transition-colors">
+                                                {tech}
+                                            </div>
+                                        ))}
+                                    </React.Fragment>
+                                ))}
+                            </div>
                         </div>
                     </motion.div>
                 </div>

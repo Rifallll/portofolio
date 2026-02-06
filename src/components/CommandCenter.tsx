@@ -57,10 +57,11 @@ const CommandCenter = () => {
                 setLogs(prev => [...prev, 'STATUS: Locating R_AZHAR_RESUME.PDF...', 'STATUS: Uplink established. Initiating download...'].slice(-15));
                 window.open('/CV_RIFAL.pdf', '_blank');
                 break;
-            case '/ping':
+            case '/ping': {
                 const latency = Math.floor(Math.random() * 50) + 10;
                 setLogs(prev => [...prev, `PONG: Response from core in ${latency}ms. System optimal.`].slice(-15));
                 break;
+            }
             case '/stats':
                 setLogs(prev => [...prev,
                     '--- ANALYTICAL PROFILE v3 ---',
@@ -71,13 +72,14 @@ const CommandCenter = () => {
                     '--- END OF LOG ---'
                 ].slice(-15));
                 break;
-            case '/theme':
+            case '/theme': {
                 setLogs(prev => [...prev, 'Adjusting environmental aesthetics...'].slice(-15));
                 const colors = ['#06b6d4', '#10b981', '#8b5cf6', '#f43f5e'];
                 const randomColor = colors[Math.floor(Math.random() * colors.length)];
                 document.documentElement.style.setProperty('--primary', randomColor);
                 setLogs(prev => [...prev, `Theme synchronization COMPLETE. Primary color set to ${randomColor}.`].slice(-15));
                 break;
+            }
             case '/about':
                 setLogs(prev => [...prev, 'Navigating to About Node...'].slice(-15));
                 setTimeout(() => { navigate('/about'); setIsOpen(false); }, 1000);
@@ -93,7 +95,7 @@ const CommandCenter = () => {
             case '/clear':
                 setLogs(['Terminal purged. System awaiting instructions.']);
                 break;
-            case '/tsunami':
+            case '/tsunami': {
                 setLogs(prev => [...prev, 'WARNING: High-tide event triggered. Scanning waves...'].slice(-15));
                 document.body.style.overflow = 'hidden';
                 const wave = document.createElement('div');
@@ -107,6 +109,7 @@ const CommandCenter = () => {
                     setLogs(prev => [...prev, 'Wave passed. System stabilized.'].slice(-15));
                 }, 2000);
                 break;
+            }
             case '/deepsea':
                 setLogs(prev => [...prev, 'Diving into the abyss... Bioluminescence ACTIVE.'].slice(-15));
                 document.documentElement.style.setProperty('--background', '220 50% 2%');

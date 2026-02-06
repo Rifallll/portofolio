@@ -25,7 +25,9 @@ const ParqueeItem = ({ baseVelocity = 5, text, className }: MarqueeProps) => {
         clamp: false
     });
 
-    const x = useTransform(baseX, (v) => `${wrap(-20, -45, v)}%`);
+    // We use a range of 25% (0 to -25%) which corresponds to 1 out of 4 duplicated items.
+    // This allows seamless looping when the first item scrolls out of view.
+    const x = useTransform(baseX, (v) => `${wrap(0, -25, v)}%`);
 
     const directionFactor = useRef<number>(1);
     useAnimationFrame((t, delta) => {
@@ -48,9 +50,9 @@ const ParqueeItem = ({ baseVelocity = 5, text, className }: MarqueeProps) => {
      */
     return (
         <div className={`overflow-hidden whitespace-nowrap flex flex-nowrap ${className}`}>
-            <motion.div className="flex whitespace-nowrap gap-12" style={{ x }}>
-                {[1, 2, 3, 4, 5, 6].map((i) => (
-                    <span key={i} className="block">{text}</span>
+            <motion.div className="flex whitespace-nowrap" style={{ x }}>
+                {[1, 2, 3, 4].map((i) => (
+                    <span key={i} className="block pr-12">{text}</span>
                 ))}
             </motion.div>
         </div>
@@ -59,10 +61,10 @@ const ParqueeItem = ({ baseVelocity = 5, text, className }: MarqueeProps) => {
 
 const KineticMarquee = () => {
     return (
-        <div className="fixed inset-0 pointer-events-none z-0 flex flex-col justify-around py-20 opacity-[0.03]">
-            <ParqueeItem baseVelocity={-2} text="RIFAL AZHAR PERMANA • FULLSTACK DEVELOPER •" className="text-[15vh] font-black" />
-            <ParqueeItem baseVelocity={2} text="CREATIVE ENGINEERING • DATA SCIENCE •" className="text-[15vh] font-black" />
-            <ParqueeItem baseVelocity={-1} text="STRATEGIC INNOVATION • SYSTEM ARCHITECT •" className="text-[15vh] font-black" />
+        <div className="fixed inset-0 pointer-events-none z-0 flex flex-col justify-around py-10 md:py-20 opacity-[0.03]">
+            <ParqueeItem baseVelocity={-2} text="RIFAL AZHAR PERMANA • FULLSTACK DEVELOPER •" className="text-[8vh] md:text-[12vh] font-black" />
+            <ParqueeItem baseVelocity={2} text="CREATIVE ENGINEERING • DATA SCIENCE •" className="text-[8vh] md:text-[12vh] font-black" />
+            <ParqueeItem baseVelocity={-1} text="STRATEGIC INNOVATION • SYSTEM ARCHITECT •" className="text-[8vh] md:text-[12vh] font-black" />
         </div>
     );
 };

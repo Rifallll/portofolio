@@ -63,13 +63,7 @@ const Footer = () => {
                 <span className="w-1.5 h-1.5 rounded-full bg-cyan-500/0 group-hover:bg-cyan-500 transition-all"></span>
                 Contact
               </a>
-              <a
-                href="/game"
-                className="text-muted-foreground/30 hover:text-cyan-400 transition-colors text-xs w-fit mt-2 flex items-center gap-2"
-                title="Secret Game 🎮"
-              >
-                🎮 <span className="opacity-0 hover:opacity-100 transition-opacity">Play Snake</span>
-              </a>
+
             </div>
           </div>
 
@@ -97,10 +91,11 @@ const Footer = () => {
           <div className="flex space-x-6 mt-4 md:mt-0">
             <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
             <a href="#" className="hover:text-white transition-colors">Terms of Service</a>
+            <a href="/admin/login" className="hover:text-cyan-400 transition-colors opacity-50 hover:opacity-100">Admin Portal</a>
           </div>
         </div>
       </div>
-    </footer>
+    </footer >
   );
 };
 

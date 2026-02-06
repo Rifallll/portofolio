@@ -5,7 +5,6 @@ import {
   Image, Monitor, Video, Globe, Code, Terminal, Crown,
   Mic, Lightbulb, Zap, Activity, Target
 } from "lucide-react";
-import Magnetic from "./Magnetic";
 
 // --- Types ---
 interface Skill {
@@ -73,11 +72,11 @@ const PulseRadar = ({ skills }: { skills: Skill[] }) => {
         />
       ))}
 
-      {/* Pulsing Core */}
+      {/* Pulsing Core - Slowed down for performance */}
       <motion.div
-        animate={{ scale: [1, 1.2, 1], opacity: [0.1, 0.3, 0.1] }}
-        transition={{ duration: 4, repeat: Infinity }}
-        className="absolute w-32 h-32 bg-cyan-500/20 rounded-full blur-3xl"
+        animate={{ opacity: [0.1, 0.2, 0.1] }}
+        transition={{ duration: 6, repeat: Infinity }}
+        className="absolute w-32 h-32 bg-cyan-500/10 rounded-full blur-[60px]"
       />
 
       <svg viewBox={`0 0 ${size} ${size}`} className="w-full h-full relative z-10 overflow-visible">
@@ -97,15 +96,15 @@ const PulseRadar = ({ skills }: { skills: Skill[] }) => {
             {/* Connection Line */}
             <line x1={center} y1={center} x2={p.x} y2={p.y} stroke="rgba(255,255,255,0.05)" strokeDasharray="4" />
 
-            {/* Pulse Effect */}
+            {/* Pulse Effect - Optimized frequency */}
             <motion.circle
               cx={p.x}
               cy={p.y}
               r="10"
               initial={{ scale: 0, opacity: 0 }}
-              animate={{ scale: [1, 3], opacity: [0.5, 0] }}
-              transition={{ duration: 2, repeat: Infinity, delay: i * 0.2 }}
-              fill="rgba(6, 182, 212, 0.4)"
+              animate={{ scale: [1, 2], opacity: [0.3, 0] }}
+              transition={{ duration: 3, repeat: Infinity, delay: i * 0.5 }}
+              fill="rgba(6, 182, 212, 0.3)"
             />
 
             {/* Node Dot */}
@@ -130,6 +129,7 @@ const PulseRadar = ({ skills }: { skills: Skill[] }) => {
 // --- Main Section ---
 const SkillsSection = () => {
   const [activeCategory, setActiveCategory] = useState("ALL");
+
   const filteredSkills = useMemo(() => {
     return activeCategory === "ALL"
       ? ALL_SKILLS.slice(0, 8) // Limit "ALL" to keep radar clean

@@ -28,7 +28,11 @@ const WorldMapEffect = () => (
 
 // --- MAIN PAGE ---
 
+import { useSEO } from "@/hooks/useSEO";
+
 const ContactPage = () => {
+  useSEO("Contact | Rifal Azhar", "Get in touch with Rifal Azhar for freelance projects, technical consultation, or data analysis services.");
+
   const [formState, setFormState] = useState({ name: "", email: "", message: "" });
   const [isSending, setIsSending] = useState(false);
   const [isSent, setIsSent] = useState(false);

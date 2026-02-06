@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, Waves, User, Code, FolderOpen, Award, Mail } from 'lucide-react';
+import { Menu, X, Waves, User, Code, FolderOpen, Award, Mail, Download } from 'lucide-react';
 import WeatherWidget from './WeatherWidget';
 import Magnetic from './Magnetic';
 import useSciFiSound from '@/hooks/use-sound';
@@ -116,6 +116,7 @@ const PremiumNavbar = () => {
                             </Link>
                         </Magnetic>
 
+
                         {/* Mobile Menu Button */}
                         <button
                             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
@@ -134,7 +135,7 @@ const PremiumNavbar = () => {
                         initial={{ opacity: 0, y: -20 }}
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: -20 }}
-                        className="lg:hidden absolute top-full left-4 right-4 mt-4 bg-[#0d1520]/95 backdrop-blur-2xl border border-white/10 p-6 rounded-[2rem] shadow-2xl z-50 overflow-hidden"
+                        className="lg:hidden absolute top-full left-4 right-4 mt-4 bg-[#0d1520]/95 backdrop-blur-2xl border border-white/10 p-6 rounded-[2rem] shadow-2xl z-50 max-h-[80vh] overflow-y-auto"
                     >
                         {/* Background Decor */}
                         <div className="absolute top-0 right-0 w-32 h-32 bg-cyan-500/10 blur-3xl -z-10" />

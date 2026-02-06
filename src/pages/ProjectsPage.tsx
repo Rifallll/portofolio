@@ -1,125 +1,73 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { supabase } from "@/lib/supabase";
 import { motion, AnimatePresence } from "framer-motion";
 import Footer from "@/components/Footer";
 import { Link } from "react-router-dom";
 import { ExternalLink, Github, Star, Code, Database, Layout, Sparkles, FolderOpen, ArrowUpRight } from "lucide-react";
+import { DecryptText } from "@/components/ui/DecryptText";
+import { toast } from "sonner";
+
+const NOISE_PATTERN = "data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E";
 
 // --- REAL PROJECT DATA FROM CV & EXPANSION ---
-const projects = [
-  {
-    id: 1,
-    title: "AI Quality Assurance Dashboard",
-    client: "PT. Kimia Farma, Tbk",
-    category: "Data Analytics",
-    desc: "Machine Learning powered dashboard for automated product quality inspection and anomaly detection.",
-    image: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?q=80&w=2070&auto=format&fit=crop",
-    tech: ["Python", "TensorFlow", "React", "Tableau"],
-    year: "2025",
-    link: "#",
-    featured: true
-  },
-  {
-    id: 2,
-    title: "LMS Platform Architecture",
-    client: "Frasa Academy",
-    category: "Web Dev",
-    desc: "Scalable Learning Management System handling 1000+ students with real-time progress tracking.",
-    image: "https://images.unsplash.com/photo-1501504905252-473c47e087f8?q=80&w=1974&auto=format&fit=crop",
-    tech: ["Next.js", "PostgreSQL", "AWS", "TypeScript"],
-    year: "2025",
-    link: "#",
-    featured: true
-  },
-  {
-    id: 3,
-    title: "MoonTesse Restaurant Experience",
-    client: "Gamelab Indonesia",
-    category: "UI/UX Design",
-    desc: "Immersive culinary web experience focusing on visual storytelling and seamless reservation flow.",
-    image: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=2070&auto=format&fit=crop",
-    tech: ["Figma", "React", "Framer Motion"],
-    year: "2024",
-    link: "#",
-    featured: false
-  },
-  {
-    id: 4,
-    title: "Student Report Scraper",
-    client: "ProCodeCG",
-    category: "Data Analytics",
-    desc: "Automated scraping engine reducing manual data entry for student progress reports by 70%.",
-    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop",
-    tech: ["Python", "Selenium", "Pandas", "Excel"],
-    year: "2025",
-    link: "#",
-    featured: false
-  },
-  {
-    id: 5,
-    title: "Sentiment Analysis Engine",
-    client: "Personal Research",
-    category: "Data Analytics",
-    desc: "NLP model analyzing social media sentiment trends for brand monitoring.",
-    image: "https://images.unsplash.com/photo-1555421689-d68471e189f2?q=80&w=2070&auto=format&fit=crop",
-    tech: ["Python", "NLTK", "Flask", "D3.js"],
-    year: "2024",
-    link: "#",
-    featured: false
-  },
-  {
-    id: 6,
-    title: "Nevercode Corporate Site",
-    client: "Nevercode LTD",
-    category: "Web Dev",
-    desc: "High-performance corporate website with 100% SEO score and sub-second load times.",
-    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2015&auto=format&fit=crop",
-    tech: ["Astro", "Tailwind", "Vercel"],
-    year: "2024",
-    link: "#",
-    featured: false
-  },
-  {
-    id: 7,
-    title: "E-Commerce Analytics Hub",
-    client: "Freelance",
-    category: "Data Analytics",
-    desc: "Comprehensive sales dashboard visualizing conversion funnels and customer retention.",
-    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2015&auto=format&fit=crop",
-    tech: ["PowerBI", "SQL", "Python"],
-    year: "2023",
-    link: "#",
-    featured: false
-  },
-  {
-    id: 8,
-    title: "Crypto Portfolio Tracker",
-    client: "Concept",
-    category: "Web Dev",
-    desc: "Real-time cryptocurrency tracking app with price alerts and portfolio balancing.",
-    image: "https://images.unsplash.com/photo-1621504450168-38f6d50d54a2?q=80&w=1954&auto=format&fit=crop",
-    tech: ["React Native", "CoinGecko API", "Firebase"],
-    year: "2023",
-    link: "#",
-    featured: false
-  },
-  {
-    id: 9,
-    title: "Travel Wisata App",
-    client: "Personal",
-    category: "UI/UX Design",
-    desc: "Mobile app design for discovering hidden gems and booking local experiences in Banten.",
-    image: "https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?q=80&w=1974&auto=format&fit=crop",
-    tech: ["Figma", "Prototyping"],
-    year: "2022",
-    link: "#",
-    featured: false
-  },
-];
+interface Project {
+  id: number;
+  title: string;
+  category: string;
+  technologies: string[];
+  image_url?: string;
+  image?: string;
+  year?: string | number;
+  is_featured?: boolean;
+  client?: string;
+  description: string;
+  demo_url?: string;
+  repo_url?: string;
+  link?: string;
+}
 
 const categories = ["All", "Data Analytics", "Web Dev", "UI/UX Design"];
 const allTech = ["All", "Python", "React", "Next.js", "SQL", "Figma", "Tableau", "TypeScript"];
 
+import { useSEO } from "@/hooks/useSEO";
+
 const ProjectsPage = () => {
+  useSEO("Projects | Rifal Azhar", "Explore Rifal Azhar's portfolio of Data Science, Web Development, and UI/UX projects.");
+
+  const [projectsData, setProjectsData] = useState<Project[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchProjects = async () => {
+      const { data, error } = await supabase
+        .from("projects")
+        .select("*")
+        .order("id", { ascending: false });
+
+      if (data) setProjectsData(data);
+      setLoading(false);
+    };
+
+    fetchProjects();
+
+    // Realtime Subscription
+    const subscription = supabase
+      .channel('projects-changes')
+      .on(
+        'postgres_changes',
+        { event: '*', schema: 'public', table: 'projects' },
+        () => {
+          toast.success("Project list updated!", { duration: 2000 });
+          fetchProjects();
+        }
+      )
+      .subscribe();
+
+    return () => {
+      subscription.unsubscribe();
+    };
+  }, []);
+
   const [activeCategory, setActiveCategory] = useState("All");
   const [searchQuery, setSearchQuery] = useState("");
   const [visibleCount, setVisibleCount] = useState(6);
@@ -127,18 +75,19 @@ const ProjectsPage = () => {
   const [activeTech, setActiveTech] = useState("All");
 
   // Filter & Sort Logic
-  const filteredProjects = projects
+  const filteredProjects = projectsData
     .filter(p => {
       const matchesCategory = activeCategory === "All" || p.category === activeCategory;
+      const technologies = p.technologies || [];
       const matchesSearch = p.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        p.tech.some(t => t.toLowerCase().includes(searchQuery.toLowerCase()));
-      const matchesTech = activeTech === "All" || p.tech.includes(activeTech);
+        technologies.some((t: string) => t.toLowerCase().includes(searchQuery.toLowerCase()));
+      const matchesTech = activeTech === "All" || technologies.includes(activeTech);
 
       return matchesCategory && matchesSearch && matchesTech;
     })
     .sort((a, b) => {
       if (sortBy === "Newest") return Number(b.year) - Number(a.year);
-      if (sortBy === "Popular") return (b.featured ? 1 : 0) - (a.featured ? 1 : 0); // Featured first as proxy for popular
+      if (sortBy === "Popular") return (b.is_featured ? 1 : 0) - (a.is_featured ? 1 : 0);
       return 0; // Recommended (Default ID order)
     });
 
@@ -149,39 +98,46 @@ const ProjectsPage = () => {
   return (
     <div className="min-h-screen bg-[#020617] text-slate-200 font-sans selection:bg-cyan-500/30">
 
-      {/* BACKGROUND NOISE */}
       <div className="fixed inset-0 pointer-events-none z-0">
-        <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-[0.03]" />
+        <div
+          className="absolute inset-0 opacity-[0.03]"
+          style={{ backgroundImage: `url("${NOISE_PATTERN}")` }}
+        />
         <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-cyan-500/10 rounded-full blur-[120px]" />
         <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-purple-500/10 rounded-full blur-[120px]" />
       </div>
 
-      <div className="container mx-auto px-4 pt-32 pb-20 relative z-10 max-w-7xl">
+      <div className="container mx-auto px-4 pt-36 md:pt-40 pb-20 relative z-10 max-w-7xl">
 
         {/* HEADER */}
-        <div className="flex flex-col md:flex-row justify-between items-end mb-12 gap-8">
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 gap-8">
           <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            className="max-w-2xl"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="max-w-2xl text-left md:text-left"
           >
-            <div className="flex items-center gap-3 text-cyan-400 mb-4">
-              <FolderOpen className="w-5 h-5" />
-              <span className="text-sm font-mono tracking-widest uppercase">My Portfolio</span>
-            </div>
-            <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight">
-              Proof of <br /> <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-500">Excellence.</span>
+
+            <h1 className="text-4xl md:text-5xl lg:text-7xl font-bold text-white mb-6 leading-tight">
+              Proof of <br className="hidden md:block" /> <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-500"><DecryptText text="Excellence." revealDirection="end" /></span>
             </h1>
 
+            <p className="text-slate-400 text-lg mb-8 max-w-lg leading-relaxed hidden md:block">
+              A curated collection of my work in <span className="text-cyan-300">Data Science</span>, <span className="text-purple-300">Web Development</span>, and <span className="text-pink-300">UI/UX Design</span>.
+            </p>
+
+            <p className="text-slate-400 text-base mb-8 max-w-lg leading-relaxed md:hidden">
+              Explore my journey in building digital solutions that merge creativity with logic.
+            </p>
+
             {/* SEARCH BAR */}
-            <div className="relative max-w-md mt-8 group">
+            <div className="relative max-w-md mt-4 group w-full">
               <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
                 <Sparkles className="h-5 w-5 text-slate-500 group-focus-within:text-cyan-400 transition-colors" />
               </div>
               <input
                 type="text"
                 className="block w-full pl-12 pr-4 py-4 bg-white/5 border border-white/10 rounded-2xl text-white placeholder-slate-500 focus:ring-2 focus:ring-cyan-500/50 focus:border-cyan-500/50 focus:bg-white/10 transition-all font-mono text-sm"
-                placeholder="Search projects by name, client, or tech..."
+                placeholder="Search projects..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
               />
@@ -192,13 +148,13 @@ const ProjectsPage = () => {
           <motion.div
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
-            className="flex flex-wrap gap-2 bg-white/5 p-2 rounded-2xl border border-white/10 backdrop-blur-md"
+            className="flex flex-wrap gap-2 bg-white/5 p-2 rounded-2xl border border-white/10 backdrop-blur-md w-full md:w-auto overflow-x-auto"
           >
             {categories.map((cat) => (
               <button
                 key={cat}
                 onClick={() => setActiveCategory(cat)}
-                className={`px-6 py-3 rounded-xl text-sm font-medium transition-all duration-300 relative ${activeCategory === cat
+                className={`flex-1 md:flex-none px-6 py-3 rounded-xl text-sm font-medium transition-all duration-300 relative whitespace-nowrap ${activeCategory === cat
                   ? "text-black font-bold"
                   : "text-slate-400 hover:text-white hover:bg-white/5"
                   }`}
@@ -243,6 +199,7 @@ const ProjectsPage = () => {
           <div className="flex items-center gap-3 ml-auto">
             <span className="text-xs font-bold text-slate-500 uppercase tracking-wider">Sort by:</span>
             <select
+              aria-label="Sort projects"
               value={sortBy}
               onChange={(e) => setSortBy(e.target.value)}
               className="bg-[#0A0A0A] border border-white/10 rounded-lg px-4 py-2 text-sm text-slate-300 focus:outline-none focus:border-cyan-500 cursor:pointer hover:bg-white/5 transition-colors"
@@ -271,16 +228,19 @@ const ProjectsPage = () => {
                 <div className="relative h-64 overflow-hidden">
                   <div className="absolute inset-0 bg-gradient-to-t from-[#0F0F0F] via-transparent to-transparent z-10 opacity-60" />
                   <img
-                    src={project.image}
+                    src={project.image_url || project.image}
                     alt={project.title}
-                    className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
+                    className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700 group-hover:skew-x-1 group-hover:brightness-125"
                   />
+                  {/* GLITCH OVERLAYS */}
+                  <div className="absolute inset-0 z-10 opacity-0 group-hover:opacity-20 pointer-events-none mix-blend-screen bg-cyan-500 translate-x-1 animate-pulse" />
+                  <div className="absolute inset-0 z-10 opacity-0 group-hover:opacity-20 pointer-events-none mix-blend-screen bg-red-500 -translate-x-1 animate-pulse delay-75" />
 
                   <div className="absolute top-4 left-4 z-20 flex gap-2">
                     <span className="px-3 py-1 bg-black/60 backdrop-blur-md border border-white/10 rounded-full text-[10px] font-bold uppercase tracking-wider text-white">
                       {project.category}
                     </span>
-                    {project.featured && (
+                    {project.is_featured && (
                       <span className="px-3 py-1 bg-yellow-500/20 backdrop-blur-md border border-yellow-500/50 rounded-full text-[10px] font-bold uppercase tracking-wider text-yellow-400 flex items-center gap-1">
                         <Star className="w-3 h-3 fill-current" /> Featured
                       </span>
@@ -308,13 +268,13 @@ const ProjectsPage = () => {
                       {project.title}
                     </h3>
                     <p className="text-slate-400 text-sm leading-relaxed mb-6">
-                      {project.desc}
+                      {project.description}
                     </p>
                   </div>
 
                   <div className="mt-auto">
                     <div className="flex flex-wrap gap-2 mb-6">
-                      {project.tech.map((t, i) => (
+                      {(project.technologies || []).map((t: string, i: number) => (
                         <span key={i} className="px-2 py-1 rounded-md bg-white/5 text-[10px] text-slate-300 border border-white/5 group-hover:border-cyan-500/30 transition-colors">
                           {t}
                         </span>
@@ -322,10 +282,21 @@ const ProjectsPage = () => {
                     </div>
 
                     <div className="flex items-center gap-4 pt-4 border-t border-white/5">
-                      <Link to={`/project/${project.id}`} className="flex items-center gap-2 text-sm font-bold text-white hover:text-cyan-400 transition-colors">
-                        View Case Study <ArrowUpRight className="w-4 h-4" />
-                      </Link>
-                      <a href={project.link} className="p-2 rounded-full bg-white/5 hover:bg-white/10 text-slate-400 hover:text-white transition-colors ml-auto">
+                      <a
+                        href={project.demo_url || project.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-2 text-sm font-bold text-white hover:text-cyan-400 transition-colors"
+                      >
+                        View Project <ArrowUpRight className="w-4 h-4" />
+                      </a>
+                      <a
+                        href={project.repo_url || project.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label="View Source Code"
+                        className="p-2 rounded-full bg-white/5 hover:bg-white/10 text-slate-400 hover:text-white transition-colors ml-auto"
+                      >
                         <Github className="w-4 h-4" />
                       </a>
                     </div>
@@ -355,7 +326,7 @@ const ProjectsPage = () => {
         <div className="mt-32 text-center">
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">Want to see more?</h2>
           <div className="flex flex-col md:flex-row justify-center items-center gap-6">
-            <a href="https://github.com/rifalazhar" target="_blank" rel="noreferrer" className="px-8 py-4 rounded-full bg-[#111] border border-white/10 text-white font-bold hover:bg-white/5 transition-all hover:scale-105 flex items-center gap-3">
+            <a href="https://github.com/rifalazhar" target="_blank" rel="noreferrer noopener" className="px-8 py-4 rounded-full bg-[#111] border border-white/10 text-white font-bold hover:bg-white/5 transition-all hover:scale-105 flex items-center gap-3">
               <Github className="w-5 h-5" />
               Visit GitHub Profile
             </a>
@@ -368,7 +339,7 @@ const ProjectsPage = () => {
 
       </div>
       <Footer />
-    </div>
+    </div >
   );
 };
 

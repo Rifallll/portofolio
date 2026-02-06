@@ -48,7 +48,7 @@ const ParticleSystem: React.FC = () => {
         window.addEventListener('mousemove', handleMouseMove);
 
         // Animation loop
-        let lastTime = 0;
+        // Animation loop
         const animate = (time: number) => {
             // Throttle or handle visibility
             if (document.hidden) {

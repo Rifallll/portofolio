@@ -61,7 +61,7 @@ const CustomCursor = () => {
     if (!isVisible) return null;
 
     return (
-        <div className="fixed inset-0 z-[1000000] pointer-events-none hidden lg:block overflow-hidden">
+        <div className="fixed inset-0 z-[1000000] pointer-events-none overflow-hidden">
             {/* Ripples Effect */}
             <AnimatePresence>
                 {ripples.map(ripple => (

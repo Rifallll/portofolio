@@ -4,43 +4,28 @@ import { motion, AnimatePresence } from "framer-motion";
 import Footer from "@/components/Footer";
 import {
   Briefcase, GraduationCap, Award, User,
-  MapPin, Globe, Cpu, Rocket, Calendar, Database, Layout, Terminal, Download
+  Layout, Rocket, Download
 } from "lucide-react";
+import { DecryptText } from "@/components/ui/DecryptText";
+
+const NOISE_PATTERN = "data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E";
 
 // --- REAL DATA FROM CV ---
 
-const experiences = [
-  {
-    role: "Big Data Analyst (Internship)",
-    company: "PT. KIMIA FARMA, TBK",
-    year: "Dec 2025 - Present",
-    desc: "Data Processing & Quality assurance using AI/Machine Learning. Creating BI dashboards for strategic decision-making."
-  },
-  {
-    role: "Head of Technical Dept.",
-    company: "FRASA ACADEMY",
-    year: "Nov 2025 - Present",
-    desc: "Leading the dev team for Learning Management System (LMS). Defining technical strategies and conducting code reviews."
-  },
-  {
-    role: "Freelance Web Developer",
-    company: "NEVERCODE LTD",
-    year: "Oct 2024 - Present",
-    desc: "Developed 20+ responsive websites. Optimized code to improve load time by up to 40%."
-  },
-  {
-    role: "Web Developer (Internship)",
-    company: "ProCodeCG",
-    year: "Jun 2025 - Oct 2025",
-    desc: "Built a web scraper for student progress reports. Reduced manual data entry time by 70%."
-  },
-  {
-    role: "UI/UX Designer (Internship)",
-    company: "Gamelab Indonesia",
-    year: "Aug 2024 - Sep 2024",
-    desc: "Managed end-to-end design of 'MoonTesse' restaurant website. Executed usability testing & user research."
-  },
-];
+// --- REAL DATA FROM CV ---
+import { supabase } from "@/lib/supabase";
+
+// Removed static experiences data
+interface Experience {
+  role: string;
+  company: string;
+  period?: string;
+  year?: string;
+  desc: string;
+  created_at?: string;
+}
+
+const initialExperiences: Experience[] = [];
 
 const certificates = [
   { name: "Machine Learning: K-Means", org: "DQLab", year: "March 2025" },
@@ -60,13 +45,22 @@ const techStack = [
 const Background = () => (
   <div className="fixed inset-0 pointer-events-none z-0 bg-[#050505]">
     <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-slate-900 via-[#050505] to-[#050505]" />
-    <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-[0.03]" />
+    <div
+      className="absolute inset-0 opacity-[0.03]"
+      style={{ backgroundImage: `url("${NOISE_PATTERN}")` }}
+    />
   </div>
 );
 
 // --- COMPONENTS ---
 
-const BentoItem = ({ children, className = "", delay = 0 }) => {
+interface BentoItemProps {
+  children: React.ReactNode;
+  className?: string;
+  delay?: number;
+}
+
+const BentoItem = ({ children, className = "", delay = 0 }: BentoItemProps) => {
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
   const [isHovered, setIsHovered] = useState(false);
 
@@ -116,7 +110,11 @@ const BentoItem = ({ children, className = "", delay = 0 }) => {
   );
 };
 
-const Marquee = ({ children }) => (
+interface MarqueeProps {
+  children: React.ReactNode;
+}
+
+const Marquee = ({ children }: MarqueeProps) => (
   <div className="relative flex overflow-hidden group select-none mask-linear-fade">
     <motion.div
       className="flex flex-nowrap gap-6 min-w-full"
@@ -130,7 +128,141 @@ const Marquee = ({ children }) => (
   </div>
 );
 
+const MapCard = () => {
+  const [filterMode, setFilterMode] = useState("dark"); // dark, heat, satellite
+  const [time, setTime] = useState(new Date());
+
+  React.useEffect(() => {
+    const timer = setInterval(() => setTime(new Date()), 1000);
+    return () => clearInterval(timer);
+  }, []);
+
+  const getFilterStyle = () => {
+    switch (filterMode) {
+      case "heat": return "contrast(120%) hue-rotate(180deg) invert(100%)";
+      case "satellite": return "none";
+      default: return "grayscale(100%) invert(95%) contrast(85%) opacity(0.7)";
+    }
+  };
+
+  return (
+    <BentoItem className="md:col-span-2 p-0 relative overflow-hidden group min-h-[280px]">
+      {/* 1. Header & Location Badge */}
+      <div className="absolute top-4 left-4 z-20 flex items-center gap-2 bg-black/60 backdrop-blur-md px-3 py-1.5 rounded-full border border-white/10 shadow-lg group-hover:border-cyan-500/30 transition-colors">
+        <div className="relative">
+          <span className="absolute inset-0 rounded-full bg-cyan-400 animate-ping opacity-75"></span>
+          <span className="relative block w-2 h-2 rounded-full bg-cyan-400"></span>
+        </div>
+        <span className="text-[10px] font-bold text-white uppercase tracking-widest pl-1">Based in Pandeglang</span>
+      </div>
+
+      {/* 2. Map Iframe */}
+      <div className="absolute inset-0 w-full h-full bg-[#050505] transition-all duration-500">
+        <iframe
+          title="Google Maps Location"
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15860.203067341386!2d106.1042573!3d-6.308943!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e42236b252033b3%3A0x4441584288019050!2sAlun-Alun%20Pandeglang!5e0!3m2!1sen!2sid"
+          width="100%"
+          height="100%"
+          style={{ border: 0, filter: getFilterStyle(), transition: "filter 0.5s ease" }}
+          allowFullScreen
+          loading="lazy"
+          referrerPolicy="no-referrer-when-downgrade"
+          className="w-full h-full object-cover"
+        ></iframe>
+      </div>
+
+      {/* 3. Cyberpunk Overlays */}
+      <div
+        className="absolute inset-0 opacity-10 pointer-events-none mix-blend-overlay"
+        style={{ backgroundImage: `url("${NOISE_PATTERN}")` }}
+      />
+
+      {/* Scanning Beam (Motion) - Only in Dark Mode */}
+      {filterMode === "dark" && (
+        <motion.div
+          className="absolute inset-0 pointer-events-none z-10 bg-gradient-to-b from-transparent via-cyan-500/10 to-transparent"
+          initial={{ top: "-100%" }}
+          animate={{ top: "100%" }}
+          transition={{ repeat: Infinity, duration: 4, ease: "linear" }}
+          style={{ height: "40%" }}
+        />
+      )}
+
+      {/* Control Panel (Mode Toggles) */}
+      <div className="absolute top-4 right-4 z-20 flex gap-2">
+        {[
+          { id: "dark", label: "NVG" },
+          { id: "heat", label: "HEAT" },
+          { id: "satellite", label: "SAT" }
+        ].map(mode => (
+          <button
+            key={mode.id}
+            onClick={() => setFilterMode(mode.id)}
+            className={`px-2 py-1 text-[8px] font-mono font-bold rounded border transition-all ${filterMode === mode.id
+              ? "bg-cyan-500 text-black border-cyan-500"
+              : "bg-black/50 text-cyan-500 border-cyan-900/50 hover:border-cyan-500"
+              }`}
+          >
+            {mode.label}
+          </button>
+        ))}
+      </div>
+
+      {/* Corner Data */}
+      <div className="absolute bottom-4 left-4 z-20 flex flex-col pointer-events-none mix-blend-screen">
+        <span className="text-[9px] text-slate-400 font-mono tracking-widest mb-0.5">EST. TIME</span>
+        <span className="text-sm font-bold text-white font-mono">
+          UTC+7 // {time.toLocaleTimeString('en-US', { hour12: false })}
+        </span>
+      </div>
+
+      <div className="absolute bottom-4 right-4 z-20 pointer-events-none">
+        <div className="flex items-center gap-2">
+          <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+          <span className="px-2 py-0.5 rounded-sm bg-cyan-900/30 border border-cyan-500/30 text-[8px] text-cyan-400 font-mono">SECURE_CONN</span>
+        </div>
+      </div>
+    </BentoItem>
+  );
+};
+
+import { useSEO } from "@/hooks/useSEO";
+
 const AboutPage = () => {
+  useSEO("About Me | Rifal Azhar", "Learn more about Rifal Azhar's background in Computer Engineering, Data Analysis, and Digital Strategy.");
+
+  const [experiences, setExperiences] = useState<Experience[]>(initialExperiences);
+
+  React.useEffect(() => {
+    const fetchExperiences = async () => {
+      const { data } = await supabase
+        .from("experience")
+        .select("*")
+        .order("created_at", { ascending: false });
+
+      if (data && data.length > 0) {
+        setExperiences(data);
+      }
+    };
+    fetchExperiences();
+
+    // Realtime Subscription
+    const subscription = supabase
+      .channel('experience-changes')
+      .on(
+        'postgres_changes',
+        { event: '*', schema: 'public', table: 'experience' },
+        () => {
+          fetchExperiences();
+        }
+      )
+      .subscribe();
+
+    return () => {
+      subscription.unsubscribe();
+    };
+  }, []);
+
   return (
     <div className="min-h-screen bg-[#050505] text-slate-200 font-sans selection:bg-cyan-500/30">
       <Background />
@@ -140,7 +272,7 @@ const AboutPage = () => {
         {/* --- HEADER --- */}
         <div className="mb-12">
           <h1 className="text-5xl md:text-7xl font-bold text-white mb-4 tracking-tight">
-            About <span className="text-slate-500">Me.</span>
+            About <span className="text-slate-500"><DecryptText text="Me." revealDirection="end" /></span>
           </h1>
           <p className="text-xl text-slate-400 max-w-3xl">
             Deeply rooted in Computer Engineering with a proven track record in Digital Media Strategy.
@@ -149,7 +281,7 @@ const AboutPage = () => {
         </div>
 
         {/* --- BENTO GRID --- */}
-        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4 auto-rows-[minmax(180px,auto)]">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 auto-rows-[minmax(140px,auto)]">
 
           {/* 1. PROFILE (Fixed) */}
           <BentoItem className="md:col-span-2 lg:col-span-2 row-span-2 p-8 flex flex-col justify-between group">
@@ -177,27 +309,24 @@ const AboutPage = () => {
           </BentoItem>
 
           {/* 2. STATS - UPDATED WITH DIGITAL STRATEGY */}
-          <BentoItem className="p-6 flex flex-col justify-center items-center text-center bg-gradient-to-br from-slate-900 to-[#0A0A0A]">
-            <div className="text-4xl font-bold text-green-400 mb-1">+150%</div>
-            <div className="text-[10px] text-slate-500 uppercase tracking-widest font-bold">Engagement Growth</div>
+          <BentoItem className="p-0 bg-gradient-to-br from-slate-900 to-[#0A0A0A]">
+            <div className="flex flex-col justify-center items-center h-full w-full p-4">
+              <div className="text-3xl font-bold text-green-400 mb-1">+150%</div>
+              <div className="text-[10px] text-slate-500 uppercase tracking-widest font-bold">Engagement Growth</div>
+            </div>
           </BentoItem>
 
-          <BentoItem className="p-6 flex flex-col justify-center items-center text-center bg-gradient-to-br from-slate-900 to-[#0A0A0A]">
-            <div className="text-4xl font-bold text-white mb-1">10+</div>
-            <div className="text-[10px] text-slate-500 uppercase tracking-widest font-bold">Data Campaigns</div>
+          <BentoItem className="p-0 bg-gradient-to-br from-slate-900 to-[#0A0A0A]">
+            <div className="flex flex-col justify-center items-center h-full w-full p-4">
+              <div className="text-3xl font-bold text-white mb-1">10+</div>
+              <div className="text-[10px] text-slate-500 uppercase tracking-widest font-bold">Data Campaigns</div>
+            </div>
           </BentoItem>
 
           {/* 3. LOCATION */}
-          <BentoItem className="md:col-span-2 p-6 flex items-center justify-between group">
-            <div>
-              <div className="flex items-center gap-2 text-cyan-400 mb-2">
-                <MapPin className="w-4 h-4" />
-                <span className="text-xs font-bold uppercase tracking-wider">Based In</span>
-              </div>
-              <h3 className="text-2xl font-bold text-white">Pandeglang, Indonesia</h3>
-            </div>
-            <Globe className="w-24 h-24 text-slate-800 -mr-4 -mb-4 group-hover:text-cyan-900/20 transition-colors" />
-          </BentoItem>
+          {/* 3. LOCATION - UPGRADED TO CYBERPUNK MAP CARD */}
+          <MapCard />
+
 
           {/* 4. EXPERIENCE (SCROLLABLE VAULT) */}
           <BentoItem className="md:col-span-2 lg:col-span-2 row-span-2 p-0 flex flex-col">
@@ -221,7 +350,7 @@ const AboutPage = () => {
                     <div className="flex items-center gap-2 text-xs font-mono text-cyan-500 mb-2">
                       <span>{job.company}</span>
                       <span>•</span>
-                      <span>{job.year}</span>
+                      <span>{job.period || job.year}</span>
                     </div>
                     <p className="text-slate-400 text-sm leading-relaxed">{job.desc}</p>
                   </div>
@@ -315,7 +444,10 @@ const AboutPage = () => {
           {/* CTA */}
           <div className="mt-12 p-1 rounded-3xl bg-gradient-to-r from-cyan-500/20 via-blue-500/20 to-purple-500/20">
             <div className="p-8 rounded-[22px] bg-[#0A0A0A] flex flex-col md:flex-row items-center justify-between gap-6 relative overflow-hidden group">
-              <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20" />
+              <div
+                className="absolute inset-0 opacity-20"
+                style={{ backgroundImage: `url("${NOISE_PATTERN}")` }}
+              />
 
               <div className="text-center md:text-left relative z-10">
                 <h2 className="text-3xl font-bold text-white mb-2">Ready to optimize your data?</h2>
@@ -325,10 +457,15 @@ const AboutPage = () => {
               </div>
 
               <div className="flex gap-4 relative z-10">
-                <button className="px-6 py-3 rounded-full border border-white/20 text-white font-bold hover:bg-white/10 transition-colors flex items-center gap-2">
+                <a
+                  href="https://drive.google.com/file/d/1YysZCMvXb4kFLG9UkDN93tCk6hbyCbxs/view?usp=sharing"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-6 py-3 rounded-full border border-white/20 text-white font-bold hover:bg-white/10 transition-colors flex items-center gap-2"
+                >
                   <Download className="w-4 h-4" />
                   Download CV
-                </button>
+                </a>
                 <a href="/contact" className="px-8 py-3 rounded-full bg-white text-black font-bold hover:bg-cyan-50 transition-colors flex items-center gap-2 shadow-[0_0_20px_rgba(255,255,255,0.3)] hover:shadow-[0_0_30px_rgba(6,182,212,0.5)]">
                   <Rocket className="w-4 h-4" />
                   Hire Me Now
@@ -340,7 +477,7 @@ const AboutPage = () => {
       </div>
 
       <Footer />
-    </div>
+    </div >
   );
 };
 

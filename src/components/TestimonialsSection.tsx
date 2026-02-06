@@ -71,7 +71,7 @@ const TestimonialsSection = () => {
         </motion.div>
 
         {/* --- CARDS GRID --- */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-32">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 mb-20 md:mb-32">
           {testimonials.map((t, i) => (
             <motion.div
               key={i}
@@ -121,37 +121,30 @@ const TestimonialsSection = () => {
         </div>
 
         {/* --- LOGO SCROLL (MARQUEE) --- */}
-        <div className="relative border-y border-white/5 bg-white/[0.02] py-12 overflow-hidden">
-          <div className="absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-[#02040a] to-transparent z-10" />
-          <div className="absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-[#02040a] to-transparent z-10" />
+        <div className="relative border-y border-white/5 bg-white/[0.02] py-16 overflow-hidden group/marquee">
+          <div className="absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-[#02040a] to-transparent z-10 pointer-events-none" />
+          <div className="absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-[#02040a] to-transparent z-10 pointer-events-none" />
 
           <div className="flex w-full overflow-hidden">
-            <motion.div
-              className="flex min-w-full gap-20 items-center px-10"
-              animate={{ x: ["0%", "-100%"] }}
-              transition={{ repeat: Infinity, ease: "linear", duration: 30 }}
+            <div
+              className="flex-none flex w-max items-center animate-marquee pause-on-hover"
             >
-              {[...clients, ...clients, ...clients].map((client, i) => (
-                <div key={i} className="flex items-center gap-3 opacity-40 hover:opacity-100 transition-opacity grayscale hover:grayscale-0 cursor-pointer group">
-                  {/* Simple Text Placeholder for logos to avoid external image 404s if URLs break, or use the URLs if stable */}
-                  {/* We will simulate 'Logos' with lucid icons for stability + text */}
-                  <Globe className="w-8 h-8 text-white group-hover:text-cyan-400 transition-colors" />
-                  <span className="text-xl font-black uppercase text-white tracking-widest">{client.name}</span>
+              {[...clients, ...clients, ...clients, ...clients].map((client, i) => (
+                <div key={i} className="flex-shrink-0 flex items-center gap-4 md:gap-6 px-12 md:px-20 opacity-30 hover:opacity-100 transition-all duration-500 grayscale hover:grayscale-0 cursor-pointer group/logo">
+                  <div className="relative">
+                    <Globe className="w-8 h-8 md:w-10 md:h-10 text-slate-500 group-hover/logo:text-cyan-400 group-hover/logo:rotate-12 transition-all duration-500" />
+                    <motion.div
+                      animate={{ scale: [1, 1.5, 1], opacity: [0, 0.3, 0] }}
+                      transition={{ duration: 2, repeat: Infinity }}
+                      className="absolute inset-0 bg-cyan-500 rounded-full blur-lg -z-10"
+                    />
+                  </div>
+                  <span className="text-lg md:text-3xl font-black uppercase text-slate-500 group-hover/logo:text-white tracking-[0.2em] whitespace-nowrap transition-colors">
+                    {client.name}
+                  </span>
                 </div>
               ))}
-            </motion.div>
-            <motion.div
-              className="flex min-w-full gap-20 items-center px-10 absolute left-full top-0 h-full"
-              animate={{ x: ["0%", "-100%"] }}
-              transition={{ repeat: Infinity, ease: "linear", duration: 30 }}
-            >
-              {[...clients, ...clients, ...clients].map((client, i) => (
-                <div key={i} className="flex items-center gap-3 opacity-40 hover:opacity-100 transition-opacity grayscale hover:grayscale-0 cursor-pointer group">
-                  <Globe className="w-8 h-8 text-white group-hover:text-cyan-400 transition-colors" />
-                  <span className="text-xl font-black uppercase text-white tracking-widest">{client.name}</span>
-                </div>
-              ))}
-            </motion.div>
+            </div>
           </div>
         </div>
 

@@ -15,7 +15,7 @@ interface ResumeModalProps {
 }
 
 const ResumeModal: React.FC<ResumeModalProps> = ({ children }) => {
-  const cvPath = "/Rifal Azhar Permana.CV.pdf"; // Path ke file CV Anda di folder public
+  const cvPath = "https://drive.google.com/file/d/1YysZCMvXb4kFLG9UkDN93tCk6hbyCbxs/view?usp=sharing";
 
   return (
     <Dialog>
@@ -29,7 +29,7 @@ const ResumeModal: React.FC<ResumeModalProps> = ({ children }) => {
         </DialogHeader>
         <div className="flex-grow w-full p-6 pt-0">
           <iframe
-            src={cvPath}
+            src="https://drive.google.com/file/d/1YysZCMvXb4kFLG9UkDN93tCk6hbyCbxs/preview"
             width="100%"
             height="100%"
             className="border-none rounded-md bg-secondary"

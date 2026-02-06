@@ -3,10 +3,29 @@ import { motion, useScroll, useTransform, useSpring, useMotionValue } from 'fram
 import { Button } from '@/components/ui/button';
 import { ArrowRight, Waves, Code2, Sparkles, Globe, Download } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { DecryptText } from './ui/DecryptText';
+import { supabase } from '@/lib/supabase';
+import CVPreviewModal from './CVPreviewModal';
 
 const OceanHero = () => {
     const sectionRef = useRef<HTMLElement>(null);
     const { scrollY } = useScroll();
+    const [cvUrl, setCvUrl] = useState<string | null>(null);
+    const [showCVModal, setShowCVModal] = useState(false);
+
+    // Fetch active CV from database
+    useEffect(() => {
+        const fetchCV = async () => {
+            const { data } = await supabase
+                .from('cv_uploads')
+                .select('file_url')
+                .eq('is_active', true)
+                .single();
+
+            if (data) setCvUrl(data.file_url);
+        };
+        fetchCV();
+    }, []);
 
     // Parallax Effects
     const y1 = useTransform(scrollY, [0, 500], [0, 150]);
@@ -43,12 +62,12 @@ const OceanHero = () => {
         >
             {/* HOLOGRAPHIC BACKGROUND */}
             <div className="absolute inset-0 bg-[#030712]">
-                <div className="absolute inset-0 bg-[url('/noise.png')] opacity-20 mix-blend-overlay pointer-events-none" />
+                <div className="absolute inset-0 opacity-15 mix-blend-overlay pointer-events-none" style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg viewBox=\'0 0 200 200\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cfilter id=\'noiseFilter\'%3E%3CfeTurbulence type=\'fractalNoise\' baseFrequency=\'0.8\' numOctaves=\'1\' stitchTiles=\'stitch\'/%3E%3C/filter%3E%3Crect width=\'100%25\' height=\'100%25\' filter=\'url(%23noiseFilter)\'/%3E%3C/svg%3E")' }} />
 
-                {/* Aurora Beams */}
-                <div className="absolute top-[-20%] left-[20%] w-[600px] h-[600px] bg-cyan-500/20 rounded-full blur-[120px] animate-pulse" />
-                <div className="absolute bottom-[-10%] right-[10%] w-[500px] h-[500px] bg-purple-500/20 rounded-full blur-[120px] animate-pulse delay-1000" />
-                <div className="absolute top-[40%] left-[-10%] w-[400px] h-[800px] bg-blue-600/10 rounded-full blur-[100px] rotate-45" />
+                {/* Aurora Beams - Optimized blur and animation */}
+                <div className="absolute top-[-20%] left-[20%] w-[600px] h-[600px] bg-cyan-500/10 rounded-full blur-[80px] animate-pulse" />
+                <div className="absolute bottom-[-10%] right-[10%] w-[500px] h-[500px] bg-purple-500/10 rounded-full blur-[80px] animate-pulse delay-1000" />
+                <div className="absolute top-[40%] left-[-10%] w-[400px] h-[800px] bg-blue-600/5 rounded-full blur-[70px] rotate-45" />
 
                 {/* Animated Grid Floor */}
                 <div
@@ -88,17 +107,29 @@ const OceanHero = () => {
                         </div>
 
                         {/* Mega Title with Text Gradient */}
-                        <h1 className="text-6xl md:text-8xl font-bold leading-tight tracking-tighter">
-                            <span className="block text-white mix-blend-overlay">Crafting</span>
-                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 animate-gradient-x">
-                                Digital Dreams
+                        {/* Mega Title with Text Gradient */}
+                        <motion.h1
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ delay: 0.3, duration: 0.8 }}
+                            className="text-5xl md:text-8xl lg:text-9xl font-serif font-black leading-none tracking-tighter"
+                        >
+                            <span className="block text-transparent bg-clip-text bg-gradient-to-r from-white via-cyan-100 to-white drop-shadow-[0_0_30px_rgba(255,255,255,0.3)]">
+                                <DecryptText text="Creative" />
                             </span>
-                        </h1>
+                            <span className="block text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-400 drop-shadow-[0_0_30px_rgba(34,211,238,0.3)]">
+                                <DecryptText text="Technologist" speed={40} />
+                            </span>
+                        </motion.h1>
 
-                        <p className="text-xl text-slate-400 max-w-xl leading-relaxed border-l-2 border-cyan-500/30 pl-6">
-                            Bridging the gap between <strong>Data Analytics</strong> and <strong>Creative Web Development</strong>.
-                            Proven track record at <em>Kimia Farma</em> (Big Data) and <em>Nevercode LTD</em>.
-                        </p>
+                        <motion.p
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ delay: 0.5, duration: 0.8 }}
+                            className="text-base md:text-2xl text-cyan-100/70 max-w-2xl mx-auto leading-relaxed px-4 my-8"
+                        >
+                            Exploring the intersection of <span className="text-cyan-300 font-semibold">Code</span>, <span className="text-purple-300 font-semibold">Design</span>, and <span className="text-blue-300 font-semibold">Data</span> to build immersive digital experiences.
+                        </motion.p>
 
                         {/* CTA Buttons */}
                         <div className="flex flex-wrap gap-4 pt-4">
@@ -115,15 +146,25 @@ const OceanHero = () => {
                                 </motion.button>
                             </Link>
 
-                            <motion.button
-                                whileHover={{ scale: 1.05 }}
-                                whileTap={{ scale: 0.95 }}
-                                className="px-8 py-4 rounded-full border border-white/10 glass hover:bg-white/5 transition-colors flex items-center gap-2"
-                            >
-                                <Download className="w-5 h-5" />
-                                Download CV
-                            </motion.button>
+                            {cvUrl && (
+                                <button
+                                    onClick={() => setShowCVModal(true)}
+                                    className="px-8 py-4 rounded-full border border-white/10 glass hover:bg-white/5 transition-colors flex items-center gap-2"
+                                >
+                                    <Download className="w-5 h-5" />
+                                    View CV
+                                </button>
+                            )}
                         </div>
+
+                        {/* CV Preview Modal */}
+                        {cvUrl && (
+                            <CVPreviewModal
+                                cvUrl={cvUrl}
+                                isOpen={showCVModal}
+                                onClose={() => setShowCVModal(false)}
+                            />
+                        )}
 
                         {/* Floating Tech Stack */}
                         <div className="flex gap-6 pt-8 opacity-60 grayscale hover:grayscale-0 transition-all duration-500">
