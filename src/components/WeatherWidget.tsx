@@ -218,30 +218,30 @@ const WeatherWidget = () => {
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
-                className="hidden lg:flex items-center gap-4 px-5 py-2 rounded-full bg-slate-900/40 border border-white/5 backdrop-blur-md group hover:border-cyan-500/30 transition-all duration-300 shadow-xl"
+                className="flex items-center gap-2 sm:gap-4 px-3 sm:px-5 py-2 rounded-full bg-slate-900/40 border border-white/5 backdrop-blur-md group hover:border-cyan-500/30 transition-all duration-300 shadow-xl"
             >
                 <AnimatePresence mode="wait">
                     {loading ? (
                         <motion.div key="loader" className="flex items-center gap-2">
                             <Loader2 className="w-3 h-3 animate-spin text-cyan-500" />
-                            <span className="text-[10px] font-mono text-slate-500 uppercase tracking-[0.2em] font-bold">Atmosphere...</span>
+                            <span className="text-[10px] font-mono text-slate-500 uppercase tracking-[0.2em] font-bold hidden sm:inline">Atmosphere...</span>
                         </motion.div>
                     ) : weather ? (
-                        <motion.div key="data" className="flex items-center gap-4">
-                            <div className="flex items-center gap-2.5">
-                                <div className="w-5 h-5 group-hover:scale-110 transition-transform">{weather.current.icon}</div>
-                                <span className="text-sm font-black text-white">{weather.current.temp}°C</span>
+                        <motion.div key="data" className="flex items-center gap-2 sm:gap-4">
+                            <div className="flex items-center gap-1.5 sm:gap-2.5">
+                                <div className="w-4 h-4 sm:w-5 sm:h-5 group-hover:scale-110 transition-transform">{weather.current.icon}</div>
+                                <span className="text-xs sm:text-sm font-black text-white">{weather.current.temp}°C</span>
                             </div>
 
-                            <div className="h-4 w-[1px] bg-white/10" />
+                            <div className="h-3 sm:h-4 w-[1px] bg-white/10" />
 
                             <div className="flex flex-col text-left">
-                                <div className="flex items-center gap-1.5 leading-none mb-1">
-                                    <span className="text-[9px] font-black text-cyan-400 uppercase tracking-tighter">{weather.current.condition}</span>
-                                    <span className="text-[8px] text-slate-600">•</span>
-                                    <span className={`text-[9px] font-black uppercase ${weather.air_quality.color}`}>AQI {weather.air_quality.aqi}</span>
+                                <div className="flex items-center gap-1.5 leading-none mb-0.5 sm:mb-1">
+                                    <span className="text-[8px] sm:text-[9px] font-black text-cyan-400 uppercase tracking-tighter">{weather.current.condition}</span>
+                                    <span className="hidden sm:inline text-[8px] text-slate-600">•</span>
+                                    <span className={`hidden sm:inline text-[9px] font-black uppercase ${weather.air_quality.color}`}>AQI {weather.air_quality.aqi}</span>
                                 </div>
-                                <div className="flex items-center gap-1 leading-none">
+                                <div className="hidden sm:flex items-center gap-1 leading-none">
                                     <MapPin className="w-2 h-2 text-slate-500" />
                                     <span className="text-[8px] text-slate-500 font-bold uppercase tracking-wider truncate max-w-[80px]">{weather.location}</span>
                                 </div>
@@ -260,7 +260,7 @@ const WeatherWidget = () => {
                         initial={{ opacity: 0, scale: 0.95, y: 15 }}
                         animate={{ opacity: 1, scale: 1, y: 0 }}
                         exit={{ opacity: 0, scale: 0.95, y: 15 }}
-                        className="absolute top-full mt-4 right-0 w-[420px] bg-[#0d1520]/95 border border-white/10 rounded-[2.5rem] shadow-[0_50px_100px_rgba(0,0,0,0.6)] backdrop-blur-3xl z-[99999] overflow-hidden p-8"
+                        className="absolute top-full mt-4 right-[-60px] sm:right-0 w-[90vw] sm:w-[420px] bg-[#0d1520]/95 border border-white/10 rounded-[2.5rem] shadow-[0_50px_100px_rgba(0,0,0,0.6)] backdrop-blur-3xl z-[99999] overflow-hidden p-6 sm:p-8"
                     >
                         {/* Search Internal */}
                         <div className="relative mb-8">

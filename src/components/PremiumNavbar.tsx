@@ -98,7 +98,7 @@ const PremiumNavbar = () => {
 
                     {/* Weather & CTA */}
                     <div className="flex items-center gap-4">
-                        <div className="hidden md:block">
+                        <div className="block">
                             <WeatherWidget />
                         </div>
 
