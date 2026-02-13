@@ -1,11 +1,21 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { ArrowRight, ExternalLink, Github, Waves, Anchor, Ship } from "lucide-react";
 import { Link } from "react-router-dom";
 import { toast } from "sonner";
-
 import { supabase } from "@/lib/supabase";
-import { useState, useEffect } from "react";
+
+interface Project {
+    id: number;
+    title: string;
+    description: string;
+    image: string;
+    tags: string[];
+    color: string;
+    repo_url?: string;
+    demo_url?: string;
+    // Add other properties from Supabase if needed
+}
 
 const PROJECT_COLORS = [
     "from-cyan-500/20 to-blue-500/20",
@@ -15,23 +25,23 @@ const PROJECT_COLORS = [
 ];
 
 const FeaturedProjectsSection = () => {
-    const [featuredProjects, setFeaturedProjects] = useState<any[]>([]);
+    const [featuredProjects, setFeaturedProjects] = useState<Project[]>([]);
 
     useEffect(() => {
         const fetchFeatured = async () => {
             const { data } = await supabase
                 .from('projects')
                 .select('*')
-                .eq('featured', true) // Corrected column name from is_featured to featured
+                .eq('featured', true)
                 .limit(3)
                 .order('id', { ascending: false });
 
             if (data) {
                 const enhancedData = data.map((p, i) => ({
                     ...p,
-                    description: p.desc, // Map desc -> description
-                    image: p.image,      // Map image column
-                    tags: p.tech || [],  // Map tech -> tags
+                    description: p.desc,
+                    image: p.image,
+                    tags: p.tech || [],
                     color: PROJECT_COLORS[i % PROJECT_COLORS.length]
                 }));
                 setFeaturedProjects(enhancedData);
@@ -39,7 +49,6 @@ const FeaturedProjectsSection = () => {
         };
         fetchFeatured();
 
-        // Realtime Subscription
         const subscription = supabase
             .channel('featured-projects-changes')
             .on(
@@ -102,7 +111,7 @@ const FeaturedProjectsSection = () => {
                 <div className="grid lg:grid-cols-3 gap-10">
                     {featuredProjects.map((project, index) => (
                         <motion.div
-                            key={project.title}
+                            key={project.id} // Use ID instead of title for key
                             initial={{ opacity: 0, y: 100 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
@@ -131,12 +140,28 @@ const FeaturedProjectsSection = () => {
 
                                     {/* Action Floating Buttons */}
                                     <div className="absolute top-6 right-6 flex flex-col gap-3 translate-x-12 opacity-0 group-hover:translate-x-0 group-hover:opacity-100 transition-all duration-500 z-40">
-                                        <button className="w-12 h-12 rounded-full glass border-white/20 flex items-center justify-center hover:bg-cyan-500 hover:text-black transition-all">
-                                            <Github className="w-5 h-5" />
-                                        </button>
-                                        <button className="w-12 h-12 rounded-full glass border-white/20 flex items-center justify-center hover:bg-cyan-500 hover:text-black transition-all">
-                                            <ExternalLink className="w-5 h-5" />
-                                        </button>
+                                        {project.repo_url && (
+                                            <a
+                                                href={project.repo_url}
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                aria-label="View Source Code"
+                                                className="w-12 h-12 rounded-full glass border-white/20 flex items-center justify-center hover:bg-cyan-500 hover:text-black transition-all"
+                                            >
+                                                <Github className="w-5 h-5" />
+                                            </a>
+                                        )}
+                                        {project.demo_url && (
+                                            <a
+                                                href={project.demo_url}
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                aria-label="View Live Demo"
+                                                className="w-12 h-12 rounded-full glass border-white/20 flex items-center justify-center hover:bg-cyan-500 hover:text-black transition-all"
+                                            >
+                                                <ExternalLink className="w-5 h-5" />
+                                            </a>
+                                        )}
                                     </div>
                                 </div>
 
@@ -158,7 +183,7 @@ const FeaturedProjectsSection = () => {
                                         {project.description}
                                     </p>
 
-                                    {/* Blueprint Data Grid (Replaces description on hover visually in mind, but here we append extra data) */}
+                                    {/* Blueprint Data Grid */}
                                     <div className="hidden group-hover:grid grid-cols-2 gap-2 mb-6 border-t border-dashed border-cyan-500/30 pt-4">
                                         <div className="flex justify-between text-[9px] font-mono text-cyan-500"><span>BUILD_VER:</span><span>v2.4.0</span></div>
                                         <div className="flex justify-between text-[9px] font-mono text-cyan-500"><span>LATENCY:</span><span>12ms</span></div>
@@ -184,8 +209,7 @@ const FeaturedProjectsSection = () => {
             </div>
 
             {/* Background Texture Overlay */}
-            <div className="absolute inset-0 z-0 opacity-[0.03] pointer-events-none mix-blend-overlay"
-                style={{ backgroundImage: `url('https://www.transparenttextures.com/patterns/asfalt-dark.png')` }} />
+            <div className="absolute inset-0 z-0 opacity-[0.03] pointer-events-none mix-blend-overlay bg-[url('https://www.transparenttextures.com/patterns/asfalt-dark.png')]" />
         </section>
     );
 };

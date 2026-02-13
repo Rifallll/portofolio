@@ -402,6 +402,9 @@ export const HackerTerminal: React.FC<HackerTerminalProps> = ({
                     const netType = connection ? connection.effectiveType : "UNKNOWN";
                     const rtt = connection ? connection.rtt : "N/A";
 
+                    const platform = navigator.platform || "Unknown";
+                    const userAgent = navigator.userAgent || "Unknown";
+
                     const telemetry = [
                         { label: "GPU_RENDERER", val: gpuRenderer, safe: false },
                         { label: "CPU_CORES", val: `${cores} LOGICAL_CORES`, safe: true },
@@ -644,12 +647,12 @@ export const HackerTerminal: React.FC<HackerTerminalProps> = ({
                     }
 
                     const totalVisitors = data.length;
-                    const countries = data.reduce((acc: any, v) => {
+                    const countries = data.reduce((acc: Record<string, number>, v: any) => {
                         acc[v.country] = (acc[v.country] || 0) + 1;
                         return acc;
                     }, {});
                     const topCountries = Object.entries(countries)
-                        .sort((a: any, b: any) => b[1] - a[1])
+                        .sort((a: [string, number], b: [string, number]) => b[1] - a[1])
                         .slice(0, 5)
                         .map(([country, count]) => ({ country, count }));
 
@@ -915,12 +918,10 @@ export const HackerTerminal: React.FC<HackerTerminalProps> = ({
     return (
         <div
             ref={terminalRef}
-            className="fixed bg-black/95 backdrop-blur-md border border-cyan-500/50 rounded-lg shadow-2xl shadow-cyan-500/20 font-mono text-sm z-50 overflow-hidden"
+            className={`fixed bg-black/95 backdrop-blur-md border border-cyan-500/50 rounded-lg shadow-2xl shadow-cyan-500/20 font-mono text-sm z-50 overflow-hidden ${isMinimized ? 'w-[300px] h-[40px]' : 'w-[650px] h-[500px]'}`}
             style={{
                 left: `${position.x}px`,
                 top: `${position.y}px`,
-                width: isMinimized ? '300px' : '650px',
-                height: isMinimized ? '40px' : '500px'
             }}
         >
             {/* Header */}

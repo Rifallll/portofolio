@@ -268,7 +268,7 @@ const ProjectsManager = () => {
                     {projects.map(project => (
                         <div key={project.id} className="bg-white/5 border border-white/10 p-4 rounded-xl flex justify-between items-center group hover:border-cyan-500/30 transition-all">
                             <div className="flex items-center gap-4">
-                                <div className="w-16 h-12 bg-slate-800 rounded bg-cover bg-center" style={{ backgroundImage: `url(${project.image_url})` }} />
+                                <img src={project.image_url} alt={project.title} className="w-16 h-12 bg-slate-800 rounded object-cover" />
                                 <div>
                                     <h3 className="font-bold text-white">{project.title}</h3>
                                     <p className="text-xs text-slate-400">{project.client} • {project.year}</p>

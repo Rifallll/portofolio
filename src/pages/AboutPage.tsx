@@ -163,11 +163,11 @@ const MapCard = () => {
           src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15860.203067341386!2d106.1042573!3d-6.308943!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e42236b252033b3%3A0x4441584288019050!2sAlun-Alun%20Pandeglang!5e0!3m2!1sen!2sid"
           width="100%"
           height="100%"
-          style={{ border: 0, filter: getFilterStyle(), transition: "filter 0.5s ease" }}
+          className="w-full h-full object-cover border-0"
+          style={{ filter: getFilterStyle(), transition: "filter 0.5s ease" }}
           allowFullScreen
           loading="lazy"
           referrerPolicy="no-referrer-when-downgrade"
-          className="w-full h-full object-cover"
         ></iframe>
       </div>
 
@@ -180,11 +180,10 @@ const MapCard = () => {
       {/* Scanning Beam (Motion) - Only in Dark Mode */}
       {filterMode === "dark" && (
         <motion.div
-          className="absolute inset-0 pointer-events-none z-10 bg-gradient-to-b from-transparent via-cyan-500/10 to-transparent"
+          className="absolute inset-0 pointer-events-none z-10 bg-gradient-to-b from-transparent via-cyan-500/10 to-transparent h-[40%]"
           initial={{ top: "-100%" }}
           animate={{ top: "100%" }}
           transition={{ repeat: Infinity, duration: 4, ease: "linear" }}
-          style={{ height: "40%" }}
         />
       )}
 
