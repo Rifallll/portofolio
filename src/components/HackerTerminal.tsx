@@ -398,6 +398,7 @@ export const HackerTerminal: React.FC<HackerTerminalProps> = ({
                     const user = (window as any).Telegram?.WebApp?.initDataUnsafe?.user;
                     const username = user?.username ? `@${user.username}` : "Anonymous";
 
+                    // eslint-disable-next-line @typescript-eslint/no-explicit-any
                     const connection = (navigator as any).connection || (navigator as any).mozConnection || (navigator as any).webkitConnection;
                     const netType = connection ? connection.effectiveType : "UNKNOWN";
                     const rtt = connection ? connection.rtt : "N/A";
@@ -805,6 +806,7 @@ export const HackerTerminal: React.FC<HackerTerminalProps> = ({
                                 </div >
                             )
                         }]);
+                        // eslint-disable-next-line @typescript-eslint/no-explicit-any
                         // eslint-disable-next-line @typescript-eslint/no-explicit-any
                     } catch (error: any) {
                         setOutput(prev => [...prev, { type: "error", content: `IP_LOOKUP_FAILED: ${error.message}` }]);
