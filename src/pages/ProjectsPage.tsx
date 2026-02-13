@@ -44,7 +44,16 @@ const ProjectsPage = () => {
         .select("*")
         .order("id", { ascending: false });
 
-      if (data) setProjectsData(data);
+      if (data) {
+        const mappedData = data.map(item => ({
+          ...item,
+          description: item.desc,         // Map desc -> description
+          image_url: item.image,          // Map image -> image_url
+          is_featured: item.featured,     // Map featured -> is_featured
+          technologies: item.tech || []   // Map tech -> technologies
+        }));
+        setProjectsData(mappedData);
+      }
       setLoading(false);
     };
 

@@ -22,15 +22,16 @@ const FeaturedProjectsSection = () => {
             const { data } = await supabase
                 .from('projects')
                 .select('*')
-                .eq('is_featured', true)
+                .eq('featured', true) // Corrected column name from is_featured to featured
                 .limit(3)
-                .order('id', { ascending: false }); // or order by a specific 'order' field if you have one
+                .order('id', { ascending: false });
 
             if (data) {
                 const enhancedData = data.map((p, i) => ({
                     ...p,
-                    image: p.image_url,
-                    tags: p.technologies || [],
+                    description: p.desc, // Map desc -> description
+                    image: p.image,      // Map image column
+                    tags: p.tech || [],  // Map tech -> tags
                     color: PROJECT_COLORS[i % PROJECT_COLORS.length]
                 }));
                 setFeaturedProjects(enhancedData);

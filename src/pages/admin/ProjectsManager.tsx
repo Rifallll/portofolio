@@ -41,7 +41,22 @@ const ProjectsManager = () => {
         if (error) {
             toast.error("Failed to fetch projects");
         } else {
-            setProjects(data || []);
+            // Map database fields to TypeScript interface
+            const mappedData = (data || []).map(item => ({
+                id: item.id,
+                title: item.title,
+                client: item.client,
+                category: item.category,
+                description: item.desc,
+                image_url: item.image,
+                technologies: item.tech || [],
+                year: item.year,
+                link: item.link,
+                demo_url: item.demo_url,
+                repo_url: item.repo_url,
+                is_featured: item.featured
+            }));
+            setProjects(mappedData);
         }
         setLoading(false);
     };
@@ -78,12 +93,21 @@ const ProjectsManager = () => {
         if (!formData.title) return toast.error("Title is required");
 
         const payload = {
-            ...formData,
-            technologies: Array.isArray(formData.technologies)
+            title: formData.title,
+            client: formData.client,
+            category: formData.category,
+            desc: formData.description,
+            image: formData.image_url,
+            tech: Array.isArray(formData.technologies)
                 ? formData.technologies
                 : typeof formData.technologies === 'string'
                     ? (formData.technologies as string).split(',').map((t: string) => t.trim())
-                    : []
+                    : [],
+            year: formData.year,
+            link: formData.link,
+            demo_url: formData.demo_url || null,
+            repo_url: formData.repo_url || null,
+            featured: formData.is_featured || false
         };
 
         if (isEditing && isEditing !== -1) {
