@@ -182,7 +182,7 @@ const MODULES = {
   EDUCATION: "education"
 };
 
-import { supabase } from "@/lib/supabase";
+
 
 interface SkillDisplay {
   name: string;
@@ -290,118 +290,54 @@ const SkillsPage = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      // 1. Fetch Skills
-      const { data: skills } = await supabase.from("skills").select("*");
-      if (skills) {
-        const newSkillData = [...initialSkillData];
-        // Reset skills arrays first to avoid duplication on re-fetch if strict mode
-        newSkillData.forEach(d => d.skills = []);
+      try {
+        // 1. Fetch Skills
+        const skillsRes = await fetch('/api/skills');
+        const skills = skillsRes.ok ? await skillsRes.json() : [];
 
-        skills.forEach(skill => {
-          const catIndex = newSkillData.findIndex(d => d.category === skill.category);
-          if (catIndex !== -1) {
-            newSkillData[catIndex].skills.push({
-              name: skill.name,
-              level: skill.proficiency,
-              icon: iconMap[skill.icon_name] || "code",
-              desc: `${skill.name} Development` // Or fetch desc if added to DB
+        if (skills.length > 0) {
+          const mappedData: SkillGroup[] = [
+            { category: "Core Engineering", icon: Laptop, skills: [] },
+            { category: "Creative Dev", icon: Sparkles, skills: [] },
+            { category: "Backend & Cloud", icon: Server, skills: [] },
+            { category: "AI & Emerging Tech", icon: Cpu, skills: [] },
+          ];
+
+          skills.forEach((s: SupabaseSkill) => {
+            let targetCat = 0;
+            if (s.category === 'Frontend') targetCat = 0;
+            else if (s.category === 'Design') targetCat = 1;
+            else if (s.category === 'Backend' || s.category === 'DevOps') targetCat = 2;
+            else if (s.category === 'Tools') targetCat = 3;
+
+            mappedData[targetCat].skills.push({
+              name: s.name,
+              level: s.proficiency,
+              icon: iconMap[s.icon_name] || "code",
+              desc: s.category
             });
-          } else {
-            // Check mapping for categories that might differ slightly or add new if needed
-            // For now we map strictly to the 4 categories defined in initialSkillData
-            // If category matches text exactly:
-            const exactMatch = newSkillData.find(d => d.category === skill.category);
-            if (exactMatch) {
-              exactMatch.skills.push({
-                name: skill.name,
-                level: skill.proficiency,
-                icon: iconMap[skill.icon_name] || "code",
-                desc: "Tech Stack"
-              });
-            } else {
-              // Fallback: Add to 'Core Engineering' or similar if unknown
-              newSkillData[0].skills.push({
-                name: skill.name,
-                level: skill.proficiency,
-                icon: iconMap[skill.icon_name] || "code",
-                desc: "Skill"
-              })
-            }
-          }
-        });
-
-        // Since Supabase might return text categories that don't match the HUD display names perfectly, 
-        // we should ideally map them or ensure Seed Data matches.
-        // Seed data uses: 'Frontend', 'Backend', 'DevOps', 'Design', 'Tools'.
-        // HUD uses: 'Core Engineering', 'Creative Dev', 'Backend & Cloud', 'AI & Emerging Tech'.
-        // Let's do a better mapping:
-        const mappedData: SkillGroup[] = [
-          { category: "Core Engineering", icon: Laptop, skills: [] },
-          { category: "Creative Dev", icon: Sparkles, skills: [] },
-          { category: "Backend & Cloud", icon: Server, skills: [] },
-          { category: "AI & Emerging Tech", icon: Cpu, skills: [] },
-        ];
-
-        skills.forEach((s: SupabaseSkill) => {
-          let targetCat = 0; // Default Core
-          if (s.category === 'Frontend') targetCat = 0;
-          else if (s.category === 'Design') targetCat = 1;
-          else if (s.category === 'Backend' || s.category === 'DevOps') targetCat = 2;
-          else if (s.category === 'Tools') targetCat = 3;
-
-          mappedData[targetCat].skills.push({
-            name: s.name,
-            level: s.proficiency,
-            icon: iconMap[s.icon_name] || "code",
-            desc: s.category
           });
-        });
-        setSkillData(mappedData);
-      }
+          setSkillData(mappedData);
+        }
 
-      // 2. Fetch Experience
-      const { data: exp } = await supabase.from("experience").select("*").order("created_at", { ascending: false });
-      if (exp) {
-        setExperienceData(exp);
+        // 2. Fetch Experience
+        const expRes = await fetch('/api/experience');
+        const exp = expRes.ok ? await expRes.json() : [];
+        if (exp.length > 0) {
+          const mapped = exp.map((e: Record<string, unknown>) => ({
+            ...e,
+            tech: Array.isArray(e.tech)
+              ? e.tech
+              : (typeof e.tech === 'string' ? JSON.parse(e.tech as string) : [])
+          }));
+          setExperienceData(mapped);
+        }
+      } catch (err) {
+        console.error('Error fetching data:', err);
       }
     };
 
     fetchData();
-
-    // Realtime Subscriptions
-    const skillsSub = supabase
-      .channel('skills-changes')
-      .on(
-        'postgres_changes',
-        { event: '*', schema: 'public', table: 'skills' },
-        () => {
-          fetchData();
-        }
-      )
-      .subscribe();
-
-    const experienceSub = supabase
-      .channel('experience-changes')
-      .on(
-        'postgres_changes',
-        { event: '*', schema: 'public', table: 'experience' },
-        (payload) => {
-          // For experience it's linear list, we could do optimistic, but re-fetch is consistent.
-          if (payload.eventType === 'INSERT') {
-            setExperienceData(prev => [payload.new as Experience, ...prev]);
-          } else if (payload.eventType === 'UPDATE') {
-            setExperienceData(prev => prev.map(item => item.id === payload.new.id ? (payload.new as Experience) : item));
-          } else if (payload.eventType === 'DELETE') {
-            setExperienceData(prev => prev.filter(item => item.id !== (payload.old as Experience).id));
-          }
-        }
-      )
-      .subscribe();
-
-    return () => {
-      skillsSub.unsubscribe();
-      experienceSub.unsubscribe();
-    };
   }, []);
 
   const changeModule = React.useCallback((module: string) => {

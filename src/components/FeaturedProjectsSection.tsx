@@ -2,8 +2,6 @@ import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { ArrowRight, ExternalLink, Github, Waves, Anchor, Ship } from "lucide-react";
 import { Link } from "react-router-dom";
-import { toast } from "sonner";
-import { supabase } from "@/lib/supabase";
 
 interface Project {
     id: number;
@@ -29,41 +27,28 @@ const FeaturedProjectsSection = () => {
 
     useEffect(() => {
         const fetchFeatured = async () => {
-            const { data } = await supabase
-                .from('projects')
-                .select('*')
-                .eq('featured', true)
-                .limit(3)
-                .order('id', { ascending: false });
-
-            if (data) {
-                const enhancedData = data.map((p, i) => ({
-                    ...p,
-                    description: p.desc,
-                    image: p.image,
-                    tags: p.tech || [],
-                    color: PROJECT_COLORS[i % PROJECT_COLORS.length]
-                }));
-                setFeaturedProjects(enhancedData);
+            try {
+                const res = await fetch('/api/projects');
+                if (!res.ok) throw new Error('Failed to fetch');
+                const data = await res.json();
+                const featured = data
+                    .filter((p: Record<string, unknown>) => Boolean(p.featured))
+                    .slice(0, 3)
+                    .map((p: Record<string, unknown>, i: number) => ({
+                        ...p,
+                        description: p.desc,
+                        image: p.image,
+                        tags: Array.isArray(p.tech)
+                            ? p.tech
+                            : (typeof p.tech === 'string' ? JSON.parse(p.tech as string) : []),
+                        color: PROJECT_COLORS[i % PROJECT_COLORS.length]
+                    }));
+                setFeaturedProjects(featured);
+            } catch (err) {
+                console.error('Error fetching featured projects:', err);
             }
         };
         fetchFeatured();
-
-        const subscription = supabase
-            .channel('featured-projects-changes')
-            .on(
-                'postgres_changes',
-                { event: '*', schema: 'public', table: 'projects' },
-                () => {
-                    toast.info("New featured content!", { duration: 2000 });
-                    fetchFeatured();
-                }
-            )
-            .subscribe();
-
-        return () => {
-            subscription.unsubscribe();
-        };
     }, []);
 
     return (

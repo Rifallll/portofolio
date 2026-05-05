@@ -12,8 +12,7 @@ const NOISE_PATTERN = "data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='ht
 
 // --- REAL DATA FROM CV ---
 
-// --- REAL DATA FROM CV ---
-import { supabase } from "@/lib/supabase";
+
 
 // Removed static experiences data
 interface Experience {
@@ -234,32 +233,16 @@ const AboutPage = () => {
 
   React.useEffect(() => {
     const fetchExperiences = async () => {
-      const { data } = await supabase
-        .from("experience")
-        .select("*")
-        .order("created_at", { ascending: false });
-
-      if (data && data.length > 0) {
-        setExperiences(data);
+      try {
+        const res = await fetch('/api/experience');
+        if (!res.ok) throw new Error('Failed to fetch');
+        const data = await res.json();
+        if (data && data.length > 0) setExperiences(data);
+      } catch (err) {
+        console.error('Error fetching experience:', err);
       }
     };
     fetchExperiences();
-
-    // Realtime Subscription
-    const subscription = supabase
-      .channel('experience-changes')
-      .on(
-        'postgres_changes',
-        { event: '*', schema: 'public', table: 'experience' },
-        () => {
-          fetchExperiences();
-        }
-      )
-      .subscribe();
-
-    return () => {
-      subscription.unsubscribe();
-    };
   }, []);
 
   return (
