@@ -191,9 +191,9 @@ const ProjectsManager = () => {
                                     onChange={e => setFormData({ ...formData, category: e.target.value })}
                                     className="w-full bg-black/50 border border-white/10 rounded-md p-2 text-sm text-white focus:outline-none focus:border-cyan-500"
                                 >
-                                    <option value="Web Development">Web Development</option>
+                                    <option value="Web Dev">Web Dev</option>
                                     <option value="Mobile App">Mobile App</option>
-                                    <option value="Data Analysis">Data Analysis</option>
+                                    <option value="Data Analytics">Data Analytics</option>
                                     <option value="UI/UX Design">UI/UX Design</option>
                                     <option value="Machine Learning">Machine Learning</option>
                                 </select>
