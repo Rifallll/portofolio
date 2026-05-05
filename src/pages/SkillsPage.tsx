@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
+import { skillsData as staticSkills, experienceData as staticExperience } from "@/data/portfolioData";
 import { toast } from "sonner";
 import { motion, AnimatePresence, useSpring, useMotionValue } from "framer-motion";
 import { ResponsiveContainer, RadarChart, PolarGrid, PolarAngleAxis, Radar } from 'recharts';
@@ -179,7 +180,8 @@ const radarData = [
 const MODULES = {
   SKILLS: "skills",
   EXPERIENCE: "experience",
-import { skillsData as staticSkills, experienceData as staticExperience } from "@/data/portfolioData";
+  EDUCATION: "education"
+};
 
 interface SkillDisplay {
   name: string;
