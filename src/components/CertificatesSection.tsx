@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import CertificateCard from "./CertificateCard";
+import { certificatesData as staticCertificates } from "@/data/portfolioData";
 import { motion, AnimatePresence, LayoutGroup } from "framer-motion";
 import { Shield, Database, LayoutGrid, Terminal } from "lucide-react";
 
@@ -21,19 +22,9 @@ const CertificatesSection = () => {
   const [activeCategory, setActiveCategory] = useState("All");
 
   useEffect(() => {
-    const fetchCertificates = async () => {
-      try {
-        const res = await fetch('/api/certificates');
-        if (!res.ok) throw new Error('Failed to fetch');
-        const data = await res.json();
-        setCertificatesData(data);
-        const uniqueCats = Array.from(new Set(data.map((c: Record<string, unknown>) => c.category as string)));
-        setCategories(["All", ...uniqueCats]);
-      } catch (err) {
-        console.error('Error fetching certificates:', err);
-      }
-    };
-    fetchCertificates();
+    setCertificatesData(staticCertificates);
+    const uniqueCats = Array.from(new Set(staticCertificates.map((c) => c.category as string)));
+    setCategories(["All", ...uniqueCats]);
   }, []);
   const [showAllCertificates, setShowAllCertificates] = useState(false);
 

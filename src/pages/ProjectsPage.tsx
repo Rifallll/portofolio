@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { projectsData as staticProjects } from "@/data/portfolioData";
 import { motion, AnimatePresence } from "framer-motion";
 import Footer from "@/components/Footer";
 import { Link } from "react-router-dom";
@@ -37,29 +38,21 @@ const ProjectsPage = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const fetchProjects = async () => {
-      try {
-        const res = await fetch('/api/projects');
-        if (!res.ok) throw new Error('Failed to fetch');
-        const data = await res.json();
-        const mappedData = data.map((item: Record<string, unknown>) => ({
-          ...item,
-          description: item.desc,
-          image_url: item.image,
-          is_featured: Boolean(item.featured),
-          technologies: Array.isArray(item.tech)
-            ? item.tech
-            : (typeof item.tech === 'string' ? JSON.parse(item.tech) : [])
-        }));
-        setProjectsData(mappedData);
-      } catch (err) {
-        console.error('Error fetching projects:', err);
-        toast.error('Gagal memuat projects', { duration: 2000 });
-      } finally {
-        setLoading(false);
-      }
+    // Simulasi loading sebentar agar transisi smooth
+    const loadData = () => {
+      const mappedData = staticProjects.map((item) => ({
+        ...item,
+        description: item.desc,
+        image_url: item.image,
+        is_featured: Boolean(item.featured),
+        technologies: Array.isArray(item.tech)
+          ? item.tech
+          : (typeof item.tech === 'string' ? JSON.parse(item.tech) : [])
+      }));
+      setProjectsData(mappedData);
+      setLoading(false);
     };
-    fetchProjects();
+    loadData();
   }, []);
 
   const [activeCategory, setActiveCategory] = useState("All");

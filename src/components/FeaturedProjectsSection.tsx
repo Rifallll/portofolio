@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { ArrowRight, ExternalLink, Github, Waves, Anchor, Ship } from "lucide-react";
 import { Link } from "react-router-dom";
+import { projectsData as staticProjects } from "@/data/portfolioData";
 
 interface Project {
     id: number;
@@ -26,29 +27,22 @@ const FeaturedProjectsSection = () => {
     const [featuredProjects, setFeaturedProjects] = useState<Project[]>([]);
 
     useEffect(() => {
-        const fetchFeatured = async () => {
-            try {
-                const res = await fetch('/api/projects');
-                if (!res.ok) throw new Error('Failed to fetch');
-                const data = await res.json();
-                const featured = data
-                    .filter((p: Record<string, unknown>) => Boolean(p.featured))
-                    .slice(0, 3)
-                    .map((p: Record<string, unknown>, i: number) => ({
-                        ...p,
-                        description: p.desc,
-                        image: p.image,
-                        tags: Array.isArray(p.tech)
-                            ? p.tech
-                            : (typeof p.tech === 'string' ? JSON.parse(p.tech as string) : []),
-                        color: PROJECT_COLORS[i % PROJECT_COLORS.length]
-                    }));
-                setFeaturedProjects(featured);
-            } catch (err) {
-                console.error('Error fetching featured projects:', err);
-            }
+        const loadFeatured = () => {
+            const featured = staticProjects
+                .filter((p) => Boolean(p.featured))
+                .slice(0, 3)
+                .map((p, i) => ({
+                    ...p,
+                    description: p.desc,
+                    image: p.image,
+                    tags: Array.isArray(p.tech)
+                        ? p.tech
+                        : (typeof p.tech === 'string' ? JSON.parse(p.tech as string) : []),
+                    color: PROJECT_COLORS[i % PROJECT_COLORS.length]
+                }));
+            setFeaturedProjects(featured);
         };
-        fetchFeatured();
+        loadFeatured();
     }, []);
 
     return (

@@ -179,10 +179,7 @@ const radarData = [
 const MODULES = {
   SKILLS: "skills",
   EXPERIENCE: "experience",
-  EDUCATION: "education"
-};
-
-
+import { skillsData as staticSkills, experienceData as staticExperience } from "@/data/portfolioData";
 
 interface SkillDisplay {
   name: string;
@@ -289,55 +286,46 @@ const SkillsPage = () => {
   const [experienceData, setExperienceData] = useState<Experience[]>([]);
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        // 1. Fetch Skills
-        const skillsRes = await fetch('/api/skills');
-        const skills = skillsRes.ok ? await skillsRes.json() : [];
+    const loadData = () => {
+      // 1. Process Static Skills
+      if (staticSkills.length > 0) {
+        const mappedData: SkillGroup[] = [
+          { category: "Core Engineering", icon: Laptop, skills: [] },
+          { category: "Creative Dev", icon: Sparkles, skills: [] },
+          { category: "Backend & Cloud", icon: Server, skills: [] },
+          { category: "AI & Emerging Tech", icon: Cpu, skills: [] },
+        ];
 
-        if (skills.length > 0) {
-          const mappedData: SkillGroup[] = [
-            { category: "Core Engineering", icon: Laptop, skills: [] },
-            { category: "Creative Dev", icon: Sparkles, skills: [] },
-            { category: "Backend & Cloud", icon: Server, skills: [] },
-            { category: "AI & Emerging Tech", icon: Cpu, skills: [] },
-          ];
+        staticSkills.forEach((s) => {
+          let targetCat = 0;
+          if (s.category === 'Frontend') targetCat = 0;
+          else if (s.category === 'Design') targetCat = 1;
+          else if (s.category === 'Backend' || s.category === 'DevOps') targetCat = 2;
+          else if (s.category === 'Tools') targetCat = 3;
 
-          skills.forEach((s: SupabaseSkill) => {
-            let targetCat = 0;
-            if (s.category === 'Frontend') targetCat = 0;
-            else if (s.category === 'Design') targetCat = 1;
-            else if (s.category === 'Backend' || s.category === 'DevOps') targetCat = 2;
-            else if (s.category === 'Tools') targetCat = 3;
-
-            mappedData[targetCat].skills.push({
-              name: s.name,
-              level: s.proficiency,
-              icon: iconMap[s.icon_name] || "code",
-              desc: s.category
-            });
+          mappedData[targetCat].skills.push({
+            name: s.name,
+            level: s.proficiency,
+            icon: iconMap[s.icon_name] || "code",
+            desc: s.category
           });
-          setSkillData(mappedData);
-        }
+        });
+        setSkillData(mappedData);
+      }
 
-        // 2. Fetch Experience
-        const expRes = await fetch('/api/experience');
-        const exp = expRes.ok ? await expRes.json() : [];
-        if (exp.length > 0) {
-          const mapped = exp.map((e: Record<string, unknown>) => ({
-            ...e,
-            tech: Array.isArray(e.tech)
-              ? e.tech
-              : (typeof e.tech === 'string' ? JSON.parse(e.tech as string) : [])
-          }));
-          setExperienceData(mapped);
-        }
-      } catch (err) {
-        console.error('Error fetching data:', err);
+      // 2. Process Static Experience
+      if (staticExperience.length > 0) {
+        const mapped = staticExperience.map((e) => ({
+          ...e,
+          tech: Array.isArray(e.tech)
+            ? e.tech
+            : (typeof e.tech === 'string' ? JSON.parse(e.tech as string) : [])
+        }));
+        setExperienceData(mapped);
       }
     };
 
-    fetchData();
+    loadData();
   }, []);
 
   const changeModule = React.useCallback((module: string) => {
