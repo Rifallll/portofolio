@@ -18,7 +18,6 @@ type Project = {
     image_url: string;
     technologies: string[];
     year: string;
-    link: string;
     demo_url?: string;
     repo_url?: string;
     is_featured: boolean;
@@ -51,7 +50,6 @@ const ProjectsManager = () => {
                 image_url: item.image,
                 technologies: item.tech || [],
                 year: item.year,
-                link: item.link,
                 demo_url: item.demo_url,
                 repo_url: item.repo_url,
                 is_featured: item.featured
@@ -104,7 +102,6 @@ const ProjectsManager = () => {
                     ? (formData.technologies as string).split(',').map((t: string) => t.trim())
                     : [],
             year: formData.year,
-            link: formData.link,
             demo_url: formData.demo_url || null,
             repo_url: formData.repo_url || null,
             featured: formData.is_featured || false
@@ -148,7 +145,6 @@ const ProjectsManager = () => {
             image_url: "",
             technologies: [],
             year: new Date().getFullYear().toString(),
-            link: "#",
             demo_url: "",
             repo_url: "",
             is_featured: false
