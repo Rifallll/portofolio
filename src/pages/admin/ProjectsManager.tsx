@@ -238,6 +238,19 @@ const ProjectsManager = () => {
                             />
                         </div>
 
+                        <div className="flex items-center space-x-2 bg-black/30 p-3 rounded-lg border border-white/5">
+                            <input
+                                type="checkbox"
+                                id="is_featured"
+                                checked={formData.is_featured || false}
+                                onChange={e => setFormData({ ...formData, is_featured: e.target.checked })}
+                                className="w-4 h-4 rounded border-gray-300 text-cyan-600 focus:ring-cyan-500"
+                            />
+                            <label htmlFor="is_featured" className="text-sm font-medium text-slate-300 cursor-pointer">
+                                Show on Homepage (Featured)
+                            </label>
+                        </div>
+
                         <div className="space-y-2">
                             <label className="text-xs text-slate-400">Technologies (comma separated)</label>
                             <Input
