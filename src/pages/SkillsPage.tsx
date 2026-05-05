@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useRef } from "react";
-import { skillsData as staticSkills, experienceData as staticExperience } from "@/data/portfolioData";
 import { toast } from "sonner";
 import { motion, AnimatePresence, useSpring, useMotionValue } from "framer-motion";
 import { ResponsiveContainer, RadarChart, PolarGrid, PolarAngleAxis, Radar } from 'recharts';
@@ -183,6 +182,8 @@ const MODULES = {
   EDUCATION: "education"
 };
 
+import { supabase } from "@/lib/supabase";
+
 interface SkillDisplay {
   name: string;
   level: number;
@@ -288,9 +289,52 @@ const SkillsPage = () => {
   const [experienceData, setExperienceData] = useState<Experience[]>([]);
 
   useEffect(() => {
-    const loadData = () => {
-      // 1. Process Static Skills
-      if (staticSkills.length > 0) {
+    const fetchData = async () => {
+      // 1. Fetch Skills
+      const { data: skills } = await supabase.from("skills").select("*");
+      if (skills) {
+        const newSkillData = [...initialSkillData];
+        // Reset skills arrays first to avoid duplication on re-fetch if strict mode
+        newSkillData.forEach(d => d.skills = []);
+
+        skills.forEach(skill => {
+          const catIndex = newSkillData.findIndex(d => d.category === skill.category);
+          if (catIndex !== -1) {
+            newSkillData[catIndex].skills.push({
+              name: skill.name,
+              level: skill.proficiency,
+              icon: iconMap[skill.icon_name] || "code",
+              desc: `${skill.name} Development` // Or fetch desc if added to DB
+            });
+          } else {
+            // Check mapping for categories that might differ slightly or add new if needed
+            // For now we map strictly to the 4 categories defined in initialSkillData
+            // If category matches text exactly:
+            const exactMatch = newSkillData.find(d => d.category === skill.category);
+            if (exactMatch) {
+              exactMatch.skills.push({
+                name: skill.name,
+                level: skill.proficiency,
+                icon: iconMap[skill.icon_name] || "code",
+                desc: "Tech Stack"
+              });
+            } else {
+              // Fallback: Add to 'Core Engineering' or similar if unknown
+              newSkillData[0].skills.push({
+                name: skill.name,
+                level: skill.proficiency,
+                icon: iconMap[skill.icon_name] || "code",
+                desc: "Skill"
+              })
+            }
+          }
+        });
+
+        // Since Supabase might return text categories that don't match the HUD display names perfectly, 
+        // we should ideally map them or ensure Seed Data matches.
+        // Seed data uses: 'Frontend', 'Backend', 'DevOps', 'Design', 'Tools'.
+        // HUD uses: 'Core Engineering', 'Creative Dev', 'Backend & Cloud', 'AI & Emerging Tech'.
+        // Let's do a better mapping:
         const mappedData: SkillGroup[] = [
           { category: "Core Engineering", icon: Laptop, skills: [] },
           { category: "Creative Dev", icon: Sparkles, skills: [] },
@@ -298,8 +342,8 @@ const SkillsPage = () => {
           { category: "AI & Emerging Tech", icon: Cpu, skills: [] },
         ];
 
-        staticSkills.forEach((s) => {
-          let targetCat = 0;
+        skills.forEach((s: SupabaseSkill) => {
+          let targetCat = 0; // Default Core
           if (s.category === 'Frontend') targetCat = 0;
           else if (s.category === 'Design') targetCat = 1;
           else if (s.category === 'Backend' || s.category === 'DevOps') targetCat = 2;
@@ -315,19 +359,49 @@ const SkillsPage = () => {
         setSkillData(mappedData);
       }
 
-      // 2. Process Static Experience
-      if (staticExperience.length > 0) {
-        const mapped = staticExperience.map((e) => ({
-          ...e,
-          tech: Array.isArray(e.tech)
-            ? e.tech
-            : (typeof e.tech === 'string' ? JSON.parse(e.tech as string) : [])
-        }));
-        setExperienceData(mapped);
+      // 2. Fetch Experience
+      const { data: exp } = await supabase.from("experience").select("*").order("created_at", { ascending: false });
+      if (exp) {
+        setExperienceData(exp);
       }
     };
 
-    loadData();
+    fetchData();
+
+    // Realtime Subscriptions
+    const skillsSub = supabase
+      .channel('skills-changes')
+      .on(
+        'postgres_changes',
+        { event: '*', schema: 'public', table: 'skills' },
+        () => {
+          fetchData();
+        }
+      )
+      .subscribe();
+
+    const experienceSub = supabase
+      .channel('experience-changes')
+      .on(
+        'postgres_changes',
+        { event: '*', schema: 'public', table: 'experience' },
+        (payload) => {
+          // For experience it's linear list, we could do optimistic, but re-fetch is consistent.
+          if (payload.eventType === 'INSERT') {
+            setExperienceData(prev => [payload.new as Experience, ...prev]);
+          } else if (payload.eventType === 'UPDATE') {
+            setExperienceData(prev => prev.map(item => item.id === payload.new.id ? (payload.new as Experience) : item));
+          } else if (payload.eventType === 'DELETE') {
+            setExperienceData(prev => prev.filter(item => item.id !== (payload.old as Experience).id));
+          }
+        }
+      )
+      .subscribe();
+
+    return () => {
+      skillsSub.unsubscribe();
+      experienceSub.unsubscribe();
+    };
   }, []);
 
   const changeModule = React.useCallback((module: string) => {

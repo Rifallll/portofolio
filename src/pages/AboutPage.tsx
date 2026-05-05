@@ -10,7 +10,12 @@ import { DecryptText } from "@/components/ui/DecryptText";
 
 const NOISE_PATTERN = "data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E";
 
-import { experienceData as staticExperience } from "@/data/portfolioData";// Removed static experiences data
+// --- REAL DATA FROM CV ---
+
+// --- REAL DATA FROM CV ---
+import { supabase } from "@/lib/supabase";
+
+// Removed static experiences data
 interface Experience {
   role: string;
   company: string;
@@ -228,7 +233,33 @@ const AboutPage = () => {
   const [experiences, setExperiences] = useState<Experience[]>(initialExperiences);
 
   React.useEffect(() => {
-    setExperiences(staticExperience);
+    const fetchExperiences = async () => {
+      const { data } = await supabase
+        .from("experience")
+        .select("*")
+        .order("created_at", { ascending: false });
+
+      if (data && data.length > 0) {
+        setExperiences(data);
+      }
+    };
+    fetchExperiences();
+
+    // Realtime Subscription
+    const subscription = supabase
+      .channel('experience-changes')
+      .on(
+        'postgres_changes',
+        { event: '*', schema: 'public', table: 'experience' },
+        () => {
+          fetchExperiences();
+        }
+      )
+      .subscribe();
+
+    return () => {
+      subscription.unsubscribe();
+    };
   }, []);
 
   return (

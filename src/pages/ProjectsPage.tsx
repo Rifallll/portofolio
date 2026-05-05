@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { projectsData as staticProjects } from "@/data/portfolioData";
+import { supabase } from "@/lib/supabase";
 import { motion, AnimatePresence } from "framer-motion";
 import Footer from "@/components/Footer";
 import { Link } from "react-router-dom";
@@ -38,21 +38,43 @@ const ProjectsPage = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Simulasi loading sebentar agar transisi smooth
-    const loadData = () => {
-      const mappedData = staticProjects.map((item) => ({
-        ...item,
-        description: item.desc,
-        image_url: item.image,
-        is_featured: Boolean(item.featured),
-        technologies: Array.isArray(item.tech)
-          ? item.tech
-          : (typeof item.tech === 'string' ? JSON.parse(item.tech) : [])
-      }));
-      setProjectsData(mappedData);
+    const fetchProjects = async () => {
+      const { data, error } = await supabase
+        .from("projects")
+        .select("*")
+        .order("id", { ascending: false });
+
+      if (data) {
+        const mappedData = data.map(item => ({
+          ...item,
+          description: item.desc,         // Map desc -> description
+          image_url: item.image,          // Map image -> image_url
+          is_featured: item.featured,     // Map featured -> is_featured
+          technologies: item.tech || []   // Map tech -> technologies
+        }));
+        setProjectsData(mappedData);
+      }
       setLoading(false);
     };
-    loadData();
+
+    fetchProjects();
+
+    // Realtime Subscription
+    const subscription = supabase
+      .channel('projects-changes')
+      .on(
+        'postgres_changes',
+        { event: '*', schema: 'public', table: 'projects' },
+        () => {
+          toast.success("Project list updated!", { duration: 2000 });
+          fetchProjects();
+        }
+      )
+      .subscribe();
+
+    return () => {
+      subscription.unsubscribe();
+    };
   }, []);
 
   const [activeCategory, setActiveCategory] = useState("All");

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
+import { toast } from "sonner";
+import { supabase } from "@/lib/supabase";
 import CertificateCard from "./CertificateCard";
-import { certificatesData as staticCertificates } from "@/data/portfolioData";
 import { motion, AnimatePresence, LayoutGroup } from "framer-motion";
 import { Shield, Database, LayoutGrid, Terminal } from "lucide-react";
 
@@ -22,9 +23,35 @@ const CertificatesSection = () => {
   const [activeCategory, setActiveCategory] = useState("All");
 
   useEffect(() => {
-    setCertificatesData(staticCertificates);
-    const uniqueCats = Array.from(new Set(staticCertificates.map((c) => c.category as string)));
-    setCategories(["All", ...uniqueCats]);
+    const fetchCertificates = async () => {
+      const { data, error } = await supabase.from('certificates').select('*').order('id', { ascending: false });
+      if (data) {
+        setCertificatesData(data);
+        // Extract unique categories
+        const uniqueCats = Array.from(new Set(data.map(c => c.category)));
+        setCategories(["All", ...uniqueCats]);
+      }
+    };
+    fetchCertificates();
+
+    // Realtime Subscription
+    const subscription = supabase
+      .channel('certificates-changes')
+      .on(
+        'postgres_changes',
+        { event: '*', schema: 'public', table: 'certificates' },
+        (payload) => {
+          (payload) => {
+            toast.success("Certificates registry updated");
+            fetchCertificates();
+          }
+        }
+      )
+      .subscribe();
+
+    return () => {
+      subscription.unsubscribe();
+    };
   }, []);
   const [showAllCertificates, setShowAllCertificates] = useState(false);
 
