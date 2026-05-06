@@ -3,7 +3,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Waves } from "lucide-react";
+import { ArrowRight, Download } from "lucide-react";
 import ScrollDownIndicator from "./ScrollDownIndicator";
 
 const HeroSection = () => {
@@ -72,9 +72,12 @@ const HeroSection = () => {
               <Button
                 variant="outline"
                 className="border-2 border-cyan-400/50 text-cyan-300 hover:bg-cyan-400/10 hover:border-cyan-300 px-8 py-6 text-lg rounded-full backdrop-blur-sm transition-all duration-300"
+                asChild
               >
-                <Waves className="mr-2 w-5 h-5" />
-                <span>Explore Skills</span>
+                <a href="/Rifal Azhar Permana.CV.pdf" download="Rifal Azhar Permana.CV.pdf">
+                  <Download className="mr-2 w-5 h-5" />
+                  <span>Download CV</span>
+                </a>
               </Button>
             </div>
           </motion.div>

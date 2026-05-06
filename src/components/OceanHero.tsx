@@ -147,13 +147,24 @@ const OceanHero = () => {
                             </Link>
 
                             {cvUrl && (
-                                <button
-                                    onClick={() => setShowCVModal(true)}
-                                    className="px-8 py-4 rounded-full border border-white/10 glass hover:bg-white/5 transition-colors flex items-center gap-2"
-                                >
-                                    <Download className="w-5 h-5" />
-                                    View CV
-                                </button>
+                                <div className="flex flex-wrap gap-3">
+                                    <button
+                                        onClick={() => setShowCVModal(true)}
+                                        className="px-8 py-4 rounded-full border border-white/10 glass hover:bg-white/5 transition-colors flex items-center gap-2"
+                                    >
+                                        View CV
+                                    </button>
+                                    <a
+                                        href={cvUrl}
+                                        download="Rifal_Azhar_Permana_CV.pdf"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="px-8 py-4 rounded-full border border-cyan-500/50 bg-cyan-500/10 hover:bg-cyan-500/20 transition-colors flex items-center gap-2 text-white font-medium"
+                                    >
+                                        <Download className="w-5 h-5" />
+                                        Download CV
+                                    </a>
+                                </div>
                             )}
                         </div>
 

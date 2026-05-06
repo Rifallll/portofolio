@@ -131,18 +131,33 @@ const SkillsManager = () => {
                             </div>
                             <div className="space-y-2">
                                 <label className="text-xs text-slate-400">Category</label>
-                                <select
-                                    value={formData.category}
-                                    onChange={e => setFormData({ ...formData, category: e.target.value })}
-                                    className="w-full bg-black/50 border border-white/10 rounded-md p-2 text-sm text-white focus:outline-none focus:border-cyan-500"
-                                >
-                                    <option value="Frontend">Frontend</option>
-                                    <option value="Backend">Backend</option>
-                                    <option value="Tools">Tools</option>
-                                    <option value="Design">Design</option>
-                                    <option value="DevOps">DevOps</option>
-                                    <option value="Soft Skills">Soft Skills</option>
-                                </select>
+                                <div className="space-y-2">
+                                    <select
+                                        value={["Frontend", "Backend", "Tools", "Design", "DevOps", "Soft Skills"].includes(formData.category || "") ? formData.category : "Custom"}
+                                        onChange={e => {
+                                            const val = e.target.value;
+                                            if (val !== "Custom") setFormData({ ...formData, category: val });
+                                            else setFormData({ ...formData, category: "" });
+                                        }}
+                                        className="w-full bg-black/50 border border-white/10 rounded-md p-2 text-sm text-white focus:outline-none focus:border-cyan-500"
+                                    >
+                                        <option value="Frontend">Frontend</option>
+                                        <option value="Backend">Backend</option>
+                                        <option value="Tools">Tools</option>
+                                        <option value="Design">Design</option>
+                                        <option value="DevOps">DevOps</option>
+                                        <option value="Soft Skills">Soft Skills</option>
+                                        <option value="Custom">Custom / Other...</option>
+                                    </select>
+                                    {(!["Frontend", "Backend", "Tools", "Design", "DevOps", "Soft Skills"].includes(formData.category || "")) && (
+                                        <Input
+                                            placeholder="Enter custom category..."
+                                            value={formData.category}
+                                            onChange={e => setFormData({ ...formData, category: e.target.value })}
+                                            className="bg-black/50 border-cyan-500/50"
+                                        />
+                                    )}
+                                </div>
                             </div>
                             <div className="space-y-2">
                                 <label className="text-xs text-slate-400">Proficiency (0-100)</label>

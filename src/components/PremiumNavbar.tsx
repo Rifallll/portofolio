@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Link, useLocation } from 'react-router-dom';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { Menu, X, Waves, User, Code, FolderOpen, Award, Mail, Download } from 'lucide-react';
 import WeatherWidget from './WeatherWidget';
 import Magnetic from './Magnetic';
@@ -9,7 +10,7 @@ import useSciFiSound from '@/hooks/use-sound';
 const PremiumNavbar = () => {
     const [scrolled, setScrolled] = useState(false);
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-    const location = useLocation();
+    const pathname = usePathname();
     const { playSound } = useSciFiSound();
 
     useEffect(() => {
@@ -30,8 +31,8 @@ const PremiumNavbar = () => {
     ];
 
     const isItemActive = (path: string) => {
-        if (path === '/' && location.pathname !== '/') return false;
-        return location.pathname === path || (path !== '/' && location.pathname.startsWith(path));
+        if (path === '/' && pathname !== '/') return false;
+        return pathname === path || (path !== '/' && pathname?.startsWith(path));
     };
 
     return (
@@ -51,7 +52,7 @@ const PremiumNavbar = () => {
 
                     {/* Logo */}
                     <Magnetic strength={0.2} range={50}>
-                        <Link to="/" className="group relative flex items-center gap-3">
+                        <Link href="/" className="group relative flex items-center gap-3">
                             <div className="relative">
                                 <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-cyan-400 to-blue-600 flex items-center justify-center font-bold text-white shadow-lg shadow-cyan-500/20 group-hover:scale-110 transition-all duration-300">
                                     R
@@ -70,7 +71,7 @@ const PremiumNavbar = () => {
                         {navItems.map((item) => (
                             <Magnetic key={item.name} strength={0.2} range={40}>
                                 <Link
-                                    to={item.path}
+                                    href={item.path}
                                     onMouseEnter={() => playSound('hover')}
                                     onClick={() => playSound('click')}
                                     className="relative px-4 py-2 group flex items-center gap-2"
@@ -103,7 +104,7 @@ const PremiumNavbar = () => {
                         </div>
 
                         <Magnetic strength={0.3} range={60}>
-                            <Link to="/contact">
+                            <Link href="/contact">
                                 <motion.button
                                     onMouseEnter={() => playSound('active')}
                                     onClick={() => playSound('click')}
@@ -144,7 +145,7 @@ const PremiumNavbar = () => {
                             {navItems.map((item) => (
                                 <Link
                                     key={item.name}
-                                    to={item.path}
+                                    href={item.path}
                                     onClick={() => setMobileMenuOpen(false)}
                                     className={`px-6 py-4 rounded-2xl flex items-center justify-between transition-all ${isItemActive(item.path)
                                         ? 'bg-cyan-500/10 border border-cyan-500/30 text-white'
@@ -155,7 +156,7 @@ const PremiumNavbar = () => {
                                     {isItemActive(item.path) && <motion.div layoutId="mobile-dot" className="w-1.5 h-1.5 rounded-full bg-cyan-500 shadow-[0_0_10px_#06b6d4]" />}
                                 </Link>
                             ))}
-                            <Link to="/contact" onClick={() => setMobileMenuOpen(false)} className="mt-4">
+                            <Link href="/contact" onClick={() => setMobileMenuOpen(false)} className="mt-4">
                                 <button className="w-full py-5 bg-white text-black font-black uppercase tracking-[0.2em] text-xs rounded-2xl shadow-xl shadow-cyan-500/20">
                                     Establish Link
                                 </button>

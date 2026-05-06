@@ -97,7 +97,7 @@ const ProjectsManager = () => {
             desc: formData.description,
             image: formData.image_url,
             tech: Array.isArray(formData.technologies)
-                ? formData.technologies
+                ? formData.technologies.map((t: string) => t.trim())
                 : typeof formData.technologies === 'string'
                     ? (formData.technologies as string).split(',').map((t: string) => t.trim())
                     : [],
@@ -181,18 +181,32 @@ const ProjectsManager = () => {
                             </div>
                             <div className="space-y-2">
                                 <label className="text-xs text-slate-400">Category</label>
-                                <select
-                                    aria-label="Project Category"
-                                    value={formData.category}
-                                    onChange={e => setFormData({ ...formData, category: e.target.value })}
-                                    className="w-full bg-black/50 border border-white/10 rounded-md p-2 text-sm text-white focus:outline-none focus:border-cyan-500"
-                                >
-                                    <option value="Web Dev">Web Dev</option>
-                                    <option value="Mobile App">Mobile App</option>
-                                    <option value="Data Analytics">Data Analytics</option>
-                                    <option value="UI/UX Design">UI/UX Design</option>
-                                    <option value="Machine Learning">Machine Learning</option>
-                                </select>
+                                <div className="space-y-2">
+                                    <select
+                                        aria-label="Project Category Select"
+                                        value={["Web Dev", "Mobile App", "Data Analytics", "UI/UX Design", "Machine Learning"].includes(formData.category || "") ? formData.category : "Custom"}
+                                        onChange={e => {
+                                            const val = e.target.value;
+                                            if (val !== "Custom") setFormData({ ...formData, category: val });
+                                        }}
+                                        className="w-full bg-black/50 border border-white/10 rounded-md p-2 text-sm text-white focus:outline-none focus:border-cyan-500"
+                                    >
+                                        <option value="Web Dev">Web Dev</option>
+                                        <option value="Mobile App">Mobile App</option>
+                                        <option value="Data Analytics">Data Analytics</option>
+                                        <option value="UI/UX Design">UI/UX Design</option>
+                                        <option value="Machine Learning">Machine Learning</option>
+                                        <option value="Custom">Custom / Other...</option>
+                                    </select>
+                                    {(!["Web Dev", "Mobile App", "Data Analytics", "UI/UX Design", "Machine Learning"].includes(formData.category || "") || formData.category === "Custom") && (
+                                        <Input
+                                            placeholder="Enter custom category..."
+                                            value={formData.category === "Custom" ? "" : formData.category}
+                                            onChange={e => setFormData({ ...formData, category: e.target.value })}
+                                            className="bg-black/50 border-cyan-500/50"
+                                        />
+                                    )}
+                                </div>
                             </div>
                             <div className="space-y-2">
                                 <label className="text-xs text-slate-400">Year</label>
@@ -281,6 +295,11 @@ const ProjectsManager = () => {
                                 <div>
                                     <h3 className="font-bold text-white">{project.title}</h3>
                                     <p className="text-xs text-slate-400">{project.client} • {project.year}</p>
+                                    <div className="mt-1">
+                                        <span className="text-[10px] px-2 py-0.5 bg-cyan-500/10 text-cyan-400 border border-cyan-500/20 rounded-full font-mono">
+                                            {project.category}
+                                        </span>
+                                    </div>
                                 </div>
                             </div>
                             <div className="flex gap-2 opacity-100 md:opacity-0 group-hover:opacity-100 transition-opacity">

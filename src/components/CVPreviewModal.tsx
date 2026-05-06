@@ -1,4 +1,4 @@
-import { X } from 'lucide-react';
+import { X, Download } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 interface CVPreviewModalProps {
@@ -42,14 +42,26 @@ export default function CVPreviewModal({ cvUrl, isOpen, onClose }: CVPreviewModa
                                     <span className="text-xs text-cyan-400/60 font-mono">View Only</span>
                                 </div>
 
-                                <button
-                                    onClick={onClose}
-                                    aria-label="Close CV preview"
-                                    className="group relative p-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 hover:border-cyan-500/30 transition-all duration-300"
-                                >
-                                    <X className="w-5 h-5 text-white/60 group-hover:text-white transition-colors" />
-                                    <div className="absolute inset-0 rounded-xl bg-cyan-500/0 group-hover:bg-cyan-500/10 transition-colors" />
-                                </button>
+                                <div className="flex items-center gap-4">
+                                    <a
+                                        href={cvUrl}
+                                        download="Rifal_Azhar_Permana_CV.pdf"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="flex items-center gap-2 text-sm text-cyan-400 hover:text-cyan-300 font-medium px-4 py-2 rounded-xl bg-cyan-500/10 hover:bg-cyan-500/20 transition-colors"
+                                    >
+                                        <Download className="w-4 h-4" />
+                                        Download PDF
+                                    </a>
+                                    <button
+                                        onClick={onClose}
+                                        aria-label="Close CV preview"
+                                        className="group relative p-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 hover:border-cyan-500/30 transition-all duration-300"
+                                    >
+                                        <X className="w-5 h-5 text-white/60 group-hover:text-white transition-colors" />
+                                        <div className="absolute inset-0 rounded-xl bg-cyan-500/0 group-hover:bg-cyan-500/10 transition-colors" />
+                                    </button>
+                                </div>
                             </div>
 
                             {/* PDF Viewer Container */}
@@ -63,14 +75,7 @@ export default function CVPreviewModal({ cvUrl, isOpen, onClose }: CVPreviewModa
                                 </div>
                             </div>
 
-                            {/* Bottom Watermark */}
-                            <div className="absolute bottom-8 left-1/2 -translate-x-1/2 pointer-events-none select-none">
-                                <div className="px-6 py-2 rounded-full bg-black/40 backdrop-blur-md border border-white/10">
-                                    <p className="text-white/40 text-xs font-mono tracking-wider">
-                                        🔒 Preview Only • No Download Available
-                                    </p>
-                                </div>
-                            </div>
+                            {/* Bottom Area (Removed Preview Only limitation text) */}
                         </div>
                     </motion.div>
                 </>

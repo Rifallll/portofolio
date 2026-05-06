@@ -26,9 +26,15 @@ const CertificatesSection = () => {
     const fetchCertificates = async () => {
       const { data, error } = await supabase.from('certificates').select('*').order('id', { ascending: false });
       if (data) {
-        setCertificatesData(data);
+        const mappedData = data.map(item => ({
+          ...item,
+          issuer: item.org,
+          date: item.year,
+          link: item.credential_url
+        }));
+        setCertificatesData(mappedData);
         // Extract unique categories
-        const uniqueCats = Array.from(new Set(data.map(c => c.category)));
+        const uniqueCats = Array.from(new Set(mappedData.map(c => c.category)));
         setCategories(["All", ...uniqueCats]);
       }
     };

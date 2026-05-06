@@ -1,6 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { User } from "lucide-react";
+import { User, Download } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 const AboutHeroSection = () => {
   return (
@@ -60,6 +61,24 @@ const AboutHeroSection = () => {
           <span className="text-cyan-400 font-semibold">code</span> to create
           meaningful digital products.
         </motion.p>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.6, duration: 0.6 }}
+          className="mt-8 flex justify-center"
+        >
+          <Button
+            variant="outline"
+            className="border-2 border-cyan-500/50 text-cyan-400 hover:bg-cyan-500/10 hover:border-cyan-400 px-8 py-6 text-lg rounded-full backdrop-blur-sm transition-all duration-300"
+            asChild
+          >
+            <a href="/Rifal Azhar Permana.CV.pdf" download="Rifal Azhar Permana.CV.pdf">
+              <Download className="mr-2 w-5 h-5" />
+              <span>Download CV</span>
+            </a>
+          </Button>
+        </motion.div>
       </div>
     </section>
   );

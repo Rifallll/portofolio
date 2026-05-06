@@ -26,7 +26,7 @@ interface Project {
   link?: string;
 }
 
-const categories = ["All", "Data Analytics", "Web Dev", "UI/UX Design"];
+const categories = ["All", "Data Analytics", "Web Dev", "UI/UX Design", "Mobile App", "Machine Learning"];
 const allTech = ["All", "Python", "React", "Next.js", "SQL", "Figma", "Tableau", "TypeScript"];
 
 import { useSEO } from "@/hooks/useSEO";

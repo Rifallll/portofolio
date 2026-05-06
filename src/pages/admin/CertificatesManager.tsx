@@ -35,7 +35,17 @@ const CertificatesManager = () => {
         if (error) {
             toast.error("Failed to fetch certificates");
         } else {
-            setCertificates(data || []);
+            // Map DB fields (org, year, credential_url) to frontend state (issuer, date, link)
+            const mappedData = (data || []).map(item => ({
+                id: item.id,
+                title: item.title,
+                issuer: item.org || "",
+                date: item.year || "",
+                link: item.credential_url || "",
+                category: item.category || "Course",
+                image_url: item.image_url || ""
+            }));
+            setCertificates(mappedData);
         }
         setLoading(false);
     };
@@ -70,11 +80,21 @@ const CertificatesManager = () => {
     const handleSave = async () => {
         if (!formData.title) return toast.error("Title is required");
 
+        // Map frontend state back to DB fields
+        const payload = {
+            title: formData.title,
+            org: formData.issuer,
+            year: formData.date,
+            credential_url: formData.link,
+            category: formData.category,
+            image_url: formData.image_url
+        };
+
         if (isEditing && isEditing !== -1) {
             // UPDATE
             const { error } = await supabase
                 .from("certificates")
-                .update(formData)
+                .update(payload)
                 .eq("id", isEditing);
 
             if (error) toast.error("Update failed: " + error.message);
@@ -87,7 +107,7 @@ const CertificatesManager = () => {
             // INSERT
             const { error } = await supabase
                 .from("certificates")
-                .insert([formData]);
+                .insert([payload]);
 
             if (error) toast.error("Create failed: " + error.message);
             else {
@@ -151,20 +171,35 @@ const CertificatesManager = () => {
                                 <label className="text-xs text-slate-400">Date/Year</label>
                                 <Input value={formData.date} onChange={e => setFormData({ ...formData, date: e.target.value })} className="bg-black/50" />
                             </div>
-                            <div className="space-y-2">
-                                <label className="text-xs text-slate-400">Category</label>
-                                <select
-                                    value={formData.category}
-                                    onChange={e => setFormData({ ...formData, category: e.target.value })}
-                                    className="w-full bg-black/50 border border-white/10 rounded-md p-2 text-sm text-white focus:outline-none focus:border-cyan-500"
-                                >
-                                    <option value="Course">Course</option>
-                                    <option value="Bootcamp">Bootcamp</option>
-                                    <option value="Competition">Competition</option>
-                                    <option value="Workshop">Workshop</option>
-                                    <option value="Certification">Certification</option>
-                                </select>
-                            </div>
+                             <div className="space-y-2">
+                                 <label className="text-xs text-slate-400">Category</label>
+                                 <div className="space-y-2">
+                                     <select
+                                         value={["Course", "Bootcamp", "Competition", "Workshop", "Certification"].includes(formData.category || "") ? formData.category : "Custom"}
+                                         onChange={e => {
+                                             const val = e.target.value;
+                                             if (val !== "Custom") setFormData({ ...formData, category: val });
+                                             else setFormData({ ...formData, category: "" });
+                                         }}
+                                         className="w-full bg-black/50 border border-white/10 rounded-md p-2 text-sm text-white focus:outline-none focus:border-cyan-500"
+                                     >
+                                         <option value="Course">Course</option>
+                                         <option value="Bootcamp">Bootcamp</option>
+                                         <option value="Competition">Competition</option>
+                                         <option value="Workshop">Workshop</option>
+                                         <option value="Certification">Certification</option>
+                                         <option value="Custom">Custom / Other...</option>
+                                     </select>
+                                     {(!["Course", "Bootcamp", "Competition", "Workshop", "Certification"].includes(formData.category || "")) && (
+                                         <Input
+                                             placeholder="Enter custom category..."
+                                             value={formData.category}
+                                             onChange={e => setFormData({ ...formData, category: e.target.value })}
+                                             className="bg-black/50 border-cyan-500/50"
+                                         />
+                                     )}
+                                 </div>
+                             </div>
                         </div>
 
                         <div className="flex gap-2 justify-end pt-4">
