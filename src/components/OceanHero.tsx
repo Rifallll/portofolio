@@ -103,10 +103,9 @@ const OceanHero = () => {
                                 <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-cyan-400 opacity-75"></span>
                                 <span className="relative inline-flex h-3 w-3 rounded-full bg-cyan-500"></span>
                             </div>
-                            <span className="text-cyan-400 font-mono text-sm tracking-widest uppercase">Available for Hire</span>
+                            <span className="text-cyan-400 font-mono text-sm tracking-widest uppercase">Available for Hire · Data Analyst</span>
                         </div>
 
-                        {/* Mega Title with Text Gradient */}
                         {/* Mega Title with Text Gradient */}
                         <motion.h1
                             initial={{ opacity: 0, y: 20 }}
@@ -115,10 +114,10 @@ const OceanHero = () => {
                             className="text-5xl md:text-8xl lg:text-9xl font-serif font-black leading-none tracking-tighter"
                         >
                             <span className="block text-transparent bg-clip-text bg-gradient-to-r from-white via-cyan-100 to-white drop-shadow-[0_0_30px_rgba(255,255,255,0.3)]">
-                                <DecryptText text="Creative" />
+                                <DecryptText text="Data" />
                             </span>
                             <span className="block text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-400 drop-shadow-[0_0_30px_rgba(34,211,238,0.3)]">
-                                <DecryptText text="Technologist" speed={40} />
+                                <DecryptText text="Analyst" speed={40} />
                             </span>
                         </motion.h1>
 
@@ -128,7 +127,7 @@ const OceanHero = () => {
                             transition={{ delay: 0.5, duration: 0.8 }}
                             className="text-base md:text-2xl text-cyan-100/70 max-w-2xl mx-auto leading-relaxed px-4 my-8"
                         >
-                            Exploring the intersection of <span className="text-cyan-300 font-semibold">Code</span>, <span className="text-purple-300 font-semibold">Design</span>, and <span className="text-blue-300 font-semibold">Data</span> to build immersive digital experiences.
+                            Turning raw data into <span className="text-cyan-300 font-semibold">actionable insights</span> with <span className="text-purple-300 font-semibold">SQL</span>, <span className="text-blue-300 font-semibold">Python</span>, and <span className="text-cyan-300 font-semibold">Data Visualization</span> — backed by strong web development skills.
                         </motion.p>
 
                         {/* CTA Buttons */}
@@ -179,7 +178,7 @@ const OceanHero = () => {
 
                         {/* Floating Tech Stack */}
                         <div className="flex gap-6 pt-8 opacity-60 grayscale hover:grayscale-0 transition-all duration-500">
-                            {['Python', 'SQL', 'React', 'Next.js', 'Data Science'].map((tech) => (
+                            {['Python', 'SQL', 'Tableau', 'Power BI', 'Pandas'].map((tech) => (
                                 <span key={tech} className="text-sm font-mono text-slate-500 border-b border-white/10 pb-1">{tech}</span>
                             ))}
                         </div>
@@ -218,23 +217,27 @@ const OceanHero = () => {
                                     <Code2 className="w-12 h-12 text-white/10" />
                                 </div>
 
-                                {/* Code Snippet Decoration */}
-                                <div className="space-y-2 font-mono text-sm opacity-60 my-8">
+                                {/* SQL Snippet Decoration */}
+                                <div className="space-y-1 font-mono text-sm opacity-60 my-8">
                                     <div className="flex gap-2">
-                                        <span className="text-purple-400">const</span>
-                                        <span className="text-yellow-200">profile</span>
-                                        <span className="text-white">=</span>
-                                        <span className="text-white">{`{`}</span>
+                                        <span className="text-purple-400">SELECT</span>
+                                        <span className="text-cyan-300">insight,</span>
                                     </div>
                                     <div className="pl-4 flex gap-2">
-                                        <span className="text-cyan-300">name:</span>
-                                        <span className="text-green-300">'Rifal Azhar Permana'</span>,
+                                        <span className="text-cyan-300">AVG</span><span className="text-white">(revenue)</span><span className="text-cyan-300"> AS avg_rev</span>
                                     </div>
-                                    <div className="pl-4 flex gap-2">
-                                        <span className="text-cyan-300">role:</span>
-                                        <span className="text-white">['Data Analyst', 'Web Dev']</span>
+                                    <div className="flex gap-2">
+                                        <span className="text-purple-400">FROM</span>
+                                        <span className="text-green-300">sales_data</span>
                                     </div>
-                                    <div className="text-white">{`}`}</div>
+                                    <div className="flex gap-2">
+                                        <span className="text-purple-400">WHERE</span>
+                                        <span className="text-yellow-200">year</span><span className="text-white"> = 2024</span>
+                                    </div>
+                                    <div className="flex gap-2">
+                                        <span className="text-purple-400">GROUP BY</span>
+                                        <span className="text-cyan-300">segment;</span>
+                                    </div>
                                 </div>
 
                                 {/* Card Footer */}
@@ -244,7 +247,7 @@ const OceanHero = () => {
                                         <span className="text-sm tracking-widest uppercase">Portfolio 2024</span>
                                     </div>
                                     <h2 className="text-3xl font-bold text-white">
-                                        Full Stack<br />Wizardry
+                                        Data-Driven<br />Insights
                                     </h2>
                                 </div>
                             </div>

@@ -13,9 +13,9 @@ const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://portofolio-nine-opa
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
-  title: "Rifal Azhar | Creative Developer & Data Analyst",
-  description: "Portfolio of Rifal Azhar Permana. A Creative Technologist blending Data Science with High-End Web Development.",
-  keywords: ["Rifal Azhar", "Web Developer", "Data Analyst", "React", "Creative Developer", "Portfolio"],
+  title: "Rifal Azhar | Data Analyst & Web Developer",
+  description: "Portfolio of Rifal Azhar Permana — Data Analyst skilled in SQL, Python (Pandas), Tableau, Power BI, and data visualization. Also builds modern web apps with React & Next.js.",
+  keywords: ["Rifal Azhar", "Data Analyst", "SQL", "Python", "Pandas", "Tableau", "Power BI", "Web Developer", "Data Visualization", "Portfolio"],
   authors: [{ name: "Rifal Azhar Permana" }],
   themeColor: "#000000",
   robots: "index, follow, max-image-preview:large",

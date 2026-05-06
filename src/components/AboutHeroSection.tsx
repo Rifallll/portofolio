@@ -46,8 +46,8 @@ const AboutHeroSection = () => {
           transition={{ delay: 0.3, duration: 0.6 }}
           className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight"
         >
-          <span className="block text-white">Building</span>
-          <span className="block text-gradient-ocean">Digital Experiences</span>
+          <span className="block text-white">Data Analyst &</span>
+          <span className="block text-gradient-ocean">Web Developer</span>
         </motion.h1>
 
         <motion.p
@@ -56,10 +56,9 @@ const AboutHeroSection = () => {
           transition={{ delay: 0.5, duration: 0.6 }}
           className="text-xl md:text-2xl text-foreground/70 max-w-3xl mx-auto leading-relaxed"
         >
-          A creative technologist passionate about blending{" "}
-          <span className="text-cyan-400 font-semibold">design</span> and{" "}
-          <span className="text-cyan-400 font-semibold">code</span> to create
-          meaningful digital products.
+          Passionate about transforming raw data into{" "}
+          <span className="text-cyan-400 font-semibold">actionable business insights</span> using{" "}
+          <span className="text-cyan-400 font-semibold">SQL, Python & visualization tools</span> — while building the interfaces to present them beautifully.
         </motion.p>
 
         <motion.div

@@ -5,6 +5,7 @@ import OceanHero from "@/components/OceanHero";
 import AboutHeroSection from "@/components/AboutHeroSection";
 import TechStackSection from "@/components/TechStackSection";
 import SkillsSection from "@/components/SkillsSection";
+import DataProjectsSection from "@/components/DataProjectsSection";
 import { motion } from "framer-motion";
 
 // Lazy load heavy sections
@@ -25,6 +26,7 @@ export default function Home() {
       <TechStackSection />
       <AboutHeroSection />
       <SkillsSection />
+      <DataProjectsSection />
 
       <Suspense fallback={<div className="h-96 flex items-center justify-center text-cyan-500 font-mono">LOADING_MODULE...</div>}>
         <FeaturedProjectsSection />
