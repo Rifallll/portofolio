@@ -202,8 +202,8 @@ export default function AboutPage() {
             About <span className="text-slate-500"><DecryptText text="Me." revealDirection="end" /></span>
           </h1>
           <p className="text-xl text-slate-400 max-w-3xl">
-            Deeply rooted in Computer Engineering with a proven track record in Digital Media Strategy.
-            I bridge the gap between <span className="text-white">Data Analytics</span> and <span className="text-white">Creative Development</span>.
+            Data Analyst & Computer Engineering student at Telkom University — turning messy datasets into
+            <span className="text-white"> clear business decisions</span> using <span className="text-cyan-400">SQL</span>, <span className="text-cyan-400">Python</span>, and <span className="text-cyan-400">interactive dashboards</span>. Also builds the web to present it all.
           </p>
         </div>
 
@@ -220,24 +220,24 @@ export default function AboutPage() {
               <h2 className="text-3xl font-bold text-white mb-2">Rifal Azhar Permana</h2>
               <p className="text-cyan-400 font-mono text-sm mb-4">DATA_ANALYST && WEB_DEV</p>
               <p className="text-slate-400 leading-relaxed text-sm">
-                As a Computer Engineering student at Telkom University, I combine technical hard skills
-                in Python & Web Dev with strategic expertise in Digital Marketing.
-                I build solutions that are both communicative and analytically driven.
+                Computer Engineering student at Telkom University, specializing in <strong className="text-white">data analysis & visualization</strong>.
+                I work with SQL, Python (Pandas, Matplotlib, Seaborn), and BI tools to extract insights from data —
+                then build web interfaces to present them clearly to stakeholders.
               </p>
             </div>
           </BentoItem>
 
           <BentoItem className="p-0 bg-gradient-to-br from-slate-900 to-[#0A0A0A]">
             <div className="flex flex-col justify-center items-center h-full w-full p-4">
-              <div className="text-3xl font-bold text-green-400 mb-1">+150%</div>
-              <div className="text-[10px] text-slate-500 uppercase tracking-widest font-bold">Engagement Growth</div>
+              <div className="text-3xl font-bold text-green-400 mb-1">+23%</div>
+              <div className="text-[10px] text-slate-500 uppercase tracking-widest font-bold">Revenue Insight Found</div>
             </div>
           </BentoItem>
 
           <BentoItem className="p-0 bg-gradient-to-br from-slate-900 to-[#0A0A0A]">
             <div className="flex flex-col justify-center items-center h-full w-full p-4">
-              <div className="text-3xl font-bold text-white mb-1">10+</div>
-              <div className="text-[10px] text-slate-500 uppercase tracking-widest font-bold">Data Campaigns</div>
+              <div className="text-3xl font-bold text-white mb-1">3+</div>
+              <div className="text-[10px] text-slate-500 uppercase tracking-widest font-bold">Data Projects</div>
             </div>
           </BentoItem>
 
@@ -302,9 +302,25 @@ export default function AboutPage() {
             </div>
             <div className="space-y-4">
               <div>
-                <h4 className="text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">Technical Core</h4>
+                <h4 className="text-xs font-bold text-cyan-500 uppercase tracking-wider mb-2">📊 Data Analysis</h4>
+                <div className="flex flex-wrap gap-2 mb-4">
+                  {["SQL", "Python", "Pandas", "Matplotlib", "Seaborn", "EDA", "Data Cleaning"].map((tech, i) => (
+                    <span key={i} className="px-3 py-1 rounded-md bg-cyan-500/10 text-xs text-cyan-300 border border-cyan-500/20">
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+                <h4 className="text-xs font-bold text-purple-400 uppercase tracking-wider mb-2">📈 BI & Visualization</h4>
+                <div className="flex flex-wrap gap-2 mb-4">
+                  {["Tableau", "Power BI", "Google Looker Studio", "Recharts"].map((tech, i) => (
+                    <span key={i} className="px-3 py-1 rounded-md bg-purple-500/10 text-xs text-purple-300 border border-purple-500/20">
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+                <h4 className="text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">💻 Development</h4>
                 <div className="flex flex-wrap gap-2">
-                  {["Python", "SQL", "Web Scraping", "HTML/CSS", "Figma", "WordPress"].map((tech, i) => (
+                  {["React", "Next.js", "TypeScript", "Supabase", "Git"].map((tech, i) => (
                     <span key={i} className="px-3 py-1 rounded-md bg-white/5 text-xs text-slate-300 border border-white/5">
                       {tech}
                     </span>
@@ -336,9 +352,9 @@ export default function AboutPage() {
           <div className="mt-12 p-1 rounded-3xl bg-gradient-to-r from-cyan-500/20 via-blue-500/20 to-purple-500/20">
             <div className="p-8 rounded-[22px] bg-[#0A0A0A] flex flex-col md:flex-row items-center justify-between gap-6 relative overflow-hidden group">
               <div className="text-center md:text-left relative z-10">
-                <h2 className="text-3xl font-bold text-white mb-2">Ready to optimize your data?</h2>
+                <h2 className="text-3xl font-bold text-white mb-2">Need a Data Analyst?</h2>
                 <p className="text-slate-400 mb-4 md:mb-0">
-                  Proven track record with <span className="text-green-400 font-bold">100% Client Satisfaction</span>.
+                  Skilled in <span className="text-cyan-400 font-bold">SQL · Python · Tableau · Power BI</span> — ready to turn your data into decisions.
                 </p>
               </div>
               <div className="flex gap-4 relative z-10">
