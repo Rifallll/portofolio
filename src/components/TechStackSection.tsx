@@ -2,17 +2,17 @@ import React from "react";
 import { motion } from "framer-motion";
 
 const techStack = [
-    { name: "React", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg", color: "shadow-cyan-500/20" },
-    { name: "TypeScript", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg", color: "shadow-blue-500/20" },
-    { name: "Next.js", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg", color: "shadow-white/10" },
-    { name: "Tailwind CSS", icon: "https://upload.wikimedia.org/wikipedia/commons/d/d5/Tailwind_CSS_Logo.svg", color: "shadow-cyan-400/20" },
-    { name: "Node.js", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg", color: "shadow-green-500/20" },
-    { name: "PostgreSQL", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg", color: "shadow-blue-600/20" },
-    { name: "Framer Motion", icon: "https://cdn.worldvectorlogo.com/logos/framer-motion.svg", color: "shadow-purple-500/20" },
-    { name: "Git", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg", color: "shadow-orange-500/20" },
-    { name: "Three.js", icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/threejs/threejs-original.svg", color: "shadow-white/20" },
-    { name: "Python", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg", color: "shadow-yellow-500/20" },
-    { name: "Vite", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vitejs/vitejs-original.svg", color: "shadow-purple-400/20" },
+    { name: "React", icon: "/icons/react.svg", color: "shadow-cyan-500/20" },
+    { name: "TypeScript", icon: "/icons/typescript.svg", color: "shadow-blue-500/20" },
+    { name: "Next.js", icon: "/icons/nextjs.svg", color: "shadow-white/10" },
+    { name: "Tailwind CSS", icon: "/icons/tailwind.svg", color: "shadow-cyan-400/20" },
+    { name: "Node.js", icon: "/icons/nodejs.svg", color: "shadow-green-500/20" },
+    { name: "PostgreSQL", icon: "/icons/postgresql.svg", color: "shadow-blue-600/20" },
+    { name: "Framer Motion", icon: "/icons/framer.svg", color: "shadow-purple-500/20" },
+    { name: "Git", icon: "/icons/git.svg", color: "shadow-orange-500/20" },
+    { name: "Three.js", icon: "/icons/threejs.svg", color: "shadow-white/20" },
+    { name: "Python", icon: "/icons/python.svg", color: "shadow-yellow-500/20" },
+    { name: "Vite", icon: "/icons/vite.svg", color: "shadow-purple-400/20" },
 ];
 
 const TechStackSection = () => {
@@ -66,7 +66,6 @@ const TechStackSection = () => {
                                             src={tech.icon}
                                             alt={tech.name}
                                             loading="lazy"
-                                            referrerPolicy="no-referrer"
                                             className="w-full h-full object-contain filter grayscale group-hover/item:grayscale-0 transition-all duration-300"
                                         />
                                     </div>
