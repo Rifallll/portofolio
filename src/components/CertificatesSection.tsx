@@ -116,22 +116,32 @@ const CertificatesSection = () => {
           </div>
 
           {/* Precision Navigation / Filter */}
-          <div className="flex flex-wrap justify-center md:justify-start items-center gap-2 md:gap-4 mb-12 md:mb-16 w-full">
-            {categories.map((cat) => (
-              <button
-                key={cat}
-                onClick={() => {
-                  setActiveCategory(cat);
-                  setShowAllCertificates(false);
-                }}
-                className={`px-4 py-2 md:px-8 md:py-3 rounded-md text-[8px] md:text-[10px] font-black uppercase tracking-[0.25em] transition-all duration-500 border ${activeCategory === cat
-                  ? "bg-white text-black border-white shadow-[0_10px_25px_rgba(255,255,255,0.1)] scale-105"
-                  : "bg-white/[0.02] text-slate-500 border-white/5 hover:border-white/10 hover:text-white"
-                  }`}
-              >
-                {cat}
-              </button>
-            ))}
+          <div className="relative w-full max-w-[100vw] overflow-hidden -mx-4 px-4 md:mx-0 md:px-0 mb-12 md:mb-16">
+            <div 
+              className="flex md:flex-wrap overflow-x-auto gap-3 md:gap-4 pb-4 md:pb-0 snap-x"
+              style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+            >
+              <style>{`
+                div::-webkit-scrollbar { display: none; }
+              `}</style>
+              {categories.map((cat) => (
+                <button
+                  key={cat}
+                  onClick={() => {
+                    setActiveCategory(cat);
+                    setShowAllCertificates(false);
+                  }}
+                  className={`snap-start shrink-0 px-6 py-3 md:px-8 md:py-3 rounded-md text-[10px] font-black uppercase tracking-[0.2em] transition-all duration-500 border ${activeCategory === cat
+                    ? "bg-white text-black border-white shadow-[0_10px_25px_rgba(255,255,255,0.15)]"
+                    : "bg-white/[0.02] text-slate-500 border-white/5 hover:border-white/10 hover:text-white"
+                    }`}
+                >
+                  {cat}
+                </button>
+              ))}
+            </div>
+            {/* Fade effect for scroll indication on mobile */}
+            <div className="absolute top-0 right-0 bottom-4 w-12 bg-gradient-to-l from-[#050505] to-transparent pointer-events-none md:hidden" />
           </div>
 
           {/* The Monolith Grid - Perfect Alignment */}
