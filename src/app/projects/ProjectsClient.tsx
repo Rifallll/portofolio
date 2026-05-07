@@ -67,20 +67,28 @@ export default function ProjectsPage() {
             </p>
           </motion.div>
 
-          <div className="flex flex-wrap gap-3">
-            {categories.map((cat) => (
-              <button
-                key={cat}
-                onClick={() => setActiveCategory(cat)}
-                className={`px-6 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider transition-all duration-300 border ${
-                  activeCategory === cat 
-                    ? "bg-gradient-to-r from-cyan-400 to-blue-500 border-transparent text-black shadow-[0_0_20px_rgba(6,182,212,0.3)]" 
-                    : "bg-[#0f172a]/50 border-white/10 text-slate-400 hover:text-white hover:border-white/30 hover:bg-white/5"
-                }`}
-              >
-                {cat}
-              </button>
-            ))}
+          <div className="relative w-full max-w-[100vw] overflow-hidden -mx-4 px-4 md:mx-0 md:px-0">
+            <div 
+              className="flex md:flex-wrap overflow-x-auto gap-3 pb-4 md:pb-0 snap-x"
+              style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+            >
+              <style>{`
+                div::-webkit-scrollbar { display: none; }
+              `}</style>
+              {categories.map((cat) => (
+                <button
+                  key={cat}
+                  onClick={() => setActiveCategory(cat)}
+                  className={`snap-start shrink-0 px-6 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider transition-all duration-300 border ${
+                    activeCategory === cat 
+                      ? "bg-gradient-to-r from-cyan-400 to-blue-500 border-transparent text-black shadow-[0_0_20px_rgba(6,182,212,0.3)]" 
+                      : "bg-[#0f172a]/50 border-white/10 text-slate-400 hover:text-white hover:border-white/30 hover:bg-white/5"
+                  }`}
+                >
+                  {cat}
+                </button>
+              ))}
+            </div>
           </div>
         </div>
 
