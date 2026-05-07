@@ -67,12 +67,16 @@ export default function ProjectsPage() {
             </p>
           </motion.div>
 
-          <div className="flex flex-wrap gap-2 bg-white/5 p-2 rounded-2xl border border-white/10 backdrop-blur-md">
+          <div className="flex flex-wrap gap-3">
             {categories.map((cat) => (
               <button
                 key={cat}
                 onClick={() => setActiveCategory(cat)}
-                className={`px-6 py-3 rounded-xl text-sm font-medium transition-all ${activeCategory === cat ? "bg-cyan-400 text-black font-bold" : "text-slate-400 hover:text-white"}`}
+                className={`px-6 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider transition-all duration-300 border ${
+                  activeCategory === cat 
+                    ? "bg-gradient-to-r from-cyan-400 to-blue-500 border-transparent text-black shadow-[0_0_20px_rgba(6,182,212,0.3)]" 
+                    : "bg-[#0f172a]/50 border-white/10 text-slate-400 hover:text-white hover:border-white/30 hover:bg-white/5"
+                }`}
               >
                 {cat}
               </button>
