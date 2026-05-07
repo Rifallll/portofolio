@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { ArrowRight, ExternalLink, Github, Waves, Anchor, Ship } from "lucide-react";
-import { Link } from "react-router-dom";
+import Link from "next/link";
 import { toast } from "sonner";
 import { supabase } from "@/lib/supabase";
 
@@ -93,7 +93,7 @@ const FeaturedProjectsSection = () => {
                         </p>
                     </motion.div>
 
-                    <Link to="/projects">
+                    <Link href="/projects">
                         <motion.button
                             initial={{ opacity: 0, scale: 0.8 }}
                             whileInView={{ opacity: 1, scale: 1 }}

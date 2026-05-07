@@ -4,7 +4,7 @@ import React from "react";
 import { Github, Linkedin, Twitter, Instagram, ArrowUp } from "lucide-react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { Link } from "react-router-dom";
+import Link from "next/link";
 
 const Footer = () => {
   const scrollToTop = () => {
@@ -92,7 +92,7 @@ const Footer = () => {
           <div className="flex space-x-6 mt-4 md:mt-0">
             <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
             <a href="#" className="hover:text-white transition-colors">Terms of Service</a>
-            <Link to="/admin/login" className="hover:text-cyan-400 transition-colors opacity-50 hover:opacity-100">Admin Portal</Link>
+            <Link href="/admin/login" className="hover:text-cyan-400 transition-colors opacity-50 hover:opacity-100">Admin Portal</Link>
           </div>
         </div>
       </div>

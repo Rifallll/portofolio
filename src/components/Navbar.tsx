@@ -5,7 +5,8 @@ import { Button } from "@/components/ui/button";
 import { Menu, Download } from "lucide-react";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { Link, NavLink, useLocation } from "react-router-dom";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import ResumeModal from "./ResumeModal";
 import { cn } from "@/lib/utils";
 import {
@@ -17,7 +18,7 @@ import {
 
 const Navbar = () => {
   const isMobile = useIsMobile();
-  const location = useLocation();
+  const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
@@ -48,7 +49,7 @@ const Navbar = () => {
     >
       <div className="mx-auto flex items-center justify-between max-w-7xl">
         {/* Logo/Name */}
-        <Link to="/" className="text-2xl md:text-3xl font-serif font-bold tracking-tight">
+        <Link href="/" className="text-2xl md:text-3xl font-serif font-bold tracking-tight">
           <span className="text-gradient-gold">Rifal Azhar Permana</span>
         </Link>
 
@@ -64,18 +65,16 @@ const Navbar = () => {
             <SheetContent side="right" className="bg-background/95 backdrop-blur-xl border-l border-white/10 w-[300px]">
               <div className="flex flex-col space-y-6 pt-12 items-center">
                 {navItems.map((item) => (
-                  <NavLink
+                  <Link
                     key={item.path}
-                    to={item.path}
-                    className={({ isActive }) =>
-                      cn(
-                        "text-lg font-medium transition-all duration-300 hover:text-primary hover:tracking-wider",
-                        isActive ? "text-primary font-bold" : "text-foreground/80"
-                      )
-                    }
+                    href={item.path}
+                    className={cn(
+                      "text-lg font-medium transition-all duration-300 hover:text-primary hover:tracking-wider",
+                      pathname === item.path ? "text-primary font-bold" : "text-foreground/80"
+                    )}
                   >
                     {item.name}
-                  </NavLink>
+                  </Link>
                 ))}
                 <div className="pt-8">
                   <ResumeModal>
@@ -99,24 +98,18 @@ const Navbar = () => {
                 {navItems.map((item) => (
                   <NavigationMenuItem key={item.path}>
                     <NavigationMenuLink asChild>
-                      <NavLink
-                        to={item.path}
-                        className={({ isActive }) =>
-                          cn(
-                            "relative px-4 py-2 text-sm font-medium transition-all duration-300 hover:text-primary",
-                            isActive ? "text-primary" : "text-foreground/80"
-                          )
-                        }
-                      >
-                        {({ isActive }) => (
-                          <>
-                            {item.name}
-                            {isActive && (
-                              <span className="absolute bottom-1 left-1/2 -translate-x-1/2 w-1 h-1 bg-primary rounded-full shadow-[0_0_8px_2px_rgba(255,215,0,0.6)]" />
-                            )}
-                          </>
+                      <Link
+                        href={item.path}
+                        className={cn(
+                          "relative px-4 py-2 text-sm font-medium transition-all duration-300 hover:text-primary",
+                          pathname === item.path ? "text-primary" : "text-foreground/80"
                         )}
-                      </NavLink>
+                      >
+                        {item.name}
+                        {pathname === item.path && (
+                          <span className="absolute bottom-1 left-1/2 -translate-x-1/2 w-1 h-1 bg-primary rounded-full shadow-[0_0_8px_2px_rgba(255,215,0,0.6)]" />
+                        )}
+                      </Link>
                     </NavigationMenuLink>
                   </NavigationMenuItem>
                 ))}

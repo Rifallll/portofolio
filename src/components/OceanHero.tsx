@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { motion, useScroll, useTransform, useSpring, useMotionValue } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { ArrowRight, Waves, Code2, Sparkles, Globe, Download } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import { DecryptText } from './ui/DecryptText';
 import { supabase } from '@/lib/supabase';
 import CVPreviewModal from './CVPreviewModal';
@@ -103,7 +103,7 @@ const OceanHero = () => {
                                 <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-cyan-400 opacity-75"></span>
                                 <span className="relative inline-flex h-3 w-3 rounded-full bg-cyan-500"></span>
                             </div>
-                            <span className="text-cyan-400 font-mono text-sm tracking-widest uppercase">Available for Hire · Data Analyst</span>
+                            <span className="text-cyan-400 font-mono text-sm tracking-widest uppercase">Open to Junior DA Roles · Internship & Full-Time</span>
                         </div>
 
                         {/* Mega Title with Text Gradient */}
@@ -127,12 +127,12 @@ const OceanHero = () => {
                             transition={{ delay: 0.5, duration: 0.8 }}
                             className="text-base md:text-2xl text-cyan-100/70 max-w-2xl mx-auto leading-relaxed px-4 my-8"
                         >
-                            Turning raw data into <span className="text-cyan-300 font-semibold">actionable insights</span> with <span className="text-purple-300 font-semibold">SQL</span>, <span className="text-blue-300 font-semibold">Python</span>, and <span className="text-cyan-300 font-semibold">Data Visualization</span> — backed by strong web development skills.
+                            Turning raw data into <span className="text-cyan-300 font-semibold">clear business decisions</span> using <span className="text-purple-300 font-semibold">SQL</span>, <span className="text-blue-300 font-semibold">Python</span>, and <span className="text-cyan-300 font-semibold">interactive dashboards</span>.
                         </motion.p>
 
                         {/* CTA Buttons */}
                         <div className="flex flex-wrap gap-4 pt-4">
-                            <Link to="/projects">
+                            <Link href="/projects">
                                 <motion.button
                                     whileHover={{ scale: 1.05 }}
                                     whileTap={{ scale: 0.95 }}
@@ -252,13 +252,13 @@ const OceanHero = () => {
                                 </div>
                             </div>
 
-                            {/* Floating "Glass" Elements sticking out */}
+                            {/* Floating Data Stats */}
                             <motion.div
                                 animate={{ z: 50, y: [0, -10, 0] }}
                                 transition={{ duration: 3, repeat: Infinity }}
                                 className="absolute top-10 right-[-20px] glass px-4 py-2 rounded-xl text-xs font-bold border border-white/20 shadow-xl flex items-center gap-2"
                             >
-                                <Sparkles className="w-3 h-3 text-yellow-400" /> Premium UI
+                                <span className="text-cyan-400">📊</span> 3+ DA Projects
                             </motion.div>
 
                             <motion.div
@@ -266,7 +266,7 @@ const OceanHero = () => {
                                 transition={{ duration: 4, repeat: Infinity, delay: 0.5 }}
                                 className="absolute bottom-20 left-[-30px] glass px-5 py-3 rounded-xl text-xs font-bold border border-white/20 shadow-xl flex items-center gap-2"
                             >
-                                <Globe className="w-4 h-4 text-cyan-400" /> Global Scale
+                                <span className="text-emerald-400">🗃️</span> SQL · Python · Tableau
                             </motion.div>
                         </div>
                     </motion.div>

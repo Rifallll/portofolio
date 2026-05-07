@@ -5,13 +5,13 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
 import { useState, useEffect } from "react";
-import Index from "./pages/Index";
-import AboutPage from "./pages/AboutPage";
-import SkillsPage from "./pages/SkillsPage";
-import ProjectsPage from "./pages/ProjectsPage";
-import CertificatesPage from "./pages/CertificatesPage";
-import Contact from "./pages/Contact";
-import NotFound from "./pages/NotFound";
+import Index from "./pages_legacy/Index";
+import AboutPage from "./pages_legacy/AboutPage";
+import SkillsPage from "./pages_legacy/SkillsPage";
+import ProjectsPage from "./pages_legacy/ProjectsPage";
+import CertificatesPage from "./pages_legacy/CertificatesPage";
+import Contact from "./pages_legacy/Contact";
+import NotFound from "./pages_legacy/NotFound";
 import BootSequence from "./components/BootSequence";
 import ParticleSystem from "./components/ParticleSystem";
 import PageTransition from "./components/PageTransition";
@@ -21,9 +21,9 @@ import { HackerTerminal } from "./components/HackerTerminal";
 import { MatrixRain } from "./components/ui/MatrixRain";
 import PremiumNavbar from "@/components/PremiumNavbar";
 // ADMIN IMPORTS
-import AdminLoginPage from "./pages/admin/AdminLoginPage";
+import AdminLoginPage from "./pages_legacy/admin/AdminLoginPage";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
-import AdminDashboard from "./pages/admin/AdminDashboard";
+import AdminDashboard from "./pages_legacy/admin/AdminDashboard";
 // SEO IMPORTS
 import { PersonSchema, WebSiteSchema } from "./components/SEOSchema";
 

@@ -16,20 +16,20 @@ interface Skill {
 
 const ALL_SKILLS: Skill[] = [
   // DATA CORE
-  { title: "SQL", proficiency: 88, level: "ADVANCED", icon: Database, category: "DATA" },
-  { title: "Python (Pandas)", proficiency: 82, level: "ADVANCED", icon: FileCode, category: "DATA" },
-  { title: "Data Cleaning", proficiency: 85, level: "ADVANCED", icon: Layers, category: "DATA" },
-  { title: "EDA", proficiency: 80, level: "ADVANCED", icon: Brain, category: "DATA" },
+  { title: "SQL", proficiency: 65, level: "INTERMEDIATE", icon: Database, category: "DATA" },
+  { title: "Python (Pandas)", proficiency: 60, level: "INTERMEDIATE", icon: FileCode, category: "DATA" },
+  { title: "Data Cleaning", proficiency: 65, level: "INTERMEDIATE", icon: Layers, category: "DATA" },
+  { title: "EDA", proficiency: 60, level: "INTERMEDIATE", icon: Brain, category: "DATA" },
   // VIZ
-  { title: "Tableau", proficiency: 78, level: "ADVANCED", icon: BarChart2, category: "VIZ" },
-  { title: "Power BI", proficiency: 75, level: "ADVANCED", icon: LineChart, category: "VIZ" },
-  { title: "Matplotlib/Seaborn", proficiency: 80, level: "ADVANCED", icon: BarChart2, category: "VIZ" },
-  { title: "Google Looker Studio", proficiency: 72, level: "INTERMEDIATE", icon: Table2, category: "VIZ" },
+  { title: "Tableau", proficiency: 55, level: "LEARNING", icon: BarChart2, category: "VIZ" },
+  { title: "Power BI", proficiency: 50, level: "LEARNING", icon: LineChart, category: "VIZ" },
+  { title: "Matplotlib/Seaborn", proficiency: 65, level: "INTERMEDIATE", icon: BarChart2, category: "VIZ" },
+  { title: "Google Looker Studio", proficiency: 55, level: "LEARNING", icon: Table2, category: "VIZ" },
   // DEV
-  { title: "React / Next.js", proficiency: 90, level: "EXPERT", icon: Globe, category: "DEV" },
-  { title: "TypeScript", proficiency: 85, level: "ADVANCED", icon: Code, category: "DEV" },
-  { title: "REST APIs", proficiency: 82, level: "ADVANCED", icon: Zap, category: "DEV" },
-  { title: "Git / GitHub", proficiency: 88, level: "ADVANCED", icon: FileCode, category: "DEV" },
+  { title: "React / Next.js", proficiency: 85, level: "PROFICIENT", icon: Globe, category: "DEV" },
+  { title: "TypeScript", proficiency: 80, level: "PROFICIENT", icon: Code, category: "DEV" },
+  { title: "REST APIs", proficiency: 75, level: "PROFICIENT", icon: Zap, category: "DEV" },
+  { title: "Git / GitHub", proficiency: 80, level: "PROFICIENT", icon: FileCode, category: "DEV" },
 ];
 
 const CATEGORIES = ["ALL", "DATA", "VIZ", "DEV"];
@@ -153,8 +153,9 @@ const SkillBar = ({ skill, index }: { skill: Skill; index: number }) => (
       </div>
     </div>
     <span className={`text-[9px] font-black px-2 py-1 rounded-full flex-shrink-0 ${
-      skill.level === 'EXPERT' ? 'bg-cyan-500/20 text-cyan-400' :
-      skill.level === 'ADVANCED' ? 'bg-blue-500/20 text-blue-400' :
+      skill.level === 'PROFICIENT' ? 'bg-cyan-500/20 text-cyan-400' :
+      skill.level === 'INTERMEDIATE' ? 'bg-blue-500/20 text-blue-400' :
+      skill.level === 'LEARNING' ? 'bg-yellow-500/20 text-yellow-400' :
       'bg-slate-500/20 text-slate-400'
     }`}>{skill.level}</span>
   </motion.div>

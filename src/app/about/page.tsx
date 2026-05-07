@@ -218,19 +218,20 @@ export default function AboutPage() {
             </div>
             <div>
               <h2 className="text-3xl font-bold text-white mb-2">Rifal Azhar Permana</h2>
-              <p className="text-cyan-400 font-mono text-sm mb-4">DATA_ANALYST && WEB_DEV</p>
+              <p className="text-cyan-400 font-mono text-sm mb-4">Junior Data Analyst · Computer Engineering Student</p>
               <p className="text-slate-400 leading-relaxed text-sm">
-                Computer Engineering student at Telkom University, specializing in <strong className="text-white">data analysis & visualization</strong>.
-                I work with SQL, Python (Pandas, Matplotlib, Seaborn), and BI tools to extract insights from data —
-                then build web interfaces to present them clearly to stakeholders.
+                Computer Engineering student at Telkom University with a focused interest in <strong className="text-white">data analysis and business intelligence</strong>.
+                I work with SQL to query structured data, Python (Pandas, Matplotlib, Seaborn) to clean and explore datasets,
+                and Tableau / Looker Studio to build dashboards that communicate findings clearly to non-technical stakeholders.
+                Actively building end-to-end analysis projects using real public datasets with documented methodology and business recommendations.
               </p>
             </div>
           </BentoItem>
 
           <BentoItem className="p-0 bg-gradient-to-br from-slate-900 to-[#0A0A0A]">
             <div className="flex flex-col justify-center items-center h-full w-full p-4">
-              <div className="text-3xl font-bold text-green-400 mb-1">+23%</div>
-              <div className="text-[10px] text-slate-500 uppercase tracking-widest font-bold">Revenue Insight Found</div>
+              <div className="text-3xl font-bold text-cyan-400 mb-1">3</div>
+              <div className="text-[10px] text-slate-500 uppercase tracking-widest font-bold text-center">Public Datasets Analyzed</div>
             </div>
           </BentoItem>
 
@@ -352,9 +353,9 @@ export default function AboutPage() {
           <div className="mt-12 p-1 rounded-3xl bg-gradient-to-r from-cyan-500/20 via-blue-500/20 to-purple-500/20">
             <div className="p-8 rounded-[22px] bg-[#0A0A0A] flex flex-col md:flex-row items-center justify-between gap-6 relative overflow-hidden group">
               <div className="text-center md:text-left relative z-10">
-                <h2 className="text-3xl font-bold text-white mb-2">Need a Data Analyst?</h2>
+                <h2 className="text-3xl font-bold text-white mb-2">Open to Junior DA Opportunities</h2>
                 <p className="text-slate-400 mb-4 md:mb-0">
-                  Skilled in <span className="text-cyan-400 font-bold">SQL · Python · Tableau · Power BI</span> — ready to turn your data into decisions.
+                  Skilled in <span className="text-cyan-400 font-bold">SQL · Python · Tableau · Power BI</span> — actively seeking internship or entry-level Data Analyst roles.
                 </p>
               </div>
               <div className="flex gap-4 relative z-10">
@@ -368,7 +369,7 @@ export default function AboutPage() {
                 </a>
                 <a href="/contact" className="px-8 py-3 rounded-full bg-white text-black font-bold hover:bg-cyan-50 transition-colors flex items-center gap-2">
                   <Rocket className="w-4 h-4" />
-                  Hire Me Now
+                  Get In Touch
                 </a>
               </div>
             </div>

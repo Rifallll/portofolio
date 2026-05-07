@@ -34,7 +34,7 @@ const CertificatesSection = () => {
         }));
         setCertificatesData(mappedData);
         // Extract unique categories
-        const uniqueCats = Array.from(new Set(mappedData.map(c => c.category)));
+        const uniqueCats = Array.from(new Set(mappedData.map(c => c.category as string)));
         setCategories(["All", ...uniqueCats]);
       }
     };

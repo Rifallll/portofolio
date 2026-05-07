@@ -15,14 +15,14 @@ const revenueData = [
   { month: "Feb", revenue: 38000, target: 40000 },
   { month: "Mar", revenue: 51000, target: 45000 },
   { month: "Apr", revenue: 47000, target: 45000 },
-  { month: "Mei", revenue: 63000, target: 50000 },
+  { month: "May", revenue: 63000, target: 50000 },
   { month: "Jun", revenue: 58000, target: 50000 },
   { month: "Jul", revenue: 71000, target: 55000 },
-  { month: "Ags", revenue: 69000, target: 55000 },
+  { month: "Aug", revenue: 69000, target: 55000 },
   { month: "Sep", revenue: 82000, target: 60000 },
-  { month: "Okt", revenue: 78000, target: 60000 },
+  { month: "Oct", revenue: 78000, target: 60000 },
   { month: "Nov", revenue: 95000, target: 65000 },
-  { month: "Des", revenue: 103000, target: 65000 },
+  { month: "Dec", revenue: 103000, target: 65000 },
 ];
 
 const categoryData = [
@@ -38,7 +38,7 @@ const churnData = [
   { month: "Feb", churn: 7.8, retained: 92.2 },
   { month: "Mar", churn: 9.1, retained: 90.9 },
   { month: "Apr", churn: 6.5, retained: 93.5 },
-  { month: "Mei", churn: 5.9, retained: 94.1 },
+  { month: "May", churn: 5.9, retained: 94.1 },
   { month: "Jun", churn: 4.2, retained: 95.8 },
 ];
 
@@ -86,7 +86,7 @@ export default function DataDashboardSection() {
             </span>
           </h2>
           <p className="text-slate-400 text-lg max-w-xl mx-auto">
-            Contoh output analisis data — visualisasi interaktif berbasis dataset e-commerce riil.
+            Sample analysis output — interactive visualizations built from a real e-commerce dataset.
           </p>
         </motion.div>
 
@@ -169,7 +169,7 @@ export default function DataDashboardSection() {
               </ResponsiveContainer>
               <div className="mt-4 p-4 rounded-xl bg-cyan-500/5 border border-cyan-500/10">
                 <p className="text-[11px] font-black text-cyan-500 uppercase tracking-widest mb-1">💡 Insight</p>
-                <p className="text-sm text-slate-400">Revenue konsisten melampaui target mulai Q2, dengan puncak Desember +58% di atas baseline. Lonjakan signifikan terjadi di Sep–Des menunjukkan seasonal effect yang bisa diprediksi untuk 2025.</p>
+                <p className="text-sm text-slate-400">Revenue consistently exceeded targets from Q2, peaking in December at +58% above baseline. The Sep–Dec surge reveals a predictable seasonal effect — a key input for 2025 planning and inventory allocation.</p>
               </div>
             </>
           )}
@@ -179,7 +179,7 @@ export default function DataDashboardSection() {
               <div className="flex items-center justify-between mb-8">
                 <div>
                   <h3 className="text-xl font-bold text-white">Revenue Mix by Category</h3>
-                  <p className="text-slate-500 text-sm mt-1">Distribusi revenue berdasarkan kategori produk</p>
+                  <p className="text-slate-500 text-sm mt-1">Revenue share breakdown by product category</p>
                 </div>
                 <span className="text-[10px] font-mono text-purple-400 bg-purple-500/10 border border-purple-500/20 px-3 py-1 rounded-full">GROUP BY SQL</span>
               </div>
@@ -209,7 +209,7 @@ export default function DataDashboardSection() {
               </div>
               <div className="mt-4 p-4 rounded-xl bg-purple-500/5 border border-purple-500/10">
                 <p className="text-[11px] font-black text-purple-400 uppercase tracking-widest mb-1">💡 Insight</p>
-                <p className="text-sm text-slate-400">Electronics mendominasi 38% revenue. Rekomendasi: tingkatkan inventory Electronics di Q4 dan lakukan cross-sell dengan kategori Fashion (27%) melalui bundling campaign.</p>
+                <p className="text-sm text-slate-400">Electronics dominates at 38% of revenue. Recommendation: increase Electronics inventory in Q4 and run cross-sell bundling campaigns with Fashion (27%) to capture higher combined basket value.</p>
               </div>
             </>
           )}
@@ -236,7 +236,7 @@ export default function DataDashboardSection() {
               </ResponsiveContainer>
               <div className="mt-4 p-4 rounded-xl bg-emerald-500/5 border border-emerald-500/10">
                 <p className="text-[11px] font-black text-emerald-400 uppercase tracking-widest mb-1">💡 Insight</p>
-                <p className="text-sm text-slate-400">Setelah implementasi model prediksi churn (Feb), churn rate turun dari 8.2% → 4.2% dalam 5 bulan. Intervensi dini melalui email & promo retention terbukti efektif untuk high-risk segment.</p>
+                <p className="text-sm text-slate-400">After deploying the churn prediction model (Feb), churn rate dropped from 8.2% → 4.2% over 5 months — a 49% reduction. Early intervention via email and retention promos proved effective for high-risk customer segments.</p>
               </div>
             </>
           )}
@@ -244,7 +244,7 @@ export default function DataDashboardSection() {
 
         {/* Bottom note */}
         <p className="text-center text-[11px] text-slate-600 mt-6 font-mono">
-          * Visualisasi menggunakan data sintetis berbasis dataset publik Kaggle. Tools: Python (Pandas, Matplotlib), SQL, Recharts.
+          * Visualizations use synthetic data modeled on public Kaggle datasets. Tools: Python (Pandas, Matplotlib), SQL, Recharts.
         </p>
       </div>
     </section>

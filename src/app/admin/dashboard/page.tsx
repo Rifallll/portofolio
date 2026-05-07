@@ -4,8 +4,8 @@ import { useState, useEffect } from "react";
 import { supabase } from "@/lib/supabase";
 import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
-import ExperienceManager from "@/pages/admin/ExperienceManager";
-import CVManager from "@/pages/admin/CVManager";
+import ExperienceManager from "@/pages_legacy/admin/ExperienceManager";
+import CVManager from "@/pages_legacy/admin/CVManager";
 import {
     LayoutDashboard,
     FolderOpen,
@@ -18,9 +18,9 @@ import {
     Menu,
     X
 } from "lucide-react";
-import ProjectsManager from "@/pages/admin/ProjectsManager";
-import SkillsManager from "@/pages/admin/SkillsManager";
-import CertificatesManager from "@/pages/admin/CertificatesManager";
+import ProjectsManager from "@/pages_legacy/admin/ProjectsManager";
+import SkillsManager from "@/pages_legacy/admin/SkillsManager";
+import CertificatesManager from "@/pages_legacy/admin/CertificatesManager";
 
 export default function AdminDashboard() {
     const [activeTab, setActiveTab] = useState("projects");
