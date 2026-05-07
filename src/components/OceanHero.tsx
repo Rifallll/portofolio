@@ -131,12 +131,12 @@ const OceanHero = () => {
                         </motion.p>
 
                         {/* CTA Buttons */}
-                        <div className="flex flex-wrap gap-4 pt-4">
-                            <Link href="/projects">
+                        <div className="flex flex-col sm:flex-row gap-4 pt-4 w-full sm:w-auto max-w-sm mx-auto sm:max-w-none sm:mx-0">
+                            <Link href="/projects" className="w-full sm:w-auto">
                                 <motion.button
                                     whileHover={{ scale: 1.05 }}
                                     whileTap={{ scale: 0.95 }}
-                                    className="group relative px-8 py-4 bg-cyan-500 text-black font-bold rounded-full overflow-hidden"
+                                    className="w-full sm:w-auto group relative px-8 py-4 bg-cyan-500 text-black font-bold rounded-full overflow-hidden flex items-center justify-center"
                                 >
                                     <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
                                     <span className="relative flex items-center gap-2">
@@ -146,10 +146,10 @@ const OceanHero = () => {
                             </Link>
 
                             {cvUrl && (
-                                <div className="flex flex-wrap gap-3">
+                                <div className="flex flex-col sm:flex-row gap-3 w-full sm:w-auto">
                                     <button
                                         onClick={() => setShowCVModal(true)}
-                                        className="px-8 py-4 rounded-full border border-white/10 glass hover:bg-white/5 transition-colors flex items-center gap-2"
+                                        className="w-full sm:w-auto px-8 py-4 rounded-full border border-white/10 glass hover:bg-white/5 transition-colors flex items-center justify-center gap-2"
                                     >
                                         View CV
                                     </button>
@@ -158,7 +158,7 @@ const OceanHero = () => {
                                         download="Rifal_Azhar_Permana_CV.pdf"
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        className="px-8 py-4 rounded-full border border-cyan-500/50 bg-cyan-500/10 hover:bg-cyan-500/20 transition-colors flex items-center gap-2 text-white font-medium"
+                                        className="w-full sm:w-auto px-8 py-4 rounded-full border border-cyan-500/50 bg-cyan-500/10 hover:bg-cyan-500/20 transition-colors flex items-center justify-center gap-2 text-white font-medium"
                                     >
                                         <Download className="w-5 h-5" />
                                         Download CV
