@@ -47,7 +47,7 @@ const AboutHeroSection = () => {
           className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight"
         >
           <span className="block text-white">Data Analyst &</span>
-          <span className="block text-gradient-ocean">Web Developer</span>
+          <span className="block text-gradient-ocean">Analytics Engineer</span>
         </motion.h1>
 
         <motion.p

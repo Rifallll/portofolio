@@ -3,6 +3,7 @@
 import { Suspense, lazy } from "react";
 import OceanHero from "@/components/OceanHero";
 import AboutHeroSection from "@/components/AboutHeroSection";
+import AnalyticalProcessSection from "@/components/AnalyticalProcessSection";
 import TechStackSection from "@/components/TechStackSection";
 import SkillsSection from "@/components/SkillsSection";
 import DataDashboardSection from "@/components/DataDashboardSection";
@@ -25,6 +26,7 @@ export default function Home() {
       <OceanHero />
       <TechStackSection />
       <AboutHeroSection />
+      <AnalyticalProcessSection />
       <SkillsSection />
       <FeaturedProjectsSection />
       <DataDashboardSection />
