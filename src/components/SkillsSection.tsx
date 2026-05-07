@@ -114,7 +114,7 @@ const SkillsSection = () => {
   const activeCategory = CATEGORIES.find(c => c.id === activeId)!;
 
   return (
-    <section id="skills" className="py-28 relative overflow-hidden">
+    <section id="skills" className="py-28 relative overflow-hidden bg-[#040812] border-y border-white/5 shadow-[inset_0_0_100px_rgba(0,0,0,0.5)]">
       <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-cyan-600/5 blur-[140px] rounded-full -z-10" />
       <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-purple-600/5 blur-[120px] rounded-full -z-10" />
 

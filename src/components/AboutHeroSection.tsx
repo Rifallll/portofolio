@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 
 const AboutHeroSection = () => {
   return (
-    <section id="about" className="relative min-h-[70vh] flex items-center justify-center overflow-hidden pt-20">
+    <section id="about" className="relative min-h-[70vh] flex items-center justify-center overflow-hidden pt-20 pb-24">
       {/* Subtle Ocean Background */}
       <div className="absolute inset-0">
         <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-cyan-500/5 rounded-full blur-3xl" />
