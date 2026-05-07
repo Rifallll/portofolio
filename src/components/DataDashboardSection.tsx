@@ -105,7 +105,7 @@ export default function DataDashboardSection() {
       <div className="absolute bottom-0 left-1/4 w-[400px] h-[400px] bg-indigo-900/10 blur-[120px] rounded-full mix-blend-screen pointer-events-none" />
 
       <div className="container mx-auto px-4 relative z-10 max-w-6xl">
-        <div className="flex flex-col md:flex-row items-end justify-between mb-12 gap-6">
+        <div className="flex flex-col md:flex-row items-start md:items-end justify-between mb-12 gap-6">
           <motion.div initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
             <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-cyan-500/10 border border-cyan-500/20 mb-4">
               <Activity className={`w-4 h-4 ${isTracking ? 'text-green-400 animate-pulse' : 'text-cyan-400'}`} />
@@ -124,7 +124,7 @@ export default function DataDashboardSection() {
           {/* Total Counter Card */}
           <motion.div 
             initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
-            className="glass-card rounded-2xl p-6 border-white/10 min-w-[200px]"
+            className="glass-card rounded-2xl p-6 border-white/10 w-full md:w-auto md:min-w-[200px]"
           >
             <div className="flex items-center gap-3 mb-2 text-slate-400 text-xs font-bold uppercase tracking-widest">
               <Users className="w-4 h-4 text-indigo-400" />
