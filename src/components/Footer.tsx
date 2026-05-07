@@ -20,7 +20,7 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
           {/* Brand Column */}
           <div className="col-span-1 md:col-span-2 space-y-4">
-            <h2 className="text-3xl font-serif font-bold text-gradient-gold mb-4 inline-block">Rifal Azhar.</h2>
+            <h2 className="text-3xl font-serif font-bold text-gradient-gold mb-4 inline-block">Rifal Azhar Permana</h2>
             <p className="max-w-md text-muted-foreground">
               Creating magnificent digital experiences that merge technical precision with aesthetic excellence. Let's build something extraordinary.
             </p>
