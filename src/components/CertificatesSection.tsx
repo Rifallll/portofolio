@@ -116,7 +116,7 @@ const CertificatesSection = () => {
           </div>
 
           {/* Precision Navigation / Filter */}
-          <div className="flex flex-wrap items-center gap-4 mb-16">
+          <div className="flex flex-wrap justify-center md:justify-start items-center gap-2 md:gap-4 mb-12 md:mb-16 w-full">
             {categories.map((cat) => (
               <button
                 key={cat}
@@ -124,7 +124,7 @@ const CertificatesSection = () => {
                   setActiveCategory(cat);
                   setShowAllCertificates(false);
                 }}
-                className={`px-8 py-3 rounded-md text-[10px] font-black uppercase tracking-[0.25em] transition-all duration-500 border ${activeCategory === cat
+                className={`px-4 py-2 md:px-8 md:py-3 rounded-md text-[8px] md:text-[10px] font-black uppercase tracking-[0.25em] transition-all duration-500 border ${activeCategory === cat
                   ? "bg-white text-black border-white shadow-[0_10px_25px_rgba(255,255,255,0.1)] scale-105"
                   : "bg-white/[0.02] text-slate-500 border-white/5 hover:border-white/10 hover:text-white"
                   }`}
