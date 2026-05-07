@@ -232,7 +232,7 @@ const OceanHero = () => {
                                     </div>
                                     <div className="flex gap-2">
                                         <span className="text-purple-400">WHERE</span>
-                                        <span className="text-yellow-200">year</span><span className="text-white"> = 2024</span>
+                                        <span className="text-yellow-200">year</span><span className="text-white"> = 2026</span>
                                     </div>
                                     <div className="flex gap-2">
                                         <span className="text-purple-400">GROUP BY</span>
@@ -244,7 +244,7 @@ const OceanHero = () => {
                                 <div>
                                     <div className="flex items-center gap-3 mb-2">
                                         <div className="h-[2px] w-12 bg-cyan-500" />
-                                        <span className="text-sm tracking-widest uppercase">Portfolio 2024</span>
+                                        <span className="text-sm tracking-widest uppercase">Portfolio 2026</span>
                                     </div>
                                     <h2 className="text-3xl font-bold text-white">
                                         Data-Driven<br />Insights
