@@ -273,9 +273,8 @@ const WeatherWidget = () => {
                             exit={{ opacity: 0, scale: 0.95, y: 15 }}
                             className="fixed bottom-0 left-0 right-0 sm:absolute sm:bottom-auto sm:top-full sm:left-auto sm:right-0 sm:mt-4 
                                        w-full sm:w-[420px] max-h-[85vh] sm:max-h-none overflow-y-auto sm:overflow-visible
-                                       bg-[#0d1520] sm:bg-[#0d1520]/95 border-t sm:border border-white/10 sm:rounded-[2.5rem] rounded-t-[2.5rem] 
-                                       shadow-[0_-10px_40px_rgba(0,0,0,0.6)] sm:shadow-[0_50px_100px_rgba(0,0,0,0.6)] 
-                                       backdrop-blur-3xl z-[99999] p-6 sm:p-8"
+                                       bg-[#0A0F1C] border-t sm:border border-slate-800 sm:rounded-[2.5rem] rounded-t-[2.5rem] 
+                                       shadow-[0_0_50px_rgba(0,0,0,0.8)] z-[99999] p-6 sm:p-8"
                         >
                             {/* Mobile Drag Handle & Close */}
                             <div className="flex sm:hidden items-center justify-center mb-6 relative">
@@ -301,7 +300,7 @@ const WeatherWidget = () => {
                                 />
                                 <AnimatePresence>
                                     {(searchQuery.length > 0) && (
-                                        <motion.div initial={{ opacity: 0, y: 5 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }} className="absolute inset-x-0 top-full mt-2 bg-slate-950/95 border border-white/10 rounded-2xl z-20 shadow-2xl p-2 max-h-56 overflow-y-auto custom-scrollbar backdrop-blur-xl">
+                                        <motion.div initial={{ opacity: 0, y: 5 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }} className="absolute inset-x-0 top-full mt-2 bg-[#0A0F1C] border border-slate-800 rounded-2xl z-[100000] shadow-2xl p-2 max-h-56 overflow-y-auto custom-scrollbar">
                                             {isSearching ? (
                                                 <div className="p-8 text-center"><Loader2 className="w-6 h-6 animate-spin text-cyan-500 mx-auto" /></div>
                                             ) : (
