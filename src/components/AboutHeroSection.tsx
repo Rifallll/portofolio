@@ -56,9 +56,9 @@ const AboutHeroSection = () => {
           transition={{ delay: 0.5, duration: 0.6 }}
           className="text-xl md:text-2xl text-foreground/70 max-w-3xl mx-auto leading-relaxed"
         >
-          Passionate about transforming raw data into{" "}
-          <span className="text-cyan-400 font-semibold">actionable business insights</span> using{" "}
-          <span className="text-cyan-400 font-semibold">SQL, Python & visualization tools</span> — while building the interfaces to present them beautifully.
+          Transforming complex data into{" "}
+          <span className="text-cyan-400 font-semibold">strategic business decisions</span>. I leverage{" "}
+          <span className="text-cyan-400 font-semibold">SQL, Python & Advanced Analytics</span> to uncover hidden patterns and drive measurable growth.
         </motion.p>
 
         <motion.div
