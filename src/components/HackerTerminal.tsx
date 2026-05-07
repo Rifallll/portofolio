@@ -909,7 +909,7 @@ export const HackerTerminal: React.FC<HackerTerminalProps> = ({
         return (
             <button
                 onClick={() => setIsOpen(true)}
-                className="fixed bottom-8 right-8 bg-cyan-500/20 hover:bg-cyan-500/30 border border-cyan-500/50 rounded-lg px-4 py-2 flex items-center gap-2 text-white transition-all hover:scale-105 z-50"
+                className="hidden md:flex fixed bottom-8 right-8 bg-cyan-500/20 hover:bg-cyan-500/30 border border-cyan-500/50 rounded-lg px-4 py-2 items-center gap-2 text-white transition-all hover:scale-105 z-50"
             >
                 <TerminalIcon className="w-5 h-5" />
                 <span className="text-sm font-mono">Open Terminal</span>
