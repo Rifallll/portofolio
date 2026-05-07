@@ -103,8 +103,9 @@ export default function DataProjectsSection() {
               </span>
             </h2>
             <p className="text-slate-400 text-lg leading-relaxed">
-              Proyek analisis data nyata dengan dataset publik, dilengkapi SQL queries, EDA, visualisasi, dan <strong className="text-white">business insights</strong> yang terukur.
+              Real data analysis projects using public datasets — each with SQL queries, EDA, visualization, and clear <strong className="text-white">business insights</strong> backed by data.
             </p>
+
           </motion.div>
 
           <Link href="/projects">

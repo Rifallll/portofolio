@@ -224,11 +224,11 @@ const OceanHero = () => {
                                         <span className="text-cyan-300">insight,</span>
                                     </div>
                                     <div className="pl-4 flex gap-2">
-                                        <span className="text-cyan-300">AVG</span><span className="text-white">(revenue)</span><span className="text-cyan-300"> AS avg_rev</span>
+                                        <span className="text-cyan-300">MAX</span><span className="text-white">(accuracy)</span><span className="text-cyan-300"> AS result</span>
                                     </div>
                                     <div className="flex gap-2">
                                         <span className="text-purple-400">FROM</span>
-                                        <span className="text-green-300">sales_data</span>
+                                        <span className="text-green-300">data_analyst</span>
                                     </div>
                                     <div className="flex gap-2">
                                         <span className="text-purple-400">WHERE</span>
@@ -236,7 +236,7 @@ const OceanHero = () => {
                                     </div>
                                     <div className="flex gap-2">
                                         <span className="text-purple-400">GROUP BY</span>
-                                        <span className="text-cyan-300">segment;</span>
+                                        <span className="text-cyan-300">insight;</span>
                                     </div>
                                 </div>
 
@@ -247,7 +247,7 @@ const OceanHero = () => {
                                         <span className="text-sm tracking-widest uppercase">Portfolio 2026</span>
                                     </div>
                                     <h2 className="text-3xl font-bold text-white">
-                                        Data-Driven<br />Insights
+                                        Junior<br />Data Analyst
                                     </h2>
                                 </div>
                             </div>
