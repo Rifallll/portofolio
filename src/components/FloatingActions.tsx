@@ -48,6 +48,7 @@ const FloatingActions = () => {
                         onClick={() => playSound('click')}
                         className={`w-12 h-12 rounded-full glass border border-cyan-500/20 flex items-center justify-center text-cyan-400 ${social.color} transition-all duration-300 group`}
                         title={social.label}
+                        aria-label={`Visit my ${social.label}`}
                     >
                         <social.icon className="w-5 h-5 group-hover:scale-110 transition-transform" />
                     </motion.a>
@@ -66,6 +67,7 @@ const FloatingActions = () => {
                 onClick={() => playSound('click')}
                 className="w-12 h-12 rounded-full bg-gradient-to-br from-cyan-600 to-cyan-500 flex items-center justify-center text-white shadow-lg shadow-cyan-500/30 hover:shadow-cyan-500/50 transition-all duration-300 group"
                 title="Quick Contact"
+                aria-label="Scroll to contact section"
             >
                 <MessageCircle className="w-5 h-5 group-hover:scale-110 transition-transform" />
             </motion.a>
@@ -80,6 +82,7 @@ const FloatingActions = () => {
                 whileTap={{ scale: 0.95 }}
                 className="w-12 h-12 rounded-full glass border border-emerald-500/30 flex items-center justify-center text-emerald-400 hover:bg-emerald-600/20 transition-all duration-300 group"
                 title={isMuted ? "Unmute UI Sounds" : "Mute UI Sounds"}
+                aria-label={isMuted ? "Unmute UI Sounds" : "Mute UI Sounds"}
             >
                 {isMuted ? <VolumeX className="w-5 h-5" /> : <Volume2 className="w-5 h-5" />}
             </motion.button>
@@ -97,6 +100,7 @@ const FloatingActions = () => {
                         whileTap={{ scale: 0.95 }}
                         className="w-12 h-12 rounded-full glass border border-cyan-500/30 flex items-center justify-center text-cyan-400 hover:bg-cyan-600/20 transition-all duration-300 group mt-3"
                         title="Scroll to Top"
+                        aria-label="Scroll to top of page"
                     >
                         <ArrowUp className="w-5 h-5 group-hover:translate-y-[-2px] transition-transform" />
                     </motion.button>

@@ -2,7 +2,7 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { Link } from "react-router-dom";
+import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card"; // Import Card and CardContent
@@ -27,7 +27,7 @@ const MyDesignSystemSection = () => {
               intuitive, accessible, and beautiful.
             </p>
             <Button asChild variant="link" className="text-primary hover:text-primary/80 px-0 text-lg flex items-center space-x-2">
-              <Link to="/design-system"> {/* Updated link to /design-system */}
+              <Link href="/design-system"> {/* Updated link to /design-system */}
                 <span>View the design system</span>
                 <ArrowRight className="h-4 w-4" />
               </Link>

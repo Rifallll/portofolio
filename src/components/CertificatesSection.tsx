@@ -34,7 +34,7 @@ const CertificatesSection = () => {
         }));
         setCertificatesData(mappedData);
         // Extract unique categories
-        const uniqueCats = Array.from(new Set(mappedData.map(c => c.category as string)));
+        const uniqueCats = Array.from(new Set<string>(mappedData.map(c => c.category as string)));
         setCategories(["All", ...uniqueCats]);
       }
     };
@@ -47,10 +47,8 @@ const CertificatesSection = () => {
         'postgres_changes',
         { event: '*', schema: 'public', table: 'certificates' },
         (payload) => {
-          (payload) => {
-            toast.success("Certificates registry updated");
-            fetchCertificates();
-          }
+          toast.success("Certificates registry updated");
+          fetchCertificates();
         }
       )
       .subscribe();
@@ -72,10 +70,7 @@ const CertificatesSection = () => {
   return (
     <section id="certificates" className="py-40 bg-[#020408] relative overflow-hidden">
       {/* Texture Layer: Subtle Noise & Grain */}
-      <div
-        className="absolute inset-0 opacity-[0.03] pointer-events-none"
-        style={{ backgroundImage: `url("${NOISE_PATTERN}")` }}
-      />
+      <div className="absolute inset-0 opacity-[0.03] pointer-events-none bg-noise" />
 
       {/* Decorative Monolith Background */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-cyan-900/10 blur-[160px] rounded-full pointer-events-none" />
@@ -118,12 +113,8 @@ const CertificatesSection = () => {
           {/* Precision Navigation / Filter */}
           <div className="relative w-full max-w-[100vw] overflow-hidden -mx-4 px-4 md:mx-0 md:px-0 mb-12 md:mb-16">
             <div 
-              className="flex md:flex-wrap overflow-x-auto gap-3 md:gap-4 pb-4 md:pb-0 snap-x"
-              style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+              className="flex md:flex-wrap overflow-x-auto gap-3 md:gap-4 pb-4 md:pb-0 snap-x hide-scrollbar"
             >
-              <style>{`
-                div::-webkit-scrollbar { display: none; }
-              `}</style>
               {categories.map((cat) => (
                 <button
                   key={cat}

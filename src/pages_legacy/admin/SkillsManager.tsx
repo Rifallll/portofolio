@@ -214,10 +214,10 @@ const SkillsManager = () => {
                                 </div>
                             </div>
                             <div className="flex gap-2 opacity-100 md:opacity-0 group-hover:opacity-100 transition-opacity">
-                                <Button size="sm" variant="outline" onClick={() => handleEdit(skill)}>
+                                <Button size="sm" variant="outline" onClick={() => handleEdit(skill)} aria-label="Edit skill" title="Edit skill">
                                     <Edit2 className="w-4 h-4" />
                                 </Button>
-                                <Button size="sm" variant="destructive" onClick={() => handleDelete(skill.id)}>
+                                <Button size="sm" variant="destructive" onClick={() => handleDelete(skill.id)} aria-label="Delete skill" title="Delete skill">
                                     <Trash2 className="w-4 h-4" />
                                 </Button>
                             </div>

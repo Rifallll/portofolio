@@ -35,8 +35,7 @@ const Background = () => (
   <div className="fixed inset-0 pointer-events-none z-0 bg-[#050505]">
     <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-slate-900 via-[#050505] to-[#050505]" />
     <div
-      className="absolute inset-0 opacity-[0.03]"
-      style={{ backgroundImage: `url("${NOISE_PATTERN}")` }}
+      className="absolute inset-0 opacity-[0.03] bg-noise"
     />
   </div>
 );
@@ -69,12 +68,14 @@ const BentoItem = ({ children, className = "", delay = 0 }: { children: React.Re
         {isHovered && (
           <motion.div
             initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
+            animate={{ 
+              opacity: 1,
+              left: mousePos.x,
+              top: mousePos.y,
+            }}
             exit={{ opacity: 0 }}
             className="absolute pointer-events-none z-0"
             style={{
-              left: mousePos.x,
-              top: mousePos.y,
               width: "300px",
               height: "300px",
               background: "radial-gradient(circle, rgba(6,182,212,0.15) 0%, transparent 70%)",
@@ -106,9 +107,10 @@ const Marquee = ({ children }: { children: React.ReactNode }) => (
 
 const MapCard = () => {
   const [filterMode, setFilterMode] = useState("dark");
-  const [time, setTime] = useState(new Date());
+  const [time, setTime] = useState<Date | null>(null);
 
   useEffect(() => {
+    setTime(new Date());
     const timer = setInterval(() => setTime(new Date()), 1000);
     return () => clearInterval(timer);
   }, []);
@@ -151,6 +153,8 @@ const MapCard = () => {
             key={mode.id}
             onClick={() => setFilterMode(mode.id)}
             className={`px-2 py-1 text-[8px] font-mono font-bold rounded border transition-all ${filterMode === mode.id ? "bg-cyan-500 text-black border-cyan-500" : "bg-black/50 text-cyan-500 border-cyan-900/50 hover:border-cyan-500"}`}
+            aria-label={`Switch map to ${mode.label} mode`}
+            title={`Switch map to ${mode.label} mode`}
           >
             {mode.label}
           </button>
@@ -160,7 +164,7 @@ const MapCard = () => {
       <div className="absolute bottom-4 left-4 z-20 flex flex-col pointer-events-none mix-blend-screen">
         <span className="text-[9px] text-slate-400 font-mono tracking-widest mb-0.5">EST. TIME</span>
         <span className="text-sm font-bold text-white font-mono">
-          UTC+7 // {time.toLocaleTimeString('en-US', { hour12: false })}
+          UTC+7 // {time ? time.toLocaleTimeString('en-US', { hour12: false }) : "--:--:--"}
         </span>
       </div>
     </BentoItem>
@@ -297,32 +301,47 @@ export default function AboutPage() {
           </BentoItem>
 
           <BentoItem className="md:col-span-2 lg:col-span-2 p-6 flex flex-col justify-between">
-            <div className="flex items-center gap-3 mb-4">
+            <div className="flex items-center gap-3 mb-6">
               <Layout className="w-5 h-5 text-purple-400" />
               <h3 className="text-lg font-bold text-white">Hybrid Skillset</h3>
             </div>
-            <div className="space-y-4">
-              <div>
-                <h4 className="text-xs font-bold text-cyan-500 uppercase tracking-wider mb-2">📊 Data Analysis</h4>
-                <div className="flex flex-wrap gap-2 mb-4">
-                  {["SQL", "Python", "Pandas", "Matplotlib", "Seaborn", "EDA", "Data Cleaning"].map((tech, i) => (
-                    <span key={i} className="px-3 py-1 rounded-md bg-cyan-500/10 text-xs text-cyan-300 border border-cyan-500/20">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              <div className="p-4 rounded-2xl bg-white/5 border border-white/5 hover:border-cyan-500/20 transition-colors">
+                <h4 className="text-[10px] font-bold text-cyan-500 uppercase tracking-widest mb-3 flex items-center gap-2">
+                  <span className="w-1 h-1 rounded-full bg-cyan-500 animate-pulse" />
+                  Data Analysis
+                </h4>
+                <div className="flex flex-wrap gap-1.5">
+                  {["SQL", "Python", "Pandas", "Matplotlib", "Seaborn", "EDA"].map((tech, i) => (
+                    <span key={i} className="px-2 py-1 rounded-md bg-cyan-500/10 text-[9px] font-bold text-cyan-300 border border-cyan-500/20">
                       {tech}
                     </span>
                   ))}
                 </div>
-                <h4 className="text-xs font-bold text-purple-400 uppercase tracking-wider mb-2">📈 BI & Visualization</h4>
-                <div className="flex flex-wrap gap-2 mb-4">
-                  {["Tableau", "Power BI", "Google Looker Studio", "Recharts"].map((tech, i) => (
-                    <span key={i} className="px-3 py-1 rounded-md bg-purple-500/10 text-xs text-purple-300 border border-purple-500/20">
+              </div>
+
+              <div className="p-4 rounded-2xl bg-white/5 border border-white/5 hover:border-purple-500/20 transition-colors">
+                <h4 className="text-[10px] font-bold text-purple-400 uppercase tracking-widest mb-3 flex items-center gap-2">
+                  <span className="w-1 h-1 rounded-full bg-purple-500 animate-pulse" />
+                  BI & Visual
+                </h4>
+                <div className="flex flex-wrap gap-1.5">
+                  {["Tableau", "Power BI", "Looker", "Recharts"].map((tech, i) => (
+                    <span key={i} className="px-2 py-1 rounded-md bg-purple-500/10 text-[9px] font-bold text-purple-300 border border-purple-500/20">
                       {tech}
                     </span>
                   ))}
                 </div>
-                <h4 className="text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">💻 Development</h4>
-                <div className="flex flex-wrap gap-2">
-                  {["React", "Next.js", "TypeScript", "Supabase", "Git"].map((tech, i) => (
-                    <span key={i} className="px-3 py-1 rounded-md bg-white/5 text-xs text-slate-300 border border-white/5">
+              </div>
+
+              <div className="p-4 rounded-2xl bg-white/5 border border-white/5 hover:border-white/20 transition-colors">
+                <h4 className="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-3 flex items-center gap-2">
+                  <span className="w-1 h-1 rounded-full bg-slate-400 animate-pulse" />
+                  Development
+                </h4>
+                <div className="flex flex-wrap gap-1.5">
+                  {["React", "Next.js", "TS", "Supabase", "Git"].map((tech, i) => (
+                    <span key={i} className="px-2 py-1 rounded-md bg-white/5 text-[9px] font-bold text-slate-300 border border-white/10">
                       {tech}
                     </span>
                   ))}

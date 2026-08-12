@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { Link } from "react-router-dom";
+import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Star, ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
@@ -28,7 +28,7 @@ const FeaturedSection = () => {
               I've been honored with the "Best Staff of Social Media Strategy" award and had the privilege to be a "Guest Speaker" at Expo Campus MAN 1 Pandeglang. My work has consistently led to significant improvements in engagement and reach, showcasing my dedication to impactful digital strategies.
             </p>
             <Button asChild variant="link" className="text-primary hover:text-primary/80 px-0 text-lg flex items-center space-x-2">
-              <Link to="/projects">
+              <Link href="/projects">
                 <span>View My Achievements</span>
                 <ArrowRight className="h-4 w-4" />
               </Link>

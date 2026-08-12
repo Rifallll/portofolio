@@ -175,7 +175,8 @@ const CertificateCard = React.forwardRef<HTMLDivElement, CertificateRowProps>(({
 
                   <button
                     onClick={() => setIsLightboxOpen(false)}
-                    className="group relative p-2 -mr-2 -mt-2 text-white/50 hover:text-white transition-colors"
+                    className="group relative p-2 -mr-2 -mt-2 text-white/50 hover:text-white transition-all"
+                    aria-label="Close certificate preview"
                   >
                     <span className="absolute inset-0 bg-white/5 scale-0 group-hover:scale-100 rounded-full transition-transform duration-300" />
                     <X className="w-8 h-8 font-light relative z-10" strokeWidth={1} />

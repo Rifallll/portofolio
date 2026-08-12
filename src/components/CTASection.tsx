@@ -1,7 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { ArrowRight, Mail, MessageSquare } from "lucide-react";
-import { Link } from "react-router-dom";
+import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import Magnetic from "./Magnetic";
 
@@ -64,7 +64,7 @@ const CTASection = () => {
                         className="flex flex-col sm:flex-row gap-4 justify-center items-center"
                     >
                         <Magnetic strength={0.4} range={100}>
-                            <Link to="/contact">
+                            <Link href="/contact">
                                 <Button
                                     size="lg"
                                     className="group px-10 py-7 text-lg font-bold rounded-full bg-cyan-600 hover:bg-cyan-500 text-white transition-all duration-300 shadow-lg shadow-cyan-500/30 hover:shadow-cyan-500/50"

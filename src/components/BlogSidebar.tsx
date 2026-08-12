@@ -1,7 +1,8 @@
 "use client";
 
 import React from "react";
-import { Link, NavLink } from "react-router-dom";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { Input } from "@/components/ui/input";
 import {
   Accordion,
@@ -84,10 +85,11 @@ const storyChapters = [
 ];
 
 const BlogSidebar = () => {
+  const pathname = usePathname();
   return (
     <aside className="w-full lg:w-72 bg-secondary text-foreground p-6 flex flex-col space-y-8 overflow-y-auto scroll-smooth hide-scrollbar
                   lg:fixed lg:top-0 lg:left-0 lg:h-screen border-r border-border shadow-lg"> {/* Updated styling: bg-secondary */}
-      <Link to="/" className="text-3xl font-bold leading-tight text-primary mb-8"> {/* Updated styling */}
+      <Link href="/" className="text-3xl font-bold leading-tight text-primary mb-8"> {/* Updated styling */}
         Life Is An <br /> Absurd <br /> Journey
       </Link>
 
@@ -101,19 +103,20 @@ const BlogSidebar = () => {
       </div>
 
       <nav className="space-y-3">
-        {blogNavItems.map((item) => (
-          <NavLink
-            key={item.name}
-            to={item.path}
-            className={({ isActive }) =>
-              `block text-lg font-medium hover:text-primary transition-colors duration-200 ${
-                isActive ? "text-primary" : "text-muted-foreground" // Updated styling
-              }`
-            }
-          >
-            {item.name}
-          </NavLink>
-        ))}
+        {blogNavItems.map((item) => {
+          const isActive = pathname === item.path;
+          return (
+            <Link
+              key={item.name}
+              href={item.path}
+              className={`block text-lg font-medium hover:text-primary transition-colors duration-200 ${
+                isActive ? "text-primary" : "text-muted-foreground"
+              }`}
+            >
+              {item.name}
+            </Link>
+          );
+        })}
       </nav>
 
       <div className="story-chapters">
@@ -128,18 +131,16 @@ const BlogSidebar = () => {
               </AccordionTrigger>
               <AccordionContent className="pl-4 py-2 text-muted-foreground text-sm space-y-1"> {/* Updated styling */}
                 {chapter.points.map((point, index) => (
-                  <NavLink
+                  <Link
                     key={index}
-                    to={`/story/${point.slug}`}
-                    className={({ isActive }) =>
-                      `flex items-start py-1 hover:text-primary transition-colors duration-200 ${
-                        isActive ? "text-primary" : "text-muted-foreground" // Updated styling
-                      }`
-                    }
+                    href={`/story/${point.slug}`}
+                    className={`flex items-start py-1 hover:text-primary transition-colors duration-200 ${
+                      pathname === `/story/${point.slug}` ? "text-primary" : "text-muted-foreground"
+                    }`}
                   >
                     <CircleDot className="h-4 w-4 text-primary mr-2 mt-1 flex-shrink-0" />
                     <span>{point.title}</span>
-                  </NavLink>
+                  </Link>
                 ))}
               </AccordionContent>
             </AccordionItem>

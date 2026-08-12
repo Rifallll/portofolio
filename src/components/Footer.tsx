@@ -25,16 +25,16 @@ const Footer = () => {
               Creating magnificent digital experiences that merge technical precision with aesthetic excellence. Let's build something extraordinary.
             </p>
             <div className="flex space-x-4 pt-4">
-              <a href="https://github.com/Rifallll" target="_blank" rel="noopener noreferrer" className="p-2 bg-white/5 rounded-full hover:bg-primary hover:text-primary-foreground transition-all duration-300">
+              <a href="https://github.com/Rifallll" target="_blank" rel="noopener noreferrer" aria-label="GitHub Profile" title="GitHub Profile" className="p-2 bg-white/5 rounded-full hover:bg-primary hover:text-primary-foreground transition-all duration-300">
                 <Github className="w-5 h-5" />
               </a>
-              <a href="https://www.linkedin.com/in/rifalazharpermana" target="_blank" rel="noopener noreferrer" className="p-2 bg-white/5 rounded-full hover:bg-primary hover:text-primary-foreground transition-all duration-300">
+              <a href="https://www.linkedin.com/in/rifalazharpermana" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Profile" title="LinkedIn Profile" className="p-2 bg-white/5 rounded-full hover:bg-primary hover:text-primary-foreground transition-all duration-300">
                 <Linkedin className="w-5 h-5" />
               </a>
-              <a href="#" className="p-2 bg-white/5 rounded-full hover:bg-primary hover:text-primary-foreground transition-all duration-300">
+              <a href="#" aria-label="Twitter Profile" title="Twitter Profile" className="p-2 bg-white/5 rounded-full hover:bg-primary hover:text-primary-foreground transition-all duration-300">
                 <Twitter className="w-5 h-5" />
               </a>
-              <a href="#" className="p-2 bg-white/5 rounded-full hover:bg-primary hover:text-primary-foreground transition-all duration-300">
+              <a href="#" aria-label="Instagram Profile" title="Instagram Profile" className="p-2 bg-white/5 rounded-full hover:bg-primary hover:text-primary-foreground transition-all duration-300">
                 <Instagram className="w-5 h-5" />
               </a>
             </div>
@@ -80,6 +80,8 @@ const Footer = () => {
               onClick={scrollToTop}
               variant="outline"
               size="icon"
+              aria-label="Scroll to top"
+              title="Scroll to top"
               className="mt-8 rounded-full border-white/10 hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all duration-300"
             >
               <ArrowUp className="w-4 h-4" />

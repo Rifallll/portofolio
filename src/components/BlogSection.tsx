@@ -1,7 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { Calendar, Clock, ArrowRight, BookOpen } from "lucide-react";
-import { Link } from "react-router-dom";
+import Link from "next/link";
 
 const blogPosts = [
     {
@@ -59,7 +59,7 @@ const BlogSection = () => {
                         </p>
                     </div>
 
-                    <Link to="/blog" className="hidden md:block">
+                    <Link href="/blog" className="hidden md:block">
                         <motion.button
                             whileHover={{ scale: 1.05 }}
                             whileTap={{ scale: 0.95 }}
@@ -125,7 +125,7 @@ const BlogSection = () => {
 
                                 {/* Read More */}
                                 <Link
-                                    to="/blog"
+                                    href="/blog"
                                     className="inline-flex items-center gap-2 text-cyan-400 hover:text-cyan-300 transition-colors text-sm font-medium group"
                                 >
                                     Read More
@@ -138,7 +138,7 @@ const BlogSection = () => {
 
                 {/* Mobile View All */}
                 <div className="md:hidden mt-8 text-center">
-                    <Link to="/blog">
+                    <Link href="/blog">
                         <motion.button
                             whileTap={{ scale: 0.95 }}
                             className="flex items-center gap-2 px-6 py-3 rounded-full border-2 border-cyan-500/50 text-cyan-300 hover:bg-cyan-500/10 transition-all mx-auto"

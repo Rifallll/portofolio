@@ -209,9 +209,11 @@ const SkillsSection = () => {
                 <div className="w-32 hidden sm:block">
                   <div className="text-[10px] text-slate-500 mb-1 uppercase tracking-widest">Overall</div>
                   <div className="h-2 w-full bg-white/5 rounded-full overflow-hidden">
-                    <div
+                    <motion.div
                       className={`h-full rounded-full bg-gradient-to-r ${activeCategory.accentColor}`}
-                      style={{ width: `${Math.round(activeCategory.skills.reduce((a, s) => a + s.proficiency, 0) / activeCategory.skills.length)}%` }}
+                      initial={{ width: 0 }}
+                      animate={{ width: `${Math.round(activeCategory.skills.reduce((a, s) => a + s.proficiency, 0) / activeCategory.skills.length)}%` }}
+                      transition={{ duration: 1, ease: "easeOut" }}
                     />
                   </div>
                 </div>

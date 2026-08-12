@@ -63,13 +63,8 @@ const BootSequence: React.FC<BootSequenceProps> = ({ onComplete }) => {
                     className="fixed inset-0 z-[99999] bg-[#02040a] flex flex-col items-center justify-center font-mono text-cyan-500 overflow-hidden cursor-wait"
                 >
                     {/* Background Grid */}
-                    <div
-                        className="absolute inset-0 opacity-10 pointer-events-none"
-                        style={{ backgroundImage: `url("${NOISE_PATTERN}")` }}
-                    />
-                    <div className="absolute inset-0 opacity-20"
-                        style={{ backgroundImage: 'linear-gradient(rgba(6, 182, 212, 0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(6, 182, 212, 0.1) 1px, transparent 1px)', backgroundSize: '40px 40px' }}
-                    />
+                    <div className="absolute inset-0 opacity-10 pointer-events-none bg-noise" />
+                    <div className="absolute inset-0 opacity-20 bg-grid-glow" />
 
                     <div className="w-full max-w-md p-8 relative z-10">
                         {/* Header */}
@@ -83,12 +78,12 @@ const BootSequence: React.FC<BootSequenceProps> = ({ onComplete }) => {
                             {lines.map((line, index) => (
                                 <motion.div
                                     key={index}
-                                    initial={{ opacity: 0, x: -20 }}
+                                    initial={false}
                                     animate={{
                                         opacity: index <= currentLine ? 1 : 0,
                                         x: index <= currentLine ? 0 : -20
                                     }}
-                                    className="flex items-center gap-3 text-sm"
+                                    className={`flex items-center gap-3 text-sm transition-all duration-500 ${index <= currentLine ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-5'}`}
                                 >
                                     <span className="text-cyan-500/50">{`>`}</span>
                                     <span className={index === lines.length - 1 ? "text-emerald-400 font-bold glow" : "text-cyan-300"}>
@@ -104,10 +99,10 @@ const BootSequence: React.FC<BootSequenceProps> = ({ onComplete }) => {
                         {/* Progress Bar */}
                         <div className="relative h-2 bg-slate-900 rounded-full overflow-hidden mb-4 border border-cyan-900/50">
                             <motion.div
-                                className="h-full bg-cyan-500 shadow-[0_0_15px_rgba(6,182,212,0.8)]"
-                                initial={{ width: "0%" }}
+                                className="h-full bg-cyan-500 shadow-[0_0_15px_rgba(6,182,212,0.8)] transition-all duration-300"
+                                initial={false}
+                                style={{ width: `${Math.min(progress, 100)}%` }}
                                 animate={{ width: `${Math.min(progress, 100)}%` }}
-                                transition={{ type: "spring", stiffness: 50 }}
                             />
                         </div>
 
@@ -120,8 +115,8 @@ const BootSequence: React.FC<BootSequenceProps> = ({ onComplete }) => {
                     {/* Bottom Icons */}
                     <div className="absolute bottom-12 flex gap-8 opacity-50">
                         <Cpu className="w-6 h-6 animate-pulse" />
-                        <ShieldCheck className="w-6 h-6 animate-pulse delay-75" />
-                        <Zap className="w-6 h-6 animate-pulse delay-150" />
+                        <ShieldCheck className="w-6 h-6 animate-pulse animate-delay-75" />
+                        <Zap className="w-6 h-6 animate-pulse animate-delay-150" />
                     </div>
                 </motion.div>
             )}

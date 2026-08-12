@@ -62,6 +62,7 @@ const NewsletterSection = () => {
                                 onChange={(e) => setEmail(e.target.value)}
                                 placeholder="your.email@example.com"
                                 required
+                                aria-label="Email Address"
                                 className="w-full pl-12 pr-4 py-4 rounded-full glass border border-cyan-500/20 bg-background/50 text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-cyan-500/50 transition-all"
                             />
                         </div>

@@ -1,9 +1,16 @@
+"use client";
+
 import { useEffect, useState } from "react";
-import { Navigate, Outlet } from "react-router-dom";
+import { useRouter } from "next/navigation";
 import { supabase } from "@/lib/supabase";
 import { Loader2 } from "lucide-react";
 
-const ProtectedRoute = () => {
+interface ProtectedRouteProps {
+    children: React.ReactNode;
+}
+
+const ProtectedRoute = ({ children }: ProtectedRouteProps) => {
+    const router = useRouter();
     const [loading, setLoading] = useState(true);
     const [authenticated, setAuthenticated] = useState(false);
 
@@ -14,6 +21,7 @@ const ProtectedRoute = () => {
                 setAuthenticated(true);
             } else {
                 setAuthenticated(false);
+                router.replace("/admin/login");
             }
             setLoading(false);
         };
@@ -25,12 +33,13 @@ const ProtectedRoute = () => {
                 setAuthenticated(true);
             } else {
                 setAuthenticated(false);
+                router.replace("/admin/login");
             }
             setLoading(false);
         });
 
         return () => subscription.unsubscribe();
-    }, []);
+    }, [router]);
 
     if (loading) {
         return (
@@ -40,7 +49,7 @@ const ProtectedRoute = () => {
         );
     }
 
-    return authenticated ? <Outlet /> : <Navigate to="/admin/login" replace />;
+    return authenticated ? <>{children}</> : null;
 };
 
 export default ProtectedRoute;

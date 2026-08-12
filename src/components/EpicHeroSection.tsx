@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { ArrowRight, Sparkles } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 
 const EpicHeroSection = () => {
     const sectionRef = useRef<HTMLElement>(null);
@@ -98,7 +98,7 @@ const EpicHeroSection = () => {
                             transition={{ delay: 0.7, duration: 0.8 }}
                             className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-8"
                         >
-                            <Link to="/projects">
+                            <Link href="/projects">
                                 <Button
                                     size="lg"
                                     className="group relative px-10 py-7 text-lg font-bold rounded-full overflow-hidden bg-gradient-to-r from-cyan-500 to-teal-500 hover:from-cyan-400 hover:to-teal-400 text-slate-950 shadow-[0_0_40px_rgba(34,211,238,0.4)] hover:shadow-[0_0_60px_rgba(34,211,238,0.6)] transition-all duration-300"
@@ -111,7 +111,7 @@ const EpicHeroSection = () => {
                                 </Button>
                             </Link>
 
-                            <Link to="/contact">
+                            <Link href="/contact">
                                 <Button
                                     size="lg"
                                     variant="outline"

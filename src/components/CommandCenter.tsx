@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Terminal, X, ChevronRight, Zap, Code, User, Mail, Download, Search, Waves } from 'lucide-react';
-import { useNavigate } from 'react-router-dom';
+import { useRouter } from 'next/navigation';
 
 const COMMANDS = [
     { cmd: '/help', desc: 'Show available commands', icon: <Terminal className="w-4 h-4" /> },
@@ -18,7 +18,7 @@ const CommandCenter = () => {
     const [isOpen, setIsOpen] = useState(false);
     const [input, setInput] = useState('');
     const [logs, setLogs] = useState<string[]>(['Welcome to Rifal Azhar Command Center v1.0.0', 'Type /help for instructions.']);
-    const navigate = useNavigate();
+    const router = useRouter();
     const inputRef = useRef<HTMLInputElement>(null);
 
     useEffect(() => {
@@ -82,15 +82,15 @@ const CommandCenter = () => {
             }
             case '/about':
                 setLogs(prev => [...prev, 'Navigating to About Node...'].slice(-15));
-                setTimeout(() => { navigate('/about'); setIsOpen(false); }, 1000);
+                setTimeout(() => { router.push('/about'); setIsOpen(false); }, 1000);
                 break;
             case '/projects':
                 setLogs(prev => [...prev, 'Accessing Project Archives...'].slice(-15));
-                setTimeout(() => { navigate('/projects'); setIsOpen(false); }, 1000);
+                setTimeout(() => { router.push('/projects'); setIsOpen(false); }, 1000);
                 break;
             case '/contact':
                 setLogs(prev => [...prev, 'Establishing Contact Link...'].slice(-15));
-                setTimeout(() => { navigate('/contact'); setIsOpen(false); }, 1000);
+                setTimeout(() => { router.push('/contact'); setIsOpen(false); }, 1000);
                 break;
             case '/clear':
                 setLogs(['Terminal purged. System awaiting instructions.']);

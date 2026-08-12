@@ -13,7 +13,7 @@ const ParticleSystem: React.FC = () => {
     const canvasRef = useRef<HTMLCanvasElement>(null);
     const particlesRef = useRef<Particle[]>([]);
     const mouseRef = useRef({ x: 0, y: 0 });
-    const animationFrameRef = useRef<number>();
+    const animationFrameRef = useRef<number | undefined>(undefined);
 
     useEffect(() => {
         const canvas = canvasRef.current;
@@ -128,8 +128,7 @@ const ParticleSystem: React.FC = () => {
     return (
         <canvas
             ref={canvasRef}
-            className="fixed inset-0 pointer-events-none z-0"
-            style={{ opacity: 0.4 }}
+            className="fixed inset-0 pointer-events-none z-0 opacity-40"
         />
     );
 };

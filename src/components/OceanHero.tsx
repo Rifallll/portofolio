@@ -62,7 +62,7 @@ const OceanHero = () => {
         >
             {/* HOLOGRAPHIC BACKGROUND */}
             <div className="absolute inset-0 bg-[#030712]">
-                <div className="absolute inset-0 opacity-15 mix-blend-overlay pointer-events-none" style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg viewBox=\'0 0 200 200\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cfilter id=\'noiseFilter\'%3E%3CfeTurbulence type=\'fractalNoise\' baseFrequency=\'0.8\' numOctaves=\'1\' stitchTiles=\'stitch\'/%3E%3C/filter%3E%3Crect width=\'100%25\' height=\'100%25\' filter=\'url(%23noiseFilter)\'/%3E%3C/svg%3E")' }} />
+                <div className="absolute inset-0 opacity-15 mix-blend-overlay pointer-events-none bg-noise" />
 
                 {/* Aurora Beams - Optimized blur and animation */}
                 <div className="absolute top-[-20%] left-[20%] w-[600px] h-[600px] bg-cyan-500/10 rounded-full blur-[80px] animate-pulse" />
@@ -70,20 +70,8 @@ const OceanHero = () => {
                 <div className="absolute top-[40%] left-[-10%] w-[400px] h-[800px] bg-blue-600/5 rounded-full blur-[70px] rotate-45" />
 
                 {/* Animated Grid Floor */}
-                <div
-                    className="absolute bottom-0 left-0 right-0 h-[50vh] opacity-20"
-                    style={{
-                        background: 'linear-gradient(to bottom, transparent, cyan)',
-                        maskImage: 'linear-gradient(to bottom, transparent, black)',
-                        transform: 'perspective(1000px) rotateX(60deg) translateY(100px)'
-                    }}
-                >
-                    <div className="w-full h-full"
-                        style={{
-                            backgroundImage: 'linear-gradient(cyan 1px, transparent 1px), linear-gradient(90deg, cyan 1px, transparent 1px)',
-                            backgroundSize: '50px 50px'
-                        }}
-                    />
+                <div className="absolute bottom-0 left-0 right-0 h-[50vh] opacity-20 grid-floor">
+                    <div className="w-full h-full grid-floor-content" />
                 </div>
             </div>
 
@@ -275,18 +263,19 @@ const OceanHero = () => {
             </div>
 
             {/* Scroll Indicator */}
-            <motion.div
+            <motion.button
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 1.8 }}
-                className="absolute bottom-12 left-1/2 -translate-x-1/2 cursor-pointer"
+                className="absolute bottom-12 left-1/2 -translate-x-1/2 cursor-pointer group"
                 onClick={() => window.scrollTo({ top: window.innerHeight, behavior: 'smooth' })}
+                aria-label="Scroll down to projects"
             >
                 <div className="flex flex-col items-center gap-2">
-                    <span className="text-[10px] text-cyan-400/60 uppercase tracking-[0.2em]">Explore</span>
-                    <div className="w-[1px] h-16 bg-gradient-to-b from-cyan-500/0 via-cyan-500 to-cyan-500/0" />
+                    <span className="text-[10px] text-cyan-400/60 uppercase tracking-[0.2em] group-hover:text-cyan-400 transition-colors">Explore</span>
+                    <div className="w-[1px] h-16 bg-gradient-to-b from-cyan-500/0 via-cyan-500 to-cyan-500/0 group-hover:via-cyan-300 transition-all" />
                 </div>
-            </motion.div>
+            </motion.button>
         </motion.section>
     );
 };

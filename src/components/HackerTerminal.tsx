@@ -95,6 +95,11 @@ export const HackerTerminal: React.FC<HackerTerminalProps> = ({
     const [isOpen, setIsOpen] = useState(false);
     const [isMinimized, setIsMinimized] = useState(false);
     const [isAdmin, setIsAdmin] = useState(false);
+    const [lastLogin, setLastLogin] = useState("");
+
+    useEffect(() => {
+        setLastLogin(new Date().toLocaleString());
+    }, []);
     const [position, setPosition] = useState({ x: 100, y: 100 });
     const [isDragging, setIsDragging] = useState(false);
     const [dragOffset, setDragOffset] = useState({ x: 0, y: 0 });
@@ -910,6 +915,8 @@ export const HackerTerminal: React.FC<HackerTerminalProps> = ({
             <button
                 onClick={() => setIsOpen(true)}
                 className="hidden md:flex fixed bottom-8 right-8 bg-cyan-500/20 hover:bg-cyan-500/30 border border-cyan-500/50 rounded-lg px-4 py-2 items-center gap-2 text-white transition-all hover:scale-105 z-50"
+                aria-label="Open CLI Terminal"
+                title="Open CLI Terminal"
             >
                 <TerminalIcon className="w-5 h-5" />
                 <span className="text-sm font-mono">Open Terminal</span>
@@ -941,6 +948,7 @@ export const HackerTerminal: React.FC<HackerTerminalProps> = ({
                         onClick={() => setIsMinimized(!isMinimized)}
                         className="hover:bg-yellow-500/20 p-1 rounded transition-all"
                         aria-label="Minimize Terminal"
+                        title="Minimize Terminal"
                     >
                         <Minus className="w-3 h-3 text-yellow-400" />
                     </button>
@@ -948,6 +956,7 @@ export const HackerTerminal: React.FC<HackerTerminalProps> = ({
                         onClick={() => setIsOpen(false)}
                         className="hover:bg-red-500/20 p-1 rounded transition-all"
                         aria-label="Close Terminal"
+                        title="Close Terminal"
                     >
                         <X className="w-3 h-3 text-red-400" />
                     </button>

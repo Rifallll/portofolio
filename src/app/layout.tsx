@@ -11,13 +11,18 @@ const jetBrainsMono = JetBrains_Mono({ subsets: ["latin"], variable: "--font-jet
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://portofolio-nine-opal.vercel.app";
 
+export const viewport = {
+  themeColor: "#000000",
+  width: "device-width",
+  initialScale: 1,
+};
+
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: "Rifal Azhar | Data Analyst & Web Developer",
   description: "Portfolio of Rifal Azhar Permana — Data Analyst skilled in SQL, Python (Pandas), Tableau, Power BI, and data visualization. Also builds modern web apps with React & Next.js.",
   keywords: ["Rifal Azhar", "Data Analyst", "SQL", "Python", "Pandas", "Tableau", "Power BI", "Web Developer", "Data Visualization", "Portfolio"],
   authors: [{ name: "Rifal Azhar Permana" }],
-  themeColor: "#000000",
   robots: "index, follow, max-image-preview:large",
   alternates: {
     canonical: "/",

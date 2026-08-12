@@ -232,10 +232,10 @@ const CertificatesManager = () => {
                                     </div>
                                 </div>
                                 <div className="flex gap-2 opacity-100 md:opacity-0 group-hover:opacity-100 transition-opacity">
-                                    <Button size="sm" variant="outline" onClick={() => handleEdit(cert)}>
+                                    <Button size="sm" variant="outline" onClick={() => handleEdit(cert)} aria-label="Edit certificate" title="Edit certificate">
                                         <Edit2 className="w-4 h-4" />
                                     </Button>
-                                    <Button size="sm" variant="destructive" onClick={() => handleDelete(cert.id)}>
+                                    <Button size="sm" variant="destructive" onClick={() => handleDelete(cert.id)} aria-label="Delete certificate" title="Delete certificate">
                                         <Trash2 className="w-4 h-4" />
                                     </Button>
                                 </div>

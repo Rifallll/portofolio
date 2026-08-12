@@ -20,14 +20,14 @@ const HeroSection = () => {
       <div className="absolute inset-0 overflow-hidden">
         {/* God Rays - Light from above */}
         <div className="absolute top-0 left-1/4 w-96 h-full bg-gradient-to-b from-cyan-300/20 via-transparent to-transparent blur-3xl opacity-40 animate-wave-pulse" />
-        <div className="absolute top-0 right-1/3 w-80 h-full bg-gradient-to-b from-blue-200/15 via-transparent to-transparent blur-3xl opacity-30 animate-wave-pulse" style={{ animationDelay: "1s" }} />
+        <div className="absolute top-0 right-1/3 w-80 h-full bg-gradient-to-b from-blue-200/15 via-transparent to-transparent blur-3xl opacity-30 animate-wave-pulse [animation-delay:1s]" />
 
         {/* Floating Bubbles */}
         <div className="absolute bottom-0 left-[10%] w-4 h-4 bg-cyan-400/30 rounded-full blur-sm animate-bubble-rise" />
-        <div className="absolute bottom-0 left-[30%] w-3 h-3 bg-cyan-300/40 rounded-full blur-sm animate-bubble-rise" style={{ animationDelay: "2s" }} />
-        <div className="absolute bottom-0 left-[50%] w-5 h-5 bg-teal-400/20 rounded-full blur-sm animate-bubble-rise" style={{ animationDelay: "4s" }} />
-        <div className="absolute bottom-0 left-[70%] w-3 h-3 bg-cyan-400/35 rounded-full blur-sm animate-bubble-rise" style={{ animationDelay: "1s" }} />
-        <div className="absolute bottom-0 left-[85%] w-4 h-4 bg-blue-300/25 rounded-full blur-sm animate-bubble-rise" style={{ animationDelay: "3s" }} />
+        <div className="absolute bottom-0 left-[30%] w-3 h-3 bg-cyan-300/40 rounded-full blur-sm animate-bubble-rise [animation-delay:2s]" />
+        <div className="absolute bottom-0 left-[50%] w-5 h-5 bg-teal-400/20 rounded-full blur-sm animate-bubble-rise [animation-delay:4s]" />
+        <div className="absolute bottom-0 left-[70%] w-3 h-3 bg-cyan-400/35 rounded-full blur-sm animate-bubble-rise [animation-delay:1s]" />
+        <div className="absolute bottom-0 left-[85%] w-4 h-4 bg-blue-300/25 rounded-full blur-sm animate-bubble-rise [animation-delay:3s]" />
 
         {/* Ambient Glow */}
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-teal-500/10 rounded-full blur-[120px] animate-pulse" />
@@ -108,7 +108,7 @@ const HeroSection = () => {
 
               {/* Decorative Floating Elements */}
               <div className="absolute -top-4 -right-4 w-20 h-20 bg-cyan-400/20 rounded-full blur-xl animate-pulse" />
-              <div className="absolute -bottom-4 -left-4 w-16 h-16 bg-teal-400/20 rounded-full blur-xl animate-pulse" style={{ animationDelay: "1s" }} />
+              <div className="absolute -bottom-4 -left-4 w-16 h-16 bg-teal-400/20 rounded-full blur-xl animate-pulse [animation-delay:1s]" />
             </div>
           </motion.div>
         </div>

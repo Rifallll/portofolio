@@ -65,7 +65,7 @@ export default function AdminDashboard() {
                     <LayoutDashboard className="w-5 h-5 text-cyan-500" />
                     <span className="font-bold text-white">Admin</span>
                 </div>
-                <Button variant="ghost" size="icon" onClick={() => setSidebarOpen(!sidebarOpen)}>
+                <Button variant="ghost" size="icon" onClick={() => setSidebarOpen(!sidebarOpen)} aria-label="Toggle sidebar" title="Toggle sidebar">
                     {sidebarOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
                 </Button>
             </div>

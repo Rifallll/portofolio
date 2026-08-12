@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { ArrowRight, Sparkles, Code2, Palette } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 
 const UltraPremiumHero = () => {
     const sectionRef = useRef<HTMLElement>(null);
@@ -107,7 +107,7 @@ const UltraPremiumHero = () => {
                                 transition={{ delay: 0.9 }}
                                 className="flex flex-col sm:flex-row gap-4 pt-4"
                             >
-                                <Link to="/projects">
+                                <Link href="/projects">
                                     <Button
                                         size="lg"
                                         className="group relative px-10 py-7 text-lg font-bold rounded-full overflow-hidden bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-500 hover:to-purple-500 text-white glow-blue transition-all duration-300"
@@ -119,7 +119,7 @@ const UltraPremiumHero = () => {
                                     </Button>
                                 </Link>
 
-                                <Link to="/contact">
+                                <Link href="/contact">
                                     <Button
                                         size="lg"
                                         variant="outline"

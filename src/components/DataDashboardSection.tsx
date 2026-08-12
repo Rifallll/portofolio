@@ -213,7 +213,12 @@ export default function DataDashboardSection() {
             <div className="grid grid-cols-2 gap-3 mt-4">
               {browserStats.map((stat, i) => (
                 <div key={stat.name} className="flex items-center gap-2">
-                  <div className="w-3 h-3 rounded-full" style={{ backgroundColor: COLORS[i % COLORS.length] }} />
+                  <motion.div 
+                    className="w-3 h-3 rounded-full" 
+                    initial={false}
+                    animate={{ backgroundColor: COLORS[i % COLORS.length] }}
+                    aria-hidden="true" 
+                  />
                   <span className="text-[11px] font-bold text-slate-300">{stat.name}</span>
                   <span className="text-[11px] text-slate-500 ml-auto">{stat.value}</span>
                 </div>

@@ -2,7 +2,7 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { Link } from "react-router-dom";
+import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
@@ -51,7 +51,7 @@ const MyStorySection = () => {
               My journey began with a deep interest in Computer Engineering, which quickly evolved into a passion for Digital Media Strategy and Web Development. I've honed my skills in crafting engaging content strategies, managing social media campaigns, and building responsive web applications. From boosting audience engagement by 150% to developing over 20 websites, I thrive on creating impactful digital solutions.
             </p>
             <Button asChild variant="link" className="text-primary hover:text-primary/80 px-0 text-lg flex items-center space-x-2">
-              <Link to="/story/make-it-happen-go-travel"> {/* Mengarahkan ke cerita pertama */}
+              <Link href="/story/make-it-happen-go-travel"> {/* Mengarahkan ke cerita pertama */}
                 <span>View All</span>
                 <ArrowRight className="h-4 w-4" />
               </Link>

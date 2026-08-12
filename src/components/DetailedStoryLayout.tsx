@@ -6,7 +6,7 @@ import Footer from "@/components/Footer";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button"; // Import Button
 import { ArrowLeft } from "lucide-react"; // Import ArrowLeft icon
-import { useNavigate } from "react-router-dom"; // Import useNavigate for navigation
+import { useRouter } from "next/navigation"; // Import useRouter for navigation
 
 interface DetailedStoryLayoutProps {
   title: string;
@@ -19,7 +19,7 @@ const DetailedStoryLayout: React.FC<DetailedStoryLayoutProps> = ({
   paragraphs,
   images,
 }) => {
-  const navigate = useNavigate(); // Initialize useNavigate hook
+  const router = useRouter(); // Initialize useRouter hook
 
   return (
     <div className="min-h-screen bg-background text-foreground flex flex-col">
@@ -75,7 +75,7 @@ const DetailedStoryLayout: React.FC<DetailedStoryLayoutProps> = ({
 
             <div className="mt-12 text-center">
               <Button
-                onClick={() => navigate("/my-story-page")}
+                onClick={() => router.push("/my-story-page")}
                 variant="outline"
                 className="border-primary text-primary hover:bg-primary/10 px-6 py-3 text-lg rounded-full shadow-lg transition-all duration-300 hover:scale-105 flex items-center space-x-2 mx-auto"
               >

@@ -33,10 +33,10 @@ const PremiumNavbar = () => {
 
     return (
         <motion.header
-            initial={{ y: -80, opacity: 0 }}
+            initial={false}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.5, ease: 'easeOut' }}
-            className="fixed top-0 left-0 right-0 z-[9999] pointer-events-auto"
+            className={`fixed top-0 left-0 right-0 z-[9999] pointer-events-auto transition-all duration-500 ${scrolled ? 'translate-y-0 opacity-100' : '-translate-y-20 opacity-0 animate-in fade-in slide-in-from-top-20'}`}
         >
             {/* ── Main Bar ── */}
             <div className="mx-auto max-w-7xl px-4 pt-4">
@@ -119,6 +119,7 @@ const PremiumNavbar = () => {
                             onClick={() => setMobileOpen(!mobileOpen)}
                             className="lg:hidden w-9 h-9 flex items-center justify-center rounded-xl border border-white/10 text-slate-400 hover:text-white hover:border-cyan-500/40 transition-all"
                             aria-label="Toggle menu"
+                            title="Toggle menu"
                         >
                             <AnimatePresence mode="wait" initial={false}>
                                 {mobileOpen

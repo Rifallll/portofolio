@@ -219,6 +219,7 @@ const WeatherWidget = () => {
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
                 aria-label="Toggle weather dashboard"
+                title="Toggle weather dashboard"
                 className="flex items-center gap-2 sm:gap-4 px-3 sm:px-5 py-2 rounded-full bg-slate-900/40 border border-white/5 backdrop-blur-md group hover:border-cyan-500/30 transition-all duration-300 shadow-xl"
             >
                 <AnimatePresence mode="wait">
