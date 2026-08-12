@@ -256,7 +256,7 @@ export default function ProjectsPage() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-50 flex items-center justify-center p-4 md:p-6"
+            className="fixed inset-0 z-50 flex items-center justify-center p-4 pt-24 md:p-6 md:pt-28"
             onClick={() => setSelectedProject(null)}
           >
             {/* Backdrop */}
@@ -269,7 +269,7 @@ export default function ProjectsPage() {
               exit={{ opacity: 0, scale: 0.95, y: 20 }}
               transition={{ type: "spring", damping: 25 }}
               onClick={(e) => e.stopPropagation()}
-              className="relative w-full max-w-3xl max-h-[90vh] flex flex-col rounded-3xl bg-gradient-to-b from-[#0a0f1c] to-[#020617] border border-white/10 shadow-[0_0_80px_rgba(6,182,212,0.15)] ring-1 ring-white/5 overflow-hidden"
+              className="relative w-full max-w-3xl max-h-[calc(100vh-140px)] flex flex-col rounded-3xl bg-gradient-to-b from-[#0a0f1c] to-[#020617] border border-white/10 shadow-[0_0_80px_rgba(6,182,212,0.15)] ring-1 ring-white/5 overflow-hidden"
             >
               {/* Modal Header Image */}
               <div className="relative h-64 shrink-0">
