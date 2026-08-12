@@ -264,7 +264,6 @@ export default function ProjectsPage() {
           </AnimatePresence>
         </div>
       </div>
-      </div>
       <Footer />
     </div>
   );
