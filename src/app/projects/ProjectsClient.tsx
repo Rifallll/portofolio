@@ -129,7 +129,6 @@ const excelProjects: Project[] = [
 export default function ProjectsPage() {
   const [projectsData, setProjectsData] = useState<Project[]>([]);
   const [activeCategory, setActiveCategory] = useState("All");
-  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
 
   useEffect(() => {
     const fetchProjects = async () => {
@@ -211,8 +210,7 @@ export default function ProjectsPage() {
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.9 }}
                 transition={{ duration: 0.3, delay: index * 0.05 }}
-                onClick={() => setSelectedProject(project)}
-                className="group relative bg-[#0F0F0F] cursor-pointer rounded-3xl overflow-hidden border border-white/5 hover:border-cyan-500/50 hover:shadow-[0_0_40px_rgba(6,182,212,0.15)] transition-all duration-500 flex flex-col"
+                className="group relative bg-[#0F0F0F] rounded-3xl overflow-hidden border border-white/5 hover:border-cyan-500/50 hover:shadow-[0_0_40px_rgba(6,182,212,0.15)] transition-all duration-500 flex flex-col"
               >
                 <div className="relative h-64 overflow-hidden">
                   <img src={project.image_url} alt={project.title} className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700" />
@@ -238,8 +236,27 @@ export default function ProjectsPage() {
                     )}
                   </div>
 
-                  <div className="flex items-center gap-2 pt-4 border-t border-white/5 text-sm font-bold text-white group-hover:text-cyan-400 transition-colors">
-                    View Details <ArrowUpRight className="w-4 h-4" />
+                  <div className="flex flex-wrap items-center gap-3 pt-4 border-t border-white/5">
+                    {project.downloadUrl && (
+                      <a href={project.downloadUrl} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 text-xs font-bold text-emerald-400 hover:text-emerald-300">
+                        Download <ArrowUpRight className="w-3 h-3" />
+                      </a>
+                    )}
+                    {project.driveUrl && (
+                      <a href={project.driveUrl} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 text-xs font-bold text-cyan-400 hover:text-cyan-300">
+                        View <ArrowUpRight className="w-3 h-3" />
+                      </a>
+                    )}
+                    {project.demo_url && (
+                      <a href={project.demo_url} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 text-xs font-bold text-blue-400 hover:text-blue-300">
+                        Demo <ArrowUpRight className="w-3 h-3" />
+                      </a>
+                    )}
+                    {project.repo_url && (
+                      <a href={project.repo_url} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 text-xs font-bold text-slate-400 hover:text-white">
+                        Code <Github className="w-3 h-3" />
+                      </a>
+                    )}
                   </div>
                 </div>
               </motion.div>
@@ -247,194 +264,8 @@ export default function ProjectsPage() {
           </AnimatePresence>
         </div>
       </div>
+      </div>
       <Footer />
-
-      {/* ===== PROJECT MODAL ===== */}
-      <AnimatePresence>
-        {selectedProject && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 z-50 flex items-center justify-center p-4 pt-24 md:p-6 md:pt-28"
-            onClick={() => setSelectedProject(null)}
-          >
-            {/* Backdrop */}
-            <div className="absolute inset-0 bg-black/80 backdrop-blur-sm" />
-
-            {/* Modal */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95, y: 20 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.95, y: 20 }}
-              transition={{ type: "spring", damping: 25 }}
-              onClick={(e) => e.stopPropagation()}
-              className="relative w-full max-w-3xl max-h-[calc(100vh-140px)] flex flex-col rounded-3xl bg-gradient-to-b from-[#0a0f1c] to-[#020617] border border-white/10 shadow-[0_0_80px_rgba(6,182,212,0.15)] ring-1 ring-white/5 overflow-hidden"
-            >
-              {/* Modal Header Image */}
-              <div className="relative h-64 shrink-0">
-                <img
-                  src={selectedProject.image_url}
-                  alt={selectedProject.title}
-                  className="w-full h-full object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#0a0f1c] via-black/40 to-transparent" />
-
-                {/* Close Button */}
-                <button
-                  onClick={() => setSelectedProject(null)}
-                  className="absolute top-4 right-4 w-10 h-10 rounded-full bg-black/60 backdrop-blur-md text-white/70 hover:text-white hover:bg-black/80 border border-white/10 transition-colors flex items-center justify-center z-10"
-                >
-                  <X className="w-5 h-5" />
-                </button>
-
-                {/* Title overlay */}
-                <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8 bg-gradient-to-t from-[#020617] via-[#020617]/80 to-transparent">
-                  <div className="flex flex-wrap gap-2 mb-3">
-                    <span className="px-3 py-1 rounded-full text-[10px] font-bold tracking-wider uppercase bg-cyan-500/20 text-cyan-400 border border-cyan-500/30 backdrop-blur-md">
-                      {selectedProject.category}
-                    </span>
-                  </div>
-                  <h3 className="text-white text-3xl md:text-4xl font-extrabold mb-2 tracking-tight">{selectedProject.title}</h3>
-                  {selectedProject.subtitle && (
-                    <p className="text-cyan-400 text-sm md:text-base font-medium">{selectedProject.subtitle}</p>
-                  )}
-                </div>
-              </div>
-
-              {/* Modal Body Scrollable */}
-              <div className="p-6 md:p-8 overflow-y-auto hide-scrollbar flex-1 space-y-8">
-                
-                {/* Description */}
-                <div className="text-slate-300 text-base leading-relaxed">
-                  {selectedProject.description}
-                </div>
-
-                {/* EXCEL SPECIFIC CONTENT: Stats & Case Study */}
-                {selectedProject.caseStudy && (
-                  <>
-                    {/* Stats Row */}
-                    {selectedProject.stats && (
-                      <div className="grid grid-cols-3 gap-4">
-                        {selectedProject.stats.map((stat) => (
-                          <div key={stat.label} className="text-center p-4 rounded-2xl bg-white/5 border border-white/10">
-                            <div className="text-xl md:text-2xl font-bold text-cyan-400">{stat.value}</div>
-                            <div className="text-slate-400 text-[10px] md:text-xs mt-1 uppercase tracking-wider">{stat.label}</div>
-                          </div>
-                        ))}
-                      </div>
-                    )}
-
-                    {/* Problem */}
-                    <div className="space-y-3">
-                      <div className="flex items-center gap-2">
-                        <Target className="w-5 h-5 text-red-400" />
-                        <h4 className="text-white font-bold text-lg">The Challenge</h4>
-                      </div>
-                      <p className="text-slate-400 text-sm leading-relaxed bg-red-500/5 border border-red-500/10 p-4 rounded-xl">
-                        {selectedProject.caseStudy.problem}
-                      </p>
-                    </div>
-
-                    {/* Process */}
-                    <div className="space-y-3">
-                      <div className="flex items-center gap-2">
-                        <Lightbulb className="w-5 h-5 text-yellow-400" />
-                        <h4 className="text-white font-bold text-lg">Process & Execution</h4>
-                      </div>
-                      <div className="space-y-3 p-4 rounded-xl bg-yellow-500/5 border border-yellow-500/10">
-                        {selectedProject.caseStudy.process.map((step, i) => (
-                          <div key={i} className="flex items-start gap-3">
-                            <span className="text-yellow-400 font-mono text-sm mt-0.5 flex-shrink-0">
-                              {String(i + 1).padStart(2, "0")}.
-                            </span>
-                            <p className="text-slate-300 text-sm leading-relaxed">{step}</p>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-
-                    {/* Result */}
-                    <div className="space-y-3">
-                      <div className="flex items-center gap-2">
-                        <CheckCircle className="w-5 h-5 text-emerald-400" />
-                        <h4 className="text-white font-bold text-lg">The Result</h4>
-                      </div>
-                      <p className="text-emerald-50 text-sm leading-relaxed bg-emerald-500/10 border border-emerald-500/20 p-4 rounded-xl">
-                        {selectedProject.caseStudy.result}
-                      </p>
-                    </div>
-                  </>
-                )}
-
-                {/* Technologies / Skills Used */}
-                <div className="pt-4 border-t border-white/5">
-                  <h4 className="text-white font-bold text-sm mb-4">Technologies & Tools Used</h4>
-                  <div className="flex flex-wrap gap-2">
-                    {selectedProject.technologies?.map((tech) => (
-                      <span key={tech} className="px-3 py-1.5 rounded-lg text-xs font-medium bg-white/5 text-slate-300 border border-white/10">
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-
-              </div>
-
-              {/* Modal Footer / Actions */}
-              <div className="p-6 border-t border-white/10 bg-[#0a0f1c]/80 backdrop-blur-xl flex flex-wrap gap-3 shrink-0">
-                {selectedProject.downloadUrl && (
-                  <a
-                    href={selectedProject.downloadUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex-1 min-w-[200px] flex items-center justify-center gap-2 py-3.5 rounded-xl bg-gradient-to-r from-cyan-500 to-emerald-500 text-white font-bold hover:from-cyan-400 hover:to-emerald-400 transition-all shadow-[0_0_20px_rgba(16,185,129,0.2)] text-sm"
-                  >
-                    <Download className="w-4 h-4" />
-                    Download File Excel
-                  </a>
-                )}
-                
-                {selectedProject.driveUrl && (
-                  <a
-                    href={selectedProject.driveUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex-1 min-w-[200px] flex items-center justify-center gap-2 py-3.5 rounded-xl bg-white/5 text-white border border-white/10 hover:bg-white/10 transition-all text-sm font-bold"
-                  >
-                    <ExternalLink className="w-4 h-4" />
-                    View Online
-                  </a>
-                )}
-
-                {selectedProject.demo_url && (
-                  <a
-                    href={selectedProject.demo_url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex-1 min-w-[200px] flex items-center justify-center gap-2 py-3.5 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-500 text-white font-bold hover:from-cyan-400 hover:to-blue-400 transition-all shadow-[0_0_20px_rgba(6,182,212,0.3)] text-sm"
-                  >
-                    <ExternalLink className="w-4 h-4" />
-                    Live Demo
-                  </a>
-                )}
-
-                {selectedProject.repo_url && (
-                  <a
-                    href={selectedProject.repo_url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex-1 min-w-[200px] flex items-center justify-center gap-2 py-3.5 rounded-xl bg-white/5 text-white border border-white/10 hover:bg-white/10 transition-all text-sm font-bold"
-                  >
-                    <Github className="w-4 h-4" />
-                    Source Code
-                  </a>
-                )}
-              </div>
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
     </div>
   );
 }
