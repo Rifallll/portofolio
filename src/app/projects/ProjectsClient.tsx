@@ -39,93 +39,6 @@ interface Project {
 
 const categories = ["All", "Data Analytics", "Web Dev", "UI/UX Design", "Mobile App", "Machine Learning"];
 
-const excelProjects: Project[] = [
-  {
-    id: "excel-1",
-    title: "Sales Analytics Dashboard",
-    category: "Data Analytics",
-    subtitle: "Monthly Performance Tracker",
-    description: "Dashboard interaktif untuk memantau performa penjualan bulanan. Menggunakan Pivot Table, Slicer, dan Chart dinamis untuk visualisasi data.",
-    image_url: "/excel-dashboard-preview.png",
-    downloadUrl: "#", // Ganti dengan link download Google Drive kamu
-    driveUrl: "#",   // Ganti dengan link Google Drive preview
-    technologies: ["Pivot Table", "VLOOKUP", "Slicer", "Bar Chart", "Conditional Formatting"],
-    stats: [
-      { label: "Data Rows", value: "5.000+" },
-      { label: "KPI Tracked", value: "12" },
-      { label: "Time Saved", value: "3 jam/minggu" },
-    ],
-    caseStudy: {
-      problem: "Tim sales kesulitan memantau performa harian karena data tersebar di banyak sheet tanpa ringkasan yang jelas.",
-      process: [
-        "Kumpulkan & bersihkan data raw dari 5 sumber berbeda",
-        "Buat Pivot Table dinamis dengan slicer per region & kategori",
-        "Desain KPI cards menggunakan formula INDEX/MATCH",
-        "Tambahkan conditional formatting untuk highlight target tercapai",
-        "Buat automated chart yang update otomatis saat data baru masuk",
-      ],
-      result: "Dashboard selesai real-time, tim bisa lihat performa dalam 30 detik tanpa manual report. Menghemat 3 jam kerja per minggu.",
-      skills: ["Excel", "Pivot Table", "VLOOKUP", "Data Cleaning", "Dashboard Design"],
-    },
-  },
-  {
-    id: "excel-2",
-    title: "Customer Segmentation Analysis",
-    category: "Data Analytics",
-    subtitle: "RFM Analysis with Excel",
-    description: "Analisis segmentasi pelanggan menggunakan metode RFM (Recency, Frequency, Monetary) untuk identifikasi pelanggan prioritas.",
-    image_url: "/excel-dashboard-preview.png",
-    downloadUrl: "#",
-    driveUrl: "#",
-    technologies: ["RFM Formula", "COUNTIFS", "SUMIFS", "Pie Chart", "Data Validation"],
-    stats: [
-      { label: "Pelanggan", value: "2.500+" },
-      { label: "Segmen", value: "5" },
-      { label: "Akurasi", value: "92%" },
-    ],
-    caseStudy: {
-      problem: "Marketing tidak tahu pelanggan mana yang harus diprioritaskan untuk kampanye, sehingga budget marketing tidak efisien.",
-      process: [
-        "Import data transaksi 12 bulan terakhir ke Excel",
-        "Hitung skor Recency, Frequency, dan Monetary per pelanggan",
-        "Buat scoring matrix dengan formula PERCENTRANK",
-        "Klasifikasi ke 5 segmen: Champion, Loyal, At Risk, dll",
-        "Visualisasikan distribusi segmen dengan chart interaktif",
-      ],
-      result: "Tim marketing berhasil fokus ke 450 Champion customers, meningkatkan conversion rate kampanye sebesar 35%.",
-      skills: ["Excel", "RFM Analysis", "SUMIFS", "COUNTIFS", "Customer Analytics"],
-    },
-  },
-  {
-    id: "excel-3",
-    title: "Financial Report Automation",
-    category: "Data Analytics",
-    subtitle: "Monthly P&L Statement",
-    description: "Template laporan keuangan otomatis yang menghasilkan Profit & Loss statement bulanan hanya dengan input data minimal.",
-    image_url: "/excel-dashboard-preview.png",
-    downloadUrl: "#",
-    driveUrl: "#",
-    technologies: ["Advanced Formula", "Named Range", "Data Validation", "Waterfall Chart", "VBA Macro"],
-    stats: [
-      { label: "Input Manual", value: "-80%" },
-      { label: "Sheet", value: "8" },
-      { label: "Waktu Laporan", value: "15 menit" },
-    ],
-    caseStudy: {
-      problem: "Proses pembuatan laporan keuangan bulanan membutuhkan 3 hari kerja karena masih manual dan error-prone.",
-      process: [
-        "Rancang struktur template modular dengan named ranges",
-        "Buat formula otomatis untuk kalkulasi COGS, Gross Profit, Net Profit",
-        "Tambahkan data validation untuk mencegah input error",
-        "Desain waterfall chart untuk visualisasi P&L",
-        "Implementasi VBA macro untuk generate PDF otomatis",
-      ],
-      result: "Laporan yang tadinya 3 hari selesai dalam 15 menit. Error rate turun dari 12% menjadi 0%.",
-      skills: ["Excel", "VBA Macro", "Financial Modeling", "Advanced Formula", "Process Automation"],
-    },
-  },
-];
-
 export default function ProjectsPage() {
   const [projectsData, setProjectsData] = useState<Project[]>([]);
   const [activeCategory, setActiveCategory] = useState("All");
@@ -141,12 +54,9 @@ export default function ProjectsPage() {
           is_featured: item.featured,
           technologies: item.tech || []
         }));
-        
-        // Combine DB projects with Local Excel Projects
-        setProjectsData([...excelProjects, ...dbProjects]);
+        setProjectsData(dbProjects);
       } else {
-        // If Supabase fetch fails or is empty, still show Excel projects
-        setProjectsData(excelProjects);
+        setProjectsData([]);
       }
     };
     fetchProjects();
